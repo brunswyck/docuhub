@@ -38,14 +38,111 @@
 GIT
 ###
 
+*********************
+initial configuration
+*********************
+
+setup new repo
+==============
+
+local to remote
+---------------
+
+.. code::
+
+   echo "# demo" >> README.md
+   git init
+   git add README.md
+   git commit -m "first commit"
+   git remote add origin git@github.com:brunswyck/demo.git
+   git push -u origin master
+
+user specific
+=============
+
+write to global ~/.gitconfig
+----------------------------
+
+.. code::
+
+   git config --global user.name "dadude"
+   git config --global user.email "dadude@users.noreply.github.com"
+   git config --global core.editor "vim"
+   git config --list
+
+
 ********
-workflow
+branches
 ********
 
-show current config 
-===================
+remotes
+=======
 
-git remote show origin
+list existing remotes
+---------------------
+
+.. code::
+
+   git remote -v
+
+
+set remote
+----------
+
+using https
+^^^^^^^^^^^
+
+.. code::
+
+   git remote set-url https://github.com/USERNAME/REPO.git
+
+using SSH
+^^^^^^^^^
+
+.. code::
+
+   git remote set-url git@github.com/USERNAME/REPO.git
+
+
+show remote
+-----------
+
+.. code::
+
+   git remote show origin
+   * remote origin
+      Fetch URL: git@github.com:brunswyck/hellobecode.git
+     Push  URL: git@github.com:brunswyck/hellobecode.git
+     HEAD branch: main
+     Remote branches:
+       gh-pages tracked
+       main     tracked
+     Local branch configured for 'git pull':
+       main merges with remote main
+     Local ref configured for 'git push':
+       main pushes to main (up to date)
+
+
+id merged branches into current branch (master)
+-----------------------------------------------
+
+.. code::
+
+   git remote show origin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 changed gitignore but folder still in commit

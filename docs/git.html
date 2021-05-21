@@ -90,8 +90,23 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">GIT</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#workflow">workflow</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#show-current-config">show current config</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#initial-configuration">initial configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup-new-repo">setup new repo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#local-to-remote">local to remote</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#user-specific">user specific</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#write-to-global-gitconfig">write to global ~/.gitconfig</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#branches">branches</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#remotes">remotes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#list-existing-remotes">list existing remotes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-remote">set remote</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#show-remote">show remote</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id-merged-branches-into-current-branch-master">id merged branches into current branch (master)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#changed-gitignore-but-folder-still-in-commit">changed gitignore but folder still in commit</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#force-local-changes-on-remote-master-with-no-merge">force local changes on remote master with no merge</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#load-gitconfig-file">load .gitconfig file</a></li>
@@ -171,11 +186,83 @@
             
   <div class="section" id="git">
 <h1>GIT<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="workflow">
-<h2>workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="show-current-config">
-<h3>show current config<a class="headerlink" href="#show-current-config" title="Permalink to this headline">¶</a></h3>
-<p>git remote show origin</p>
+<div class="section" id="initial-configuration">
+<h2>initial configuration<a class="headerlink" href="#initial-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setup-new-repo">
+<h3>setup new repo<a class="headerlink" href="#setup-new-repo" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="local-to-remote">
+<h4>local to remote<a class="headerlink" href="#local-to-remote" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;# demo&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">git</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">add</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;first commit&quot;</span>
+<span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">brunswyck</span><span class="o">/</span><span class="n">demo</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">master</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="user-specific">
+<h3>user specific<a class="headerlink" href="#user-specific" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="write-to-global-gitconfig">
+<h4>write to global ~/.gitconfig<a class="headerlink" href="#write-to-global-gitconfig" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="s2">&quot;dadude&quot;</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="s2">&quot;dadude@users.noreply.github.com&quot;</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">core</span><span class="o">.</span><span class="n">editor</span> <span class="s2">&quot;vim&quot;</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="nb">list</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="branches">
+<h2>branches<a class="headerlink" href="#branches" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="remotes">
+<h3>remotes<a class="headerlink" href="#remotes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="list-existing-remotes">
+<h4>list existing remotes<a class="headerlink" href="#list-existing-remotes" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-remote">
+<h4>set remote<a class="headerlink" href="#set-remote" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="using-https">
+<h5>using https<a class="headerlink" href="#using-https" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="nb">set</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span><span class="n">REPO</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-ssh">
+<h5>using SSH<a class="headerlink" href="#using-ssh" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="nb">set</span><span class="o">-</span><span class="n">url</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span><span class="n">REPO</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="show-remote">
+<h4>show remote<a class="headerlink" href="#show-remote" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">show</span> <span class="n">origin</span>
+<span class="o">*</span> <span class="n">remote</span> <span class="n">origin</span>
+   <span class="n">Fetch</span> <span class="n">URL</span><span class="p">:</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">brunswyck</span><span class="o">/</span><span class="n">hellobecode</span><span class="o">.</span><span class="n">git</span>
+  <span class="n">Push</span>  <span class="n">URL</span><span class="p">:</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">brunswyck</span><span class="o">/</span><span class="n">hellobecode</span><span class="o">.</span><span class="n">git</span>
+  <span class="n">HEAD</span> <span class="n">branch</span><span class="p">:</span> <span class="n">main</span>
+  <span class="n">Remote</span> <span class="n">branches</span><span class="p">:</span>
+    <span class="n">gh</span><span class="o">-</span><span class="n">pages</span> <span class="n">tracked</span>
+    <span class="n">main</span>     <span class="n">tracked</span>
+  <span class="n">Local</span> <span class="n">branch</span> <span class="n">configured</span> <span class="k">for</span> <span class="s1">&#39;git pull&#39;</span><span class="p">:</span>
+    <span class="n">main</span> <span class="n">merges</span> <span class="k">with</span> <span class="n">remote</span> <span class="n">main</span>
+  <span class="n">Local</span> <span class="n">ref</span> <span class="n">configured</span> <span class="k">for</span> <span class="s1">&#39;git push&#39;</span><span class="p">:</span>
+    <span class="n">main</span> <span class="n">pushes</span> <span class="n">to</span> <span class="n">main</span> <span class="p">(</span><span class="n">up</span> <span class="n">to</span> <span class="n">date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id-merged-branches-into-current-branch-master">
+<h4>id merged branches into current branch (master)<a class="headerlink" href="#id-merged-branches-into-current-branch-master" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">show</span> <span class="n">origin</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="changed-gitignore-but-folder-still-in-commit">
 <h4>changed gitignore but folder still in commit<a class="headerlink" href="#changed-gitignore-but-folder-still-in-commit" title="Permalink to this headline">¶</a></h4>
 <p>you added eg the folder env/ to your .gitignore file but when checking git status you see git still wants to commit all env/lib/… files
