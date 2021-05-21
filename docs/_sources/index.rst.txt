@@ -10,6 +10,8 @@ Welcome to bedocs's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   git
+   python
 
 
 Indices and tables
