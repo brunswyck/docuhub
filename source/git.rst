@@ -1,5 +1,3 @@
-.. highlightlang:: rest
-
 ###
 GIT
 ###
@@ -407,6 +405,19 @@ write to global ~/.gitconfig
    git config --global user.email "dadude@users.noreply.github.com"
    git config --global core.editor "vim"
    git config --list
+
+**************
+usual commands
+**************
+
+.. code::
+
+   (docuhub) (base) dadude@dahost:~/gits/docuhub/source$
+   git branch -av
+   * main                    cdd89ff upd8 python file
+     remotes/origin/HEAD     -> origin/main
+     remotes/origin/gh-pages 6fe8280 Update index.md
+     remotes/origin/main     cdd89ff upd8 python file
 
 
 ********
