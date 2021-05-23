@@ -419,6 +419,21 @@ usual commands
      remotes/origin/gh-pages 6fe8280 Update index.md
      remotes/origin/main     cdd89ff upd8 python file
 
+.. code::
+
+   git remote show origin
+   * remote origin
+     Fetch URL: git@github.com:brunswyck/docuhub.git
+     Push  URL: git@github.com:brunswyck/docuhub.git
+     HEAD branch: main
+     Remote branches:
+       gh-pages tracked
+       main     tracked
+     Local branch configured for 'git pull':
+       main merges with remote main
+     Local ref configured for 'git push':
+       main pushes to main (fast-forwardable)
+
 
 ********
 branches
