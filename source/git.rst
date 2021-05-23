@@ -486,6 +486,33 @@ show remote
        main pushes to main (up to date)
 
 
+delete branch
+-------------
+
+.. note:: you can't be on the branch you want to delete
+
+.. code::
+
+   git branch -d branch_to_delete
+
+delete remote branch
+--------------------
+
+.. code::
+
+   git push origin :branch_u_want_to_delete
+   # = push nothing to remote branch
+
+.. code::
+
+   git push --delete origin branch_to_delete
+
+.. note:: origin -> name of remote
+
+.. code::
+
+   git push -d origin branch_to_delete
+
 create new branch from remote branch
 ------------------------------------
 
