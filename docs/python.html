@@ -95,6 +95,31 @@
 <li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#conda">conda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#package-mgmt">package mgmt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#backup-required-packages">backup required packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backup-environment">backup environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-required-packages">install required packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pip">pip</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">package mgmt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">backup required packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">install required packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sphinx">sphinx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setup-sphinx">setup sphinx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pip3-requirements">pip3 requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#fundamentals">fundamentals</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#modularity">modularity</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#main-function-cli-arguments">main function &amp; cli arguments</a></li>
@@ -219,6 +244,91 @@
             
   <div class="section" id="python">
 <h1>python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="conda">
+<h2>conda<a class="headerlink" href="#conda" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="package-mgmt">
+<h3>package mgmt<a class="headerlink" href="#package-mgmt" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="backup-required-packages">
+<h4>backup required packages<a class="headerlink" href="#backup-required-packages" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="nb">list</span> <span class="o">--</span><span class="n">export</span> <span class="o">&gt;</span> <span class="n">conda_reqs</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="backup-environment">
+<h4>backup environment<a class="headerlink" href="#backup-environment" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">export</span> <span class="o">--</span><span class="n">from</span><span class="o">-</span><span class="n">history</span> <span class="o">-</span><span class="n">n</span> <span class="n">helloworld</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">builds</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">v</span> <span class="s2">&quot;prefix&quot;</span> <span class="o">&gt;</span> <span class="n">backup_env</span><span class="o">.</span><span class="n">yml</span>
+
+<span class="n">cat</span> <span class="n">backup_env</span><span class="o">.</span><span class="n">yml</span>
+<span class="n">name</span><span class="p">:</span> <span class="n">helloworld</span>
+<span class="n">channels</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">defaults</span>
+<span class="n">dependencies</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">sphinx</span>
+  <span class="o">-</span> <span class="n">argcomplete</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-required-packages">
+<h4>install required packages<a class="headerlink" href="#install-required-packages" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">envname</span> <span class="o">--</span><span class="n">file</span> <span class="n">conda_reqs</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pip">
+<h2>pip<a class="headerlink" href="#pip" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>package mgmt<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h4>backup required packages<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">freeze</span> <span class="o">&gt;</span> <span class="n">pip_requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h4>install required packages<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">envname</span>
+<span class="n">source</span> <span class="n">env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">pip_requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="documentation">
+<h2>documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sphinx">
+<h3>sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="setup-sphinx">
+<h4>setup sphinx<a class="headerlink" href="#setup-sphinx" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[ ! -d &quot;$HOME/reqfiles&quot; ] &amp;&amp; mkdir $HOME/reqfiles &amp;&amp; echo -e &quot;rstcheck\nSphinx\nsphinx-autobuild\nsphinx-rtd-theme\nsphinx-rtd-dark-mode&quot; &gt; $HOME/sphinx_reqs.txt
+
+python3 -m venv sphinx
+source ~/venv/sphinx/bin/activate
+
+python3 -m pip install --upgrade pip
+
+#(sphinx) (base) dadude@dahost:~/venv$
+pip3 install -r ~/reqfiles/sphinx_reqs.txt
+
+
+cd ~/gits;git clone git@github.com:brunswyck/docuhub.git;cd ~/gits/docuhub
+</pre></div>
+</div>
+</div>
+<div class="section" id="pip3-requirements">
+<h4>pip3 requirements<a class="headerlink" href="#pip3-requirements" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docutils</span>
+<span class="n">rstcheck</span>
+<span class="n">Sphinx</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">autobuild</span>
+<span class="n">sphinx</span><span class="o">-</span><span class="n">rtd</span><span class="o">-</span><span class="n">theme</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="fundamentals">
 <h2>fundamentals<a class="headerlink" href="#fundamentals" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="modularity">

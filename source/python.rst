@@ -2,6 +2,103 @@
 python
 ######
 
+*****
+conda
+*****
+
+package mgmt
+============
+
+backup required packages
+------------------------
+
+.. code::
+
+   conda list --export > conda_reqs.txt
+
+backup environment
+------------------
+
+.. code::
+
+   conda env export --from-history -n helloworld --no-builds | grep -v "prefix" > backup_env.yml
+
+   cat backup_env.yml
+   name: helloworld
+   channels:
+     - defaults
+   dependencies:
+     - sphinx
+     - argcomplete
+
+
+install required packages
+-------------------------
+
+.. code::
+
+   conda create --name envname --file conda_reqs.yml
+
+***
+pip
+***
+
+package mgmt
+============
+
+backup required packages
+------------------------
+
+.. code::
+
+   pip3 freeze > pip_requirements.txt
+
+install required packages
+-------------------------
+
+.. code::
+
+   python3 -m venv envname
+   source env/bin/activate
+   pip3 install -r pip_requirements.txt
+
+*************
+documentation
+*************
+
+sphinx
+======
+
+setup sphinx
+------------
+
+.. code::
+  
+   [ ! -d "$HOME/reqfiles" ] && mkdir $HOME/reqfiles && echo -e "rstcheck\nSphinx\nsphinx-autobuild\nsphinx-rtd-theme\nsphinx-rtd-dark-mode" > $HOME/sphinx_reqs.txt
+
+   python3 -m venv sphinx
+   source ~/venv/sphinx/bin/activate
+
+   python3 -m pip install --upgrade pip
+   
+   #(sphinx) (base) dadude@dahost:~/venv$
+   pip3 install -r ~/reqfiles/sphinx_reqs.txt
+
+
+   cd ~/gits;git clone git@github.com:brunswyck/docuhub.git;cd ~/gits/docuhub
+
+
+pip3 requirements
+-----------------
+
+.. code::
+
+   docutils
+   rstcheck
+   Sphinx
+   sphinx-autobuild
+   sphinx-rtd-theme
+
 ************
 fundamentals
 ************
