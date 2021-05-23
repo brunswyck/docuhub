@@ -346,7 +346,6 @@ growing lists
    # these techniques work with any iterable series on the righthand side
 
 
-
 reversing and sorting lists
 ---------------------------
 

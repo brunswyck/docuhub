@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>GIT &mdash; bedocs alpha documentation</title>
+  <title>GIT &mdash; Patrick&#39;s Docs alpha documentation</title>
   
 
   
@@ -42,7 +42,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="python" href="python.html" />
-    <link rel="prev" title="Welcome to bedocs’s documentation!" href="index.html" /> 
+    <link rel="prev" title="Links" href="links.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -56,7 +56,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> bedocs
+            <a href="index.html" class="icon icon-home"> Patrick's Docs
           
 
           
@@ -89,7 +89,36 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">GIT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#github">github</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#github-markdown">github markdown</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#text">text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#headers">headers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#emphasis">emphasis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lists">lists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#images">images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#links">links</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#blockquotes">blockquotes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inline-code">inline code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#syntax-highlighting">syntax highlighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#task-lists">task lists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tables">tables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rest-api">rest api</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">links</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#github-cli">github cli</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-github-cli">install github cli</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initialize-gh-cli">initialize gh cli</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cli-help">cli help</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extending-cli">extending cli</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#initial-configuration">initial configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#setup-new-repo">setup new repo</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#local-to-remote">local to remote</a></li>
@@ -103,9 +132,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#branches">branches</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#remotes">remotes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#list-existing-remotes">list existing remotes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-remotes">list remotes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#set-remote">set remote</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#show-remote">show remote</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-new-branch-from-remote-branch">create new branch from remote branch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-new-branch-in-a-remote-repo">create new branch in a remote repo</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id-merged-branches-into-current-branch-master">id merged branches into current branch (master)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#changed-gitignore-but-folder-still-in-commit">changed gitignore but folder still in commit</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#force-local-changes-on-remote-master-with-no-merge">force local changes on remote master with no merge</a></li>
@@ -132,7 +163,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">bedocs</a>
+          <a href="index.html">Patrick's Docs</a>
         
       </nav>
 
@@ -186,6 +217,342 @@
             
   <div class="section" id="git">
 <h1>GIT<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="github">
+<h2>github<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/git_overview.jpg" src="_images/git_overview.jpg" />
+<div class="section" id="github-markdown">
+<h3>github markdown<a class="headerlink" href="#github-markdown" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="text">
+<h4>text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>It&#39;s very easy to make some words **bold** and other words *italic* with Markdown.
+You can even [link to Google!](http://google.com)
+</pre></div>
+</div>
+</div>
+<div class="section" id="headers">
+<h4>headers<a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is an &lt;h1&gt; tag</span>
+<span class="c1">## This is an &lt;h2&gt; tag</span>
+<span class="c1">###### This is an &lt;h6&gt; tag</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="emphasis">
+<h4>emphasis<a class="headerlink" href="#emphasis" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">This</span> <span class="n">text</span> <span class="n">will</span> <span class="n">be</span> <span class="n">italic</span><span class="o">*</span>
+<span class="n">_This</span> <span class="n">will</span> <span class="n">also</span> <span class="n">be</span> <span class="n">italic_</span>
+
+<span class="o">**</span><span class="n">This</span> <span class="n">text</span> <span class="n">will</span> <span class="n">be</span> <span class="n">bold</span><span class="o">**</span>
+<span class="n">__This</span> <span class="n">will</span> <span class="n">also</span> <span class="n">be</span> <span class="n">bold__</span>
+
+<span class="n">_You</span> <span class="o">**</span><span class="n">can</span><span class="o">**</span> <span class="n">combine</span> <span class="n">them_</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lists">
+<h4>lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="unordered">
+<h5>unordered<a class="headerlink" href="#unordered" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">Item</span> <span class="mi">1</span>
+<span class="o">*</span> <span class="n">Item</span> <span class="mi">2</span>
+  <span class="o">*</span> <span class="n">Item</span> <span class="mi">2</span><span class="n">a</span>
+  <span class="o">*</span> <span class="n">Item</span> <span class="mi">2</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ordered">
+<h5>ordered<a class="headerlink" href="#ordered" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Item</span> <span class="mi">1</span>
+<span class="mf">1.</span> <span class="n">Item</span> <span class="mi">2</span>
+<span class="mf">1.</span> <span class="n">Item</span> <span class="mi">3</span>
+   <span class="mf">1.</span> <span class="n">Item</span> <span class="mi">3</span><span class="n">a</span>
+   <span class="mf">1.</span> <span class="n">Item</span> <span class="mi">3</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="images">
+<h4>images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>![GitHub Logo](/images/logo.png)
+</pre></div>
+</div>
+</div>
+<div class="section" id="links">
+<h4>links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://github.com - automatic!
+[GitHub](http://github.com)
+</pre></div>
+</div>
+</div>
+<div class="section" id="blockquotes">
+<h4>blockquotes<a class="headerlink" href="#blockquotes" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">As</span> <span class="n">Kanye</span> <span class="n">West</span> <span class="n">said</span><span class="p">:</span>
+
+<span class="o">&gt;</span> <span class="n">We</span><span class="s1">&#39;re living the future so</span>
+<span class="o">&gt;</span> <span class="n">the</span> <span class="n">present</span> <span class="ow">is</span> <span class="n">our</span> <span class="n">past</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inline-code">
+<h4>inline code<a class="headerlink" href="#inline-code" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I think you should use an
+`&lt;addr&gt;` element here instead
+</pre></div>
+</div>
+</div>
+<div class="section" id="syntax-highlighting">
+<h4>syntax highlighting<a class="headerlink" href="#syntax-highlighting" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```javascript
+function fancyAlert(arg) {
+  if(arg) {
+    $.facebox({div:&#39;#foo&#39;})
+  }
+}
+```
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>or simply indent code with 4 spaces</p>
+</div>
+</div>
+<div class="section" id="task-lists">
+<h4>task lists<a class="headerlink" href="#task-lists" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="nd">@mentions</span><span class="p">,</span> <span class="c1">#refs, [links](), **formatting**, and &lt;del&gt;tags&lt;/del&gt; supported</span>
+<span class="o">-</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="nb">list</span> <span class="n">syntax</span> <span class="n">required</span> <span class="p">(</span><span class="nb">any</span> <span class="n">unordered</span> <span class="ow">or</span> <span class="n">ordered</span> <span class="nb">list</span> <span class="n">supported</span><span class="p">)</span>
+<span class="o">-</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">complete</span> <span class="n">item</span>
+<span class="o">-</span> <span class="p">[</span> <span class="p">]</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">incomplete</span> <span class="n">item</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tables">
+<h4>tables<a class="headerlink" href="#tables" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">First</span> <span class="n">Header</span> <span class="o">|</span> <span class="n">Second</span> <span class="n">Header</span>
+<span class="o">------------</span> <span class="o">|</span> <span class="o">-------------</span>
+<span class="n">Content</span> <span class="kn">from</span> <span class="nn">cell</span> <span class="mi">1</span> <span class="o">|</span> <span class="n">Content</span> <span class="kn">from</span> <span class="nn">cell</span> <span class="mi">2</span>
+<span class="n">Content</span> <span class="ow">in</span> <span class="mi">1</span><span class="n">st</span> <span class="n">column</span> <span class="o">|</span> <span class="n">Content</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">column</span>
+</pre></div>
+</div>
+<p>becomes:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 52%" />
+<col style="width: 48%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>First Header</p></th>
+<th class="head"><p>Second Header</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Content from cell 1</p></td>
+<td><p>Content from cell 2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Content in 1st column</p></td>
+<td><p>Content 2nd column</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="rest-api">
+<h3>rest api<a class="headerlink" href="#rest-api" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>links<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://docs.github.com/en/rest">github api</a> documentation</p>
+</div>
+</div>
+<div class="section" id="github-cli">
+<h3>github cli<a class="headerlink" href="#github-cli" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="install-github-cli">
+<h4>install <a class="reference external" href="https://cli.github.com/">github cli</a><a class="headerlink" href="#install-github-cli" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">fsSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cli</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">packages</span><span class="o">/</span><span class="n">githubcli</span><span class="o">-</span><span class="n">archive</span><span class="o">-</span><span class="n">keyring</span><span class="o">.</span><span class="n">gpg</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">gpg</span> <span class="o">--</span><span class="n">dearmor</span> <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">keyrings</span><span class="o">/</span><span class="n">githubcli</span><span class="o">-</span><span class="n">archive</span><span class="o">-</span><span class="n">keyring</span><span class="o">.</span><span class="n">gpg</span>
+<span class="n">echo</span> <span class="s2">&quot;deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main&quot;</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apt</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">github</span><span class="o">-</span><span class="n">cli</span><span class="o">.</span><span class="n">list</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">gh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="initialize-gh-cli">
+<h4>initialize gh cli<a class="headerlink" href="#initialize-gh-cli" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>generate token: <a class="reference external" href="https://github.com/settings/tokens">https://github.com/settings/tokens</a></p></li>
+<li><p><a class="reference external" href="https://cli.github.com/manual/">cli manual</a></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>gh config set -h github.com git_protocol ssh
+gh auth login --hostname github.com
+
+dadude@dahost:~/becode$ gh auth login --hostname github.com
+? You&#39;re already logged into github.com. Do you want to re-authenticate? Yes
+? What is your preferred protocol for Git operations? SSH
+? Upload your SSH public key to your GitHub account? /home/dadude/.ssh/github_id_rsa.pub
+? How would you like to authenticate GitHub CLI? Paste an authentication token
+Tip: you can generate a Personal Access Token here https://github.com/settings/tokens
+The minimum required scopes are &#39;repo&#39;, &#39;read:org&#39;, &#39;admin:public_key&#39;.
+? Paste your authentication token: ****************************************
+                                   - gh config set -h github.com git_protocol ssh
+✓ Configured git protocol
+</pre></div>
+</div>
+</div>
+<div class="section" id="cli-help">
+<h4>cli help<a class="headerlink" href="#cli-help" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(helloworld) dadude@dahost:~/becode$ gh help
+Work seamlessly with GitHub from the command line.
+
+USAGE
+  gh &lt;command&gt; &lt;subcommand&gt; [flags]
+
+CORE COMMANDS
+  gist:       Manage gists
+  issue:      Manage issues
+  pr:         Manage pull requests
+  release:    Manage GitHub releases
+  repo:       Create, clone, fork, and view repositories
+
+ACTIONS COMMANDS
+  actions:    Learn about working with GitHub actions
+  run:        View details about workflow runs
+  workflow:   View details about GitHub Actions workflows
+
+ADDITIONAL COMMANDS
+  alias:      Create command shortcuts
+  api:        Make an authenticated GitHub API request
+  auth:       Login, logout, and refresh your authentication
+  completion: Generate shell completion scripts
+  config:     Manage configuration for gh
+  help:       Help about any command
+  secret:     Manage GitHub secrets
+  ssh-key:    Manage SSH keys
+
+FLAGS
+  --help      Show help for command
+  --version   Show gh version
+
+EXAMPLES
+  $ gh issue create
+  $ gh repo clone cli/cli
+  $ gh pr checkout 321
+
+ENVIRONMENT VARIABLES
+  See &#39;gh help environment&#39; for the list of supported environment variables.
+
+LEARN MORE
+  Use &#39;gh &lt;command&gt; &lt;subcommand&gt; --help&#39; for more information about a command.
+  Read the manual at https://cli.github.com/manual
+
+FEEDBACK
+  Open an issue using &#39;gh issue create -R github.com/cli/cli&#39;
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(helloworld) dadude@dahost:~/becode$ gh help ssh-key
+Manage SSH keys registered with your GitHub account
+
+USAGE
+  gh ssh-key &lt;command&gt; [flags]
+
+CORE COMMANDS
+  add:        Add an SSH key to your GitHub account
+  list:       Lists SSH keys in your GitHub account
+
+INHERITED FLAGS
+  --help   Show help for command
+
+LEARN MORE
+  Use &#39;gh &lt;command&gt; &lt;subcommand&gt; --help&#39; for more information about a command.
+  Read the manual at https://cli.github.com/manual
+</pre></div>
+</div>
+</div>
+<div class="section" id="extending-cli">
+<h4>extending cli<a class="headerlink" href="#extending-cli" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li><p>Create shorthands using <a class="reference external" href="https://cli.github.com/manual/gh_alias_set">gh alias set</a></p></li>
+<li><p>Make custom API queries using <a class="reference external" href="https://cli.github.com/manual/gh_api">gh api</a></p></li>
+<li><p>Use environment <a class="reference external" href="https://cli.github.com/manual/gh_help_environment">github variables</a></p></li>
+</ol>
+<div class="section" id="example-of-alias-use">
+<h5>example of alias use<a class="headerlink" href="#example-of-alias-use" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Variables and API Keys
+GITHUB_USER=&quot;&quot;
+GITHUB_TOKEN=&quot;&quot;
+PROJECT_NAME=&quot;&quot;
+COLLABORATOR=&quot;&quot;
+COLLABORATOR_TOKEN=&quot;&quot;
+
+# Aliases and Functions
+jsonVal() {
+    python3 -c &quot;import sys, json; print(json.load(sys.stdin)[\&quot;$1\&quot;])&quot;;
+}
+
+gh alias set collaborator &#39;api --method=PUT &quot;repos/$1/collaborators/$2&quot;&#39;
+
+gh auth login --with-token &lt;&lt;&lt; $GITHUB_TOKEN
+
+# A) Add a User
+gh collaborator &quot;$GITHUB_USER/$PROJECT_NAME&quot; $COLLABORATOR
+
+# B) Add and Confirm a User
+INVITE_URL=$(gh collaborator &quot;$GITHUB_USER/$PROJECT_NAME&quot; $COLLABORATOR | jsonVal &quot;url&quot;)
+gh api --method=PATCH -H=&quot;Authorization: token $COLLABORATOR_TOKEN&quot; &quot;$INVITE_URL&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-collaborators">
+<h5>get collaborators<a class="headerlink" href="#get-collaborators" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p><a class="reference external" href="https://lzone.de/cheat-sheet/jq">using jq tool</a></p></li>
+<li><p><a class="reference external" href="https://docs.github.com/en/rest/reference/repos#collaborators">github collaborators</a></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dadude@dahost:~/becode/exquisite-corpse-patrick-brunswyck$ gh api -H &#39;Accept: application/vnd.github.v3.raw+json&#39; https://api.github.com/orgs/becodeorg/teams/gnt-arai-2-31/members | jq &#39;.[] | .login, .id&#39;
+&quot;brunswyck&quot;
+5129017
+&quot;minhhienvo368&quot;
+10606644
+&quot;mdifils&quot;
+38662421
+&quot;JacquesDeclercq&quot;
+41050093
+&quot;JayeshItaliya86&quot;
+58531559
+&quot;Roldan87&quot;
+69901608
+&quot;ibe-denaux&quot;
+70886156
+&quot;lvendrix&quot;
+74897663
+&quot;BMesm&quot;
+78888578
+&quot;QuintenMM&quot;
+84379913
+&quot;MaartenVdBulcke&quot;
+84380029
+&quot;ltadrummond&quot;
+84380184
+&quot;AmauryvanKeste&quot;
+84380197
+&quot;annejungers&quot;
+84380205
+&quot;matthew-samyn&quot;
+84380381
+&quot;GracielaLopezRosson&quot;
+84380495
+&quot;Helabrak&quot;
+84380899
+&quot;Minh6019&quot;
+84381447
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-new-collaborator-on-repo">
+<h5>set new collaborator on repo<a class="headerlink" href="#set-new-collaborator-on-repo" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gh</span> <span class="n">api</span> <span class="o">--</span><span class="n">method</span><span class="o">=</span><span class="n">PUT</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">repos</span><span class="o">/</span><span class="n">brunswyck</span><span class="o">/</span><span class="n">exquisite</span><span class="o">-</span><span class="n">corpse</span><span class="o">-</span><span class="n">patrick</span><span class="o">-</span><span class="n">brunswyck</span><span class="o">/</span><span class="n">collaborators</span><span class="o">/</span><span class="n">Minh6019</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="initial-configuration">
 <h2>initial configuration<a class="headerlink" href="#initial-configuration" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="setup-new-repo">
@@ -219,8 +586,8 @@
 <h2>branches<a class="headerlink" href="#branches" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="remotes">
 <h3>remotes<a class="headerlink" href="#remotes" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="list-existing-remotes">
-<h4>list existing remotes<a class="headerlink" href="#list-existing-remotes" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="list-remotes">
+<h4>list remotes<a class="headerlink" href="#list-remotes" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span>
 </pre></div>
 </div>
@@ -257,11 +624,24 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id-merged-branches-into-current-branch-master">
-<h4>id merged branches into current branch (master)<a class="headerlink" href="#id-merged-branches-into-current-branch-master" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">show</span> <span class="n">origin</span>
+<div class="section" id="create-new-branch-from-remote-branch">
+<h4>create new branch from remote branch<a class="headerlink" href="#create-new-branch-from-remote-branch" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">--</span><span class="n">track</span> <span class="n">newbranch</span> <span class="n">origin</span><span class="o">/</span><span class="n">remotebranch</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="create-new-branch-in-a-remote-repo">
+<h4>create new branch in a remote repo<a class="headerlink" href="#create-new-branch-in-a-remote-repo" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">u</span> <span class="n">origin</span> <span class="n">localbranch</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the -u flag tells git to establish a <em>tracking connection</em>, which will make pushing &amp; pulling easier in the future</p>
+</div>
+</div>
+<div class="section" id="id-merged-branches-into-current-branch-master">
+<h4>id merged branches into current branch (master)<a class="headerlink" href="#id-merged-branches-into-current-branch-master" title="Permalink to this headline">¶</a></h4>
 </div>
 <div class="section" id="changed-gitignore-but-folder-still-in-commit">
 <h4>changed gitignore but folder still in commit<a class="headerlink" href="#changed-gitignore-but-folder-still-in-commit" title="Permalink to this headline">¶</a></h4>
@@ -299,7 +679,7 @@ You can fix that by removing the folder from cache:</p>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="python.html" class="btn btn-neutral float-right" title="python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to bedocs’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="links.html" class="btn btn-neutral float-left" title="Links" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

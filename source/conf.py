@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'bedocs'
+project = 'Patrick\'s Docs'
 copyright = '2021, Patrick Brunswyck'
 author = 'Patrick Brunswyck'
 
