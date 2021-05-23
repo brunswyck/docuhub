@@ -528,6 +528,25 @@ delete remote branch
     * [new branch]      delete_test -> delete_test
    Branch 'delete_test' set up to track remote branch 'delete_test' from 'origin'.
 
+   $ git checkout main
+   M	source/git.rst
+   Switched to branch 'main'
+   Your branch is up to date with 'origin/main'.
+   $ git branch -d delete_test 
+   Deleted branch delete_test (was 7734d63).
+
+   # delete remote
+   $ git branch -a
+   * main
+     remotes/origin/HEAD -> origin/main
+     remotes/origin/delete_test
+     remotes/origin/gh-pages
+     remotes/origin/main
+   $ git push -d origin delete_test 
+   To github.com:brunswyck/docuhub.git
+    - [deleted]         delete_test
+
+
 
 create new branch from remote branch
 ------------------------------------
@@ -555,10 +574,16 @@ id merged branches into current branch (master)
 
 
 
+prune stale branches
+====================
 
+.. note:: a remote tracking branch that no longer tracks anything because the actual branch in the remote repository has been deleted
 
+.. code::
 
-
+   # Delete stale remote-tracking branches
+   git remote prune origin (or whatever name of the remote is)
+   git remote prune origin --dry-run
 
 
 
@@ -600,6 +625,75 @@ load .gitconfig file
 
    git config --local include.path "$PWD/.gitconfig"
 
+*******
+tagging
+*******
+
+allows marking points in history as important
+eg to mark releases (v1.0, v1.1, v2.0)
+
+creating tags
+=============
+
+lightweight tag
+---------------
+
+.. code::
+
+   git tag docs_ready b10a9141
+
+   git log
+   commit b10a9141177f10805e570234ca63a98b90c973f3 (HEAD -> main, tag: docs_ready, origin/main, origin/HEAD)
+   Author: dadude <dadude@users.noreply.github.com>
+   Date:   Sun May 23 20:09:41 2021 +0200
+   
+       lol
+
+annotated tag
+-------------
+
+most common, allows message to go with it
+
+.. code::
+
+   git tag -a v1.1 -m "Version 1.0" dd5c49428a0
+   git tag -am "Start" v0.01 c66846fddca
+
+   git tag -l
+   docs_ready
+   v0.01
+   git tag -ln
+   docs_ready      lol
+   v0.01           Start
+
+   git diff v0.01 0b59801097dc0
+   diff --git a/docs/_sources/index.rst.txt b/docs/_sources/index.rst.txt
+   new file mode 100644
+   index 0000000..d6441b3
+   --- /dev/null
+   +++ b/docs/_sources/index.rst.txt
 
 
+delete tag
+----------
 
+.. code::
+
+   git tag --delete v0.01
+   Deleted tag 'v0.01' (was 5608530)
+
+push tags to remote
+-------------------
+
+.. code::
+
+   git push origin --tags 
+   Total 0 (delta 0), reused 0 (delta 0)
+   To github.com:brunswyck/docuhub.git
+    * [new tag]         docs_ready -> docs_ready
+
+.. note::
+
+   Like branches tags are LOCAL UNLESS SHARED TO A REMOTE
+   git push does NOT transfer tags
+   git fetch does retrieve shared tags
