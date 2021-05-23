@@ -13,6 +13,13 @@ github
 github markdown
 ===============
 
+emoji's
+-------
+
+`github emoji's`_
+
+.. _github emoji's: https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md
+
 text
 ----
 
@@ -147,6 +154,9 @@ becomes:
 
 ..
   -|
+
+continue here
+=============
 
 rest api
 ========
