@@ -513,6 +513,22 @@ delete remote branch
 
    git push -d origin branch_to_delete
 
+.. code::
+
+   $ git checkout -b delete_test
+   Switched to a new branch 'delete_test'
+   $ git push --help
+   $ git push -u origin delete_test 
+   Total 0 (delta 0), reused 0 (delta 0)
+   remote: 
+   remote: Create a pull request for 'delete_test' on GitHub by visiting:
+   remote:      https://github.com/brunswyck/docuhub/pull/new/delete_test
+   remote: 
+   To github.com:brunswyck/docuhub.git
+    * [new branch]      delete_test -> delete_test
+   Branch 'delete_test' set up to track remote branch 'delete_test' from 'origin'.
+
+
 create new branch from remote branch
 ------------------------------------
 
