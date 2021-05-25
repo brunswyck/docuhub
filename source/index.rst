@@ -10,6 +10,7 @@ Welcome to bedocs's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   bash
    links
    git
    python

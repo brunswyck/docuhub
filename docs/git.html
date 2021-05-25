@@ -93,6 +93,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">GIT</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#github">github</a><ul>
@@ -111,7 +112,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#tables">tables</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#continue-here">continue here</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#rest-api">rest api</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">links</a></li>
 </ul>
@@ -125,7 +125,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#initial-configuration">initial configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#git-commands">git commands</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#setup-new-repo">setup new repo</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#local-to-remote">local to remote</a></li>
 </ul>
@@ -134,19 +134,62 @@
 <li class="toctree-l4"><a class="reference internal" href="#write-to-global-gitconfig">write to global ~/.gitconfig</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#exercises">exercises</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#first-one">first one</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#branches">branches</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#remotes">remotes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#list-remotes">list remotes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#set-remote">set remote</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-cmds">basic cmds</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#show-local-remote-branches">show local &amp; remote branches</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#branches">branches</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#remotes">remotes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#show-remote">show remote</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-branch">delete branch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-remote-branch">delete remote branch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-new-branch-from-remote-branch">create new branch from remote branch</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-new-branch-in-a-remote-repo">create new branch in a remote repo</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id-merged-branches-into-current-branch-master">id merged branches into current branch (master)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id-merged-branches">id merged branches</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#prune-stale-branches">prune stale branches</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#changed-gitignore-but-folder-still-in-commit">changed gitignore but folder still in commit</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#force-local-changes-on-remote-master-with-no-merge">force local changes on remote master with no merge</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#load-gitconfig-file">load .gitconfig file</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tagging">tagging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-tags">creating tags</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#git-log">git log</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#git-log-params">git log params</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#cherry-picking">cherry picking</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cherry-picking-commits">cherry-Picking commits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resolve-cherry-picking-conflicts">resolve cherry-picking conflicts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#merge">merge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#make-main-great-again">make main great again</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#before">before</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#after">after</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-prepare">how to prepare</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fast-forward-merge">fast forward merge</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rebase">rebase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rebase-to-tip">rebase to tip</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#merge-vs-rebase">merge VS rebase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#squash-commits">squash commits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pull-rebase">pull rebase</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#log-options">Log options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#blame">blame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bisect">bisect</a></li>
 </ul>
 </li>
 </ul>
@@ -365,9 +408,6 @@ function fancyAlert(arg) {
 </table>
 </div>
 </div>
-<div class="section" id="continue-here">
-<h3>continue here<a class="headerlink" href="#continue-here" title="Permalink to this headline">¶</a></h3>
-</div>
 <div class="section" id="rest-api">
 <h3>rest api<a class="headerlink" href="#rest-api" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id1">
@@ -566,8 +606,8 @@ gh api --method=PATCH -H=&quot;Authorization: token $COLLABORATOR_TOKEN&quot; &q
 </div>
 </div>
 </div>
-<div class="section" id="initial-configuration">
-<h2>initial configuration<a class="headerlink" href="#initial-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="git-commands">
+<h2>git commands<a class="headerlink" href="#git-commands" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="setup-new-repo">
 <h3>setup new repo<a class="headerlink" href="#setup-new-repo" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="local-to-remote">
@@ -594,23 +634,126 @@ gh api --method=PATCH -H=&quot;Authorization: token $COLLABORATOR_TOKEN&quot; &q
 </div>
 </div>
 </div>
+<div class="section" id="exercises">
+<h3>exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="first-one">
+<h4>first one<a class="headerlink" href="#first-one" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Exquisite</span><span class="o">-</span><span class="n">corpse</span><span class="o">-</span><span class="n">Anne</span><span class="o">-</span><span class="n">Jungers</span><span class="o">/</span>
+
+<span class="n">git</span> <span class="n">pull</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">development</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">dev</span><span class="o">-</span><span class="n">patrick</span><span class="o">-</span><span class="n">brunswyck</span> <span class="n">development</span>
+<span class="n">vim</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s1">&#39;said my piece&#39;</span>
+<span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="nb">set</span><span class="o">-</span><span class="n">upstream</span> <span class="n">origin</span> <span class="n">dev</span><span class="o">-</span><span class="n">patrick</span><span class="o">-</span><span class="n">brunswyck</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">development</span>
+<span class="n">git</span> <span class="n">pull</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="n">development</span> <span class="n">dev</span><span class="o">-</span><span class="n">patrick</span><span class="o">-</span><span class="n">brunswyck</span>
+     <span class="k">if</span> <span class="n">conflict</span><span class="p">:</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s1">&#39;said my piece&#39;</span>
+                  <span class="n">git</span> <span class="n">push</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">av</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">dev</span><span class="o">-</span><span class="n">patrick</span><span class="o">-</span><span class="n">brunswyck</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="o">--</span><span class="n">delete</span> <span class="n">dev</span><span class="o">-</span><span class="n">patrick</span><span class="o">-</span><span class="n">brunswyck</span>
+</pre></div>
+</div>
+<div class="section" id="pruning">
+<h5>pruning<a class="headerlink" href="#pruning" title="Permalink to this headline">¶</a></h5>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>git pull</cite> does not remove remote tracking branches for branches deleted from remote repo</p>
+</div>
+<p>SOLUTION:
+To remove remote tracking branches for deleted branches, you need to issue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">prune</span> <span class="n">origin</span>
+</pre></div>
+</div>
+<p>If you just want to list such stale branches (and not remove them), use this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you just want to list such stale branches (and not remove them), use this:</span>
+
+<span class="n">git</span> <span class="n">remote</span> <span class="n">prune</span> <span class="n">origin</span> <span class="o">--</span><span class="n">dry</span><span class="o">-</span><span class="n">run</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h5>example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(master)$ git tag -am &#39;version-1&#39; mastererror: failed to push some refs to &#39;git@github.com:lvendrix/Exquisite-corpse-Logan.git&#39;
+(main)$ git remote prune origin
+Pruning origin
+URL: git@github.com:lvendrix/Exquisite-corpse-Logan.git
+ * [pruned] origin/JacquesDeclercq
+ * [pruned] origin/dev-patrick-brunswyck
+ * [pruned] origin/development
+ * [pruned] origin/jayesh-italiya
+ * [pruned] origin/maarten
+ * [pruned] origin/matthew-samyn
+ * [pruned] origin/patrick-brunswyck
+(main)$ git status
+On branch main
+Your branch is up to date with &#39;origin/main&#39;.
+
+nothing to commit, working tree clean
+(base) dadude@dahost ~/becode/Exquisite-corpse-Logan (main)$ git branch -ar
+  origin/HEAD -&gt; origin/main
+  origin/main
+(base) dadude@dahost ~/becode/Exquisite-corpse-Logan (main)$ git branch -r
+  origin/HEAD -&gt; origin/main
+  origin/main
+
+(master)$ git tag -am &#39;version-1&#39; master
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="basic-cmds">
+<h3>basic cmds<a class="headerlink" href="#basic-cmds" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="show-local-remote-branches">
+<h4>show local &amp; remote branches<a class="headerlink" href="#show-local-remote-branches" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(docuhub) (base) dadude@dahost:~/gits/docuhub/source$
+git branch -av
+* main                    cdd89ff upd8 python file
+  remotes/origin/HEAD     -&gt; origin/main
+  remotes/origin/gh-pages 6fe8280 Update index.md
+  remotes/origin/main     cdd89ff upd8 python file
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">show</span> <span class="n">origin</span>
+<span class="o">*</span> <span class="n">remote</span> <span class="n">origin</span>
+  <span class="n">Fetch</span> <span class="n">URL</span><span class="p">:</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">brunswyck</span><span class="o">/</span><span class="n">docuhub</span><span class="o">.</span><span class="n">git</span>
+  <span class="n">Push</span>  <span class="n">URL</span><span class="p">:</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">brunswyck</span><span class="o">/</span><span class="n">docuhub</span><span class="o">.</span><span class="n">git</span>
+  <span class="n">HEAD</span> <span class="n">branch</span><span class="p">:</span> <span class="n">main</span>
+  <span class="n">Remote</span> <span class="n">branches</span><span class="p">:</span>
+    <span class="n">gh</span><span class="o">-</span><span class="n">pages</span> <span class="n">tracked</span>
+    <span class="n">main</span>     <span class="n">tracked</span>
+  <span class="n">Local</span> <span class="n">branch</span> <span class="n">configured</span> <span class="k">for</span> <span class="s1">&#39;git pull&#39;</span><span class="p">:</span>
+    <span class="n">main</span> <span class="n">merges</span> <span class="k">with</span> <span class="n">remote</span> <span class="n">main</span>
+  <span class="n">Local</span> <span class="n">ref</span> <span class="n">configured</span> <span class="k">for</span> <span class="s1">&#39;git push&#39;</span><span class="p">:</span>
+    <span class="n">main</span> <span class="n">pushes</span> <span class="n">to</span> <span class="n">main</span> <span class="p">(</span><span class="n">fast</span><span class="o">-</span><span class="n">forwardable</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>get latest changes from origin (no merge)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="branches">
-<h2>branches<a class="headerlink" href="#branches" title="Permalink to this headline">¶</a></h2>
+<h3>branches<a class="headerlink" href="#branches" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="remotes">
-<h3>remotes<a class="headerlink" href="#remotes" title="Permalink to this headline">¶</a></h3>
+<h4>remotes<a class="headerlink" href="#remotes" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="list-remotes">
-<h4>list remotes<a class="headerlink" href="#list-remotes" title="Permalink to this headline">¶</a></h4>
+<h5>list remotes<a class="headerlink" href="#list-remotes" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="set-remote">
-<h4>set remote<a class="headerlink" href="#set-remote" title="Permalink to this headline">¶</a></h4>
+<h5>set remote<a class="headerlink" href="#set-remote" title="Permalink to this headline">¶</a></h5>
 <div class="section" id="using-https">
-<h5>using https<a class="headerlink" href="#using-https" title="Permalink to this headline">¶</a></h5>
+<h6>using https<a class="headerlink" href="#using-https" title="Permalink to this headline">¶</a></h6>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="nb">set</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span><span class="n">REPO</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="using-ssh">
@@ -637,6 +780,65 @@ gh api --method=PATCH -H=&quot;Authorization: token $COLLABORATOR_TOKEN&quot; &q
 </pre></div>
 </div>
 </div>
+<div class="section" id="delete-branch">
+<h4>delete branch<a class="headerlink" href="#delete-branch" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>you can’t be on the branch you want to delete</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">-</span><span class="n">d</span> <span class="n">branch_to_delete</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-remote-branch">
+<h4>delete remote branch<a class="headerlink" href="#delete-remote-branch" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="p">:</span><span class="n">branch_u_want_to_delete</span>
+<span class="c1"># = push nothing to remote branch</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">--</span><span class="n">delete</span> <span class="n">origin</span> <span class="n">branch_to_delete</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>origin -&gt; name of remote</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="o">-</span><span class="n">d</span> <span class="n">origin</span> <span class="n">branch_to_delete</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git checkout -b delete_test
+Switched to a new branch &#39;delete_test&#39;
+$ git push --help
+$ git push -u origin delete_test
+Total 0 (delta 0), reused 0 (delta 0)
+remote:
+remote: Create a pull request for &#39;delete_test&#39; on GitHub by visiting:
+remote:      https://github.com/brunswyck/docuhub/pull/new/delete_test
+remote:
+To github.com:brunswyck/docuhub.git
+ * [new branch]      delete_test -&gt; delete_test
+Branch &#39;delete_test&#39; set up to track remote branch &#39;delete_test&#39; from &#39;origin&#39;.
+
+$ git checkout main
+M    source/git.rst
+Switched to branch &#39;main&#39;
+Your branch is up to date with &#39;origin/main&#39;.
+$ git branch -d delete_test
+Deleted branch delete_test (was 7734d63).
+
+# delete remote
+$ git branch -a
+* main
+  remotes/origin/HEAD -&gt; origin/main
+  remotes/origin/delete_test
+  remotes/origin/gh-pages
+  remotes/origin/main
+$ git push -d origin delete_test
+To github.com:brunswyck/docuhub.git
+ - [deleted]         delete_test
+</pre></div>
+</div>
+</div>
 <div class="section" id="create-new-branch-from-remote-branch">
 <h4>create new branch from remote branch<a class="headerlink" href="#create-new-branch-from-remote-branch" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">--</span><span class="n">track</span> <span class="n">newbranch</span> <span class="n">origin</span><span class="o">/</span><span class="n">remotebranch</span>
@@ -653,8 +855,23 @@ gh api --method=PATCH -H=&quot;Authorization: token $COLLABORATOR_TOKEN&quot; &q
 <p>the -u flag tells git to establish a <em>tracking connection</em>, which will make pushing &amp; pulling easier in the future</p>
 </div>
 </div>
-<div class="section" id="id-merged-branches-into-current-branch-master">
-<h4>id merged branches into current branch (master)<a class="headerlink" href="#id-merged-branches-into-current-branch-master" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id-merged-branches">
+<h4>id merged branches<a class="headerlink" href="#id-merged-branches" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">branch</span> <span class="o">--</span><span class="n">merged</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="prune-stale-branches">
+<h3>prune stale branches<a class="headerlink" href="#prune-stale-branches" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>a remote tracking branch that no longer tracks anything because the actual branch in the remote repository has been deleted</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delete stale remote-tracking branches</span>
+<span class="n">git</span> <span class="n">remote</span> <span class="n">prune</span> <span class="n">origin</span> <span class="p">(</span><span class="ow">or</span> <span class="n">whatever</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">remote</span> <span class="ow">is</span><span class="p">)</span>
+<span class="n">git</span> <span class="n">remote</span> <span class="n">prune</span> <span class="n">origin</span> <span class="o">--</span><span class="n">dry</span><span class="o">-</span><span class="n">run</span>
+</pre></div>
 </div>
 <div class="section" id="changed-gitignore-but-folder-still-in-commit">
 <h4>changed gitignore but folder still in commit<a class="headerlink" href="#changed-gitignore-but-folder-still-in-commit" title="Permalink to this headline">¶</a></h4>
@@ -678,6 +895,784 @@ You can fix that by removing the folder from cache:</p>
 <div class="section" id="load-gitconfig-file">
 <h4>load .gitconfig file<a class="headerlink" href="#load-gitconfig-file" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="n">local</span> <span class="n">include</span><span class="o">.</span><span class="n">path</span> <span class="s2">&quot;$PWD/.gitconfig&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="tagging">
+<h3>tagging<a class="headerlink" href="#tagging" title="Permalink to this headline">¶</a></h3>
+<p>allows marking points in history as important
+eg to mark releases (v1.0, v1.1, v2.0)</p>
+<div class="section" id="creating-tags">
+<h4>creating tags<a class="headerlink" href="#creating-tags" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="lightweight-tag">
+<h5>lightweight tag<a class="headerlink" href="#lightweight-tag" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="n">docs_ready</span> <span class="n">b10a9141</span>
+
+<span class="n">git</span> <span class="n">log</span>
+<span class="n">commit</span> <span class="n">b10a9141177f10805e570234ca63a98b90c973f3</span> <span class="p">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">main</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="n">docs_ready</span><span class="p">,</span> <span class="n">origin</span><span class="o">/</span><span class="n">main</span><span class="p">,</span> <span class="n">origin</span><span class="o">/</span><span class="n">HEAD</span><span class="p">)</span>
+<span class="n">Author</span><span class="p">:</span> <span class="n">dadude</span> <span class="o">&lt;</span><span class="n">dadude</span><span class="nd">@users</span><span class="o">.</span><span class="n">noreply</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">&gt;</span>
+<span class="n">Date</span><span class="p">:</span>   <span class="n">Sun</span> <span class="n">May</span> <span class="mi">23</span> <span class="mi">20</span><span class="p">:</span><span class="mi">09</span><span class="p">:</span><span class="mi">41</span> <span class="mi">2021</span> <span class="o">+</span><span class="mi">0200</span>
+
+    <span class="n">lol</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="annotated-tag">
+<h5>annotated tag<a class="headerlink" href="#annotated-tag" title="Permalink to this headline">¶</a></h5>
+<p>most common, allows message to go with it</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">a</span> <span class="n">v1</span><span class="mf">.1</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;Version 1.0&quot;</span> <span class="n">dd5c49428a0</span>
+<span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">am</span> <span class="s2">&quot;Start&quot;</span> <span class="n">v0</span><span class="mf">.01</span> <span class="n">c66846fddca</span>
+
+<span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">l</span>
+<span class="n">docs_ready</span>
+<span class="n">v0</span><span class="mf">.01</span>
+<span class="n">git</span> <span class="n">tag</span> <span class="o">-</span><span class="n">ln</span>
+<span class="n">docs_ready</span>      <span class="n">lol</span>
+<span class="n">v0</span><span class="mf">.01</span>           <span class="n">Start</span>
+
+<span class="n">git</span> <span class="n">diff</span> <span class="n">v0</span><span class="mf">.01</span> <span class="mi">0</span><span class="n">b59801097dc0</span>
+<span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">_sources</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">rst</span><span class="o">.</span><span class="n">txt</span> <span class="n">b</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">_sources</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">rst</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">new</span> <span class="n">file</span> <span class="n">mode</span> <span class="mi">100644</span>
+<span class="n">index</span> <span class="mf">0000000.</span><span class="o">.</span><span class="n">d6441b3</span>
+<span class="o">---</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">_sources</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">rst</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-tag">
+<h5>delete tag<a class="headerlink" href="#delete-tag" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">tag</span> <span class="o">--</span><span class="n">delete</span> <span class="n">v0</span><span class="mf">.01</span>
+<span class="n">Deleted</span> <span class="n">tag</span> <span class="s1">&#39;v0.01&#39;</span> <span class="p">(</span><span class="n">was</span> <span class="mi">5608530</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="push-tags-to-remote">
+<h5>push tags to remote<a class="headerlink" href="#push-tags-to-remote" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="o">--</span><span class="n">tags</span>
+<span class="n">Total</span> <span class="mi">0</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">),</span> <span class="n">reused</span> <span class="mi">0</span> <span class="p">(</span><span class="n">delta</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">To</span> <span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">brunswyck</span><span class="o">/</span><span class="n">docuhub</span><span class="o">.</span><span class="n">git</span>
+ <span class="o">*</span> <span class="p">[</span><span class="n">new</span> <span class="n">tag</span><span class="p">]</span>         <span class="n">docs_ready</span> <span class="o">-&gt;</span> <span class="n">docs_ready</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Like branches tags are LOCAL UNLESS SHARED TO A REMOTE
+git push does NOT transfer tags</p>
+</div>
+<p>git fetch does retrieve shared tags</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span> <span class="o">--</span><span class="n">tags</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-remote-tag">
+<h5>delete remote tag<a class="headerlink" href="#delete-remote-tag" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># deleting a tag is like with remote branches
+git push --delete origin v0.0
+git push -d origin v0.0
+
+dadude@dahost:~/gits/demo_repo$ git push -d origin v0.0
+To github.com:brunswyck/demo_repo.git
+ - [deleted]         v0.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="git-log">
+<h3>git log<a class="headerlink" href="#git-log" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="git-log-params">
+<h4>git log params<a class="headerlink" href="#git-log-params" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="oneline">
+<h5>oneline<a class="headerlink" href="#oneline" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span>
+<span class="mi">3</span><span class="n">dc70bd</span> <span class="p">(</span><span class="n">HEAD</span> <span class="o">-&gt;</span> <span class="n">main</span><span class="p">,</span> <span class="n">origin</span><span class="o">/</span><span class="n">main</span><span class="p">,</span> <span class="n">origin</span><span class="o">/</span><span class="n">HEAD</span><span class="p">)</span> <span class="n">up8</span> <span class="n">git</span> <span class="n">part</span>
+<span class="n">b10a914</span> <span class="p">(</span><span class="n">tag</span><span class="p">:</span> <span class="n">docs_ready</span><span class="p">)</span> <span class="n">lol</span>
+<span class="mi">7734</span><span class="n">d63</span> <span class="n">git</span>
+<span class="mi">6</span><span class="n">ebf24f</span> <span class="n">git</span> <span class="n">change</span>
+<span class="n">a04e93b</span> <span class="n">added</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">git</span>
+<span class="n">cdd89ff</span> <span class="n">upd8</span> <span class="n">python</span> <span class="n">file</span>
+<span class="mi">41</span><span class="n">f3f5a</span> <span class="n">reorganized</span> <span class="o">+</span> <span class="n">dark</span> <span class="n">mode</span>
+<span class="n">e09a427</span> <span class="n">Update</span> <span class="n">README</span><span class="o">.</span><span class="n">md</span>
+<span class="mi">85784</span><span class="n">c4</span> <span class="n">add</span> <span class="n">files</span>
+<span class="n">ac00edf</span> <span class="n">synching</span> <span class="n">docs</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="graph">
+<h5>graph<a class="headerlink" href="#graph" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dadude@dahost:~/gits/demo_repo$ git log --graph --all --decorate
+* commit 75ded4d1c8c74e53ed2de232669a789b6fdaf887 (HEAD -&gt; master)
+| Author: dadude &lt;dadude@users.noreply.github.com&gt;
+| Date:   Mon Nov 9 23:58:09 2020 +0100
+|
+|     shopping: added raisins
+|
+| * commit fb5932d0aaa696f2c5c0e17a4b74bd47c0b86c0c (camping)
+| | Author: dadude &lt;dadude@users.noreply.github.com&gt;
+| | Date:   Mon Nov 9 23:57:00 2020 +0100
+| |
+| |     todo: add camping activities
+| |
+| * commit e08ce6b890b8494142907c805d1851883afc10a1
+|/  Author: dadude &lt;dadude@users.noreply.github.com&gt;
+|   Date:   Mon Nov 9 23:55:48 2020 +0100
+|
+|       todo: add weekend camping
+|
+* commit 88ad8a2d8be725214cbe451183259b477200d599 (origin/master, origin/HEAD)
+| Author: dadude &lt;dadude@users.noreply.github.com&gt;
+| Date:   Mon Nov 9 17:53:14 2020 +0100
+|
+|     change shopping list
+|
+
+dadude@dahost:~/gits/demo_repo$ git log --graph --all --decorate --oneline
+* 75ded4d (HEAD -&gt; master) shopping: added raisins
+| * fb5932d (camping) todo: add camping activities
+| * e08ce6b todo: add weekend camping
+|/
+* 88ad8a2 (origin/master, origin/HEAD) change shopping list
+* b25b676 git commit -p to add red to green apples change
+* 9a06a7a add peaches to shopping list
+* 140684c changed some files to play with interactive mode
+| * c843470 (tester) Update shopping items
+| * 0a472b1 Fix typo
+| | * adac9c7 (key_feature) changed some files to play with interactive mode
+| | * f113994 adding modified shopping list
+| | *   677c492 Merge branch &#39;master&#39; into key_feature
+| | |\
+| |_|/
+|/| |
+* | | d5bd16f (tag: 2d1991d525d2137a, prune_test) Specify chicken soup
+* | | f8375c5 Edit sugar
+* | | 443ea3a Clarify which rice
+* | | 4611a0c Add clean closet to do
+* | | 676da05 Add limes to shopping list
+* | | e24cf05 Update shopping items
+* | | 2d1991d Fix typo
+|/ /
+* | 8527e7a Clarify shopping list
+* | ec41a80 Edit shopping list
+* | 14584f2 Add butter to shopping list
+* | 1a5ae0e Add party invites
+| * 94857bb (origin/key_feature) Add file for key feature
+| | * 8b03094 (origin/gh-pages) Update index.md
+| | * cfbee8c Set theme jekyll-theme-hacker
+| | * c123597 (origin/old_topic, old_topic) Add birthday party to do
+| |/
+|/|
+* | a4974b2 Add to do list
+|/
+* 1d8afcb Added shopping list
+* d55bc49 (tag: v0.0) First commit -|
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="cherry-picking">
+<h3>cherry picking<a class="headerlink" href="#cherry-picking" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/cherry_pick.png" src="_images/cherry_pick.png" />
+<div class="section" id="cherry-picking-commits">
+<h4>cherry-Picking commits<a class="headerlink" href="#cherry-picking-commits" title="Permalink to this headline">¶</a></h4>
+<p>Apply changes from one or more existing commits</p>
+<p>Go get that commit you already know about, grab its changes, and apply right here</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>use cherry-picking rarely as it can create duplicate commits. Use merge/rebase if you can</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Cherry-pick should be reserved for cases where this is not possible
+e.g. when a Hotfix has to be created or when you want to save just one/few commits
+from an otherwise abandoned branch</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># picking one commit
+git cherry-pick d4e8411d09
+# picking a range of commits
+git cherry-pick d4e8411d09..d533459ed9
+
+# you cannot pick a merge commit!
+
+
+dadude@dahost:~/gits/demo_repo$ git cherry-pick 140684c2167174daccc08681c7ba6bd12c769bbe
+Auto-merging shopping.txt
+[key_feature adac9c7] changed some files to play with interactive mode
+ Date: Mon Nov 9 17:22:05 2020 +0100
+ 4 files changed, 4 insertions(+), 2 deletions(-)
+
+dadude@dahost:~/gits/demo_repo$ git log
+commit adac9c701a0bcf92062ed363fe03598eacc1e4fe (HEAD -&gt; key_feature)
+Author: dadude &lt;dadude@users.noreply.github.com&gt;
+Date:   Mon Nov 9 17:22:05 2020 +0100
+
+    changed some files to play with interactive mode
+</pre></div>
+</div>
+</div>
+<div class="section" id="resolve-cherry-picking-conflicts">
+<h4>resolve cherry-picking conflicts<a class="headerlink" href="#resolve-cherry-picking-conflicts" title="Permalink to this headline">¶</a></h4>
+<p>modify conflicts in shopping list</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="n">shopping</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">git</span> <span class="n">cherry</span><span class="o">-</span><span class="n">pick</span> <span class="o">--</span><span class="k">continue</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="merge">
+<h3>merge<a class="headerlink" href="#merge" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="make-main-great-again">
+<h4>make main great again<a class="headerlink" href="#make-main-great-again" title="Permalink to this headline">¶</a></h4>
+<p>Merging is Git’s way of putting a forked history back together again.
+The git merge command lets you take the independent lines of development created by git branch and integrate them into a single branch</p>
+<p>Join two or more development histories together</p>
+<img alt="_images/merge_commit.png" src="_images/merge_commit.png" />
+</div>
+<div class="section" id="before">
+<h4>before<a class="headerlink" href="#before" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/merge_a.png" src="_images/merge_a.png" />
+</div>
+<div class="section" id="after">
+<h4>after<a class="headerlink" href="#after" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/merge_b.png" src="_images/merge_b.png" />
+</div>
+<div class="section" id="how-to-prepare">
+<h4>how to prepare<a class="headerlink" href="#how-to-prepare" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Execute <cite>git status</cite> to ensure that HEAD is pointing to the correct merge-receiving branch
+If needed, execute <cite>git checkout</cite> to switch to the receiving branch.</p></li>
+<li><p>Execute <cite>git fetch</cite> to pull the latest remote commits.
+Once the fetch is completed ensure the master branch has the latest updates by executing <cite>git pull</cite></p></li>
+<li><p>now run <cite>git merge</cite></p></li>
+</ul>
+</div>
+<div class="section" id="fast-forward-merge">
+<h4>fast forward merge<a class="headerlink" href="#fast-forward-merge" title="Permalink to this headline">¶</a></h4>
+<p>A fast-forward merge can occur when there is a linear path from the current branch tip to the target branch.
+Instead of “actually” merging the branches, all Git has to do to integrate the histories is move
+(i.e., “fast forward”) the current branch tip up to the target branch tip.
+This effectively combines the histories, since all of the commits reachable from the target branch are now available through the current one.</p>
+<p>a fast forward merge of some-feature into master would look something like the following</p>
+<img alt="_images/ff_merge.svg" src="_images/ff_merge.svg" /></div>
+</div>
+<div class="section" id="rebase">
+<h3>rebase<a class="headerlink" href="#rebase" title="Permalink to this headline">¶</a></h3>
+<p>Take commits from a branch and replay them at the end of another branch
+Move(replay one by one) commits to the tip of a branch EG master</p>
+<ul class="simple">
+<li><p>Useful to integrate recent commits without merging</p></li>
+<li><p>Maintains a cleaner more linear project history</p></li>
+<li><p>Ensures topic/feature branch commits apply cleanly</p></li>
+</ul>
+<div class="section" id="rebase-to-tip">
+<h4>rebase to tip<a class="headerlink" href="#rebase-to-tip" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/rebase.png" src="_images/rebase.png" />
+<div class="section" id="rebase-current-branch-to-tip-master">
+<h5>rebase current branch to tip master<a class="headerlink" href="#rebase-current-branch-to-tip-master" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="n">master</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rebase-new-feature-branch-to-tip-master">
+<h5>rebase new_feature branch to tip master<a class="headerlink" href="#rebase-new-feature-branch-to-tip-master" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="n">master</span> <span class="n">new_feature</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="return-commit-where-topic-branch-diverges">
+<h5>return commit where topic branch diverges<a class="headerlink" href="#return-commit-where-topic-branch-diverges" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git merge-base master camping
+$ git merge-base master camping
+88ad8a2d8be725214cbe451183259b477200d599
+
+$ git rebase master camping
+First, rewinding head to replay your work on top of it...
+Applying: todo: add weekend camping
+Applying: todo: add camping activities
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="merge-vs-rebase">
+<h4>merge VS rebase<a class="headerlink" href="#merge-vs-rebase" title="Permalink to this headline">¶</a></h4>
+<p>2 ways to incorporate changes from one branch into another branch</p>
+<p>rebase will change the SHA’s of the feature branch when replaying/recommitting</p>
+<p>merging:
+- adds a merge commit
+- nondestructive
+- complete record of what happened and when
+- easy to undo (hard reset)
+- logs can become cluttered, non-linear</p>
+<p>rebasing:
+- no additional merge commit
+- destructive: SHA changes, commits are rewritten
+- no longer a complete record of what happened and when
+- tricky to undo
+- logs are much cleaner, more linear</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>DONT REBASE A PUBLIC BRANCH!
+rebase abandons existing, shared commits &amp; creates new similar commits instead)
+(collaborators would see the project history vanish)</p>
+<p>ONLY ON LOCAL PRIVATE BRANCHES/BRANCHES YOU USE EXCLUSIVELY</p>
+</div>
+<div class="section" id="how-to-choose">
+<h5>how to choose:<a class="headerlink" href="#how-to-choose" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>MERGE to allow commits to stand out or to be clearly grouped</p></li>
+<li><p>MERGE to bring large topic branches back into master</p></li>
+<li><p>REBASE to add minor commits in master to a topic branch</p></li>
+<li><p>REBASE to move commits from one branch to another</p></li>
+<li><p>MERGE anytime topic branch is already public &amp; used by others</p></li>
+</ul>
+</div>
+<div class="section" id="handle-rebase-conflicts">
+<h5>Handle Rebase Conflicts<a class="headerlink" href="#handle-rebase-conflicts" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>rebasing creates new commits on existing code</p></li>
+<li><p>may conflict with existing code</p></li>
+<li><p>git pauses rebase before each conflicting commit (until end of the line)</p></li>
+<li><p>resolve with:
+git rebase –continue
+git rebase –skip (throw out this one commit eg it already contains the change)
+git rebase –abort (stop rebase)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git rebase master camping
+First, rewinding head to replay your work on top of it...
+Applying: todo: add weekend camping
+Using index info to reconstruct a base tree...
+M    to_do.txt
+Falling back to patching base and 3-way merge...
+Auto-merging to_do.txt
+CONFLICT (content): Merge conflict in to_do.txt
+error: Failed to merge in the changes.
+Patch failed at 0001 todo: add weekend camping
+hint: Use &#39;git am --show-current-patch&#39; to see the failed patch
+Resolve all conflicts manually, mark them as resolved with
+&quot;git add/rm &lt;conflicted_files&gt;&quot;, then run &quot;git rebase --continue&quot;.
+You can instead skip this commit: run &quot;git rebase --skip&quot;.
+To abort and get back to the state before &quot;git rebase&quot;, run &quot;git rebase --abort&quot;.
+
+$ vim to_do.txt
+$ git status
+rebase in progress; onto dde87e7
+You are currently rebasing branch &#39;camping&#39; on &#39;dde87e7&#39;.
+  (fix conflicts and then run &quot;git rebase --continue&quot;)
+  (use &quot;git rebase --skip&quot; to skip this patch)
+  (use &quot;git rebase --abort&quot; to check out the original branch)
+
+Unmerged paths:
+  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+  (use &quot;git add &lt;file&gt;...&quot; to mark resolution)
+     both modified:   to_do.txt
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+
+$ git add to_do.txt
+$ git rebase --continue
+Applying: todo: add weekend camping
+Applying: todo: add camping activities
+Using index info to reconstruct a base tree...
+M    to_do.txt
+Falling back to patching base and 3-way merge...
+Auto-merging to_do.txt
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log --graph --all --decorate --oneline
+* f6b0203 (HEAD -&gt; camping) todo: add camping activities
+* f8aa13f todo: add weekend camping
+* dde87e7 (master) todo clean out drawers
+* 75ded4d shopping: added raisins
+* 88ad8a2 (origin/master, origin/HEAD) change shopping list
+* b25b676 git commit -p to add red to green apples change
+* 9a06a7a add peaches to shopping list
+* 140684c changed some files to play with interactive mode
+| * c843470 (tester) Update shopping items
+| * 0a472b1 Fix typo
+| | * adac9c7 (key_feature) changed some files to play with interactive mode
+| | * f113994 adding modified shopping list
+| | *   677c492 Merge branch &#39;master&#39; into key_feature
+| | |\
+| |_|/
+|/| |
+* | | d5bd16f (tag: 2d1991d525d2137a, prune_test) Specify chicken soup
+* | | f8375c5 Edit sugar
+* | | 443ea3a Clarify which rice
+* | | 4611a0c Add clean closet to do
+* | | 676da05 Add limes to shopping list
+* | | e24cf05 Update shopping items
+* | | 2d1991d Fix typo
+|/ /
+* | 8527e7a Clarify shopping list
+* | ec41a80 Edit shopping list
+* | 14584f2 Add butter to shopping list
+* | 1a5ae0e Add party invites
+| * 94857bb (origin/key_feature) Add file for key feature
+| | * 8b03094 (origin/gh-pages) Update index.md
+| | * cfbee8c Set theme jekyll-theme-hacker
+| | * c123597 (origin/old_topic, old_topic) Add birthday party to do
+| |/
+|/|
+* | a4974b2 Add to do list
+|/
+* 1d8afcb Added shopping list
+* d55bc49 (tag: v0.0) First commit
+dadude@dahost:~/gits/demo_repo$ git show f8aa13f
+commit f8aa13f0051488cd3163a147ba154f58da746b5b
+Author: dadude &lt;dadude@users.noreply.github.com&gt;
+Date:   Mon Nov 9 23:55:48 2020 +0100
+
+    todo: add weekend camping -|
+</pre></div>
+</div>
+</div>
+<div class="section" id="rebasing-onto-other-branches">
+<h5>rebasing onto other branches<a class="headerlink" href="#rebasing-onto-other-branches" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">rebase</span> <span class="o">--</span><span class="n">onto</span> <span class="n">newbase</span> <span class="n">upstream</span><span class="p">(</span><span class="n">oldbranch</span><span class="p">)</span> <span class="n">branch</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="o">--</span><span class="n">onto</span> <span class="n">master</span> <span class="n">ecommerce</span> <span class="n">new_feature</span>
+</pre></div>
+</div>
+<p>Take new_feature branch - take it off ecommerce -and move it onto master branch</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vim expenses.txt
+$ git add expenses.txt
+$ git commit -m &quot;add file for expenses&quot;
+[expenses 47d5d68] add file for expenses
+ 1 file changed, 4 insertions(+)
+ create mode 100644 expenses.txt
+$ git log --graph --all --decorate --oneline
+* 47d5d68 (HEAD -&gt; expenses) add file for expenses
+* f6b0203 (camping) todo: add camping activities
+
+$ git rebase --onto=master camping expenses
+First, rewinding head to replay your work on top of it...
+Applying: add file for expenses
+
+$ git log --graph --all --decorate --oneline
+* 054724b (HEAD -&gt; expenses) add file for expenses
+| * f6b0203 (camping) todo: add camping activities
+| * f8aa13f todo: add weekend camping
+|/
+* dde87e7 (master) todo clean out drawers
+* 75ded4d shopping: added raisins -|
+</pre></div>
+</div>
+</div>
+<div class="section" id="undo-a-rebase">
+<h5>undo a rebase<a class="headerlink" href="#undo-a-rebase" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>can undo simple rebases</p></li>
+<li><p>rebase is destructive</p></li>
+<li><p>SHAs, commit msgs, change sets, and more</p></li>
+<li><p>undoing complex rebases may lose data</p></li>
+</ul>
+<p># ORIG_HEAD is used by git to change back to how things were during
+# rebase, reset, merge change
+<cite>git reset –hard ORIG_HEAD</cite></p>
+<p># do another rebase to former merge-base SHA
+<cite>git rebase –onto 9291f0c88 master new_feature</cite></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git log --graph --all --decorate --oneline
+* 054724b (HEAD -&gt; expenses) add file for expenses
+| * f6b0203 (camping) todo: add camping activities
+| * f8aa13f todo: add weekend camping
+|/
+* dde87e7 (master) todo clean out drawers
+* 75ded4d shopping: added raisins
+* 88ad8a2 (origin/master, origin/HEAD) change shopping list
+* b25b676 git commit -p to add red to green apples change
+* 9a06a7a add peaches to shopping list
+* 140684c changed some files to play with interactive mode
+| * c843470 (tester) Update shopping items
+| * 0a472b1 Fix typo
+| | * adac9c7 (key_feature) changed some files to play with interactive mode
+| | * f113994 adding modified shopping list
+| | *   677c492 Merge branch &#39;master&#39; into key_feature
+| | |\
+| |_|/
+|/| |
+
+$ git reset --hard ORIG_HEAD
+HEAD is now at dde87e7 todo clean out drawers
+
+$ git log --graph --all --decorate --oneline
+* f6b0203 (camping) todo: add camping activities
+* f8aa13f todo: add weekend camping
+* dde87e7 (HEAD -&gt; expenses, master) todo clean out drawers
+* 75ded4d shopping: added raisins
+* 88ad8a2 (origin/master, origin/HEAD) change shopping list
+* b25b676 git commit -p to add red to green apples change
+* 9a06a7a add peaches to shopping list
+* 140684c changed some files to play with interactive mode
+| * c843470 (tester) Update shopping items
+| * 0a472b1 Fix typo
+| | * adac9c7 (key_feature) changed some files to play with interactive mode
+| | * f113994 adding modified shopping list
+| | *   677c492 Merge branch &#39;master&#39; into key_feature
+| | |\
+| |_|/
+|/| |
+</pre></div>
+</div>
+</div>
+<div class="section" id="interactive-rebasing">
+<h5>Interactive Rebasing<a class="headerlink" href="#interactive-rebasing" title="Permalink to this headline">¶</a></h5>
+<ul class="simple">
+<li><p>Chance to modify commits as they are being replayed</p></li>
+<li><p>git creates a todo list of what its gonna do during rebase</p></li>
+<li><p>opens the git-rebase-todo file and pause for editing</p></li>
+<li><p>can reorder or skip commits</p></li>
+<li><p>can edit commit contents</p></li>
+</ul>
+<p>choices:
+- pick, drop
+- reword, edit commit
+- squash (them together), fixup
+- exec (shell)</p>
+<p>interactive rebase</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git rebase -i master new_feature
+
+$ git rebase -i --onto=master camping expenses
+Successfully rebased and updated refs/heads/expenses.
+
+p, pick &lt;commit&gt; = use commit
+# r, reword &lt;commit&gt; = use commit, but edit the commit message
+# e, edit &lt;commit&gt; = use commit, but stop for amending
+# s, squash &lt;commit&gt; = use commit, but meld into previous commit
+# f, fixup &lt;commit&gt; = like &quot;squash&quot;, but discard this commit&#39;s log message
+# x, exec &lt;command&gt; = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with &#39;git rebase --continue&#39;)
+# d, drop &lt;commit&gt; = remove commit
+# l, label &lt;label&gt; = label current HEAD with a name
+# t, reset &lt;label&gt; = reset HEAD to a label
+# m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]
+# .       create a merge commit using the original merge commit&#39;s
+# .       message (or the oneline, if no original merge commit was
+# .       specified). Use -c &lt;commit&gt; to reword the commit message.
+
+
+# edit commits without moving them to a new merge-base
+git rebase -i HEAD~3
+# useful for reediting commits on a local branch
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="squash-commits">
+<h4>squash commits<a class="headerlink" href="#squash-commits" title="Permalink to this headline">¶</a></h4>
+<p>cleanup history a bit</p>
+<ul class="simple">
+<li><p>fold two ore more commits into one</p></li>
+<li><p>squash: combine change sets, concatenate msgs</p></li>
+<li><p>fixup: combine change sets, discard this msg</p></li>
+<li><p>uses first author in the commit series!</p></li>
+</ul>
+<p># eg change pick to squash or fixup, one at the top has to be pick</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dadude@dahost:~/gits/demo_repo$ git rebase -i HEAD~3
+[detached HEAD cbd1913] change shopping list
+ Date: Mon Nov 9 17:53:14 2020 +0100
+ 2 files changed, 7 insertions(+), 3 deletions(-)
+Successfully rebased and updated refs/heads/expenses.
+</pre></div>
+</div>
+</div>
+<div class="section" id="pull-rebase">
+<h4>pull rebase<a class="headerlink" href="#pull-rebase" title="Permalink to this headline">¶</a></h4>
+<p>COMBINING REBASE WITH A PULL</p>
+<ul class="simple">
+<li><p>Fetch from remote, then rebase instead of merging</p></li>
+<li><p>Keeps history cleaner by reducing merge commits</p></li>
+<li><p>ONLY US ON LOCAL COMMITS not shared to a remote</p></li>
+</ul>
+<p>(take my changes and keep moving it down the timeline to the tip)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span> <span class="o">--</span><span class="n">rebase</span>
+<span class="n">git</span> <span class="n">pull</span> <span class="o">--</span><span class="n">rebase</span><span class="o">=</span><span class="n">preserve</span>
+<span class="n">git</span> <span class="n">pull</span> <span class="o">--</span><span class="n">rebase</span><span class="o">=</span><span class="n">interactive</span>
+</pre></div>
+</div>
+<p>manually change shopping.txt on github itself to sim collaborator</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>dadude@dahost:~/gits/demo_repo$ git pull --rebase
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 938 bytes | 938.00 KiB/s, done.
+From github.com:brunswyck/demo_repo
+   dde87e7..296ca26  master     -&gt; origin/master
+First, rewinding head to replay your work on top of it...
+Applying: what grapes to buy
+
+dadude@dahost:~/gits/demo_repo$ git log --graph --all --decorate --oneline
+* 3af24a3 (HEAD -&gt; master) what grapes to buy
+* 296ca26 (origin/master, origin/HEAD) Update shopping.txt
+| * cbd1913 (expenses) change shopping list
+| | * f6b0203 (camping) todo: add camping activities
+| | * f8aa13f todo: add weekend camping
+| |/
+|/|
+* | dde87e7 todo clean out drawers
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h3>troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="log-options">
+<h4>Log options<a class="headerlink" href="#log-options" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>log is the primary interface to Git</p></li>
+<li><p>log has many options: Sorting, filtering, output formatting</p></li>
+<li><p>git help log (PRACTICE THIS!)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span> <span class="o">-</span><span class="n">p</span>
+<span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">patch</span>
+</pre></div>
+</div>
+<div class="section" id="show-relevant-commits">
+<h5>show relevant commits<a class="headerlink" href="#show-relevant-commits" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git log -L 100,150:filename.txt
+
+$ git log -L 1,5:shopping.txt
+commit 88ad8a2d8be725214cbe451183259b477200d599
+Author: dadude &lt;dadude@users.noreply.github.com&gt;
+Date:   Mon Nov 9 17:53:14 2020 +0100
+
+    change shopping list
+
+diff --git a/shopping.txt b/shopping.txt
+--- a/shopping.txt
++++ b/shopping.txt
+@@ -1,5 +1,5 @@
+ Shopping List
+
+ green apples
+-6 bananas
++7 bananas
+ vanilla yogurt
+
+commit b25b676822b700730f1dd4d88021d3be97ef4efb
+Author: dadude &lt;dadude@users.noreply.github.com&gt;
+Date:   Mon Nov 9 17:30:52 2020 +0100
+
+    git commit -p to add red to green apples change
+
+diff --git a/shopping.txt b/shopping.txt
+--- a/shopping.txt
++++ b/shopping.txt
+@@ -1,5 +1,5 @@
+ Shopping List
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="blame">
+<h4>blame<a class="headerlink" href="#blame" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Browse annotated file</p></li>
+<li><p>Determine who changed what lines in a file and why</p></li>
+<li><p>Useful for probing the history behind a file’s contents</p></li>
+<li><p>Useful for identifying what commit introduced a bug</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git blame shopping.txt
+1d8afcb9 (Kevin Skoglund    2018-01-23 15:55:13 -0500  1) Shopping List
+1d8afcb9 (Kevin Skoglund    2018-01-23 15:55:13 -0500  2)
+b25b6768 (dadude            2020-11-09 17:30:52 +0100  3) green apples
+88ad8a2d (dadude            2020-11-09 17:53:14 +0100  4) 7 bananas
+e24cf053 (Kevin Skoglund    2018-01-26 10:59:25 -0500  5) vanilla yogurt
+88ad8a2d (dadude            2020-11-09 17:53:14 +0100  6) 3% milk
+88ad8a2d (dadude            2020-11-09 17:53:14 +0100  7) white bread
+1d8afcb9 (Kevin Skoglund    2018-01-23 15:55:13 -0500  8) cereal
+140684c2 (dadude            2020-11-09 17:22:05 +0100  9) 14 eggs
+1d8afcb9 (Kevin Skoglund    2018-01-23 15:55:13 -0500 10) bacon
+1d8afcb9 (Kevin Skoglund    2018-01-23 15:55:13 -0500 11) orange juice
+3af24a35 (dadude            2020-11-10 01:10:48 +0100 12) red grapes
+</pre></div>
+</div>
+<div class="section" id="selected-lines">
+<h5>selected lines<a class="headerlink" href="#selected-lines" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git blame -L 10,15 filename.txt
+
+dadude@dahost:~/gits/demo_repo$ git blame -L 10,15 shopping.txt
+1d8afcb9 (Kevin Skoglund 2018-01-23 15:55:13 -0500 10) bacon
+1d8afcb9 (Kevin Skoglund 2018-01-23 15:55:13 -0500 11) orange juice
+3af24a35 (dadude         2020-11-10 01:10:48 +0100 12) red grapes
+1d8afcb9 (Kevin Skoglund 2018-01-23 15:55:13 -0500 13) lemons
+676da05f (Kevin Skoglund 2018-01-31 13:46:43 -0500 14) limes
+1d8afcb9 (Kevin Skoglund 2018-01-23 15:55:13 -0500 15) lettuce
+
+dadude@dahost:~/gits/demo_repo$ git blame -L 5,+5 shopping.txt
+e24cf053 (Kevin Skoglund 2018-01-26 10:59:25 -0500 5) vanilla yogurt
+88ad8a2d (dadude         2020-11-09 17:53:14 +0100 6) 3% milk
+88ad8a2d (dadude         2020-11-09 17:53:14 +0100 7) white bread
+1d8afcb9 (Kevin Skoglund 2018-01-23 15:55:13 -0500 8) cereal
+140684c2 (dadude         2020-11-09 17:22:05 +0100 9) 14 eggs
+
+dadude@dahost:~/gits/demo_repo$ git blame 1d8afcb9 shopping.txt
+1d8afcb9 (Kevin Skoglund 2018-01-23 15:55:13 -0500  1) Shopping List
+1d8afcb9 (Kevin Skoglund 2018-01-23 15:55:13 -0500  2)
+1d8afcb9 (Kevin Skoglund 2018-01-23 15:55:13 -0500  3) apples
+1d8afcb9 (Kevin Skoglund 2018-01-23 15:55:13 -0500  4) bananas
+1d8afcb9 (Kevin Skoglund 2018-01-23 15:55:13 -0500  5) yogurt
+1d8afcb9 (Kevin Skoglund 2018-01-23 15:55:13 -0500  6) milk
+1d8afcb9 (Kevin Skoglund 2018-01-23 15:55:13 -0500  7) bread
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">alias</span><span class="o">.</span><span class="n">praise</span> <span class="n">blame</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="bisect">
+<h4>bisect<a class="headerlink" href="#bisect" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Find commit that introduced a bug or regression</p></li>
+<li><p>Mark last known good revision and first bad revision</p></li>
+<li><p>Resets code to mid-point</p></li>
+<li><p>Repeat (become last known good or bad revision)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git bisect start
+# current version is bad
+git bisect bad &lt;treeish&gt; (branch sha)
+# this commit/tag is known to be good
+git bisect good v1.2.3
+
+# After a bisect session
+# to clean up the bisection state and return to the original HEAD:
+git bisect reset
+
+dadude@dahost:~/gits/demo_repo$ git bisect start
+dadude@dahost:~/gits/demo_repo$ git bisect bad
+dadude@dahost:~/gits/demo_repo$ git bisect good 1a5ae0e
+Bisecting: 8 revisions left to test after this (roughly 3 steps)
+[f8375c55a593c01cc7b65f1f64605a1913ebfdf9] Edit sugar
+
+dadude@dahost:~/gits/demo_repo$ git bisect bad
+Bisecting: 4 revisions left to test after this (roughly 2 steps)
+[2d1991d525d2137a876883445b577cd223d182f8] Fix typo
+
+dadude@dahost:~/gits/demo_repo$ git bisect good
+Bisecting: 2 revisions left to test after this (roughly 1 step)
+[676da05fbf1bfa7ad1baa32fa470e7ec0f4102b1] Add limes to shopping list
+
+dadude@dahost:~/gits/demo_repo$ git bisect bad
+Bisecting: 0 revisions left to test after this (roughly 0 steps)
+[e24cf053950621f542ac192b771c74ecf53cdf3f] Update shopping items
+
+dadude@dahost:~/gits/demo_repo$ git bisect good
+676da05fbf1bfa7ad1baa32fa470e7ec0f4102b1 is the first bad commit
+commit 676da05fbf1bfa7ad1baa32fa470e7ec0f4102b1
+Author: Kevin Skoglund &lt;someone@nowhere.com&gt;
+Date:   Wed Jan 31 13:46:43 2018 -0500
+
+    Add limes to shopping list
+
+ shopping.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+dadude@dahost:~/gits/demo_repo$ git bisect reset
+Previous HEAD position was e24cf05 Update shopping items
+Switched to branch &#39;master&#39;
+Your branch is ahead of &#39;origin/master&#39; by 1 commit.
+  (use &quot;git push&quot; to publish your local commits)
 </pre></div>
 </div>
 </div>
