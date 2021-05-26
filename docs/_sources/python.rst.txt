@@ -6,15 +6,34 @@ python
 conda
 *****
 
-package mgmt
-============
+install
+=======
 
-backup required packages
-------------------------
+download anaconda from https://www.anaconda.com/products/individual#Downloads
 
 .. code::
 
-   conda list --export > conda_reqs.txt
+   wget https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh
+
+try anaconda navigator
+
+.. code::
+
+   anaconda-navigator
+
+more info: https://docs.anaconda.com/anaconda/navigator/
+
+
+environments
+============
+
+.. code::
+
+   $ conda-env list
+   # conda environments:
+   #
+   base                  *  /home/dadude/anaconda3
+   helloworld               /home/dadude/anaconda3/envs/helloworld
 
 backup environment
 ------------------
@@ -31,6 +50,24 @@ backup environment
      - sphinx
      - argcomplete
 
+packages
+========
+
+search
+------
+
+.. code::
+
+   conda search scipy
+
+backup used packages
+--------------------
+
+.. code::
+
+   conda list --export > conda_reqs.txt
+
+
 
 install required packages
 -------------------------
@@ -38,6 +75,7 @@ install required packages
 .. code::
 
    conda create --name envname --file conda_reqs.yml
+
 
 ***
 pip
@@ -62,9 +100,75 @@ install required packages
    source env/bin/activate
    pip3 install -r pip_requirements.txt
 
-*************
-documentation
-*************
+virtualenvwrapper
+-----------------
+
+documentation `virtualenvwrapper`_
+
+.. _virtualenvwrapper: https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html
+
+install
+.. code::
+
+   sudo apt-get install virtualenvwrapper
+
+
+add to bashrc once virtualenvwrapper is installed
+
+.. code::
+
+   #Virtualenvwrapper settings:
+   export WORKON_HOME=$HOME/venv
+   VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+   source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+   
+   (base) dadude@dahost ~/gits/docuhub (main)$ source ~/.bashrc
+   virtualenvwrapper.user_scripts creating /home/dadude/.venvs/premkproject
+   virtualenvwrapper.user_scripts creating /home/dadude/.venvs/postmkproject
+   virtualenvwrapper.user_scripts creating /home/dadude/.venvs/initialize
+   virtualenvwrapper.user_scripts creating /home/dadude/.venvs/premkvirtualenv
+   virtualenvwrapper.user_scripts creating /home/dadude/.venvs/postmkvirtualenv
+   virtualenvwrapper.user_scripts creating /home/dadude/.venvs/prermvirtualenv
+   virtualenvwrapper.user_scripts creating /home/dadude/.venvs/postrmvirtualenv
+   virtualenvwrapper.user_scripts creating /home/dadude/.venvs/predeactivate
+   virtualenvwrapper.user_scripts creating /home/dadude/.venvs/postdeactivate
+   virtualenvwrapper.user_scripts creating /home/dadude/.venvs/preactivate
+   virtualenvwrapper.user_scripts creating /home/dadude/.venvs/postactivate
+   virtualenvwrapper.user_scripts creating /home/dadude/.venvs/get_env_details
+
+
+workon will work now
+
+.. code::
+
+   (base) dadude@dahost ~/gits/docuhub (main)$ workon 
+   code
+   deleteme
+   desktop
+   docu
+   docuhub
+   jupyter
+   networking
+   otp_client
+   portfolio
+   pytest
+   testing_mocks
+   
+   (docu) (helloworld) dadude@dahost ~/gits/docuhub (main)$ workon docuhub
+   (docuhub) (helloworld) dadude@dahost ~/gits/docuhub (main)$ 
+
+
+.. code::
+
+   mkvirtualenv new_venv_name
+   lsvirtualenv
+   rmvirtualenv name_of_your_env
+   cpvirtualenv old_virtual_env new_virtual_env
+
+
+***********
+documenting
+***********
 
 sphinx
 ======

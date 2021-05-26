@@ -94,10 +94,9 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">bash</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#bash-customs">bash customs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bashrc-config">bashrc config</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#prompt-customs">prompt customs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#git">git</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#virtualenv">virtualenv</a></li>
 </ul>
 </li>
 </ul>
@@ -176,8 +175,8 @@
             
   <div class="section" id="bash">
 <h1>bash<a class="headerlink" href="#bash" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="bash-customs">
-<h2>bash customs<a class="headerlink" href="#bash-customs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bashrc-config">
+<h2>bashrc config<a class="headerlink" href="#bashrc-config" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="prompt-customs">
 <h3>prompt customs<a class="headerlink" href="#prompt-customs" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="git">
@@ -190,59 +189,33 @@
 <span class="n">export</span> <span class="n">PS1</span><span class="o">=</span><span class="s2">&quot;\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ &quot;</span><span class="o">&lt;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="virtualenv">
-<h4>virtualenv<a class="headerlink" href="#virtualenv" title="Permalink to this headline">¶</a></h4>
-<p>documentation <a class="reference external" href="https://virtualenvwrapper.readthedocs.io/en/latest/command_ref.html">virtualenvwrapper</a></p>
-<p>install
-.. code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">virtualenvwrapper</span>
-</pre></div>
-</div>
-<p>add to bashrc once virtualenvwrapper is installed</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#Virtualenvwrapper settings:
+<div class="section" id="so-git-conda-python">
+<h5>so git + conda + python<a class="headerlink" href="#so-git-conda-python" title="Permalink to this headline">¶</a></h5>
+<p>in .bashrc file looks like this</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>parse_git_branch() {
+    git branch 2&gt; /dev/null | sed -e &#39;/^[^*]/d&#39; -e &#39;s/* \(.*\)/(\1)/&#39;
+}
+export PS1=&quot;\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ &quot;
+# &gt;&gt;&gt; conda initialize &gt;&gt;&gt;
+# !! Contents within this block are managed by &#39;conda init&#39; !!
+__conda_setup=&quot;$(&#39;/home/dadude/anaconda3/bin/conda&#39; &#39;shell.bash&#39; &#39;hook&#39; 2&gt; /dev/null)&quot;
+if [ $? -eq 0 ]; then
+    eval &quot;$__conda_setup&quot;
+else
+    if [ -f &quot;/home/dadude/anaconda3/etc/profile.d/conda.sh&quot; ]; then
+        . &quot;/home/dadude/anaconda3/etc/profile.d/conda.sh&quot;
+    else
+        export PATH=&quot;/home/dadude/anaconda3/bin:$PATH&quot;
+    fi
+fi
+unset __conda_setup
+# &lt;&lt;&lt; conda initialize &lt;&lt;&lt;
+#Virtualenvwrapper settings:
 export WORKON_HOME=$HOME/venv
 VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-
-(base) dadude@dahost ~/gits/docuhub (main)$ source ~/.bashrc
-virtualenvwrapper.user_scripts creating /home/dadude/.venvs/premkproject
-virtualenvwrapper.user_scripts creating /home/dadude/.venvs/postmkproject
-virtualenvwrapper.user_scripts creating /home/dadude/.venvs/initialize
-virtualenvwrapper.user_scripts creating /home/dadude/.venvs/premkvirtualenv
-virtualenvwrapper.user_scripts creating /home/dadude/.venvs/postmkvirtualenv
-virtualenvwrapper.user_scripts creating /home/dadude/.venvs/prermvirtualenv
-virtualenvwrapper.user_scripts creating /home/dadude/.venvs/postrmvirtualenv
-virtualenvwrapper.user_scripts creating /home/dadude/.venvs/predeactivate
-virtualenvwrapper.user_scripts creating /home/dadude/.venvs/postdeactivate
-virtualenvwrapper.user_scripts creating /home/dadude/.venvs/preactivate
-virtualenvwrapper.user_scripts creating /home/dadude/.venvs/postactivate
-virtualenvwrapper.user_scripts creating /home/dadude/.venvs/get_env_details
 </pre></div>
 </div>
-<p>workon will work now</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(base) dadude@dahost ~/gits/docuhub (main)$ workon
-code
-deleteme
-desktop
-docu
-docuhub
-jupyter
-networking
-otp_client
-portfolio
-pytest
-testing_mocks
-
-(docu) (helloworld) dadude@dahost ~/gits/docuhub (main)$ workon docuhub
-(docuhub) (helloworld) dadude@dahost ~/gits/docuhub (main)$
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkvirtualenv</span> <span class="n">new_venv_name</span>
-<span class="n">lsvirtualenv</span>
-<span class="n">rmvirtualenv</span> <span class="n">name_of_your_env</span>
-<span class="n">cpvirtualenv</span> <span class="n">old_virtual_env</span> <span class="n">new_virtual_env</span>
-</pre></div>
 </div>
 </div>
 </div>
