@@ -157,6 +157,8 @@ workon will work now
    (docu) (helloworld) dadude@dahost ~/gits/docuhub (main)$ workon docuhub
    (docuhub) (helloworld) dadude@dahost ~/gits/docuhub (main)$ 
 
+virtualenvwrapper commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
