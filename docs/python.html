@@ -45,6 +45,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="becode" href="apidoc/modules.html" />
     <link rel="prev" title="GIT" href="git.html" /> 
 </head>
 
@@ -99,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#conda">conda</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#install">install</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#environments">environments</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#managing-environments">managing environments</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#backup-environment">backup environment</a></li>
 </ul>
 </li>
@@ -180,8 +182,35 @@
 <li class="toctree-l3"><a class="reference internal" href="#files-and-resource-management">files and resource management</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#oop">OOP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#theory">theory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#static-methods">static methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#class-methods">class methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inheritance">inheritance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#private-vars">private vars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#property">&#64;property</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scoping-rules">scoping rules</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#selfmade">selfmade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#regex">regex</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#searching">searching</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#substitution">substitution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#substitution-by-function">substitution by function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#limit-number-of-replacements">limit number of replacements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utility-functions">utility functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#re-compile">re.compile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#regex-oject-attributes">regex oject attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#match-object-is-truthy">match object is truthy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#match-object-methods">Match Object Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#match-object-attributes">Match Object Attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apidoc/modules.html">becode</a></li>
 </ul>
 
             
@@ -267,12 +296,16 @@
 </div>
 <div class="section" id="environments">
 <h3>environments<a class="headerlink" href="#environments" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="managing-environments">
+<h4>managing environments<a class="headerlink" href="#managing-environments" title="Permalink to this headline">¶</a></h4>
+<p>conda <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">env mgmt</a> documentation</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda-env list
 # conda environments:
 #
 base                  *  /home/dadude/anaconda3
 helloworld               /home/dadude/anaconda3/envs/helloworld
 </pre></div>
+</div>
 </div>
 <div class="section" id="backup-environment">
 <h4>backup environment<a class="headerlink" href="#backup-environment" title="Permalink to this headline">¶</a></h4>
@@ -545,6 +578,39 @@ an alternative is docopt: <a class="reference external" href="https://github.com
 </div>
 <div class="section" id="string">
 <h4>string<a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="format">
+<h5>format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Alan Turing&quot;</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">person</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="s2">&quot;mathematician&quot;</span><span class="p">]</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello, my name is </span><span class="si">{}</span><span class="s2"> and I am </span><span class="si">{}</span><span class="s2"> years old and I am a </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">person</span><span class="p">)</span>
+<span class="c1"># Hello, my name is Alan Turing and I am 42 years old an I am a mathematician</span>
+<span class="n">typeAge</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">TestNotebook</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">test_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;Alan Turing&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_person</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">person</span><span class="p">,[</span><span class="s2">&quot;Alan Turing&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s2">&quot;mathematician&quot;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">test_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="s2">&quot;Hello, my name is Alan Turing and I am 42 years old and I am a mathematician.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">typeAge</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="nb">int</span><span class="p">()))</span>
+
+
+<span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">],</span> <span class="n">verbosity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">exit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;New&quot;</span> <span class="o">+</span> <span class="s2">&quot;found&quot;</span> <span class="o">+</span> <span class="s2">&quot;land&quot;</span>
 <span class="s1">&#39;Newfoundland&#39;</span>
 <span class="c1"># use join</span>
@@ -584,6 +650,7 @@ an alternative is docopt: <a class="reference external" href="https://github.com
 <span class="s1">&#39;Math constants: pi=3.142, e=2.718&#39;</span>
 <span class="n">help</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="range">
@@ -2182,6 +2249,784 @@ encoding: text encoding</p>
 </div>
 </div>
 </div>
+<div class="section" id="oop">
+<h2>OOP<a class="headerlink" href="#oop" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="theory">
+<h3>theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="static-methods">
+<h4>static methods<a class="headerlink" href="#static-methods" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;circle module: contains the Circle class.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Circle class&quot;&quot;&quot;</span>
+    <span class="n">all_circles</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># all circles that have been created</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a Circle with the given radius&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">r</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">all_circles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># when instance is initialized it adds itself to all_circles</span>
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;determine the area of the Circle&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">total_area</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;Static method to total the areas of all Circles &quot;&quot;&quot;</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">Circle</span><span class="o">.</span><span class="n">all_circles</span><span class="p">:</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">total</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">circle</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">circle</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">circle</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">circle</span><span class="o">.</span><span class="n">Circle</span><span class="o">.</span><span class="n">total_area</span><span class="p">()</span>
+<span class="mf">15.70795</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">circle</span><span class="o">.</span><span class="n">Circle</span><span class="o">.</span><span class="n">total_area</span><span class="p">()</span>
+<span class="mf">31.415899999999997</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">circle</span><span class="o">.</span><span class="vm">__doc__</span>
+<span class="s1">&#39;circle module: contains the Circle class.&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">circle</span><span class="o">.</span><span class="n">Circle</span><span class="o">.</span><span class="vm">__doc__</span>
+<span class="s1">&#39;Circle class&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">circle</span><span class="o">.</span><span class="n">Circle</span><span class="o">.</span><span class="n">area</span><span class="o">.</span><span class="vm">__doc__</span>
+<span class="s1">&#39;determine the area of the Circle&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="class-methods">
+<h4>class methods<a class="headerlink" href="#class-methods" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>similar to static methods in that they can be invoked before an object of the class has been instantiated or by using an instance of the class.</p></li>
+<li><p>Class methods are implicitly passed the class they belong to as their first parameter, so you can code em more simply</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;circle_cm module: contains the Circle class.&quot;&quot;&quot;</span>
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Circle class&quot;&quot;&quot;</span>
+    <span class="n">all_circles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a Circle with the given radius&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">r</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">all_circles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;determine the area of the Circle&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">total_area</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">all_circles</span><span class="p">:</span>  <span class="c1"># use cls instead of self.__class__</span>
+            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">total</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">circle_cm</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">circle_cm</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">circle_cm</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">circle_cm</span><span class="o">.</span><span class="n">Circle</span><span class="o">.</span><span class="n">total_area</span><span class="p">()</span>
+<span class="mf">15.70795</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">circle_cm</span><span class="o">.</span><span class="n">Circle</span><span class="o">.</span><span class="n">total_area</span><span class="p">()</span>
+<span class="mf">31.415899999999997</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inheritance">
+<h4>inheritance<a class="headerlink" href="#inheritance" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Shape</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>  <span class="c1"># Square inherits from Shape</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># must call __init__ method of Shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">=</span> <span class="n">side</span>
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>  <span class="c1"># Circle inherits from Shape</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>  <span class="c1"># must call __init__ method of Shape</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">r</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Instead of using super, you could call Shape’s __init__ by explicitly naming the inherited class using <cite>Shape.__init__(self, x, y)</cite>, which would also call the Shape initialization function with the instance being initialized.
+This technique wouldn’t be as flexible in the long run because it hardcodes the inherited class’s name, which could be a problem later if the design and the inheritance hierarchy change.</p>
+</div>
+<p>Inheritance also comes into effect when you attempt to use a method that isn’t defined in the base classes but is defined in the superclass.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="k">class</span> <span class="nc">Shape</span><span class="p">:</span>
+      <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+      <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_x</span><span class="p">,</span> <span class="n">delta_y</span><span class="p">):</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">delta_x</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">delta_y</span>
+
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">x</span>
+  <span class="mi">3</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">y</span>
+  <span class="mi">4</span>
+
+
+<span class="n">In</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">example</span><span class="p">,</span> <span class="n">a</span> <span class="k">class</span> <span class="nc">variable</span> <span class="n">z</span> <span class="ow">is</span> <span class="n">defined</span> <span class="k">for</span> <span class="n">the</span> <span class="n">superclass</span> <span class="n">P</span> <span class="ow">and</span> <span class="n">can</span> <span class="n">be</span> <span class="n">accessed</span> <span class="ow">in</span> <span class="n">three</span> <span class="n">ways</span><span class="p">:</span> <span class="n">through</span> <span class="n">the</span> <span class="n">instance</span> <span class="n">c</span><span class="p">,</span> <span class="n">through</span> <span class="n">the</span> <span class="n">derived</span> <span class="k">class</span> <span class="nc">C</span><span class="p">,</span> <span class="ow">or</span> <span class="n">directly</span> <span class="n">through</span> <span class="n">the</span> <span class="n">superclass</span> <span class="n">P</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">P</span><span class="p">:</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
+    <span class="k">def</span> <span class="nf">set_p</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Class P&quot;</span>
+    <span class="k">def</span> <span class="nf">print_p</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">P</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_c</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;Class C&quot;</span>
+    <span class="k">def</span> <span class="nf">print_c</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">set_p</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">print_p</span><span class="p">()</span>
+<span class="n">Class</span> <span class="n">P</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">print_c</span><span class="p">()</span>
+<span class="n">Class</span> <span class="n">P</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">set_c</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">print_c</span><span class="p">()</span>
+<span class="n">Class</span> <span class="n">C</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">print_p</span><span class="p">()</span>
+<span class="n">Class</span> <span class="n">C</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">z</span><span class="p">;</span> <span class="n">C</span><span class="o">.</span><span class="n">z</span><span class="p">;</span> <span class="n">P</span><span class="o">.</span><span class="n">z</span>
+<span class="s1">&#39;Hello&#39;</span>
+<span class="s1">&#39;Hello&#39;</span>
+<span class="s1">&#39;Hello&#39;</span>
+</pre></div>
+</div>
+<div class="section" id="recap">
+<h5>recap<a class="headerlink" href="#recap" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Circle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
+    <span class="n">all_circles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">r</span>
+        <span class="n">all_circles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">total_area</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="n">area</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">circle</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">all_circles</span><span class="p">:</span>
+                 <span class="n">area</span> <span class="o">+=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">circle_area</span><span class="p">(</span><span class="n">circle</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">area</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">circle_area</span><span class="p">(</span><span class="n">radius</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Circle</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">radius</span>
+
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="n">c1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">c1</span><span class="o">.</span><span class="n">y</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="n">c2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">c2</span><span class="o">.</span><span class="n">y</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">radius</span><span class="p">,</span> <span class="n">c2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">c2</span><span class="o">.</span><span class="n">y</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Circle</span><span class="o">.</span><span class="n">all_circles</span>
+<span class="p">[</span><span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Circle</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7fa88835e9e8</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Circle</span> <span class="nb">object</span> <span class="n">at</span>
+     <span class="mh">0x7fa88835eb00</span><span class="o">&gt;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]</span>
+<span class="p">[</span><span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Circle</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7fa88835e9e8</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">__main__</span><span class="o">.</span><span class="n">Circle</span> <span class="nb">object</span> <span class="n">at</span>
+     <span class="mh">0x7fa88835eb00</span><span class="o">&gt;</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Circle</span><span class="o">.</span><span class="n">total_area</span><span class="p">()</span>
+<span class="mf">15.70795</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c2</span><span class="o">.</span><span class="n">total_area</span><span class="p">()</span>
+<span class="mf">15.70795</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Circle</span><span class="o">.</span><span class="n">circle_area</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
+<span class="mf">3.14159</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">c1</span><span class="o">.</span><span class="n">circle_area</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">radius</span><span class="p">)</span>
+<span class="mf">3.14159</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="private-vars">
+<h4>private vars<a class="headerlink" href="#private-vars" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>class Mine:
+    def __init__(self):
+        self.x = 2
+        self.__y = 3
+    def print_y(self):
+        print(self.__y)
+
+&gt;&gt;&gt; m = Mine()
+&gt;&gt;&gt; print(m.x)
+2
+&gt;&gt;&gt; print(m.__y)
+Traceback (innermost last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in ?
+AttributeError: &#39;Mine&#39; object has no attribute &#39;__y&#39;
+&gt;&gt;&gt; m.print_y()
+3
+</pre></div>
+</div>
+<p>to provide privacy mangles the name of private variables and private methods when the code is compiled to bytecode. What specifically happens is that _classname is prepended to the variable name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="go">[&#39;_Mine__y&#39;, &#39;x&#39;, ...]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="property">
+<h4>&#64;property<a class="headerlink" href="#property" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Temperature</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_temp_fahr</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">temp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_temp_fahr</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Without a setter, such a property is read-only. To change the property, you need to add a setter:</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@temp</span><span class="o">.</span><span class="n">setter</span>
+<span class="k">def</span> <span class="nf">temp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_temp</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_temp_fahr</span> <span class="o">=</span> <span class="n">new_temp</span> <span class="o">*</span> <span class="mi">9</span> <span class="o">/</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">32</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="n">Temperature</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">_temp_fahr</span>
+<span class="mi">0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">temp</span>
+<span class="o">-</span><span class="mf">17.77777777777778</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">temp</span> <span class="o">=</span> <span class="mi">34</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">_temp_fahr</span>
+<span class="mf">93.2</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">temp</span>
+<span class="mf">34.0</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The 0 in _temp_fahr is converted to centigrade before it’s returned 1. The 34 is converted back to Fahrenheit by the setter</p>
+</div>
+</div>
+<div class="section" id="scoping-rules">
+<h4>scoping rules<a class="headerlink" href="#scoping-rules" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>When you’re in a method of a class, you have direct access to the local namespace (parameters and variables declared in the method),</p></li>
+<li><p>the global namespace (functions and variables declared at the module level),</p></li>
+<li><p>and the built-in namespace (built-in functions and built-in exceptions). These three namespaces are searched in the following order: local, global, and built-in</p></li>
+</ul>
+<img alt="_images/direct_ns.jpg" src="_images/direct_ns.jpg" />
+<dl class="simple">
+<dt>You also have access through the <strong>self</strong> variable to:</dt><dd><ul class="simple">
+<li><p>the <strong>instance’s namespace</strong> (instance variables, private instance variables, and superclass instance variables),</p></li>
+<li><p>its <strong>class’s namespace</strong> (methods, class variables, private methods, and private class variables), and</p></li>
+<li><p>its <strong>superclass’s namespace</strong> (superclass methods and superclass class variables).</p></li>
+</ul>
+</dd>
+</dl>
+<p>These three namespaces are searched in the order instance, class, and then superclass</p>
+<img alt="_images/self_ns.jpg" src="_images/self_ns.jpg" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Private superclass instance</strong> variables, <strong>private superclass methods</strong>, and <strong>private superclass class</strong> variables can’t be accessed by using self. A class is able to hide these names from its children.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;cs module: class scope demonstration module.&quot;&quot;&quot;</span>
+<span class="n">mv</span> <span class="o">=</span><span class="s2">&quot;module variable: mv&quot;</span>
+
+<span class="k">def</span> <span class="nf">mf</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;module function (can be used like a class method in other languages): mf()&quot;</span>
+
+<span class="k">class</span> <span class="nc">SC</span><span class="p">:</span>
+    <span class="n">scv</span> <span class="o">=</span> <span class="s2">&quot;superclass class variable: self.scv&quot;</span>
+    <span class="n">__pscv</span> <span class="o">=</span> <span class="s2">&quot;private superclass class variable: no access&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">siv</span> <span class="o">=</span> <span class="s2">&quot;superclass instance variable: self.siv (but use SC.siv for assignment)&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__psiv</span> <span class="o">=</span> <span class="s2">&quot;private superclass instance variable: &quot;</span><span class="n">no</span> <span class="n">access</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span> <span class="nf">sm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;superclass method: self.sm()&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__spm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;superclass private method: no access&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">SC</span><span class="p">):</span>
+    <span class="n">cv</span> <span class="o">=</span> <span class="s2">&quot;class variable: self.cv (but use C.cv for assignment)&quot;</span>
+    <span class="n">__pcv</span> <span class="o">=</span> <span class="s2">&quot;class private variable: self.__pcv (but use C.__pcv for assignment)&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">SC</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__piv</span> <span class="o">=</span> <span class="s2">&quot;private instance variable: self.__piv&quot;</span>
+
+    <span class="k">def</span> <span class="nf">m2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;method: self.m2()&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__pm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;private method: self.__pm()&quot;</span>
+
+    <span class="k">def</span> <span class="nf">m</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="s2">&quot;parameter: p&quot;</span><span class="p">):</span>
+        <span class="n">lv</span> <span class="o">=</span> <span class="s2">&quot;local variable: lv&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iv</span> <span class="o">=</span> <span class="s2">&quot;instance variable: self.xi&quot;</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Access local, global and built-in namespaces directly&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;local namespace:&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="nb">locals</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>  <span class="c1"># parameter</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">lv</span><span class="p">)</span>  <span class="c1"># local var</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;global namespace:&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="nb">globals</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">mv</span><span class="p">)</span> <span class="c1"># module var</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">mf</span><span class="p">())</span>  <span class="c1"># module func</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Access instance, class, and superclass namespaces through &#39;self&#39;&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Instance namespace:&quot;</span><span class="p">,</span><span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iv</span><span class="p">)</span>  <span class="c1"># instance var</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__piv</span><span class="p">)</span>  <span class="c1"># private instance var</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">siv</span><span class="p">)</span>  <span class="c1"># superclass instance var</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Class namespace:&quot;</span><span class="p">,</span><span class="nb">dir</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cv</span><span class="p">)</span>  <span class="c1"># class var</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">m2</span><span class="p">())</span>  <span class="c1"># method</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pcv</span><span class="p">)</span>  <span class="c1"># private class var</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pm</span><span class="p">())</span>  <span class="c1"># private method</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Superclass namespace:&quot;</span><span class="p">,</span><span class="nb">dir</span><span class="p">(</span><span class="n">SC</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sm</span><span class="p">())</span>  <span class="c1"># superclass method</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scv</span><span class="p">)</span>  <span class="c1"># superclass var through instance</span>
+</pre></div>
+</div>
+<p>class C’s method m’s local namespace contains the parameters self (which is the instance variable) and p along with the local variable lv (all of which can be accessed directly):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">cs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">cs</span><span class="o">.</span><span class="n">C</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">m</span><span class="p">()</span>
+<span class="go">Access local, global and built-in namespaces directly</span>
+<span class="go">local namespace: [&#39;lv&#39;, &#39;p&#39;, &#39;self&#39;]</span>
+<span class="go">parameter: p</span>
+<span class="go">local variable: lv</span>
+</pre></div>
+</div>
+<p>method m’s global namespace contains the module variable mv and the module function mf (which, you can use to provide a class method functionality).
+There are also the classes defined in the module (the class C and the superclass SC). All these classes can be directly accessed:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">global</span> <span class="n">namespace</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;mf&#39;</span><span class="p">,</span> <span class="s1">&#39;__builtins__&#39;</span><span class="p">,</span> <span class="s1">&#39;__file__&#39;</span><span class="p">,</span> <span class="s1">&#39;__package__&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;mv&#39;</span><span class="p">,</span> <span class="s1">&#39;SC&#39;</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="s1">&#39;__doc__&#39;</span><span class="p">]</span>
+<span class="n">module</span> <span class="n">variable</span><span class="p">:</span> <span class="n">mv</span>
+<span class="n">module</span> <span class="n">function</span> <span class="p">(</span><span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">like</span> <span class="n">a</span> <span class="k">class</span> <span class="nc">method</span> <span class="ow">in</span> <span class="n">other</span> <span class="n">languages</span><span class="p">):</span> <span class="n">mf</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>“</p>
+</div>
+</div>
+<div class="section" id="selfmade">
+<h3>selfmade<a class="headerlink" href="#selfmade" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GuessNumber</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">number_to_guess</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lower</span> <span class="o">=</span> <span class="n">lower</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">upper</span> <span class="o">=</span> <span class="n">upper</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bingo</span> <span class="o">=</span> <span class="n">number_to_guess</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_in_range</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_positive</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">users_guess</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">guess_the_number</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">ask_for_int</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;enter an integer number between </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">lower</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">upper</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">is_number_in_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_to_check</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lower</span> <span class="o">&lt;=</span> <span class="n">number_to_check</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">upper</span>
+
+    <span class="k">def</span> <span class="nf">is_number_positive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_to_check</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">number_to_check</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">validate_int_input</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">validated</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1"># keep looping until user inputs a valid integer within range</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">validated</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">users_guess</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ask_for_int</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_number_in_range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">users_guess</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_number_positive</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">users_guess</span><span class="p">):</span>
+                    <span class="n">validated</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">validated</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;not an integer man, you playin&#39; me?&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">users_guess</span>
+
+    <span class="k">def</span> <span class="nf">guess_the_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">users_guess</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bingo</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">users_guess</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_int_input</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">users_guess</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">bingo</span><span class="p">:</span>
+                <span class="c1"># todo: add count in message</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bingooo, you guessed the number.. Wo00ot!?!&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">users_guess</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bingo</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nnnaah, low&#39;s the way to gow&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">users_guess</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bingo</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nnnaah, live life bigger bruh&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># initialize GuessNumber instance</span>
+    <span class="n">guessing1</span> <span class="o">=</span> <span class="n">GuessNumber</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+
+
+<span class="kn">import</span> <span class="nn">unittest</span>
+
+
+<span class="k">class</span> <span class="nc">TestGuessNumber</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">test_ask_for_int</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="s2">&quot;55&quot;</span>
+        <span class="c1"># return int(input(f&quot;enter an integer number between {self.lower} and {self.upper}: &quot;))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">isdigit</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">test_is_number_in_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_to_check</span><span class="p">):</span>
+        <span class="c1"># return self.lower &lt;= number_to_check &lt;= self.upper</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">test_is_number_positive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_to_check</span><span class="p">):</span>
+        <span class="c1"># return number_to_check &gt;= 0</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">test_validate_int_input</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># return self.users_guess</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">test_guess_the_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+
+<span class="c1"># example play</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">enter an integer number between 1 and 100: 44</span>
+<span class="sd">Nnnaah, low&#39;s the way to gow</span>
+<span class="sd">enter an integer number between 1 and 100: 33</span>
+<span class="sd">Nnnaah, low&#39;s the way to gow</span>
+<span class="sd">enter an integer number between 1 and 100: 11</span>
+<span class="sd">Nnnaah, live life bigger bruh</span>
+<span class="sd">enter an integer number between 1 and 100: 22</span>
+<span class="sd">Nnnaah, live life bigger bruh</span>
+<span class="sd">enter an integer number between 1 and 100: 2</span>
+<span class="sd">Nnnaah, live life bigger bruh</span>
+<span class="sd">enter an integer number between 1 and 100: 0.5</span>
+<span class="sd">not an integer man, you playin&#39; me?</span>
+<span class="sd">enter an integer number between 1 and 100: ..</span>
+<span class="sd">not an integer man, you playin&#39; me?</span>
+<span class="sd">enter an integer number between 1 and 100: 4</span>
+<span class="sd">Nnnaah, live life bigger bruh</span>
+<span class="sd">enter an integer number between 1 and 100: 11</span>
+<span class="sd">Nnnaah, live life bigger bruh</span>
+<span class="sd">enter an integer number between 1 and 100: 25</span>
+<span class="sd">Bingooo, you guessed the number.. Woo000oot!?!</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="regex">
+<h3>regex<a class="headerlink" href="#regex" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="searching">
+<h4>searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>re.match: returns first occurence matching pattern in a string as a <strong>match object</strong></p></li>
+<li><p>re.search: returns a <strong>match object</strong> if there is a match <strong>anywhere</strong> in the string, unlike match</p></li>
+<li><p>re.fullmatch: looks for match on an <strong>entire string</strong></p></li>
+<li><p>re.findall: returns a <strong>list</strong> containing all matches, iterates over all lines</p></li>
+<li><p>re.finditer: returns an <strong>iterator</strong> that yields regex matches from a string</p></li>
+</ul>
+</div>
+<div class="section" id="substitution">
+<h4>substitution<a class="headerlink" href="#substitution" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>re.sub: replaces 1 or many matches with a string and returns the result</p></li>
+<li><p>re.subn: like sub but also returns info on <strong>number of substitutions</strong> made</p></li>
+</ul>
+</div>
+<div class="section" id="substitution-by-function">
+<h4>substitution by function<a class="headerlink" href="#substitution-by-function" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><dl class="simple">
+<dt>if you specify a function, then <cite>re.sub()</cite> calls that function for each match</dt><dd><p>it passes each match object as an argument to the function</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>In this example, f() gets called for each match.
+As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to all uppercase and multiplies each numeric portion by 10.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">match_obj</span><span class="p">):</span>
+    <span class="n">string_match</span> <span class="o">=</span> <span class="n">match_obj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># The matching string</span>
+
+    <span class="c1"># s.isdigit() returns True if all characters in s are digits</span>
+    <span class="k">if</span> <span class="n">string_match</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">string_match</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">string_match</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+
+<span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s1">&#39;foo.10.bar.20.baz.30&#39;</span><span class="p">)</span>
+<span class="s1">&#39;FOO.100.BAR.200.BAZ.300&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="limit-number-of-replacements">
+<h4>limit number of replacements<a class="headerlink" href="#limit-number-of-replacements" title="Permalink to this headline">¶</a></h4>
+<p>specify a posivive int for the optional <strong>count</strong> parameter</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">,</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span> <span class="s1">&#39;foo.bar.baz.qux&#39;</span><span class="p">)</span>
+<span class="s1">&#39;xxx.xxx.xxx.xxx&#39;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">,</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span> <span class="s1">&#39;foo.bar.baz.qux&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="s1">&#39;xxx.xxx.baz.qux&#39;</span>
+
+<span class="n">re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">,</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span> <span class="s1">&#39;foo.bar.baz.qux&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;xxx.xxx.xxx.xxx&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">,</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span> <span class="s1">&#39;foo.bar.baz.qux&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;xxx.xxx.baz.qux&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">match_obj</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">match_obj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">m</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+
+<span class="n">re</span><span class="o">.</span><span class="n">subn</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="s1">&#39;foo.10.bar.20.baz.30&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="s1">&#39;FOO.100.BAR.200.BAZ.300&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="utility-functions">
+<h4>utility functions<a class="headerlink" href="#utility-functions" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>re.split: splits a string into substrings using <strong>regex as delimiter</strong> and returns substrings as a list</p></li>
+<li><p>re.escape: escapes characters in a regex</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># re.split(&lt;regex&gt;, &lt;string&gt;, maxsplit=0, flags=0)</span>
+
+
+<span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;\s*[,;/]\s*&#39;</span><span class="p">,</span> <span class="s1">&#39;foo,bar  ;  baz / qux&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="s1">&#39;qux&#39;</span><span class="p">]</span>
+
+<span class="c1"># with capturing groups = list includes the matching delimiter strings too</span>
+<span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;(\s*[,;/]\s*)&#39;</span><span class="p">,</span> <span class="s1">&#39;foo,bar  ;  baz / qux&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;  ;  &#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="s1">&#39; / &#39;</span><span class="p">,</span> <span class="s1">&#39;qux&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;foo,bar  ;  baz / qux&#39;</span>
+<span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(\s*[,;/]\s*)&#39;</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+
+<span class="c1"># List of tokens and delimiters</span>
+<span class="n">a</span>
+<span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;  ;  &#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="s1">&#39; / &#39;</span><span class="p">,</span> <span class="s1">&#39;qux&#39;</span><span class="p">]</span>
+
+<span class="c1"># Enclose each token in &lt;&gt;&#39;s</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+
+    <span class="c1"># This will be True for the tokens but not the delimiters</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">&gt;&#39;</span>
+
+
+<span class="c1"># Put the tokens back together using the same delimiters</span>
+<span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="s1">&#39;&lt;foo&gt;,&lt;bar&gt;  ;  &lt;baz&gt; / &lt;qux&gt;&#39;</span>
+</pre></div>
+</div>
+<p>If you need to use groups but don’t want the delimiters included in the return list, then you can use noncapturing groups:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;foo,bar  ;  baz / qux&#39;</span>
+<span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(?:\s*[,;/]\s*)&#39;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="s1">&#39;qux&#39;</span><span class="p">]</span>
+
+<span class="c1"># using maxsplit argument</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;foo, bar, baz, qux, quux, corge&#39;</span>
+
+<span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;,\s*&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="s1">&#39;qux&#39;</span><span class="p">,</span> <span class="s1">&#39;quux&#39;</span><span class="p">,</span> <span class="s1">&#39;corge&#39;</span><span class="p">]</span>
+<span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;,\s*&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">maxsplit</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="s1">&#39;qux, quux, corge&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="re-escape">
+<h5>re.escape<a class="headerlink" href="#re-escape" title="Permalink to this headline">¶</a></h5>
+<p>the regex you’re passing in has a lot of special characters that you want the parser to take literally instead of as metacharacters. It saves you the trouble of putting in all the backslash characters manually:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;foo^bar(baz)|qux&#39;</span><span class="p">,</span> <span class="s1">&#39;foo^bar(baz)|qux&#39;</span><span class="p">))</span>
+<span class="kc">None</span>
+<span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;foo\^bar\(baz\)\|qux&#39;</span><span class="p">,</span> <span class="s1">&#39;foo^bar(baz)|qux&#39;</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">_sre</span><span class="o">.</span><span class="n">SRE_Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;foo^bar(baz)|qux&#39;</span><span class="o">&gt;</span>
+
+<span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="s1">&#39;foo^bar(baz)|qux&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;foo\^bar\(baz\)\|qux&#39;</span>
+<span class="kc">True</span>
+<span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="s1">&#39;foo^bar(baz)|qux&#39;</span><span class="p">),</span> <span class="s1">&#39;foo^bar(baz)|qux&#39;</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">_sre</span><span class="o">.</span><span class="n">SRE_Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;foo^bar(baz)|qux&#39;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="re-compile">
+<h4>re.compile<a class="headerlink" href="#re-compile" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>re.compile: compiles regex and returns the corresponding regex object</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d+)&#39;</span><span class="p">,</span> <span class="s1">&#39;foo123bar&#39;</span><span class="p">)</span>
+<span class="c1"># &lt;_sre.SRE_Match object; span=(3, 6), match=&#39;123&#39;&gt;</span>
+
+<span class="n">re_obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\d+)&#39;</span><span class="p">)</span>
+<span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">re_obj</span><span class="p">,</span> <span class="s1">&#39;foo123bar&#39;</span><span class="p">)</span>
+<span class="c1"># &lt;_sre.SRE_Match object; span=(3, 6), match=&#39;123&#39;&gt;</span>
+
+<span class="n">re_obj</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;foo123bar&#39;</span><span class="p">)</span>
+<span class="c1"># &lt;_sre.SRE_Match object; span=(3, 6), match=&#39;123&#39;&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>What good is precompiling? There are a couple of possible advantages.</p>
+<ul class="simple">
+<li><p>if you use a particular regex in your Python code frequently, then precompiling allows you to separate out the regex definition from its uses</p></li>
+</ul>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">,</span> <span class="n">s4</span> <span class="o">=</span> <span class="s1">&#39;foo.bar&#39;</span><span class="p">,</span> <span class="s1">&#39;foo123bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz99&#39;</span><span class="p">,</span> <span class="s1">&#39;qux &amp; grault&#39;</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">s1</span><span class="p">)</span>
+<span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
+<span class="c1"># &lt;_sre.SRE_Match object; span=(3, 6), match=&#39;123&#39;&gt;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">s3</span><span class="p">)</span>
+<span class="c1"># &lt;_sre.SRE_Match object; span=(3, 5), match=&#39;99&#39;&gt;</span>
+<span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">s4</span><span class="p">)</span>
+
+<span class="n">following</span> <span class="ow">is</span> <span class="n">more</span> <span class="n">modular</span> <span class="o">&amp;</span> <span class="n">maintainable</span>
+
+<span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">,</span> <span class="n">s4</span> <span class="o">=</span> <span class="s1">&#39;foo.bar&#39;</span><span class="p">,</span> <span class="s1">&#39;foo123bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz99&#39;</span><span class="p">,</span> <span class="s1">&#39;qux &amp; grault&#39;</span>
+<span class="n">re_obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">&#39;\d+&#39;</span><span class="p">)</span>
+
+<span class="n">re_obj</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+<span class="n">re_obj</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+<span class="c1"># &lt;_sre.SRE_Match object; span=(3, 6), match=&#39;123&#39;&gt;</span>
+<span class="n">re_obj</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">s3</span><span class="p">)</span>
+<span class="c1"># &lt;_sre.SRE_Match object; span=(3, 5), match=&#39;99&#39;&gt;</span>
+<span class="n">re_obj</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">s4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="regex-oject-attributes">
+<h4>regex oject attributes<a class="headerlink" href="#regex-oject-attributes" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>re_obj.flags: shows any flags that are in effect for the regex</p></li>
+<li><p>re_obj.groups: the number of capturing groups in the regex</p></li>
+<li><p>re_obj.groupindex: a dict mapping each symbolic group name defined by the <cite>(?P&lt;name&gt;)</cite> construct to corresponding group number</p></li>
+<li><p>re_obj.pattern: regex pattern that produced this object</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">re_obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?m)(\w+),(\w+)&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+<span class="n">re_obj</span><span class="o">.</span><span class="n">flags</span>
+<span class="mi">42</span>
+<span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="o">|</span><span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="o">|</span><span class="n">re</span><span class="o">.</span><span class="n">UNICODE</span>
+<span class="o">&lt;</span><span class="n">RegexFlag</span><span class="o">.</span><span class="n">UNICODE</span><span class="o">|</span><span class="n">MULTILINE</span><span class="o">|</span><span class="n">IGNORECASE</span><span class="p">:</span> <span class="mi">42</span><span class="o">&gt;</span>
+<span class="n">re_obj</span><span class="o">.</span><span class="n">groups</span>
+<span class="mi">2</span>
+<span class="n">re_obj</span><span class="o">.</span><span class="n">pattern</span>
+<span class="s1">&#39;(?m)(</span><span class="se">\\</span><span class="s1">w+),(</span><span class="se">\\</span><span class="s1">w+)&#39;</span>
+
+<span class="n">re_obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?P&lt;w1&gt;),(?P&lt;w2&gt;)&#39;</span><span class="p">)</span>
+<span class="n">re_obj</span><span class="o">.</span><span class="n">groupindex</span>
+<span class="n">mappingproxy</span><span class="p">({</span><span class="s1">&#39;w1&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;w2&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="n">re_obj</span><span class="o">.</span><span class="n">groupindex</span><span class="p">[</span><span class="s1">&#39;w1&#39;</span><span class="p">]</span>
+<span class="mi">1</span>
+<span class="n">re_obj</span><span class="o">.</span><span class="n">groupindex</span><span class="p">[</span><span class="s1">&#39;w2&#39;</span><span class="p">]</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that .flags includes any flags specified as arguments to re.compile(), any specified within the regex with the (?flags) metacharacter sequence, and any that are in effect by default</p>
+</div>
+</div>
+<div class="section" id="match-object-is-truthy">
+<h4>match object is truthy<a class="headerlink" href="#match-object-is-truthy" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;foo.bar.baz&#39;</span><span class="p">)</span>
+<span class="n">m</span>
+<span class="o">&lt;</span><span class="n">_sre</span><span class="o">.</span><span class="n">SRE_Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="o">&gt;</span>
+<span class="nb">bool</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="kc">True</span>
+
+<span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;foo.bar.baz&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Found a match&#39;</span><span class="p">)</span>
+
+<span class="n">Found</span> <span class="n">a</span> <span class="n">match</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="match-object-methods">
+<h4>Match Object Methods<a class="headerlink" href="#match-object-methods" title="Permalink to this headline">¶</a></h4>
+<p>methods that are available for a match object match:</p>
+<ul class="simple">
+<li><p>match.group(): The specified captured group or groups from match</p></li>
+<li><p>match.__getitem__(): A captured group from match</p></li>
+<li><p>match.groups(): All the captured groups from match</p></li>
+<li><p>match.groupdict(): A dictionary of named captured groups from match</p></li>
+<li><p>match.expand(): The result of performing backreference substitutions from match</p></li>
+<li><p>match.start(): The starting index of match</p></li>
+<li><p>match.end(): The ending index of match</p></li>
+<li><p>match.span(): Both the starting and ending indices of match as a tuple</p></li>
+</ul>
+</div>
+<div class="section" id="match-object-attributes">
+<h4>Match Object Attributes<a class="headerlink" href="#match-object-attributes" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>match.pos: The effective values of the pos &amp; endpos arguments for the match
+match.endpos</p></li>
+<li><p>match.lastindex: The index of the last captured group</p></li>
+<li><p>match.lastgroup: The name of the last captured group</p></li>
+<li><p>match.re: the compiled regex object for the match</p></li>
+<li><p>match.string: the search string for the match</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">re_obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">re_obj</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;foo123bar&#39;</span><span class="p">)</span>
+<span class="n">m</span>
+<span class="o">&lt;</span><span class="n">_sre</span><span class="o">.</span><span class="n">SRE_Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;123&#39;</span><span class="o">&gt;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">endpos</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;foo123bar&#39;</span><span class="p">)</span>
+<span class="n">m</span>
+<span class="o">&lt;</span><span class="n">_sre</span><span class="o">.</span><span class="n">SRE_Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;123&#39;</span><span class="o">&gt;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">endpos</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;foo123bar456baz&#39;</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?P&lt;n1&gt;\d+)\D*(?P&lt;n2&gt;\d+)&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">lastgroup</span>
+<span class="s1">&#39;n2&#39;</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\w+),(\w+),(\w+)&#39;</span><span class="p">,</span> <span class="s1">&#39;foo,bar,baz&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">string</span>
+<span class="s1">&#39;foo,bar,baz&#39;</span>
+
+<span class="n">re_obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(\w+),(\w+),(\w+)&#39;</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">re_obj</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;foo,bar,baz&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">string</span>
+<span class="s1">&#39;foo,bar,baz&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -2190,6 +3035,7 @@ encoding: text encoding</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="apidoc/modules.html" class="btn btn-neutral float-right" title="becode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="git.html" class="btn btn-neutral float-left" title="GIT" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

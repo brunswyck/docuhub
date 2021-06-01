@@ -27,6 +27,13 @@ more info: https://docs.anaconda.com/anaconda/navigator/
 environments
 ============
 
+managing environments
+---------------------
+
+conda `env mgmt`_ documentation
+
+.. _env mgmt: https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
+
 .. code::
 
    $ conda-env list
@@ -338,6 +345,42 @@ tuple
 
 string
 ------
+
+format
+^^^^^^
+
+.. code-block:: python
+
+   import unittest
+
+   name = "Alan Turing"
+   age = 42
+   person = [name, age, "mathematician"]
+   text = "Hello, my name is {} and I am {} years old and I am a {}.".format(*person)
+   # Hello, my name is Alan Turing and I am 42 years old an I am a mathematician
+   typeAge = type(age)
+
+
+   class TestNotebook(unittest.TestCase):
+
+       def test_name(self):
+           self.assertEqual(name, "Alan Turing")
+
+       def test_age(self):
+           self.assertEqual(age, 42)
+
+       def test_person(self):
+           self.assertEqual(person,["Alan Turing", 42, "mathematician"])
+
+       def test_text(self):
+           self.assertEqual(text,"Hello, my name is Alan Turing and I am 42 years old and I am a mathematician.")
+
+       def test_type(self):
+           self.assertEqual(typeAge,type(int()))
+
+
+   unittest.main(argv=[''], verbosity=2, exit=False)
+
 
 .. code-block:: python
    
@@ -2011,4 +2054,820 @@ write() returns the number of codepoints, not the number of characters
 
    if __name__ == '__main__':
        main(sys.argv[1])
+
+***
+OOP
+***
+
+theory
+======
+
+static methods
+--------------
+
+
+.. code-block:: python
+
+
+   """circle module: contains the Circle class."""
+   class Circle:
+       """Circle class"""
+       all_circles = []  # all circles that have been created
+       pi = 3.14159
+       def __init__(self, r=1):
+           """Create a Circle with the given radius"""
+           self.radius = r
+           self.__class__.all_circles.append(self)  # when instance is initialized it adds itself to all_circles
+       def area(self):
+           """determine the area of the Circle"""
+           return self.__class__.pi * self.radius * self.radius
+   
+       @staticmethod
+       def total_area():
+           """Static method to total the areas of all Circles """
+           total = 0
+           for c in Circle.all_circles:
+               total = total + c.area()
+           return total
+
+   >>> import circle
+   >>> c1 = circle.Circle(1)
+   >>> c2 = circle.Circle(2)
+   >>> circle.Circle.total_area()
+   15.70795
+   >>> c2.radius = 3
+   >>> circle.Circle.total_area()
+   31.415899999999997
+   >>> circle.__doc__
+   'circle module: contains the Circle class.'
+   >>> circle.Circle.__doc__
+   'Circle class'
+   >>> circle.Circle.area.__doc__
+   'determine the area of the Circle'
+
+
+class methods
+-------------
+
+- similar to static methods in that they can be invoked before an object of the class has been instantiated or by using an instance of the class.
+- Class methods are implicitly passed the class they belong to as their first parameter, so you can code em more simply
+
+.. code-block:: python
+
+   """circle_cm module: contains the Circle class."""
+   class Circle:
+       """Circle class"""
+       all_circles = []
+       pi = 3.14159
+       def __init__(self, r=1):
+           """Create a Circle with the given radius"""
+           self.radius = r
+           self.__class__.all_circles.append(self)
+       def area(self):
+           """determine the area of the Circle"""
+           return self.__class__.pi * self.radius * self.radius
+   
+       @classmethod
+       def total_area(cls):
+           total = 0
+           for c in cls.all_circles:  # use cls instead of self.__class__
+               total = total + c.area()
+           return total
+   
+   >>> import circle_cm
+   >>> c1 = circle_cm.Circle(1)
+   >>> c2 = circle_cm.Circle(2)
+   >>> circle_cm.Circle.total_area()
+   15.70795
+   >>> c2.radius = 3
+   >>> circle_cm.Circle.total_area()
+   31.415899999999997
+
+
+inheritance
+-----------
+
+
+.. code-block:: python
+
+   class Shape:
+       def __init__(self, x, y):
+           self.x = x
+           self.y = y
+   class Square(Shape):  # Square inherits from Shape
+       def __init__(self, side=1, x=0, y=0):
+           super().__init__(x, y)  # must call __init__ method of Shape
+           self.side = side
+   class Circle(Shape):  # Circle inherits from Shape
+       def __init__(self, r=1, x=0, y=0):  # must call __init__ method of Shape
+           super().__init__(x, y)
+           self.radius = r
+
+
+.. note::
+
+   Instead of using super, you could call Shape’s __init__ by explicitly naming the inherited class using `Shape.__init__(self, x, y)`, which would also call the Shape initialization function with the instance being initialized.
+   This technique wouldn’t be as flexible in the long run because it hardcodes the inherited class’s name, which could be a problem later if the design and the inheritance hierarchy change.
+
+
+Inheritance also comes into effect when you attempt to use a method that isn’t defined in the base classes but is defined in the superclass.
+
+
+.. code-block:: python
+
+   class Shape:
+       def __init__(self, x, y):
+           self.x = x
+           self.y = y
+       def move(self, delta_x, delta_y):
+           self.x = self.x + delta_x
+           self.y = self.y + delta_y
+   
+   >>> c = Circle(1)
+   >>> c.move(3, 4)
+   >>> c.x
+   3
+   >>> c.y
+   4
+
+
+ In the next example, a class variable z is defined for the superclass P and can be accessed in three ways: through the instance c, through the derived class C, or directly through the superclass P:
+
+.. code-block:: python
+
+   class P:
+       z = "Hello"
+       def set_p(self):
+           self.x = "Class P"
+       def print_p(self):
+            print(self.x)
+   class C(P):
+       def set_c(self):
+           self.x = "Class C"
+       def print_c(self):
+           print(self.x)
+   
+   >>> c = C()
+   >>> c.set_p()
+   >>> c.print_p()
+   Class P
+   >>> c.print_c()
+   Class P
+   >>> c.set_c()
+   >>> c.print_c()
+   Class C
+   >>> c.print_p()
+   Class C
+   
+   >>> c.z; C.z; P.z
+   'Hello'
+   'Hello'
+   'Hello'
+   
+
+recap
+^^^^^
+
+.. code-block:: python
+
+   class Circle(Shape):
+       pi = 3.14159
+       all_circles = []
+       def __init__(self, r=1, x=0, y=0):
+           super().__init__(x, y)
+           self.radius = r
+           all_circles.append(self)
+       @classmethod
+       def total_area(cls):
+           area = 0
+           for circle in cls.all_circles:
+                    area += cls.circle_area(circle.radius)
+           return area
+       @staticmethod
+       def circle_area(radius):
+           return Circle.pi * radius * radius
+   
+   
+   >>> c1 = Circle()
+   >>> c1.radius, c1.x, c1.y
+   (1, 0, 0)
+   
+   >>> c2 = Circle(2, 1, 1)
+   >>> c2.radius, c2.x, c2.y
+   (2, 1, 1)
+   
+   >>> c2.move(2, 2)
+   >>> c2.radius, c2.x, c2.y
+   (2, 3, 3)
+   
+   >>> Circle.all_circles
+   [<__main__.Circle object at 0x7fa88835e9e8>, <__main__.Circle object at
+        0x7fa88835eb00>]
+   >>> [c1, c2]
+   [<__main__.Circle object at 0x7fa88835e9e8>, <__main__.Circle object at
+        0x7fa88835eb00>]
+   
+   >>> Circle.total_area()
+   15.70795
+   >>> c2.total_area()
+   15.70795
+   
+   >>> Circle.circle_area(c1.radius)
+   3.14159
+   >>> c1.circle_area(c1.radius)
+   3.14159
+
+private vars
+------------
+
+.. code-block:: python
+
+   class Mine:
+       def __init__(self):
+           self.x = 2
+           self.__y = 3
+       def print_y(self):
+           print(self.__y)
+
+   >>> m = Mine()
+   >>> print(m.x)
+   2
+   >>> print(m.__y)
+   Traceback (innermost last):
+     File "<stdin>", line 1, in ?
+   AttributeError: 'Mine' object has no attribute '__y'
+   >>> m.print_y()
+   3
+
+.. note::
+
+to provide privacy mangles the name of private variables and private methods when the code is compiled to bytecode. What specifically happens is that _classname is prepended to the variable name:
+
+.. code::
+
+   >>> dir(m)
+   ['_Mine__y', 'x', ...]
+
+@property
+---------
+
+.. code-block:: python
+
+   class Temperature:
+       def __init__(self):
+           self._temp_fahr = 0
+       @property
+       def temp(self):
+           return (self._temp_fahr - 32) * 5 / 9
+
+.. note:: Without a setter, such a property is read-only. To change the property, you need to add a setter:
+
+.. code-block:: python
+
+    @temp.setter
+    def temp(self, new_temp):
+        self._temp_fahr = new_temp * 9 / 5 + 32
+
+    >>> t = Temperature()
+    >>> t._temp_fahr
+    0
+    >>> t.temp
+    -17.77777777777778
+    
+    >>> t.temp = 34
+    >>> t._temp_fahr
+    93.2
+    
+    >>> t.temp
+    34.0
+
+.. note:: The 0 in _temp_fahr is converted to centigrade before it’s returned 1. The 34 is converted back to Fahrenheit by the setter
+
+scoping rules
+-------------
+
+- When you’re in a method of a class, you have direct access to the local namespace (parameters and variables declared in the method),
+- the global namespace (functions and variables declared at the module level),
+- and the built-in namespace (built-in functions and built-in exceptions). These three namespaces are searched in the following order: local, global, and built-in
+
+.. image:: files/img/direct_ns.jpg
+
+You also have access through the **self** variable to:
+ - the **instance’s namespace** (instance variables, private instance variables, and superclass instance variables),
+ - its **class’s namespace** (methods, class variables, private methods, and private class variables), and
+ - its **superclass’s namespace** (superclass methods and superclass class variables).
+These three namespaces are searched in the order instance, class, and then superclass
+
+.. image:: files/img/self_ns.jpg
+
+.. note:: **Private superclass instance** variables, **private superclass methods**, and **private superclass class** variables can’t be accessed by using self. A class is able to hide these names from its children.
+
+.. code-block:: python
+
+   """cs module: class scope demonstration module."""
+   mv ="module variable: mv"
+
+   def mf():
+       return "module function (can be used like a class method in other languages): mf()"
+
+   class SC:
+       scv = "superclass class variable: self.scv"
+       __pscv = "private superclass class variable: no access"
+
+       def __init__(self):
+           self.siv = "superclass instance variable: self.siv (but use SC.siv for assignment)"
+           self.__psiv = "private superclass instance variable: "no access"
+
+       def sm(self):
+           return "superclass method: self.sm()"
+
+       def __spm(self):
+           return "superclass private method: no access"
+
+
+   class C(SC):
+       cv = "class variable: self.cv (but use C.cv for assignment)"
+       __pcv = "class private variable: self.__pcv (but use C.__pcv for assignment)"
+
+       def __init__(self):
+           SC.__init__(self)
+           self.__piv = "private instance variable: self.__piv"
+
+       def m2(self):
+           return "method: self.m2()"
+
+       def __pm(self):
+           return "private method: self.__pm()"
+
+       def m(self, p="parameter: p"):
+           lv = "local variable: lv"
+           self.iv = "instance variable: self.xi"
+
+           print("Access local, global and built-in namespaces directly")
+           print("local namespace:", list(locals().keys()))
+           print(p)  # parameter
+   
+           print(lv)  # local var
+           print("global namespace:", list(globals().keys()))
+   
+           print(mv) # module var
+   
+           print(mf())  # module func
+           print("Access instance, class, and superclass namespaces through 'self'")
+           print("Instance namespace:",dir(self))
+   
+           print(self.iv)  # instance var
+   
+           print(self.__piv)  # private instance var
+   
+           print(self.siv)  # superclass instance var
+           print("Class namespace:",dir(C))
+           print(self.cv)  # class var
+   
+           print(self.m2())  # method
+   
+           print(self.__pcv)  # private class var
+   
+           print(self.__pm())  # private method
+           print("Superclass namespace:",dir(SC))
+           print(self.sm())  # superclass method
+   
+           print(self.scv)  # superclass var through instance
+
+
+class C's method m’s local namespace contains the parameters self (which is the instance variable) and p along with the local variable lv (all of which can be accessed directly):
+
+.. code-block:: python
+
+   >>> import cs
+   >>> c = cs.C()
+   >>> c.m()
+   Access local, global and built-in namespaces directly
+   local namespace: ['lv', 'p', 'self']
+   parameter: p
+   local variable: lv
+
+
+method m’s global namespace contains the module variable mv and the module function mf (which, you can use to provide a class method functionality).
+There are also the classes defined in the module (the class C and the superclass SC). All these classes can be directly accessed:
+
+
+.. code-block:: python
+
+   global namespace: ['C', 'mf', '__builtins__', '__file__', '__package__',
+     'mv', 'SC', '__name__', '__doc__']
+   module variable: mv
+   module function (can be used like a class method in other languages): mf()
+
+
+"
+
+
+selfmade
+========
+
+.. code-block:: python
+
+   class GuessNumber:
+
+       def __init__(self, lower, upper, number_to_guess):
+           self.lower = lower
+           self.upper = upper
+           self.bingo = number_to_guess
+           self.number_in_range = False
+           self.number_positive = False
+           self.users_guess = None
+           self.guess_the_number()
+
+       def ask_for_int(self) -> int:
+           return int(input(f"enter an integer number between {self.lower} and {self.upper}: "))
+
+       def is_number_in_range(self, number_to_check: int) -> int:
+           return self.lower <= number_to_check <= self.upper
+
+       def is_number_positive(self, number_to_check: int) -> int:
+           return number_to_check >= 0
+
+       def validate_int_input(self) -> int:
+           validated = False
+           # keep looping until user inputs a valid integer within range
+           while not validated:
+               try:
+                   self.users_guess = self.ask_for_int()
+                   if self.is_number_in_range(self.users_guess) and self.is_number_positive(self.users_guess):
+                       validated = True
+                   else:
+                       validated = False
+               except ValueError:
+                   print("not an integer man, you playin' me?")
+           return self.users_guess
+
+       def guess_the_number(self):
+           while self.users_guess != self.bingo:
+               self.users_guess = self.validate_int_input()
+               if self.users_guess == self.bingo:
+                   # todo: add count in message
+                   print("Bingooo, you guessed the number.. Wo00ot!?!")
+                   break
+               elif self.users_guess >= self.bingo:
+                   print("Nnnaah, low's the way to gow")
+               elif self.users_guess <= self.bingo:
+                   print("Nnnaah, live life bigger bruh")
+
+
+   if __name__ == '__main__':
+       # initialize GuessNumber instance
+       guessing1 = GuessNumber(1, 100, 25)
+
+
+   import unittest
+
+
+   class TestGuessNumber(unittest.TestCase):
+
+       def test_ask_for_int(self):
+           n = "55"
+           # return int(input(f"enter an integer number between {self.lower} and {self.upper}: "))
+           self.assertTrue(n.strip().isdigit())
+   
+       def test_is_number_in_range(self, number_to_check):
+           # return self.lower <= number_to_check <= self.upper
+           pass
+   
+       def test_is_number_positive(self, number_to_check):
+           # return number_to_check >= 0
+           pass
+   
+       def test_validate_int_input(self):
+           # return self.users_guess
+           pass
+   
+       def test_guess_the_number(self):
+           pass
+
+ 
+   # example play
+   """
+   enter an integer number between 1 and 100: 44
+   Nnnaah, low's the way to gow
+   enter an integer number between 1 and 100: 33
+   Nnnaah, low's the way to gow
+   enter an integer number between 1 and 100: 11
+   Nnnaah, live life bigger bruh
+   enter an integer number between 1 and 100: 22
+   Nnnaah, live life bigger bruh
+   enter an integer number between 1 and 100: 2
+   Nnnaah, live life bigger bruh
+   enter an integer number between 1 and 100: 0.5
+   not an integer man, you playin' me?
+   enter an integer number between 1 and 100: ..
+   not an integer man, you playin' me?
+   enter an integer number between 1 and 100: 4
+   Nnnaah, live life bigger bruh
+   enter an integer number between 1 and 100: 11
+   Nnnaah, live life bigger bruh
+   enter an integer number between 1 and 100: 25
+   Bingooo, you guessed the number.. Woo000oot!?!
+   """
+
+
+regex
+=====
+
+searching
+---------
+
+- re.match: returns first occurence matching pattern in a string as a **match object**
+- re.search: returns a **match object** if there is a match **anywhere** in the string, unlike match
+- re.fullmatch: looks for match on an **entire string**
+- re.findall: returns a **list** containing all matches, iterates over all lines
+- re.finditer: returns an **iterator** that yields regex matches from a string
+
+substitution
+------------
+
+- re.sub: replaces 1 or many matches with a string and returns the result
+- re.subn: like sub but also returns info on **number of substitutions** made
+
+
+
+substitution by function
+------------------------
+
+- if you specify a function, then `re.sub()` calls that function for each match
+   it passes each match object as an argument to the function
+
+
+In this example, f() gets called for each match.
+As a result, re.sub() converts each alphanumeric portion of <string> to all uppercase and multiplies each numeric portion by 10.
+
+.. code-block:: python
+
+   import re
+
+
+   def f(match_obj):
+       string_match = match_obj.group(0)  # The matching string
+
+       # s.isdigit() returns True if all characters in s are digits
+       if string_match.isdigit():
+           return str(int(string_match) * 10)
+       else:
+           return string_match.upper()
+
+
+   re.sub(r'\w+', f, 'foo.10.bar.20.baz.30')
+   'FOO.100.BAR.200.BAZ.300'
+
+
+limit number of replacements
+----------------------------
+
+specify a posivive int for the optional **count** parameter
+
+.. code-block:: python
+
+   re.sub(r'\w+', 'xxx', 'foo.bar.baz.qux')
+   'xxx.xxx.xxx.xxx'
+   re.sub(r'\w+', 'xxx', 'foo.bar.baz.qux', count=2)
+   'xxx.xxx.baz.qux'
+
+   re.subn(r'\w+', 'xxx', 'foo.bar.baz.qux')
+   ('xxx.xxx.xxx.xxx', 4)
+   re.subn(r'\w+', 'xxx', 'foo.bar.baz.qux', count=2)
+   ('xxx.xxx.baz.qux', 2)
+   
+   def f(match_obj):
+       m = match_obj.group(0)
+       if m.isdigit():
+           return str(int(m) * 10)
+       else:
+           return m.upper()
+   
+   re.subn(r'\w+', f, 'foo.10.bar.20.baz.30')
+   ('FOO.100.BAR.200.BAZ.300', 6)
+
+utility functions
+-----------------
+
+- re.split: splits a string into substrings using **regex as delimiter** and returns substrings as a list
+- re.escape: escapes characters in a regex
+
+.. code-block:: python
+   
+   # re.split(<regex>, <string>, maxsplit=0, flags=0)
+
+
+   re.split('\s*[,;/]\s*', 'foo,bar  ;  baz / qux')
+   ['foo', 'bar', 'baz', 'qux']
+
+   # with capturing groups = list includes the matching delimiter strings too
+   re.split('(\s*[,;/]\s*)', 'foo,bar  ;  baz / qux')
+   ['foo', ',', 'bar', '  ;  ', 'baz', ' / ', 'qux']
+
+.. code-block:: python
+
+   string = 'foo,bar  ;  baz / qux'
+   regex = r'(\s*[,;/]\s*)'
+   a = re.split(regex, string)
+   
+   # List of tokens and delimiters
+   a
+   ['foo', ',', 'bar', '  ;  ', 'baz', ' / ', 'qux']
+   
+   # Enclose each token in <>'s
+   for i, s in enumerate(a):
+   
+       # This will be True for the tokens but not the delimiters
+       if not re.fullmatch(regex, s):
+           a[i] = f'<{s}>'
+   
+   
+   # Put the tokens back together using the same delimiters
+   ''.join(a)
+   '<foo>,<bar>  ;  <baz> / <qux>'
+
+
+If you need to use groups but don’t want the delimiters included in the return list, then you can use noncapturing groups:
+
+.. code-block:: python
+
+   string = 'foo,bar  ;  baz / qux'
+   regex = r'(?:\s*[,;/]\s*)'
+   re.split(regex, string)
+   ['foo', 'bar', 'baz', 'qux']
+
+   # using maxsplit argument
+   s = 'foo, bar, baz, qux, quux, corge'
+   
+   re.split(r',\s*', s)
+   ['foo', 'bar', 'baz', 'qux', 'quux', 'corge']
+   re.split(r',\s*', s, maxsplit=3)
+   ['foo', 'bar', 'baz', 'qux, quux, corge']
+
+re.escape
+^^^^^^^^^
+
+the regex you’re passing in has a lot of special characters that you want the parser to take literally instead of as metacharacters. It saves you the trouble of putting in all the backslash characters manually:
+
+.. code-block:: python
+
+   print(re.match('foo^bar(baz)|qux', 'foo^bar(baz)|qux'))
+   None
+   re.match('foo\^bar\(baz\)\|qux', 'foo^bar(baz)|qux')
+   <_sre.SRE_Match object; span=(0, 16), match='foo^bar(baz)|qux'>
+   
+   re.escape('foo^bar(baz)|qux') == 'foo\^bar\(baz\)\|qux'
+   True
+   re.match(re.escape('foo^bar(baz)|qux'), 'foo^bar(baz)|qux')
+   <_sre.SRE_Match object; span=(0, 16), match='foo^bar(baz)|qux'>
+
+re.compile
+----------
+
+- re.compile: compiles regex and returns the corresponding regex object
+
+.. code-block:: python
+
+   re.search(r'(\d+)', 'foo123bar')
+   # <_sre.SRE_Match object; span=(3, 6), match='123'>
+   
+   re_obj = re.compile(r'(\d+)')
+   re.search(re_obj, 'foo123bar')
+   # <_sre.SRE_Match object; span=(3, 6), match='123'>
+
+   re_obj.search('foo123bar')
+   # <_sre.SRE_Match object; span=(3, 6), match='123'>
+
+
+.. note::
+
+   What good is precompiling? There are a couple of possible advantages.
+
+   - if you use a particular regex in your Python code frequently, then precompiling allows you to separate out the regex definition from its uses
+
+.. code-block:: python
+
+   s1, s2, s3, s4 = 'foo.bar', 'foo123bar', 'baz99', 'qux & grault'
+   
+   import re
+   re.search('\d+', s1)
+   re.search('\d+', s2)
+   # <_sre.SRE_Match object; span=(3, 6), match='123'>
+   re.search('\d+', s3)
+   # <_sre.SRE_Match object; span=(3, 5), match='99'>
+   re.search('\d+', s4)
+   
+   following is more modular & maintainable
+   
+   s1, s2, s3, s4 = 'foo.bar', 'foo123bar', 'baz99', 'qux & grault'
+   re_obj = re.compile('\d+')
+   
+   re_obj.search(s1)
+   re_obj.search(s2)
+   # <_sre.SRE_Match object; span=(3, 6), match='123'>
+   re_obj.search(s3)
+   # <_sre.SRE_Match object; span=(3, 5), match='99'>
+   re_obj.search(s4)
+
+regex oject attributes
+----------------------
+
+- re_obj.flags: shows any flags that are in effect for the regex
+- re_obj.groups: the number of capturing groups in the regex
+- re_obj.groupindex: a dict mapping each symbolic group name defined by the `(?P<name>)` construct to corresponding group number
+- re_obj.pattern: regex pattern that produced this object
+
+.. code-block:: python
+
+   re_obj = re.compile(r'(?m)(\w+),(\w+)', re.I)
+   re_obj.flags
+   42
+   re.I|re.M|re.UNICODE
+   <RegexFlag.UNICODE|MULTILINE|IGNORECASE: 42>
+   re_obj.groups
+   2
+   re_obj.pattern
+   '(?m)(\\w+),(\\w+)'
+   
+   re_obj = re.compile(r'(?P<w1>),(?P<w2>)')
+   re_obj.groupindex
+   mappingproxy({'w1': 1, 'w2': 2})
+   re_obj.groupindex['w1']
+   1
+   re_obj.groupindex['w2']
+   2
+
+.. note:: Note that .flags includes any flags specified as arguments to re.compile(), any specified within the regex with the (?flags) metacharacter sequence, and any that are in effect by default
+
+match object is truthy
+----------------------
+
+.. code-block:: python
+
+   m = re.search('bar', 'foo.bar.baz')
+   m
+   <_sre.SRE_Match object; span=(4, 7), match='bar'>
+   bool(m)
+   True
+   
+   if re.search('bar', 'foo.bar.baz'):
+       print('Found a match')
+   
+   Found a match
+
+
+Match Object Methods
+--------------------
+
+methods that are available for a match object match:
+
+- match.group(): The specified captured group or groups from match
+- match.__getitem__(): A captured group from match
+- match.groups(): All the captured groups from match
+- match.groupdict(): A dictionary of named captured groups from match
+- match.expand(): The result of performing backreference substitutions from match
+- match.start(): The starting index of match
+- match.end(): The ending index of match
+- match.span(): Both the starting and ending indices of match as a tuple
+
+
+Match Object Attributes
+-----------------------
+
+- match.pos: The effective values of the pos & endpos arguments for the match
+  match.endpos
+- match.lastindex: The index of the last captured group
+- match.lastgroup: The name of the last captured group
+- match.re: the compiled regex object for the match
+- match.string: the search string for the match
+
+.. code-block:: python
+
+   re_obj = re.compile(r'\d+')
+   m = re_obj.search('foo123bar')
+   m
+   <_sre.SRE_Match object; span=(3, 6), match='123'>
+   m.pos, m.endpos
+   (0, 9)
+   
+   m = re.search(r'\d+', 'foo123bar')
+   m
+   <_sre.SRE_Match object; span=(3, 6), match='123'>
+   m.pos, m.endpos
+   (0, 9)
+
+   s = 'foo123bar456baz'
+   m = re.search(r'(?P<n1>\d+)\D*(?P<n2>\d+)', s)
+   m.lastgroup
+   'n2'
+
+   m = re.search(r'(\w+),(\w+),(\w+)', 'foo,bar,baz')
+   m.string
+   'foo,bar,baz'
+   
+   re_obj = re.compile(r'(\w+),(\w+),(\w+)')
+   m = re_obj.search('foo,bar,baz')
+   m.string
+   'foo,bar,baz'
 
