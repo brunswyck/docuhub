@@ -192,7 +192,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#scoping-rules">scoping rules</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#selfmade">selfmade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selfmade">selfmade</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#guess-a-number">guess a number</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#non-regex-ip-validation">non regex ip validation</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#regex">regex</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#searching">searching</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#substitution">substitution</a></li>
@@ -2632,6 +2636,8 @@ There are also the classes defined in the module (the class C and the superclass
 </div>
 <div class="section" id="selfmade">
 <h3>selfmade<a class="headerlink" href="#selfmade" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="guess-a-number">
+<h4>guess a number<a class="headerlink" href="#guess-a-number" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GuessNumber</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">number_to_guess</span><span class="p">):</span>
@@ -2736,6 +2742,73 @@ There are also the classes defined in the module (the class C and the superclass
 </pre></div>
 </div>
 </div>
+<div class="section" id="non-regex-ip-validation">
+<h4>non regex ip validation<a class="headerlink" href="#non-regex-ip-validation" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">contextlib</span>
+
+
+<span class="k">def</span> <span class="nf">ui_ask_ip_address</span><span class="p">():</span>
+    <span class="k">return</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter your IP address: &quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">validate_range_int_list</span><span class="p">(</span><span class="n">int_list</span><span class="p">,</span> <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">number</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">int_list</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">step</span><span class="p">)]</span>
+
+
+<span class="k">def</span> <span class="nf">convert_to_int_list</span><span class="p">(</span><span class="n">list_given</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+    <span class="n">list_with_integers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">list_with_integers</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">element</span><span class="p">)</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">list_given</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;aha not all integers in your list -&gt; </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># exit(1) # prevents loop</span>
+    <span class="k">return</span> <span class="n">list_with_integers</span>
+
+
+<span class="k">def</span> <span class="nf">valid_ip_address</span><span class="p">(</span><span class="n">user_input</span><span class="p">):</span>
+    <span class="n">required_length</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">host_address_octets</span> <span class="o">=</span> <span class="n">user_input</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">host_address_octets</span> <span class="o">=</span> <span class="n">convert_to_int_list</span><span class="p">(</span><span class="n">host_address_octets</span><span class="p">)</span>
+    <span class="n">octets_list</span> <span class="o">=</span> <span class="n">validate_range_int_list</span><span class="p">(</span><span class="n">host_address_octets</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">suppress</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;something went wrong&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">octets_list</span><span class="p">)</span> <span class="o">==</span> <span class="n">required_length</span> <span class="ow">and</span> <span class="nb">int</span><span class="p">(</span><span class="n">host_address_octets</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">!=</span> <span class="mi">0</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">input_from_user</span> <span class="o">=</span> <span class="n">ui_ask_ip_address</span><span class="p">()</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">valid_ip_address</span><span class="p">(</span><span class="n">input_from_user</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;not a valid ip :)&quot;</span><span class="p">)</span>
+        <span class="n">input_from_user</span> <span class="o">=</span> <span class="n">ui_ask_ip_address</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;valid ip good job&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="unittest">
+<h5>unittest<a class="headerlink" href="#unittest" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">import</span> <span class="nn">playground</span> <span class="k">as</span> <span class="nn">play</span>
+<span class="kn">from</span> <span class="nn">ddt</span> <span class="kn">import</span> <span class="n">ddt</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">unpack</span>
+
+
+<span class="nd">@ddt</span>
+<span class="k">class</span> <span class="nc">MyTestCase</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="nd">@data</span><span class="p">((</span><span class="s1">&#39;192.168.1.1&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;192.168.1.0&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;192.168.1.255&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+          <span class="p">(</span><span class="s1">&#39;192.168.255.1&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;192.168.2.255&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;0.1.2.3&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+    <span class="nd">@unpack</span>
+    <span class="k">def</span> <span class="nf">test_valid_ip_address</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_sim</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;testing: </span><span class="si">{</span><span class="n">input_sim</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">play</span><span class="o">.</span><span class="n">valid_ip_address</span><span class="p">(</span><span class="n">input_sim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="regex">
 <h3>regex<a class="headerlink" href="#regex" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="searching">
@@ -2747,6 +2820,10 @@ There are also the classes defined in the module (the class C and the superclass
 <li><p>re.findall: returns a <strong>list</strong> containing all matches, iterates over all lines</p></li>
 <li><p>re.finditer: returns an <strong>iterator</strong> that yields regex matches from a string</p></li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>match only works on the WHOLE string, use search to get a match within a string eg. find a number in xqsdf88mlkj</p>
+</div>
 </div>
 <div class="section" id="substitution">
 <h4>substitution<a class="headerlink" href="#substitution" title="Permalink to this headline">¶</a></h4>

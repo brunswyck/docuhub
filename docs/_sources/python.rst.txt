@@ -2466,6 +2466,9 @@ There are also the classes defined in the module (the class C and the superclass
 selfmade
 ========
 
+guess a number
+--------------
+
 .. code-block:: python
 
    class GuessNumber:
@@ -2570,6 +2573,75 @@ selfmade
    Bingooo, you guessed the number.. Woo000oot!?!
    """
 
+non regex ip validation
+-----------------------
+
+.. code-block:: python
+
+   import contextlib
+   
+   
+   def ui_ask_ip_address():
+       return input("Enter your IP address: ")
+   
+   
+   def validate_range_int_list(int_list, lower, upper, step=1):
+       return [number for number in int_list if int(number) in range(lower, upper, step)]
+   
+   
+   def convert_to_int_list(list_given: list) -> [int]:
+       list_with_integers = []
+       try:
+           list_with_integers = [int(element) for element in list_given]
+       except ValueError as err:
+           print(f"aha not all integers in your list -> {err}")
+           # exit(1) # prevents loop
+       return list_with_integers
+   
+   
+   def valid_ip_address(user_input):
+       required_length = 4
+       host_address_octets = user_input.split('.')
+       host_address_octets = convert_to_int_list(host_address_octets)
+       octets_list = validate_range_int_list(host_address_octets, 1, 255)
+       with contextlib.suppress(Exception):
+           raise RuntimeError('something went wrong')
+       return len(octets_list) == required_length and int(host_address_octets[-1]) != 0
+   
+   
+   if __name__ == '__main__':
+       input_from_user = ui_ask_ip_address()
+       while not valid_ip_address(input_from_user):
+           print("not a valid ip :)")
+           input_from_user = ui_ask_ip_address()
+       else:
+           print("valid ip good job")
+
+
+unittest
+^^^^^^^^
+
+.. code-block:: python
+
+   import unittest
+   import playground as play
+   from ddt import ddt, data, unpack
+   
+   
+   @ddt
+   class MyTestCase(unittest.TestCase):
+       @data(('192.168.1.1', True), ('192.168.1.0', False), ('192.168.1.255', False),
+             ('192.168.255.1', False), ('192.168.2.255', False), ('0.1.2.3', False))
+       @unpack
+       def test_valid_ip_address(self, input_sim, expected):
+           print(f"testing: {input_sim}")
+           result = play.valid_ip_address(input_sim)
+           self.assertEqual(expected, result)
+   
+   
+   if __name__ == '__main__':
+       unittest.main()
+
 
 regex
 =====
@@ -2582,6 +2654,10 @@ searching
 - re.fullmatch: looks for match on an **entire string**
 - re.findall: returns a **list** containing all matches, iterates over all lines
 - re.finditer: returns an **iterator** that yields regex matches from a string
+
+.. warning::
+
+   match only works on the WHOLE string, use search to get a match within a string eg. find a number in xqsdf88mlkj
 
 substitution
 ------------
