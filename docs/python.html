@@ -97,6 +97,13 @@
 <li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#library">library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#toolkit">toolkit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#first-collection">first collection</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#conda">conda</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#install">install</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#environments">environments</a><ul>
@@ -179,7 +186,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#summary-classes">summary classes</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#files-and-resource-management">files and resource management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#files-and-resource-management">files and resource management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zip-files">zip files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#json">json</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#csv">csv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#concatenate-files">concatenate files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dask">dask</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#oop">OOP</a><ul>
@@ -206,8 +220,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#re-compile">re.compile</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#regex-oject-attributes">regex oject attributes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#match-object-is-truthy">match object is truthy</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#match-object-methods">Match Object Methods</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#match-object-attributes">Match Object Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#match-object-methods">match object methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#match-object-attributes">match object attributes</a></li>
 </ul>
 </li>
 </ul>
@@ -284,6 +298,85 @@
             
   <div class="section" id="python">
 <h1>python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="library">
+<h2>library<a class="headerlink" href="#library" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="toolkit">
+<h3>toolkit<a class="headerlink" href="#toolkit" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="first-collection">
+<h4>first collection<a class="headerlink" href="#first-collection" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">contextlib</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<span class="k">def</span> <span class="nf">file_exists</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">compress_to_bz2_file</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">compression_lvl</span><span class="o">=</span><span class="mi">9</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">bz2</span>
+    <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">compression_lvl</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">source_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">tar_bz2_contents</span> <span class="o">=</span> <span class="n">bz2</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">compresslevel</span><span class="o">=</span><span class="n">compression_lvl</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;compression level has to be between 1 and 9&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># concatenate_files_in_list(text_files_list, final_file, &#39;latin-1&#39;, True)</span>
+<span class="k">def</span> <span class="nf">concatenate_files_in_list</span><span class="p">(</span><span class="n">file_list</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">encode_in</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">is_small</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_shutil</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="c1"># don&#39;t forget to specify target folder when opening files!</span>
+    <span class="c1"># todo: check if file was created already</span>
+    <span class="n">encoding_format</span> <span class="o">=</span> <span class="n">encode_in</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;target file -&gt; </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">readmode</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;rb&#39;</span> <span class="k">if</span> <span class="n">use_shutil</span> <span class="k">else</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">writemode</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;wb&#39;</span> <span class="k">if</span> <span class="n">use_shutil</span> <span class="k">else</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">writemode</span><span class="p">)</span> <span class="k">as</span> <span class="n">finaltext</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;currently appending file: </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">readmode</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding_format</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_currently_opened</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">use_shutil</span><span class="p">:</span>
+                    <span class="kn">import</span> <span class="nn">shutil</span>
+                    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">finaltext</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">is_small</span><span class="p">:</span>
+                    <span class="n">finaltext</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_currently_opened</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+                <span class="k">elif</span> <span class="ow">not</span> <span class="n">is_small</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file_currently_opened</span><span class="p">:</span>
+                        <span class="n">finaltext</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">add_files_from_folder_to_list</span><span class="p">(</span><span class="n">filetype</span><span class="p">,</span> <span class="n">folder_target</span><span class="o">=</span><span class="s1">&#39;./&#39;</span><span class="p">):</span>
+    <span class="n">folder</span> <span class="o">=</span> <span class="n">set_folder</span><span class="p">(</span><span class="n">folder_target</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;getting files from </span><span class="si">{</span><span class="n">folder</span><span class="si">}</span><span class="s2"> of type </span><span class="si">{</span><span class="n">filetype</span><span class="si">}</span><span class="s2"> ...&quot;</span><span class="p">)</span>
+    <span class="n">all_files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">path</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.txt&#39;</span><span class="p">):</span>
+                <span class="n">full_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">filename</span><span class="p">)</span>
+                <span class="n">all_files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">full_path</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">suppress</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;something went wrong&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">all_files</span>
+
+
+<span class="k">def</span> <span class="nf">set_folder</span><span class="p">(</span><span class="n">folder_dir</span><span class="p">):</span>
+    <span class="n">isdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">folder_dir</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">isdir</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;folder you&#39;re trying to set is invalid -&gt; </span><span class="si">{</span><span class="n">folder_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">absolute_path</span> <span class="o">=</span> <span class="n">isdir</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">absolute_path</span>
+
+
+<span class="k">def</span> <span class="nf">test_files_in_list</span><span class="p">(</span><span class="n">file_list</span><span class="p">:</span> <span class="p">[]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;testing files in list... &quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;oops: </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> doesn&#39;t seem to exist&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="conda">
 <h2>conda<a class="headerlink" href="#conda" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="install">
@@ -2195,9 +2288,11 @@ __init__() instance method for initializing new objects</p>
 <div class="section" id="files-and-resource-management">
 <h3>files and resource management<a class="headerlink" href="#files-and-resource-management" title="Permalink to this headline">¶</a></h3>
 <dl class="simple">
-<dt>open(file, mode, encoding)</dt><dd><p>file: path to file (required)
-mode: read/write/append, binary/text
-encoding: text encoding</p>
+<dt>open(file, mode, encoding)</dt><dd><ul class="simple">
+<li><p>file: path to file (required)</p></li>
+<li><p>mode: read/write/append, binary/text</p></li>
+<li><p>encoding: text encoding</p></li>
+</ul>
 </dd>
 </dl>
 <p><a class="reference external" href="https://docs.python.org/3/library/functions.html#open">https://docs.python.org/3/library/functions.html#open</a></p>
@@ -2250,6 +2345,286 @@ encoding: text encoding</p>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">main</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
+</div>
+<div class="section" id="zip-files">
+<h4>zip files<a class="headerlink" href="#zip-files" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="read-zip-as-panda-df">
+<h5>read zip as panda df<a class="headerlink" href="#read-zip-as-panda-df" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import required modules</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># read the dataset using the compression zip</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;test.zip&#39;</span><span class="p">,</span><span class="n">compression</span><span class="o">=</span><span class="s1">&#39;zip&#39;</span><span class="p">)</span>
+
+<span class="c1"># display dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+
+<span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># oppen zipped dataset</span>
+<span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s2">&quot;test.zip&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">z</span><span class="p">:</span>
+   <span class="c1"># open the csv file in the dataset</span>
+   <span class="k">with</span> <span class="n">z</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;test.csv&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+      <span class="c1"># read the dataset</span>
+      <span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+      <span class="c1"># display dataset</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="json">
+<h4>json<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="read">
+<h5>read<a class="headerlink" href="#read" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python program to read JSON</span>
+<span class="c1"># from a file</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># Opening JSON file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sample.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">openfile</span><span class="p">:</span>
+
+    <span class="c1"># Reading from json file</span>
+    <span class="n">json_object</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">openfile</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">json_object</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">json_object</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="write">
+<h5>write<a class="headerlink" href="#write" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python program to write JSON</span>
+<span class="c1"># to a file</span>
+
+
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># Data to be written</span>
+<span class="n">dictionary</span> <span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="s2">&quot;sathiyajith&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;rollno&quot;</span> <span class="p">:</span> <span class="mi">56</span><span class="p">,</span>
+    <span class="s2">&quot;cgpa&quot;</span> <span class="p">:</span> <span class="mf">8.6</span><span class="p">,</span>
+    <span class="s2">&quot;phonenumber&quot;</span> <span class="p">:</span> <span class="s2">&quot;9976770500&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Serializing json</span>
+<span class="n">json_object</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">indent</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Writing to sample.json</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;sample.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json_object</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;sample.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update">
+<h5>update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python program to update</span>
+<span class="c1"># JSON</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># JSON data:</span>
+<span class="n">x</span> <span class="o">=</span>  <span class="s1">&#39;{ &quot;organization&quot;:&quot;GeeksForGeeks&quot;,</span>
+        <span class="s2">&quot;city&quot;</span><span class="p">:</span><span class="s2">&quot;Noida&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;country&quot;</span><span class="p">:</span><span class="s2">&quot;India&quot;</span><span class="p">}</span><span class="s1">&#39;</span>
+
+<span class="c1"># python object to be appended</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;pin&quot;</span><span class="p">:</span><span class="mi">110096</span><span class="p">}</span>
+
+<span class="c1"># parsing JSON string:</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># appending the data</span>
+<span class="n">z</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># the result is a JSON string:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+
+
+<span class="c1"># Python program to update</span>
+<span class="c1"># JSON</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+
+<span class="c1"># function to add to JSON</span>
+<span class="k">def</span> <span class="nf">write_json</span><span class="p">(</span><span class="n">new_data</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;data.json&#39;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;r+&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+          <span class="c1"># First we load existing data into a dict.</span>
+        <span class="n">file_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="c1"># Join new_dat3a with file_data</span>
+        <span class="n">file_data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
+        <span class="c1"># Sets file&#39;s current position at offset.</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="c1"># convert back to json.</span>
+        <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">file_data</span><span class="p">,</span> <span class="n">file</span><span class="p">,</span> <span class="n">indent</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+
+    <span class="c1"># python object to be appended</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;emp_name&quot;</span><span class="p">:</span><span class="s1">&#39;Nikhil&#39;</span><span class="p">,</span>
+     <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;nikhil@geeksforgeeks.org&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;job_profile&quot;</span><span class="p">:</span> <span class="s2">&quot;Full Time&quot;</span>
+    <span class="p">}</span>
+
+<span class="n">write_json</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="csv">
+<h4>csv<a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># importing the csv module</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="c1"># field names</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Branch&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;CGPA&#39;</span><span class="p">]</span>
+
+<span class="c1"># data rows of csv file</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="s1">&#39;Nikhil&#39;</span><span class="p">,</span> <span class="s1">&#39;COE&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;9.0&#39;</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;Sanchit&#39;</span><span class="p">,</span> <span class="s1">&#39;COE&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;9.1&#39;</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;Aditya&#39;</span><span class="p">,</span> <span class="s1">&#39;IT&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;9.3&#39;</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;Sagar&#39;</span><span class="p">,</span> <span class="s1">&#39;SE&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;9.5&#39;</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;Prateek&#39;</span><span class="p">,</span> <span class="s1">&#39;MCE&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;7.8&#39;</span><span class="p">],</span>
+         <span class="p">[</span><span class="s1">&#39;Sahil&#39;</span><span class="p">,</span> <span class="s1">&#39;EP&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;9.1&#39;</span><span class="p">]]</span>
+
+<span class="c1"># name of csv file</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;university_records.csv&quot;</span>
+
+<span class="c1"># writing to csv file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="c1"># creating a csv writer object</span>
+    <span class="n">csvwriter</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+
+    <span class="c1"># writing the fields</span>
+    <span class="n">csvwriter</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+
+    <span class="c1"># writing the data rows</span>
+    <span class="n">csvwriter</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># importing the csv module</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="c1"># my data rows as dictionary objects</span>
+<span class="n">mydict</span> <span class="o">=</span><span class="p">[{</span><span class="s1">&#39;branch&#39;</span><span class="p">:</span> <span class="s1">&#39;COE&#39;</span><span class="p">,</span> <span class="s1">&#39;cgpa&#39;</span><span class="p">:</span> <span class="s1">&#39;9.0&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Nikhil&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">},</span>
+         <span class="p">{</span><span class="s1">&#39;branch&#39;</span><span class="p">:</span> <span class="s1">&#39;COE&#39;</span><span class="p">,</span> <span class="s1">&#39;cgpa&#39;</span><span class="p">:</span> <span class="s1">&#39;9.1&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sanchit&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">},</span>
+         <span class="p">{</span><span class="s1">&#39;branch&#39;</span><span class="p">:</span> <span class="s1">&#39;IT&#39;</span><span class="p">,</span> <span class="s1">&#39;cgpa&#39;</span><span class="p">:</span> <span class="s1">&#39;9.3&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Aditya&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">},</span>
+         <span class="p">{</span><span class="s1">&#39;branch&#39;</span><span class="p">:</span> <span class="s1">&#39;SE&#39;</span><span class="p">,</span> <span class="s1">&#39;cgpa&#39;</span><span class="p">:</span> <span class="s1">&#39;9.5&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sagar&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">},</span>
+         <span class="p">{</span><span class="s1">&#39;branch&#39;</span><span class="p">:</span> <span class="s1">&#39;MCE&#39;</span><span class="p">,</span> <span class="s1">&#39;cgpa&#39;</span><span class="p">:</span> <span class="s1">&#39;7.8&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Prateek&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;3&#39;</span><span class="p">},</span>
+         <span class="p">{</span><span class="s1">&#39;branch&#39;</span><span class="p">:</span> <span class="s1">&#39;EP&#39;</span><span class="p">,</span> <span class="s1">&#39;cgpa&#39;</span><span class="p">:</span> <span class="s1">&#39;9.1&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sahil&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">}]</span>
+
+<span class="c1"># field names</span>
+<span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;branch&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;cgpa&#39;</span><span class="p">]</span>
+
+<span class="c1"># name of csv file</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;university_records.csv&quot;</span>
+
+<span class="c1"># writing to csv file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="c1"># creating a csv dict writer object</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">fieldnames</span> <span class="o">=</span> <span class="n">fields</span><span class="p">)</span>
+
+    <span class="c1"># writing headers (field names)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
+
+    <span class="c1"># writing data rows</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">mydict</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In csv modules, an optional dialect parameter can be given which is used to define a set of parameters specific to a particular CSV format.
+By default, csv module uses excel dialect which makes them compatible with excel spreadsheets.
+You can define your own dialect using register_dialect method</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">csv</span><span class="o">.</span><span class="n">register_dialect</span><span class="p">(</span>
+    <span class="s1">&#39;mydialect&#39;</span><span class="p">,</span>
+    <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span>
+    <span class="n">quotechar</span> <span class="o">=</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">,</span>
+    <span class="n">doublequote</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">skipinitialspace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">lineterminator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">quoting</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">QUOTE_MINIMAL</span><span class="p">)</span>
+
+<span class="n">csvreader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="s1">&#39;mydialect&#39;</span><span class="p">)</span>
+<span class="c1"># change params</span>
+<span class="n">csvreader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">lineterminator</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="large-csv-files">
+<h5>large csv files<a class="headerlink" href="#large-csv-files" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># time taken to read data</span>
+<span class="n">s_time_chunk</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">chunk</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;gender_voice_dataset.csv&#39;</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">e_time_chunk</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;With chunks: &quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">e_time_chunk</span><span class="o">-</span><span class="n">s_time_chunk</span><span class="p">),</span> <span class="s2">&quot;sec&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+
+<span class="c1"># data</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="concatenate-files">
+<h4>concatenate files<a class="headerlink" href="#concatenate-files" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">concatenate_files_in_list</span><span class="p">(</span><span class="n">file_list</span><span class="p">,</span> <span class="n">output_file</span><span class="p">,</span> <span class="n">encode_in</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span> <span class="n">is_small</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_shutil</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="c1"># don&#39;t forget to specify target folder when opening files!</span>
+    <span class="n">encoding_format</span> <span class="o">=</span> <span class="n">encode_in</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;target file -&gt; </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">readmode</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;rb&#39;</span> <span class="k">if</span> <span class="n">use_shutil</span> <span class="k">else</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">writemode</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;wb&#39;</span> <span class="k">if</span> <span class="n">use_shutil</span> <span class="k">else</span> <span class="s1">&#39;w+&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">writemode</span><span class="p">)</span> <span class="k">as</span> <span class="n">finaltext</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">file_list</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;currently appending file: </span><span class="si">{</span><span class="n">file_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">readmode</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding_format</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_currently_opened</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">use_shutil</span><span class="p">:</span>
+                    <span class="kn">import</span> <span class="nn">shutil</span>
+                    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">finaltext</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">is_small</span><span class="p">:</span>
+                    <span class="n">finaltext</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file_currently_opened</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+                <span class="k">elif</span> <span class="ow">not</span> <span class="n">is_small</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file_currently_opened</span><span class="p">:</span>
+                        <span class="n">finaltext</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+
+<span class="n">concatenate_files_in_list</span><span class="p">(</span><span class="n">text_files_list</span><span class="p">,</span> <span class="n">final_file</span><span class="p">,</span> <span class="s1">&#39;latin-1&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dask">
+<h4>dask<a class="headerlink" href="#dask" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://dask.org/">https://dask.org/</a></p>
+<p>Dask is preferred over chunking as it uses multiple CPU cores or clusters of machines (Known as distributed computing). In addition to this, it also provides scaled NumPy, pandas, and sci-kit libraries to exploit parallelism</p>
+<p><a class="reference external" href="https://docs.dask.org/en/latest/">https://docs.dask.org/en/latest/</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">dask</span> <span class="kn">import</span> <span class="n">dataframe</span> <span class="k">as</span> <span class="n">df1</span>
+
+<span class="c1"># time taken to read data</span>
+<span class="n">s_time_dask</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">dask_df</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;gender_voice_dataset.csv&#39;</span><span class="p">)</span>
+<span class="n">e_time_dask</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Read with dask: &quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">e_time_dask</span><span class="o">-</span><span class="n">s_time_dask</span><span class="p">),</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+
+<span class="c1"># data</span>
+<span class="n">dask_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -3050,7 +3425,7 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 </div>
 </div>
 <div class="section" id="match-object-methods">
-<h4>Match Object Methods<a class="headerlink" href="#match-object-methods" title="Permalink to this headline">¶</a></h4>
+<h4>match object methods<a class="headerlink" href="#match-object-methods" title="Permalink to this headline">¶</a></h4>
 <p>methods that are available for a match object match:</p>
 <ul class="simple">
 <li><p>match.group(): The specified captured group or groups from match</p></li>
@@ -3064,7 +3439,7 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 </ul>
 </div>
 <div class="section" id="match-object-attributes">
-<h4>Match Object Attributes<a class="headerlink" href="#match-object-attributes" title="Permalink to this headline">¶</a></h4>
+<h4>match object attributes<a class="headerlink" href="#match-object-attributes" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>match.pos: The effective values of the pos &amp; endpos arguments for the match
 match.endpos</p></li>

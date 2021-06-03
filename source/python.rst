@@ -2,6 +2,87 @@
 python
 ######
 
+*******
+library
+*******
+
+toolkit
+=======
+
+first collection
+----------------
+
+.. code-block:: python
+
+   from pathlib import Path
+   import contextlib
+   import os
+   
+   
+   def file_exists(file_path):
+       return Path(file_path).exists()
+   
+   
+   def compress_to_bz2_file(source_file, output_file, compression_lvl=9):
+       import bz2
+       if 1 <= compression_lvl <= 9:
+           with open(source_file, 'rb') as data:
+               tar_bz2_contents = bz2.compress(data.read(), compresslevel=compression_lvl)
+       else:
+           raise ValueError("compression level has to be between 1 and 9")
+   
+   
+   # concatenate_files_in_list(text_files_list, final_file, 'latin-1', True)
+   def concatenate_files_in_list(file_list, output_file, encode_in='utf-8', is_small=False, use_shutil=False):
+       # don't forget to specify target folder when opening files!
+       # todo: check if file was created already
+       encoding_format = encode_in
+       print(f"target file -> {output_file}")
+       readmode = ('rb' if use_shutil else 'r')
+       writemode = ('wb' if use_shutil else 'w+')
+       with open(output_file, writemode) as finaltext:
+           for file_name in file_list:
+               print(f"currently appending file: {file_name}")
+               with open(file_name, readmode, encoding=encoding_format) as file_currently_opened:
+                   if use_shutil:
+                       import shutil
+                       shutil.copyfileobj(file_name, finaltext)
+                   elif is_small:
+                       finaltext.write(file_currently_opened.read())
+                   elif not is_small:
+                       for line in file_currently_opened:
+                           finaltext.write(line)
+   
+   
+   def add_files_from_folder_to_list(filetype, folder_target='./'):
+       folder = set_folder(folder_target)
+       print(folder)
+       print(f"getting files from {folder} of type {filetype} ...")
+       all_files = []
+       for path, dirs, files in os.walk(folder):
+           for filename in files:
+               if filename.endswith('.txt'):
+                   full_path = os.path.join(path,filename)
+                   all_files.append(full_path)
+       with contextlib.suppress(Exception):
+           raise RuntimeError('something went wrong')
+       return all_files
+   
+   
+   def set_folder(folder_dir):
+       isdir = Path(folder_dir)
+       if not isdir:
+           raise Exception(f"folder you're trying to set is invalid -> {folder_dir}")
+       absolute_path = isdir.resolve()
+       return absolute_path
+   
+   
+   def test_files_in_list(file_list: []):
+       print("testing files in list... ")
+       for file in file_list:
+           if not Path(file).exists():
+               print(f"oops: {file} doesn't seem to exist")
+
 *****
 conda
 *****
@@ -2014,9 +2095,9 @@ files and resource management
 =============================
 
 open(file, mode, encoding)
- file: path to file (required)
- mode: read/write/append, binary/text
- encoding: text encoding
+ - file: path to file (required)
+ - mode: read/write/append, binary/text
+ - encoding: text encoding
 
 https://docs.python.org/3/library/functions.html#open
 
@@ -2054,6 +2135,307 @@ write() returns the number of codepoints, not the number of characters
 
    if __name__ == '__main__':
        main(sys.argv[1])
+
+
+zip files
+---------
+
+read zip as panda df
+^^^^^^^^^^^^^^^^^^^^
+
+.. code:: python
+
+   # import required modules
+   import zipfile
+   import pandas as pd
+     
+   # read the dataset using the compression zip
+   df = pd.read_csv('test.zip',compression='zip')
+     
+   # display dataset
+   print(df.head())
+
+
+   import zipfile
+   import pandas as pd
+     
+   # oppen zipped dataset
+   with zipfile.ZipFile("test.zip") as z:
+      # open the csv file in the dataset
+      with z.open("test.csv") as f:
+           
+         # read the dataset
+         train = pd.read_csv(f)
+           
+         # display dataset
+         print(train.head())
+
+json
+----
+
+read
+^^^^
+
+.. code-block:: python
+
+   # Python program to read JSON
+   # from a file
+     
+   import json
+     
+   # Opening JSON file
+   with open('sample.json', 'r') as openfile:
+     
+       # Reading from json file
+       json_object = json.load(openfile)
+     
+   print(json_object)
+   print(type(json_object))
+
+
+write
+^^^^^
+
+.. code-block:: python
+
+   # Python program to write JSON
+   # to a file
+   
+   
+   import json
+   
+   # Data to be written
+   dictionary ={
+       "name" : "sathiyajith",
+       "rollno" : 56,
+       "cgpa" : 8.6,
+       "phonenumber" : "9976770500"
+   }
+   
+   # Serializing json
+   json_object = json.dumps(dictionary, indent = 4)
+   
+   # Writing to sample.json
+   with open("sample.json", "w") as outfile:
+       outfile.write(json_object)
+
+   with open("sample.json", "w") as outfile:
+       json.dump(dictionary, outfile)
+
+
+update
+^^^^^^
+
+.. code-block:: python
+
+   # Python program to update
+   # JSON
+   import json
+   
+   # JSON data:
+   x =  '{ "organization":"GeeksForGeeks",
+           "city":"Noida",
+           "country":"India"}'
+   
+   # python object to be appended
+   y = {"pin":110096}
+   
+   # parsing JSON string:
+   z = json.loads(x)
+   
+   # appending the data
+   z.update(y)
+   
+   # the result is a JSON string:
+   print(json.dumps(z))
+   
+
+   # Python program to update
+   # JSON
+   import json
+    
+    
+   # function to add to JSON
+   def write_json(new_data, filename='data.json'):
+       with open(filename,'r+') as file:
+             # First we load existing data into a dict.
+           file_data = json.load(file)
+           # Join new_dat3a with file_data
+           file_data.update(new_data)
+           # Sets file's current position at offset.
+           file.seek(0)
+           # convert back to json.
+           json.dump(file_data, file, indent = 4)
+    
+       # python object to be appended
+   y = {"emp_name":'Nikhil',
+        "email": "nikhil@geeksforgeeks.org",
+        "job_profile": "Full Time"
+       }
+        
+   write_json(y)
+
+
+csv
+---
+
+.. code-block:: python
+
+   # importing the csv module
+   import csv
+     
+   # field names
+   fields = ['Name', 'Branch', 'Year', 'CGPA']
+     
+   # data rows of csv file
+   rows = [ ['Nikhil', 'COE', '2', '9.0'],
+            ['Sanchit', 'COE', '2', '9.1'],
+            ['Aditya', 'IT', '2', '9.3'],
+            ['Sagar', 'SE', '1', '9.5'],
+            ['Prateek', 'MCE', '3', '7.8'],
+            ['Sahil', 'EP', '2', '9.1']]
+     
+   # name of csv file
+   filename = "university_records.csv"
+     
+   # writing to csv file
+   with open(filename, 'w') as csvfile:
+       # creating a csv writer object
+       csvwriter = csv.writer(csvfile)
+         
+       # writing the fields
+       csvwriter.writerow(fields)
+         
+       # writing the data rows
+       csvwriter.writerows(rows)
+
+
+.. code-block:: python
+
+   # importing the csv module
+   import csv
+     
+   # my data rows as dictionary objects
+   mydict =[{'branch': 'COE', 'cgpa': '9.0', 'name': 'Nikhil', 'year': '2'},
+            {'branch': 'COE', 'cgpa': '9.1', 'name': 'Sanchit', 'year': '2'},
+            {'branch': 'IT', 'cgpa': '9.3', 'name': 'Aditya', 'year': '2'},
+            {'branch': 'SE', 'cgpa': '9.5', 'name': 'Sagar', 'year': '1'},
+            {'branch': 'MCE', 'cgpa': '7.8', 'name': 'Prateek', 'year': '3'},
+            {'branch': 'EP', 'cgpa': '9.1', 'name': 'Sahil', 'year': '2'}]
+     
+   # field names
+   fields = ['name', 'branch', 'year', 'cgpa']
+     
+   # name of csv file
+   filename = "university_records.csv"
+     
+   # writing to csv file
+   with open(filename, 'w') as csvfile:
+       # creating a csv dict writer object
+       writer = csv.DictWriter(csvfile, fieldnames = fields)
+         
+       # writing headers (field names)
+       writer.writeheader()
+         
+       # writing data rows
+       writer.writerows(mydict)
+
+
+.. note::
+
+   In csv modules, an optional dialect parameter can be given which is used to define a set of parameters specific to a particular CSV format.
+   By default, csv module uses excel dialect which makes them compatible with excel spreadsheets.
+   You can define your own dialect using register_dialect method
+
+
+.. code-block:: python
+
+   csv.register_dialect(
+       'mydialect',
+       delimiter = ',',
+       quotechar = '"',
+       doublequote = True,
+       skipinitialspace = True,
+       lineterminator = '\r\n',
+       quoting = csv.QUOTE_MINIMAL)
+
+   csvreader = csv.reader(csvfile, dialect='mydialect')
+   # change params
+   csvreader = csv.reader(csvfile, delimiter = ';', lineterminator = '\n\n')
+
+large csv files
+^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+   import pandas as pd
+   import numpy as np
+   import time
+     
+   # time taken to read data
+   s_time_chunk = time.time()
+   chunk = pd.read_csv('gender_voice_dataset.csv', chunksize=1000)
+   e_time_chunk = time.time()
+     
+   print("With chunks: ", (e_time_chunk-s_time_chunk), "sec")
+   df = pd.concat(chunk)
+     
+   # data
+   df.sample(10)
+
+concatenate files
+-----------------
+
+.. code-block:: python
+
+   def concatenate_files_in_list(file_list, output_file, encode_in='utf-8', is_small=False, use_shutil=False):
+       # don't forget to specify target folder when opening files!
+       encoding_format = encode_in
+       print(f"target file -> {output_file}")
+       readmode = ('rb' if use_shutil else 'r')
+       writemode = ('wb' if use_shutil else 'w+')
+       with open(output_file, writemode) as finaltext:
+           for file_name in file_list:
+               print(f"currently appending file: {file_name}")
+               with open(file_name, readmode, encoding=encoding_format) as file_currently_opened:
+                   if use_shutil:
+                       import shutil
+                       shutil.copyfileobj(file_name, finaltext)
+                   elif is_small:
+                       finaltext.write(file_currently_opened.read())
+                   elif not is_small:
+                       for line in file_currently_opened:
+                           finaltext.write(line)
+
+
+   concatenate_files_in_list(text_files_list, final_file, 'latin-1', True)
+
+
+dask
+----
+
+https://dask.org/
+
+Dask is preferred over chunking as it uses multiple CPU cores or clusters of machines (Known as distributed computing). In addition to this, it also provides scaled NumPy, pandas, and sci-kit libraries to exploit parallelism
+
+https://docs.dask.org/en/latest/
+
+.. code-block:: python
+
+   import pandas as pd
+   import numpy as np
+   import time
+   from dask import dataframe as df1
+     
+   # time taken to read data
+   s_time_dask = time.time()
+   dask_df = df1.read_csv('gender_voice_dataset.csv')
+   e_time_dask = time.time()
+     
+   print("Read with dask: ", (e_time_dask-s_time_dask), "seconds")
+     
+   # data
+   dask_df.head(10)
 
 ***
 OOP
@@ -2893,7 +3275,7 @@ match object is truthy
    Found a match
 
 
-Match Object Methods
+match object methods
 --------------------
 
 methods that are available for a match object match:
@@ -2908,7 +3290,7 @@ methods that are available for a match object match:
 - match.span(): Both the starting and ending indices of match as a tuple
 
 
-Match Object Attributes
+match object attributes
 -----------------------
 
 - match.pos: The effective values of the pos & endpos arguments for the match
