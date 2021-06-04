@@ -3427,3 +3427,4 @@ match object attributes
 
 .. include:: scraping.rst
 .. include:: threading.rst
+.. include:: cli_parsing.rst
