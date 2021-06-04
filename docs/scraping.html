@@ -170,17 +170,17 @@
 <p><a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">https://www.crummy.com/software/BeautifulSoup/bs4/doc/</a></p>
 <div class="section" id="setup-bs4">
 <h3>setup bs4<a class="headerlink" href="#setup-bs4" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import sys
-!{sys.executable} -m pip install beautifulsoup4
-from bs4 import BeautifulSoup
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="c1"># !{sys.executable} -m pip install beautifulsoup4</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
-soup = BeautifulSoup(html_doc, &quot;lxml&quot;)
-# In my file (becode.org) by looking at this html script We can see that the main title is arranged in the h1 tag
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">html_doc</span><span class="p">,</span> <span class="s2">&quot;lxml&quot;</span><span class="p">)</span>
+<span class="c1"># In my file (becode.org) by looking at this html script We can see that the main title is arranged in the h1 tag</span>
 
-for p in soup.find_all(&#39;h1&#39;):
-    # We only retrieve the content ==&gt; .text
-    print (p.text)
-# BeCode.org
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;h1&#39;</span><span class="p">):</span>
+    <span class="c1"># We only retrieve the content ==&gt; .text</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="c1"># BeCode.org</span>
 </pre></div>
 </div>
 </div>

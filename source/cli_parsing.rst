@@ -2,7 +2,7 @@
 parsing
 *******
 
-cli options parsing
+parsing cli options
 ===================
 
 code with cli parsing

@@ -13,7 +13,7 @@ setup bs4
 .. code-block:: python
 
    import sys
-   !{sys.executable} -m pip install beautifulsoup4
+   # !{sys.executable} -m pip install beautifulsoup4
    from bs4 import BeautifulSoup
    
    soup = BeautifulSoup(html_doc, "lxml")
