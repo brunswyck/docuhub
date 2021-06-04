@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>scraping &mdash; Patrick&#39;s Docs alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
+  <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/dark_mode_js/default_dark.js"></script>
+        <script src="_static/dark_mode_js/theme_switcher.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Patrick's Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidoc/modules.html">becode</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Patrick's Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>scraping</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/scraping.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scraping">
+<h1>scraping<a class="headerlink" href="#scraping" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="beautiful-soup">
+<h2>beautiful soup<a class="headerlink" href="#beautiful-soup" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">https://www.crummy.com/software/BeautifulSoup/bs4/doc/</a></p>
+<div class="section" id="setup-bs4">
+<h3>setup bs4<a class="headerlink" href="#setup-bs4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import sys
+!{sys.executable} -m pip install beautifulsoup4
+from bs4 import BeautifulSoup
+
+soup = BeautifulSoup(html_doc, &quot;lxml&quot;)
+# In my file (becode.org) by looking at this html script We can see that the main title is arranged in the h1 tag
+
+for p in soup.find_all(&#39;h1&#39;):
+    # We only retrieve the content ==&gt; .text
+    print (p.text)
+# BeCode.org
+</pre></div>
+</div>
+</div>
+<div class="section" id="find-html-elements">
+<h3>find html elements<a class="headerlink" href="#find-html-elements" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/#a-regular-expression">https://www.crummy.com/software/BeautifulSoup/bs4/doc/#a-regular-expression</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="s1">&#39;&lt;html&gt;&lt;body&gt;&lt;div&gt;asdfasdf&lt;/div&gt;&lt;p&gt;&lt;a&gt;foo&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span><span class="p">)</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;div&#39;</span><span class="p">])</span>
+<span class="c1"># [&lt;div&gt;asdfasdf&lt;/div&gt;, &lt;a&gt;foo&lt;/a&gt;]</span>
+
+<span class="c1"># using a regular expression to find tags that contain a or div:</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(a|div)&quot;</span><span class="p">))</span>
+
+<span class="c1"># regex to search in attributes of tags</span>
+<span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;href&#39;</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;crummy\.com/&#39;</span><span class="p">)})</span>
+
+<span class="c1"># regex to find all titles</span>
+<span class="n">find_titles</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;(h\d)&quot;</span><span class="p">)</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">find_titles</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
+
+<span class="n">store_titles</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span> <span class="p">:</span><span class="s2">&quot;meta-title meta-title-link&quot;</span><span class="p">}):</span>
+    <span class="n">store_titles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;\d{4,7}.html&quot;</span><span class="p">))</span>
+    <span class="c1"># return a list</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&lt;a class=&quot;meta-title meta-title-link&quot; href=&quot;/film/fichefilm_gen_cfilm=275354.html&quot; title=&quot;Chacun chez soi&quot;&gt;Chacun chez soi&lt;/a&gt;</span>
+<span class="sd">&lt;a class=&quot;meta-title meta-title-link&quot; href=&quot;/film/fichefilm_gen_cfilm=272523.html&quot; title=&quot;Des hommes&quot;&gt;Des hommes&lt;/a&gt;</span>
+
+<span class="sd">/film/fichefilm_gen_cfilm=275666.html</span>
+<span class="sd">/film/fichefilm_gen_cfilm=277756.html</span>
+<span class="sd">/film/fichefilm_gen_cfilm=44282.html</span>
+<span class="sd">/film/fichefilm_gen_cfilm=274345.html</span>
+<span class="sd">/film/fichefilm_gen_cfilm=281050.html</span>
+<span class="sd">/film/fichefilm_gen_cfilm=268680.html</span>
+<span class="sd">/series/ficheserie_gen_cserie=23474.html</span>
+<span class="sd">/series/ficheserie_gen_cserie=26101.html</span>
+<span class="sd">/series/ficheserie_gen_cserie=22429.html</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">get_titles</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;\d{4,7}.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="apply-regex-on-element-string">
+<h3>apply regex on element string<a class="headerlink" href="#apply-regex-on-element-string" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">title_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\d{4,7}\.html&quot;</span>
+<span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span> <span class="p">:</span><span class="s2">&quot;meta-title meta-title-link&quot;</span><span class="p">}):</span>
+    <span class="c1"># results.append(elem.get(&#39;href&#39;))</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">title_pattern</span><span class="p">,</span> <span class="n">title</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">titles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+<span class="n">titles</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">[&#39;275354.html&#39;,</span>
+<span class="sd"> &#39;272523.html&#39;,</span>
+<span class="sd"> &#39;274710.html&#39;,</span>
+<span class="sd"> &#39;261793.html&#39;,</span>
+<span class="sd"> &#39;265425.html&#39;,</span>
+<span class="sd"> &#39;24172.html&#39;,</span>
+<span class="sd"> &#39;25512.html&#39;,</span>
+<span class="sd"> &#39;25786.html&#39;,</span>
+<span class="sd"> &#39;25515.html&#39;]&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="slowly-get-url-page-content">
+<h4>slowly get url page content<a class="headerlink" href="#slowly-get-url-page-content" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+
+<span class="n">title</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">synopsis</span><span class="o">=</span><span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links_movie</span><span class="p">:</span>
+
+    <span class="n">url</span><span class="o">=</span><span class="n">link</span>
+    <span class="c1"># I slow down the frequency of requests to avoid being identified and therefore ban from the site</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">))</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">,</span><span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
+
+
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;titlebar-title titlebar-title-lg&quot;</span><span class="p">}):</span>
+        <span class="n">title</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;content-txt&quot;</span><span class="p">}):</span>
+        <span class="n">synopsis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+<span class="c1"># I check the length of the lists before creating the df</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">title</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">synopsis</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">links_movie</span><span class="p">)</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">http://www.allocine.fr/film/fichefilm_gen_cfilm=275354.html 200</span>
+<span class="sd">http://www.allocine.fr/film/fichefilm_gen_cfilm=272523.html 200</span>
+<span class="sd">...</span>
+<span class="sd">http://www.allocine.fr/film/fichefilm_gen_cfilm=281050.html 200</span>
+<span class="sd">http://www.allocine.fr/film/fichefilm_gen_cfilm=268680.html 200</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="http-requests">
+<h3>HTTP requests<a class="headerlink" href="#http-requests" title="Permalink to this headline">¶</a></h3>
+<p><cite>command</cite> is the method to use, it specifies the type of request, it can have the values :</p>
+<ul class="simple">
+<li><p><cite>“GET”</cite></p></li>
+</ul>
+<p>This is the most common way to request a resource. A GET request has no effect on the resource, it must be possible to repeat the request without effect.</p>
+<ul class="simple">
+<li><p><cite>“HEAD”</cite></p></li>
+</ul>
+<p>This method only asks for information about the resource (the header), without asking for the resource itself.</p>
+<ul class="simple">
+<li><p><cite>“POST”</cite></p></li>
+</ul>
+<p>This method must be used when a request modifies the resource.</p>
+<ul class="simple">
+<li><p><cite>“OPTIONS”</cite></p></li>
+</ul>
+<p>This method allows you to obtain the communication options of a resource or the server in general.</p>
+<ul class="simple">
+<li><p><cite>“CONNECT”</cite></p></li>
+</ul>
+<p>This method allows you to use a proxy as a communication tunnel.</p>
+<ul class="simple">
+<li><p><cite>“TRACE”</cite></p></li>
+</ul>
+<p>This method asks the server to return what it has received, in order to test and diagnose the connection.</p>
+<ul class="simple">
+<li><p><cite>“PUT”</cite></p></li>
+</ul>
+<p>This method allows you to add a resource to the server.</p>
+<ul class="simple">
+<li><p><cite>“DELETE”</cite></p></li>
+</ul>
+<p>This method allows you to delete a resource from the server.</p>
+<p>I will only discuss the most common ones here: HEAD, GET and POST.</p>
+<div class="section" id="store-html-in-var">
+<h4>store html in var<a class="headerlink" href="#store-html-in-var" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="c1"># Url of website</span>
+<span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://www.becode.org/about/&#39;</span>
+<span class="c1"># I send my HTTP request with a &quot;GET&quot; to the site server to identify in the url</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="c1"># I display the requested url and the return of the server</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="c1"># I ask beautifulSoup to keep in a soup variable the web page to scrape (url) an html script</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">,</span><span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
+<span class="n">soup</span>  <span class="c1"># prints all html code</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="selenium">
+<h2>selenium<a class="headerlink" href="#selenium" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://selenium-python.readthedocs.io/installation.html#downloading-python-bindings-for-selenium/bin">https://selenium-python.readthedocs.io/installation.html#downloading-python-bindings-for-selenium/bin</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Linux: put your geckodriver in the equivalent path at home to /home/YOURNAME/.local/bin</p>
+</div>
+<div class="section" id="handy-libraries">
+<h3>handy libraries<a class="headerlink" href="#handy-libraries" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="c1"># !{sys.executable} -m pip install tabulate</span>
+<span class="kn">import</span> <span class="nn">bs4</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">lxml.html</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">gmtime</span><span class="p">,</span> <span class="n">strftime</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">tabulate</span> <span class="kn">import</span> <span class="n">tabulate</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">date</span><span class="o">=</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="scraping-training">
+<h2>scraping training<a class="headerlink" href="#scraping-training" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="inquisitive-with-bs4-selenium">
+<h3>inquisitive with bs4 &amp; selenium<a class="headerlink" href="#inquisitive-with-bs4-selenium" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver</span> <span class="kn">import</span> <span class="n">ActionChains</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.firefox.firefox_binary</span> <span class="kn">import</span> <span class="n">FirefoxBinary</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support</span> <span class="kn">import</span> <span class="n">expected_conditions</span> <span class="k">as</span> <span class="n">EC</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.remote.webelement</span> <span class="kn">import</span> <span class="n">WebElement</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
+<span class="kn">import</span> <span class="nn">urllib.parse</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">bs4</span>
+<span class="kn">import</span> <span class="nn">shelve</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span> <span class="k">as</span> <span class="n">pp</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">browser_cookie3</span>
+
+<span class="c1"># testing xpath -&gt; web console -&gt; $x(&quot;//a[@href=&#39;#ps-container&#39;]&quot;)</span>
+<span class="c1"># python3 -m seleniumwire extractcert</span>
+<span class="c1"># then manually import it under authorities</span>
+
+
+<span class="k">def</span> <span class="nf">assert_level</span><span class="p">(</span><span class="n">level</span><span class="p">):</span>
+    <span class="n">allowed_levels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;beginner&quot;</span><span class="p">,</span> <span class="s2">&quot;intermediate&quot;</span><span class="p">,</span> <span class="s2">&quot;advanced&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">allowed_levels</span><span class="p">,</span> <span class="s2">&quot;allowed levels: &#39;beginner&#39;, &#39;intermediate&#39;, &#39;advanced&#39;, &#39;None (all levels)&#39;&quot;</span>
+    <span class="k">return</span> <span class="n">level</span>
+
+
+<span class="k">def</span> <span class="nf">assert_sort_on</span><span class="p">(</span><span class="n">sort_by</span><span class="p">):</span>
+    <span class="n">allowed_sort_by</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;relevance&quot;</span><span class="p">,</span> <span class="s2">&quot;newest&quot;</span><span class="p">,</span> <span class="s2">&quot;popularity&quot;</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">sort_by</span> <span class="ow">in</span> <span class="n">allowed_sort_by</span><span class="p">,</span> <span class="s1">&#39;allowed sorts: &quot;relevance&quot;, &quot;newest&quot;, &quot;popularity&quot;&#39;</span>
+    <span class="k">return</span> <span class="n">sort_by</span>
+
+
+<span class="k">def</span> <span class="nf">assert_search_period</span><span class="p">(</span><span class="n">chosen_time_span</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;choose between 6M, 1y, 2y or None=&#39;all dates&#39;&quot;&quot;&quot;</span>
+    <span class="n">allowed_choices</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;6M&quot;</span><span class="p">,</span> <span class="s2">&quot;1y&quot;</span><span class="p">,</span> <span class="s2">&quot;2y&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="p">(</span><span class="n">chosen_time_span</span> <span class="ow">in</span> <span class="n">allowed_choices</span><span class="p">),</span> <span class="s2">&quot;allowed choices: 6M, 1y, 2y or None(all dates)&quot;</span>
+    <span class="k">return</span> <span class="n">chosen_time_span</span>
+
+
+<span class="k">def</span> <span class="nf">url_prep</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote_plus</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ScrapeFirefox</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start_page</span><span class="p">,</span> <span class="n">topics</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">home</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_page</span> <span class="o">=</span> <span class="n">start_page</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">topics</span> <span class="o">=</span> <span class="n">topics</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">urls_on_topic</span> <span class="o">=</span> <span class="p">{</span><span class="n">topic</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">topics</span><span class="p">}</span>  <span class="c1"># initialize dict with topics list</span>
+        <span class="c1"># profile folder visible in &quot;about:profiles&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">FirefoxProfile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">home</span> <span class="o">+</span> <span class="s1">&#39;/.mozilla/firefox/mwnbnmdi.default-release&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ff_binary</span> <span class="o">=</span> <span class="n">FirefoxBinary</span><span class="p">(</span><span class="s1">&#39;/usr/bin/firefox&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">DEFAULT_PREFERENCES</span><span class="p">[</span><span class="s1">&#39;frozen&#39;</span><span class="p">][</span><span class="s1">&#39;extensions.autoDisableScopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># find all configuration items here: http://kb.mozillazine.org/Firefox_:_FAQs_:_About:config_Entries</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">accept_untrusted_certs</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">set_preference</span><span class="p">(</span><span class="s1">&#39;extensions.enabledScopes&#39;</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+        <span class="c1"># http://kb.mozillazine.org/Network.proxy.type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">set_preference</span><span class="p">(</span><span class="s2">&quot;network.proxy.type&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">download_location</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">home</span> <span class="o">+</span> <span class="s2">&quot;/cbts&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">set_preference</span><span class="p">(</span><span class="s2">&quot;browser.download.folderList&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># don&#39;t use default Downloads directory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">set_preference</span><span class="p">(</span><span class="s2">&quot;browser.download.manager.showWhenStarting&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>  <span class="c1"># turns of showing download progress</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">set_preference</span><span class="p">(</span><span class="s1">&#39;browser.download.dir&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">download_location</span><span class="p">)</span>  <span class="c1"># sets the directory for downloads</span>
+        <span class="c1"># automatically download the files of the selected mime-types</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">profile</span><span class="o">.</span><span class="n">set_preference</span><span class="p">(</span><span class="s1">&#39;browser.helperApps.neverAsk.saveToDisk&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;video/mp4,audio/mp4,video/webm,video/mp2t,audio/aac,application/x-mpegurl,application/vnd.apple.mpegurl&#39;</span><span class="p">)</span>
+        <span class="c1"># self.profile.set_preference(&quot;browser.helperApps.alwaysAsk.force&quot;, False)</span>
+        <span class="c1"># self.profile.set_preference(&quot;browser.download.panel.shown&quot;, False)</span>
+        <span class="c1"># self.profile.set_preference(&quot;browser.download.manager.alertOnEXEOpen&quot;, False)</span>
+        <span class="c1"># self.profile.set_preference(&quot;browser.download.manager.focusWhenStarting&quot;, False)</span>
+        <span class="c1"># self.profile.set_preference(&quot;browser.download.manager.useWindow&quot;, False)</span>
+        <span class="c1"># self.profile.set_preference(&quot;browser.download.manager.showAlertOnComplete&quot;, False)</span>
+        <span class="c1"># self.profile.set_preference(&quot;browser.download.manager.closeWhenDone&quot;, True)  # Close the Download Manager when all downloads are complete</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ff_options</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">FirefoxOptions</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ff_options</span><span class="o">.</span><span class="n">set_preference</span><span class="p">(</span><span class="s2">&quot;extensions.lastAppBuildId&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;appID&gt; -1&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">(</span><span class="n">firefox_profile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">profile</span><span class="p">,</span> <span class="n">firefox_binary</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ff_binary</span><span class="p">,</span>
+                                        <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ff_options</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">go_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_page</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">store</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;my_topic&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">go_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">page</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">switch_frame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">css_id</span><span class="p">):</span>
+        <span class="n">frame_to_use</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_id</span><span class="p">(</span><span class="n">css_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">frame</span><span class="p">(</span><span class="n">frame_to_use</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">store</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+
+    <span class="k">def</span> <span class="nf">no_push_notifications</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">switch_frame</span><span class="p">(</span><span class="s2">&quot;webpush-onsite&quot;</span><span class="p">)</span>
+        <span class="n">push_notifications</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s2">&quot;//button[normalize-space()=&#39;No thanks&#39;]&quot;</span><span class="p">)</span>
+        <span class="n">push_notifications</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">switch_to</span><span class="o">.</span><span class="n">default_content</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">handle_notification_popup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">notifications_frame</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_id</span><span class="p">(</span><span class="s2">&quot;webpush-onsite&quot;</span><span class="p">)</span>  <span class="c1"># browse button/image</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">notifications_frame</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wait_until_el_available_id</span><span class="p">(</span><span class="s2">&quot;webpush-onsite&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">no_push_notifications</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wait_until_el_available_id</span><span class="p">(</span><span class="s2">&quot;prism-explore&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">wait_until_el_available_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">css_id</span><span class="p">):</span>
+        <span class="n">element</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="n">css_id</span><span class="p">)))</span>
+        <span class="s2">&quot;avoid elem not detected errors&quot;</span>
+
+    <span class="k">def</span> <span class="nf">wait_until_el_available_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">css_select</span><span class="p">):</span>
+        <span class="n">element</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span>
+                                                                                                     <span class="n">css_select</span><span class="p">)))</span>
+
+    <span class="k">def</span> <span class="nf">wait_until_el_available_xpath</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">css_xpath</span><span class="p">):</span>
+        <span class="n">element</span> <span class="o">=</span> <span class="n">WebDriverWait</span><span class="p">(</span><span class="n">driver</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">until</span><span class="p">(</span><span class="n">EC</span><span class="o">.</span><span class="n">presence_of_element_located</span><span class="p">((</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span>
+                                                                                                     <span class="n">css_xpath</span><span class="p">)))</span>
+
+    <span class="k">def</span> <span class="nf">get_pages_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic</span><span class="p">):</span>
+        <span class="n">search_bar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s2">&quot;//input[@id=&#39;prism-search-input&#39;]&quot;</span><span class="p">)</span>
+        <span class="n">search_bar</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">slow_type</span><span class="p">(</span><span class="n">search_bar</span><span class="p">,</span> <span class="n">topic</span><span class="p">,</span> <span class="mf">0.122</span><span class="p">)</span>
+        <span class="n">search_bar</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">RETURN</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">right_click_on</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">element</span><span class="p">,</span> <span class="n">move_up</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">act</span> <span class="o">=</span> <span class="n">ActionChains</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">)</span>
+        <span class="n">act</span><span class="o">.</span><span class="n">context_click</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">up</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">move_up</span><span class="p">):</span>
+            <span class="n">act</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">ARROW_DOWN</span><span class="p">)</span>
+        <span class="n">act</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">RETURN</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">()</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_no_of_pages_on_topic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_html</span><span class="p">):</span>
+        <span class="n">xpath_no_pages</span> <span class="o">=</span> <span class="s2">&quot;//a[@href=&#39;#ps-container&#39;]&quot;</span>
+        <span class="n">regex_course_names</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(?:&lt;h3 class=</span><span class="se">\&quot;</span><span class="s2">.+?</span><span class="se">\&quot;</span><span class="s2">.*?100%;</span><span class="se">\&quot;</span><span class="s2">&gt;)(.*?)(?:&lt;/span&gt;&lt;span)&quot;</span>
+        <span class="n">no_of_courses</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">regex_course_names</span><span class="p">,</span> <span class="n">current_html</span><span class="p">))</span>
+        <span class="k">if</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">no_of_courses</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">:</span>
+            <span class="n">no_pages_on_topic</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">return</span> <span class="n">no_pages_on_topic</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">no_pages_on_topic</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">find_elements_by_xpath</span><span class="p">(</span><span class="n">xpath_no_pages</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">no_pages_on_topic</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Patrick Brunswyck.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

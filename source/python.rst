@@ -2383,6 +2383,102 @@ large csv files
    # data
    df.sample(10)
 
+xml
+---
+
+load
+^^^^
+assets/data.xml
+
+.. code-block:: xml
+
+   <?xml version="1.0" encoding="UTF-8"?>
+   <users>
+       <user data-id="101">
+           <nom>Zorro</nom>
+           <metier>Danseur</metier>
+       </user>
+       <user data-id="102">
+           <nom>Hulk</nom>
+           <metier>Footballeur</metier>
+       </user>
+       <user data-id="103">
+           <nom>Zidane</nom>
+           <metier>Star</metier>
+       </user>
+       <user data-id="104">
+           <nom>Beans</nom>
+           <metier>Epicier</metier>
+       </user>
+       <user data-id="105">
+           <nom>Batman</nom>
+           <metier>Veterinaire</metier>
+       </user>
+       <user data-id="106">
+           <nom>Spiderman</nom>
+           <metier>Veterinaire</metier>
+       </user>
+   </users>
+
+
+.. code-block:: python
+
+   filename = "./assets/data.xml"
+   file = open(filename, "r")
+   print (file.read())
+   file.close()
+
+lxml
+^^^^
+
+.. code-block:: python
+
+   import sys
+   # !conda install --yes --prefix {sys.prefix} lxml
+   !{sys.executable} -m pip install numpy
+   from lxml import etree
+   # I define my source document
+   filename = 'assets/data.xml'
+   tree = etree.parse(filename)
+   # so in tree.xpath("/users/user/name") there are the tags associated with our search
+   for user in tree.xpath("/users/user/nom"):
+       # I want to display only the content (.text) of these tags /users/user/name
+       print(user.text)
+
+   """
+   Zorro
+   Hulk
+   Zidane
+   Beans
+   Batman
+   Spiderman
+   """
+
+   tree.xpath("/users/user/nom")[0].text
+   # 'Zorro'
+
+   # You can display the attributes of the tags that store this information
+   tree = etree.parse(filename)
+   for user in tree.xpath("/users/user"):
+       print(user.get("data-id"))
+   """
+   101
+   102
+   103
+   104
+   105
+   106
+   """
+   
+   # You can refine the display by proposing to display only users whose job is Veterinary
+   tree = etree.parse(filename)
+
+   for user in tree.xpath("/users/user[metier='Veterinaire']/nom"):
+       print(user.text)
+   # Batman
+   # Spiderman
+
+
 concatenate files
 -----------------
 
@@ -3329,3 +3425,5 @@ match object attributes
    m.string
    'foo,bar,baz'
 
+.. include:: scraping.rst
+.. include:: threading.rst
