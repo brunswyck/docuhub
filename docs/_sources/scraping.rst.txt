@@ -143,39 +143,15 @@ HTTP requests
 
 `command` is the method to use, it specifies the type of request, it can have the values :
 
+- `"GET"` This is the most common way to request a resource. A GET request has no effect on the resource, it must be possible to repeat the request without effect.
+- `"HEAD"` This method only asks for information about the resource (the header), without asking for the resource itself.
+- `"POST"` This method must be used when a request modifies the resource.
+- `"OPTIONS"` This method allows you to obtain the communication options of a resource or the server in general.
+- `"CONNECT"` This method allows you to use a proxy as a communication tunnel.
+- `"TRACE"` This method asks the server to return what it has received, in order to test and diagnose the connection.
+- `"PUT"` This method allows you to add a resource to the server.
+- `"DELETE"` This method allows you to delete a resource from the server.
 
-- `"GET"`
-This is the most common way to request a resource. A GET request has no effect on the resource, it must be possible to repeat the request without effect.
-
-
-- `"HEAD"`
-This method only asks for information about the resource (the header), without asking for the resource itself.
-
-
-- `"POST"`
-This method must be used when a request modifies the resource.
-
-
-- `"OPTIONS"`
-This method allows you to obtain the communication options of a resource or the server in general.
-
-
-- `"CONNECT"`
-This method allows you to use a proxy as a communication tunnel.
-
-
-- `"TRACE"`
-This method asks the server to return what it has received, in order to test and diagnose the connection.
-
-
-- `"PUT"`
-This method allows you to add a resource to the server.
-
-
-- `"DELETE"`
-This method allows you to delete a resource from the server.
-
-I will only discuss the most common ones here: HEAD, GET and POST.
 
 store html in var
 ^^^^^^^^^^^^^^^^^

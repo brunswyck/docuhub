@@ -8,11 +8,13 @@ Welcome to bedocs's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   bash
-   links
-   git
-   python
+   ansible
    apidoc/modules
+   bash
+   git
+   links
+   python
+   techtalk/main
 
 
 Indices and tables

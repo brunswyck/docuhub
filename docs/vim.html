@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Search &mdash; Patrick&#39;s Docs alpha documentation</title>
+  <title>vim &mdash; Patrick&#39;s Docs alpha documentation</title>
   
 
   
@@ -27,7 +27,6 @@
   
 
   
-    
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -44,10 +43,8 @@
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-    <script type="text/javascript" src="_static/searchtools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -74,7 +71,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -94,12 +91,12 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="ansible.html">ansible</a></li>
-<li class="toctree-l1"><a class="reference internal" href="apidoc/modules.html">becode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
-<li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ansible.html">server mgmt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidoc/modules.html">becode</a></li>
 </ul>
 
             
@@ -148,10 +145,14 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Search</li>
+      <li>vim</li>
     
     
       <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/vim.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -163,18 +164,78 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="vim">
+<h1>vim<a class="headerlink" href="#vim" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tips-n-tricks">
+<h2>tips n tricks<a class="headerlink" href="#tips-n-tricks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="copy-pasting">
+<h3>copy pasting<a class="headerlink" href="#copy-pasting" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="using-mark">
+<h4>using mark<a class="headerlink" href="#using-mark" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.. code-block:: bash
 
-  
-  <div id="search-results">
-  
-  </div>
+<span class="c1"># mark as k</span>
+mk
+
+<span class="c1"># go to end of section you want to copy</span>
+<span class="c1"># &#39; means till (so yank till k mark):</span>
+y<span class="s1">&#39;k</span>
+
+<span class="s1"># cut till mark</span>
+<span class="s1">d&#39;</span>k
+
+<span class="s2">&quot; is into</span>
+<span class="s2">&#39; is till</span>
+</pre></div>
+</div>
+<p>“ay’k” means <cite>into a yank till k</cite></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>.</strong> means line at cursor position</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># range from cursor -&gt; +5 lines</span>
+.,+5
+</pre></div>
+</div>
+</div>
+<div class="section" id="copy-a-block">
+<h4>copy a block<a class="headerlink" href="#copy-a-block" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mark block start x</span>
+mx
+
+<span class="c1"># goto end of block</span>
+use move keys
+
+<span class="c1"># mark block end y</span>
+my
+
+<span class="c1"># move to block start</span>
+<span class="sb">`</span>x
+
+<span class="c1"># yank up to block end</span>
+y<span class="sb">`</span>y
+
+<span class="c1"># or cut the block</span>
+d<span class="sb">`</span>y
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="vimrc">
+<h2>.vimrc<a class="headerlink" href="#vimrc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setting-up-vim">
+<h3>setting up vim<a class="headerlink" href="#setting-up-vim" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="setting-up-plugins">
+<h4>setting up plugins<a class="headerlink" href="#setting-up-plugins" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 
            </div>
            
@@ -216,14 +277,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>

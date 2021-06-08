@@ -294,38 +294,15 @@
 <h3>HTTP requests<a class="headerlink" href="#http-requests" title="Permalink to this headline">¶</a></h3>
 <p><cite>command</cite> is the method to use, it specifies the type of request, it can have the values :</p>
 <ul class="simple">
-<li><p><cite>“GET”</cite></p></li>
+<li><p><cite>“GET”</cite> This is the most common way to request a resource. A GET request has no effect on the resource, it must be possible to repeat the request without effect.</p></li>
+<li><p><cite>“HEAD”</cite> This method only asks for information about the resource (the header), without asking for the resource itself.</p></li>
+<li><p><cite>“POST”</cite> This method must be used when a request modifies the resource.</p></li>
+<li><p><cite>“OPTIONS”</cite> This method allows you to obtain the communication options of a resource or the server in general.</p></li>
+<li><p><cite>“CONNECT”</cite> This method allows you to use a proxy as a communication tunnel.</p></li>
+<li><p><cite>“TRACE”</cite> This method asks the server to return what it has received, in order to test and diagnose the connection.</p></li>
+<li><p><cite>“PUT”</cite> This method allows you to add a resource to the server.</p></li>
+<li><p><cite>“DELETE”</cite> This method allows you to delete a resource from the server.</p></li>
 </ul>
-<p>This is the most common way to request a resource. A GET request has no effect on the resource, it must be possible to repeat the request without effect.</p>
-<ul class="simple">
-<li><p><cite>“HEAD”</cite></p></li>
-</ul>
-<p>This method only asks for information about the resource (the header), without asking for the resource itself.</p>
-<ul class="simple">
-<li><p><cite>“POST”</cite></p></li>
-</ul>
-<p>This method must be used when a request modifies the resource.</p>
-<ul class="simple">
-<li><p><cite>“OPTIONS”</cite></p></li>
-</ul>
-<p>This method allows you to obtain the communication options of a resource or the server in general.</p>
-<ul class="simple">
-<li><p><cite>“CONNECT”</cite></p></li>
-</ul>
-<p>This method allows you to use a proxy as a communication tunnel.</p>
-<ul class="simple">
-<li><p><cite>“TRACE”</cite></p></li>
-</ul>
-<p>This method asks the server to return what it has received, in order to test and diagnose the connection.</p>
-<ul class="simple">
-<li><p><cite>“PUT”</cite></p></li>
-</ul>
-<p>This method allows you to add a resource to the server.</p>
-<ul class="simple">
-<li><p><cite>“DELETE”</cite></p></li>
-</ul>
-<p>This method allows you to delete a resource from the server.</p>
-<p>I will only discuss the most common ones here: HEAD, GET and POST.</p>
 <div class="section" id="store-html-in-var">
 <h4>store html in var<a class="headerlink" href="#store-html-in-var" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>

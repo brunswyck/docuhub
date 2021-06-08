@@ -165,13 +165,154 @@
             
   <div class="section" id="threading">
 <h1>threading<a class="headerlink" href="#threading" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="wow-threading">
-<h2>wow threading<a class="headerlink" href="#wow-threading" title="Permalink to this headline">¶</a></h2>
-<hr class="docutils" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span> <span class="nn">contextlib</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="section" id="non-blocking">
+<h2>non-blocking<a class="headerlink" href="#non-blocking" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="first-example">
+<h3>first example<a class="headerlink" href="#first-example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+
+<span class="k">class</span> <span class="nc">ThreadFunction</span><span class="p">(</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Thread </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: starting&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Thread </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: finishing&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">ThreadFunction</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Thread 0: starting</span>
+<span class="sd">Thread 1: starting</span>
+<span class="sd">Thread 2: starting</span>
+<span class="sd">Thread 3: starting</span>
+<span class="sd">Thread 4: starting</span>
+<span class="sd">Thread 2: finishingThread 0: finishingThread 1: finishing</span>
+
+
+<span class="sd">Thread 3: finishing</span>
+<span class="sd">Thread 4: finishing</span>
+<span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
+</div>
+<p>each iteration runs in parallel and is executed at the same time. So the final script will only last 2 seconds in total since the code is not blocking.</p>
+<p>Parallel programming can be very convenient, but it also has its pitfalls. We will now look at some of them and the methods that exist to avoid them.</p>
+</div>
+</div>
+<div class="section" id="thread-synchronization">
+<h2>thread synchronization<a class="headerlink" href="#thread-synchronization" title="Permalink to this headline">¶</a></h2>
+<p>Programming multiple instruction streams brings its share of difficulties. At first glance, it seems very convenient to have several parts of our code running at the same time. During a task that may take a long time to run (perhaps downloading information from a website) we can do something else, not just wait for the resource to be downloaded.</p>
+<p>But development can be proportionately more complicated. You have to keep in mind that different instruction streams can be advanced to different points at a given time.</p>
+<div class="section" id="example">
+<h3>example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyThread</span><span class="p">(</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;threads.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">thread_1</span> <span class="o">=</span> <span class="n">MyThread</span><span class="p">(</span><span class="s2">&quot;My First thread! &quot;</span><span class="p">)</span>
+<span class="n">thread_2</span> <span class="o">=</span> <span class="n">MyThread</span><span class="p">(</span><span class="s2">&quot;My Second thread! &quot;</span><span class="p">)</span>
+<span class="n">thread_3</span> <span class="o">=</span> <span class="n">MyThread</span><span class="p">(</span><span class="s2">&quot;My third thread! &quot;</span><span class="p">)</span>
+<span class="n">thread_4</span> <span class="o">=</span> <span class="n">MyThread</span><span class="p">(</span><span class="s2">&quot;My fourth thread! &quot;</span><span class="p">)</span>
+
+<span class="n">thread_1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">thread_2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">thread_3</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">thread_4</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;threads.txt&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="c1"># My Second thread! My First thread! My third thread! My 4e thread!</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="lock">
+<h3>lock<a class="headerlink" href="#lock" title="Permalink to this headline">¶</a></h3>
+<p>There are several ways to “synchronize” our threads, i.e. to make some of the code only run if no one is using the shared resource. The simplest synchronization mechanism is the lock.</p>
+<p>It is an object proposed by <cite>threading</cite> that is extremely simple to use: at the beginning of our instructions that use our shared resource, we tell the lock to block for the other threads. If another thread wants to use this resource, it must wait until it is released.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>from threading import Thread, RLock</p>
+<p>lock = RLock()</p>
+<dl>
+<dt>class SyncThread(Thread):</dt><dd><dl>
+<dt>def __init__(self, text):</dt><dd><p>Thread.__init__(self)
+self.text = text</p>
+</dd>
+<dt>def run(self):</dt><dd><dl>
+<dt>with lock:</dt><dd><p>print(self.text)
+with open(‘synch_thread.txt’, ‘a’) as file:</p>
+<blockquote>
+<div><p>file.write(self.text)</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>thread_1 = SyncThread(“Thread 1 /”)
+thread_2 = SyncThread(“Thread 2 /”)
+thread_3 = SyncThread(“Thread 3 /”)
+thread_4 = SyncThread(“Thread 4 /”)</p>
+<p>thread_1.start()
+thread_2.start()
+thread_3.start()
+thread_4.start()</p>
+<ul class="simple">
+<li><p>We import <cite>RLock</cite> from the threading module</p></li>
+<li><p>We create a lock that we put into our <cite>lock</cite> variable</p></li>
+<li><p>In our <cite>run</cite> method, we lock part of our thread.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span><span class="p">,</span> <span class="n">RLock</span>
+
+<span class="n">lock</span> <span class="o">=</span> <span class="n">RLock</span><span class="p">()</span>
+
+
+<span class="k">class</span> <span class="nc">SyncThread</span><span class="p">(</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sync_thread.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">thread_1</span> <span class="o">=</span> <span class="n">SyncThread</span><span class="p">(</span><span class="s2">&quot;Thread 1 /&quot;</span><span class="p">)</span>
+    <span class="n">thread_2</span> <span class="o">=</span> <span class="n">SyncThread</span><span class="p">(</span><span class="s2">&quot;Thread 2 /&quot;</span><span class="p">)</span>
+    <span class="n">thread_3</span> <span class="o">=</span> <span class="n">SyncThread</span><span class="p">(</span><span class="s2">&quot;Thread 3 /&quot;</span><span class="p">)</span>
+    <span class="n">thread_4</span> <span class="o">=</span> <span class="n">SyncThread</span><span class="p">(</span><span class="s2">&quot;Thread 4 /&quot;</span><span class="p">)</span>
+
+    <span class="n">thread_1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">thread_2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">thread_3</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">thread_4</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;sync_thread.txt&quot;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="c1"># thread order will always be the same</span>
+    <span class="c1"># Thread 1 /</span>
+    <span class="c1"># Thread 2 /</span>
+    <span class="c1"># Thread 3 /</span>
+    <span class="c1"># Thread 4 /</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
