@@ -14,7 +14,7 @@ Welcome to bedocs's documentation!
    git
    links
    python
-   techtalks
+   techtalk/main
 
 
 Indices and tables

@@ -1823,6 +1823,9 @@ summary comprehensions generators
 
 list of iteration tools in python: https://docs.python.org/3/library/itertools.html
 
+
+
+
 classes
 =======
 
@@ -2090,6 +2093,79 @@ summary classes
 - Statements can be split over multiple lines using backslash
   - Use this feature sparingly and only when it improves readability
 - Use “Ask! Don’t tell.” to avoid tight coupling between objects
+
+recursion
+=========
+
+
+Solve problems that can be broken up into sub-problems of the same type
+
+- 5! (5 factorial) is 5 * 4 * 3 * 2 * 1 (120)
+- `n! = n * (n-1)!`
+- **BASE CASE: 1! = 1** -> can be calculated without performing any more factorial function calls
+
+.. note:: The base case acts as the exit condition of the recursion
+
+.. code-block:: python
+
+   def factorial(x):
+       # base case
+       if x == 1:
+           return 1
+       else:
+           return x * factorial(x-1)
+
+
+   print(factorial(5))  # 120
+
+
+.. code-block:: python
+
+   """fibonacci"""
+   def fibo(n):
+       if n <= 1:
+           return n  # returns 0 & 1's
+       else:
+           return fibo(n-1) + fibo(n-2)
+
+
+   number = 6
+   for i in range(6):
+       print(fibo(i))
+
+
+.. code-block:: python
+
+   def power(x, y):
+       if y == 0:
+           return 1
+       else:
+           return x * power(x, y-1)
+
+
+   print(power(2, 3))  # 8
+
+
+.. note:: Recursion can also be indirect. One function can call a second, which calls the first, which calls the second, and so on. This can occur with any number of functions
+
+
+.. code-block:: python
+
+   def is_even(x):
+       if x == 0:
+           return True
+       else:
+           return is_odd(x-1)
+
+
+   def is_odd(x):
+       return not is_even(x)  # not! else will also return True when odd
+
+
+   is_even(9)  # False
+   is_even(12) # True
+   is_odd(17)  # True
+
 
 files and resource management
 =============================
@@ -2940,9 +3016,12 @@ There are also the classes defined in the module (the class C and the superclass
 
 "
 
+********
+practice
+********
 
-selfmade
-========
+using classes
+=============
 
 guess a number
 --------------
@@ -3051,6 +3130,10 @@ guess a number
    Bingooo, you guessed the number.. Woo000oot!?!
    """
 
+
+validation
+==========
+
 non regex ip validation
 -----------------------
 
@@ -3120,12 +3203,12 @@ unittest
    if __name__ == '__main__':
        unittest.main()
 
-
+*****
 regex
-=====
+*****
 
 searching
----------
+=========
 
 - re.match: returns first occurence matching pattern in a string as a **match object**
 - re.search: returns a **match object** if there is a match **anywhere** in the string, unlike match
@@ -3138,7 +3221,7 @@ searching
    match only works on the WHOLE string, use search to get a match within a string eg. find a number in xqsdf88mlkj
 
 substitution
-------------
+============
 
 - re.sub: replaces 1 or many matches with a string and returns the result
 - re.subn: like sub but also returns info on **number of substitutions** made
@@ -3202,7 +3285,7 @@ specify a posivive int for the optional **count** parameter
    ('FOO.100.BAR.200.BAZ.300', 6)
 
 utility functions
------------------
+=================
 
 - re.split: splits a string into substrings using **regex as delimiter** and returns substrings as a list
 - re.escape: escapes characters in a regex
@@ -3260,7 +3343,7 @@ If you need to use groups but don’t want the delimiters included in the return
    ['foo', 'bar', 'baz', 'qux, quux, corge']
 
 re.escape
-^^^^^^^^^
+=========
 
 the regex you’re passing in has a lot of special characters that you want the parser to take literally instead of as metacharacters. It saves you the trouble of putting in all the backslash characters manually:
 
@@ -3277,7 +3360,7 @@ the regex you’re passing in has a lot of special characters that you want the 
    <_sre.SRE_Match object; span=(0, 16), match='foo^bar(baz)|qux'>
 
 re.compile
-----------
+==========
 
 - re.compile: compiles regex and returns the corresponding regex object
 
@@ -3325,7 +3408,7 @@ re.compile
    re_obj.search(s4)
 
 regex oject attributes
-----------------------
+======================
 
 - re_obj.flags: shows any flags that are in effect for the regex
 - re_obj.groups: the number of capturing groups in the regex
@@ -3353,6 +3436,9 @@ regex oject attributes
    2
 
 .. note:: Note that .flags includes any flags specified as arguments to re.compile(), any specified within the regex with the (?flags) metacharacter sequence, and any that are in effect by default
+
+match object
+============
 
 match object is truthy
 ----------------------
@@ -3424,6 +3510,60 @@ match object attributes
    m = re_obj.search('foo,bar,baz')
    m.string
    'foo,bar,baz'
+
+lookaround
+==========
+
+http://www.regular-expressions.info/lookaround.html
+
+
+Lookahead and lookbehind, collectively called “lookaround”, are zero-length assertions just like the start and end of line, and start and end of word anchors explained earlier in this tutorial. The difference is that lookaround actually matches characters, but then gives up the match, returning only the result: match or no match. That is why they are called “assertions”. They do not consume characters in the string, but only assert whether a match is possible or not. Lookaround allows you to create regular expressions that are impossible to create without them, or that would get very longwinded without them.
+
+positive lookahead
+------------------
+
+plus followed by a -
+\+(?=-)
+
+.. image: files/img/positive_lookahead.png
+
+negative lookahead
+------------------
+
+plus not followed by a - (so end of the line)
+\+(?!-)
+
+.. image: files/img/negative_lookahead.png
+
+
+.. note::
+
+   If you want to store the match of the regex inside a lookahead, you have to put capturing parentheses around the regex inside the lookahead, like this: (?=(regex)). The other way around will not work, because the lookahead will already have discarded the regex match by the time the capturing group is to store its match
+
+lookbehind
+==========
+
+positive lookbehind
+-------------------
+
+match a '+' when preceeded by a '-'
+# starting from a plus, lookback to ensure there is a '-'
+(?<=-)\+
+
+.. image: files/img/positive_lookbehind.png
+
+negative lookbehind
+-------------------
+
+match a '+' when NOT preceeded by a '-'
+# starting from a plus, lookback to ensure there is NO '-'
+(?<=-)\+
+
+.. image: files/img/negative_lookbehind1.png
+
+
+.. image: files/img/negative_lookbehind2.png
+
 
 .. include:: scraping.rst
 .. include:: threading.rst

@@ -9,123 +9,185 @@ techtalks
 open markets
 ************
 
-prepwork
-========
 
-https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-and-upgrading-ansible-with-pip
+the space race for open finance
+===============================
 
-environments
-------------
+the why
+-------
 
-.. code-block:: bash
-  
-   # go to desired conda environment
-   conda activate base
+Big markets, big bullshit
+Obfuscating collateral, hidden risk
 
-   # create a pip environment to admin servers
-   mkvirtualenv srvmgmt
-   workon srvmgmt
+Banks plebs and psychology
+Banks plebs and lemons
 
-   # doublecheck pip you are using
-   pip --version
-   pip 20.0.2 from /home/dadude/venv/srvmgmt/lib/python3.8/site-packages/pip (python 3.8)
+How do markets work?
+How can we make this more transparent?
 
-   # upgrade pip
-   pip3 install --upgrade pip
+cons in tradfi
+- 
 
 
-install packages
-----------------
+promises promises
+-----------------
 
-.. code-block:: bash
-  
-   pip install ansible
-   # Successfully installed MarkupSafe-2.0.1 PyYAML-5.4.1 ansible-4.0.0 ansible-core-2.11.1
-   # cffi-1.14.5 cryptography-3.4.7 jinja2-3.0.1 packaging-20.9 pycparser-2.20
-   # pyparsing-2.4.7 resolvelib-0.5.4
+crypto:
+ - power of incorruptible collateral
+ - verify without rating agencies/banks
+ - non-custodial wallets
 
-   pip install ansible-lint
+reality:
+ - CeFi cascades of `doom`_
+   who got `rekt today`?
+ - `MEV`_ (Miner Extractable Value)
+   miners can determine the order of when transactions are processed, mempool
 
-post install
-------------
+.. image:: picture.jpg
+   :width: 200px
+   :height: 100px
+   :scale: 50 %
+   :alt: alternate text
+   :align: right
 
-.. code-block:: bash
+ - gazmataz
+   `example ethereum`
+ - shitcoins memecoins
 
-   ansible all -m ping --ask-pass
-   pip install argcomplete
+.. _doom: https://cointelegraph.com/news/cointelegraph-consulting-defi-hit-by-a-tsunami-of-liquidations-in-may
+.. _rekt today: https://app.rek.to/
+.. _MEV: https://blog.chain.link/what-is-miner-extractable-value-mev/
+.. _example ethereum: https://etherscan.io/gastracker
 
-   # Installing bash completion script ~/.bash_completion.d/python-argcomplete
-   $(which activate-global-python-argcomplete) --user
+got stopped out?
+verify what happened = difference with cefi
 
-   # or sudo $(which activate-global-python-argcomplete)
-   # for system wide config in /etc/bash_completion.d/python-argcomplete
+vega can't put in a stop order
+check github discussions on that (obfuscation stuff)
+vega is an orderbook exchange initially later amm style
+key: target liquidity level
+liquidityprovider:  incentivized liquidity protection, share price price, stop providing liquidity = loose share. Dig into liquidity protection
 
-configuration
-=============
+it is not just about swapping tokens :)
+trade data
+might be the weather!
 
-If you installed Ansible from pip or from source, you may want to create this file in order to override default settings in Ansible
+vega is looking at perpetuals, hourly perpetuals
 
-.. code-block:: bash
+deriviatives = set of rules of how you gonna swap assets under various conditions in the future
 
-   # curl -O [filename] <url>
-   # use -L or --location to follow a redirect
-   # https://github.com/ansible/ansible/blob/devel/examples/ansible.cfg
-   curl -O https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg
+ssl example
 
-   (srvmgmt) (becode) dadude@dahost ~/.ansible
+.. code::
+
+   curl -vvI https://www.reddit.com/search/?q=paypal%20block
+
+   *   Trying 151.101.37.140:443...
+   * TCP_NODELAY set
+   * Connected to www.reddit.com (151.101.37.140) port 443 (#0)
+   * ALPN, offering h2
+   * ALPN, offering http/1.1
+   * successfully set certificate verify locations:
+   *   CAfile: /etc/ssl/certs/ca-certificates.crt
+     CApath: /etc/ssl/certs
+   * TLSv1.3 (OUT), TLS handshake, Client hello (1):
+   * TLSv1.3 (IN), TLS handshake, Server hello (2):
+   * TLSv1.2 (IN), TLS handshake, Certificate (11):
+   * TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+   * TLSv1.2 (IN), TLS handshake, Server finished (14):
+   * TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+   * TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
+   * TLSv1.2 (OUT), TLS handshake, Finished (20):
+   * TLSv1.2 (IN), TLS handshake, Finished (20):
+   * SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
+   * ALPN, server accepted to use h2
+   * Server certificate:
+   *  subject: C=US; ST=CALIFORNIA; L=SAN FRANCISCO; O=Reddit Inc.; CN=*.reddit.com
+   *  start date: May 23 00:00:00 2021 GMT
+   *  expire date: Nov 18 23:59:59 2021 GMT
+   *  subjectAltName: host "www.reddit.com" matched cert's "*.reddit.com"
+   *  issuer: C=US; O=DigiCert Inc; CN=DigiCert TLS RSA SHA256 2020 CA1
+   *  SSL certificate verify ok.
+   * Using HTTP2, server supports multi-use
+   * Connection state changed (HTTP/2 confirmed)
+   * Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+   * Using Stream ID: 1 (easy handle 0x55f8f2c2ee10)
+   > HEAD /search/?q=paypal%20block HTTP/2
+   > Host: www.reddit.com
+   > user-agent: curl/7.68.0
+   > accept: */*
+   > 
+   * Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+   < HTTP/2 429 
+   HTTP/2 429 
+   < content-type: text/html; charset=UTF-8
+   content-type: text/html; charset=UTF-8
+   < x-ua-compatible: IE=edge
+   x-ua-compatible: IE=edge
+   < retry-after: 5
+   retry-after: 5
+   < x-frame-options: SAMEORIGIN
+   x-frame-options: SAMEORIGIN
+   < x-content-type-options: nosniff
+   x-content-type-options: nosniff
+   < x-xss-protection: 1; mode=block
+   x-xss-protection: 1; mode=block
+   < cache-control: max-age=0, must-revalidate
+   cache-control: max-age=0, must-revalidate
+   < x-moose: majestic
+   x-moose: majestic
+   < accept-ranges: bytes
+   accept-ranges: bytes
+   < date: Tue, 08 Jun 2021 06:54:15 GMT
+   date: Tue, 08 Jun 2021 06:54:15 GMT
+   < via: 1.1 varnish
+   via: 1.1 varnish
+   < vary: accept-encoding
+   vary: accept-encoding
+   < set-cookie: loid=0000000000clhaklhm.2.1623135255310.Z0FBQUFBQmd2eFFYRGJJV3RsWFA4aWJ4djlOXzdLV2o5eXh0bFNFZ1A4SDBpZXJiWUhpTktUR3dRUUJQc19LQVJuVnh1N1RwT2hHZGsyUEdqWXNzTllRVVdrNGNYVUVMOWpTT0V4eDFjekZjNzQ2RnFtbjZDQlB4LWhlYlFvT0dWeDRsV1BnZU01NzM; Domain=reddit.com; Max-Age=63071999; Path=/; expires=Thu, 08-Jun-2023 06:54:15 GMT; secure; SameSite=None; Secure
+   set-cookie: loid=0000000000clhaklhm.2.1623135255310.Z0FBQUFBQmd2eFFYRGJJV3RsWFA4aWJ4djlOXzdLV2o5eXh0bFNFZ1A4SDBpZXJiWUhpTktUR3dRUUJQc19LQVJuVnh1N1RwT2hHZGsyUEdqWXNzTllRVVdrNGNYVUVMOWpTT0V4eDFjekZjNzQ2RnFtbjZDQlB4LWhlYlFvT0dWeDRsV1BnZU01NzM; Domain=reddit.com; Max-Age=63071999; Path=/; expires=Thu, 08-Jun-2023 06:54:15 GMT; secure; SameSite=None; Secure
+   < set-cookie: session_tracker=Pbpr8DDPWUwkRPyT5F.0.1623135255310.Z0FBQUFBQmd2eFFYaVYzWEhXR1BERzg4OWpJSmVhNnB2dHM3dWRVM0NibU5fUDZEbjVMYk9WZXNDYzQ0QzJ2MjZrWjhOcVM4eVFJUkR6MTRucWdGWWRpWEMxM19xTnVCMlVfMnd1Z1hYRjg4cEcwSzBfUUxVbk5XS2J0eUhKaDBrWUZpcHRTLVczSGU; Domain=reddit.com; Max-Age=7199; Path=/; expires=Tue, 08-Jun-2021 08:54:15 GMT; secure; SameSite=None; Secure
+   set-cookie: session_tracker=Pbpr8DDPWUwkRPyT5F.0.1623135255310.Z0FBQUFBQmd2eFFYaVYzWEhXR1BERzg4OWpJSmVhNnB2dHM3dWRVM0NibU5fUDZEbjVMYk9WZXNDYzQ0QzJ2MjZrWjhOcVM4eVFJUkR6MTRucWdGWWRpWEMxM19xTnVCMlVfMnd1Z1hYRjg4cEcwSzBfUUxVbk5XS2J0eUhKaDBrWUZpcHRTLVczSGU; Domain=reddit.com; Max-Age=7199; Path=/; expires=Tue, 08-Jun-2021 08:54:15 GMT; secure; SameSite=None; Secure
+   < set-cookie: csv=1; Max-Age=63072000; Domain=.reddit.com; Path=/; Secure; SameSite=None
+   set-cookie: csv=1; Max-Age=63072000; Domain=.reddit.com; Path=/; Secure; SameSite=None
+   < set-cookie: edgebucket=kaModUrAuC4Jaj8L9A; Domain=reddit.com; Max-Age=63071999; Path=/;  secure
+   set-cookie: edgebucket=kaModUrAuC4Jaj8L9A; Domain=reddit.com; Max-Age=63071999; Path=/;  secure
+   < strict-transport-security: max-age=15552000; includeSubDomains; preload
+   strict-transport-security: max-age=15552000; includeSubDomains; preload
+   < server: snooserv
+   server: snooserv
+   < x-clacks-overhead: GNU Terry Pratchett
+   x-clacks-overhead: GNU Terry Pratchett
+   < content-length: 1064
+   content-length: 1064
+
+   < 
+   * Connection #0 to host www.reddit.com left intact
 
 
-hosts
------
+shitcoins & rug pulls
+*********************
+some other talk
+***************
+**************
+time to choose
+**************
+Vega or Bitmex?
 
-https://github.com/ansible/ansible/blob/devel/examples/hosts.yaml
+here for open markets: https://linktr.ee/vegaprotocol
 
+here to get rekt on bitmex
 
-host groups
-^^^^^^^^^^^
+*********
+demo time
+*********
+vega
+====
 
-.. code-block:: yaml
+api howto
+---------
 
-   all:
-     hosts:
-         green.example.com:
-             ansible_ssh_host: 191.168.100.32
-             anyvariable: value
-         blue.example.com:
-         192.168.100.1:
-         192.168.100.10:
+api howto guide
 
-
-   webservers:
-     hosts:
-        alpha.example.org:
-        beta.example.org:
-        192.168.1.100:
-        192.168.1.110:
-     vars:
-       http_port: 8080
-
-
-   # webservers host group = also part of testing & other (gamma3)
-   # hosts in child group inherits aal vars from parent
-   # testing group contains:
-   # gamma1.example.org gamma2.example.org gamma3.example.org
-   # www001.example.com www002.example.com www003.example.com
-   # www004.example.com www005.example.com www006.example.com
-   webservers:
-     hosts:
-       gamma1.example.org:
-       gamma2.example.org:
-   testing:
-     hosts:
-       www[001:006].example.com:
-     vars:
-       testing1: value1
-     children:
-       webservers:
-   other:
-     children:
-       webservers:
-         gamma3.example.org
-
-
+watching the mempool
+https://www.blocknative.com/blog/explorer
