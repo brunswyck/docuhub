@@ -11,10 +11,10 @@
   
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
 
@@ -172,7 +172,19 @@
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="ansible.html">ansible</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ansible.html#installation">installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ansible.html#installation">installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ansible.html#prepwork">prepwork</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ansible.html#environments">environments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ansible.html#install-packages">install packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ansible.html#post-install">post install</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ansible.html#configuration">configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ansible.html#hosts">hosts</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="apidoc/modules.html">becode</a><ul>
@@ -180,13 +192,122 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bash.html#bashrc-config">bashrc config</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bash.html#scripting">scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bash.html#bashrc-config">bashrc config</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bash.html#prompt-customs">prompt customs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bash.html#git">git</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bash.html#scripting">scripting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bash.html#file-test-operators">file test operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bash.html#check-file-exists">check file exists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bash.html#check-multiple-files">check multiple files</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="git.html#github">github</a></li>
-<li class="toctree-l2"><a class="reference internal" href="git.html#git-commands">git commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git.html#github">github</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="git.html#github-markdown">github markdown</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#emoji-s">emoji’s</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#text">text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#headers">headers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#emphasis">emphasis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#lists">lists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#images">images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#links">links</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#blockquotes">blockquotes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#inline-code">inline code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#syntax-highlighting">syntax highlighting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#task-lists">task lists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#tables">tables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="git.html#rest-api">rest api</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#id1">links</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="git.html#github-cli">github cli</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#install-github-cli">install github cli</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#initialize-gh-cli">initialize gh cli</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#cli-help">cli help</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#extending-cli">extending cli</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="git.html#git-commands">git commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="git.html#setup-new-repo">setup new repo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#local-to-remote">local to remote</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="git.html#user-specific">user specific</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#write-to-global-gitconfig">write to global ~/.gitconfig</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="git.html#exercises">exercises</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#first-one">first one</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="git.html#basic-cmds">basic cmds</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#show-local-remote-branches">show local &amp; remote branches</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="git.html#branches">branches</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#remotes">remotes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#show-remote">show remote</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#delete-branch">delete branch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#delete-remote-branch">delete remote branch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#create-new-branch-from-remote-branch">create new branch from remote branch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#create-new-branch-in-a-remote-repo">create new branch in a remote repo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#id-merged-branches">id merged branches</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="git.html#prune-stale-branches">prune stale branches</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#changed-gitignore-but-folder-still-in-commit">changed gitignore but folder still in commit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#force-local-changes-on-remote-master-with-no-merge">force local changes on remote master with no merge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#load-gitconfig-file">load .gitconfig file</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="git.html#tagging">tagging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#creating-tags">creating tags</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="git.html#git-log">git log</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#git-log-params">git log params</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="git.html#cherry-picking">cherry picking</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#cherry-picking-commits">cherry-Picking commits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#resolve-cherry-picking-conflicts">resolve cherry-picking conflicts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="git.html#merge">merge</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#make-main-great-again">make main great again</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#before">before</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#after">after</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#how-to-prepare">how to prepare</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#fast-forward-merge">fast forward merge</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="git.html#rebase">rebase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#rebase-to-tip">rebase to tip</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#merge-vs-rebase">merge VS rebase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#squash-commits">squash commits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#pull-rebase">pull rebase</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="git.html#troubleshooting">troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="git.html#log-options">Log options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#blame">blame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="git.html#bisect">bisect</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="links.html">Links</a><ul>
@@ -194,23 +315,221 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">python</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="python.html#library">library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html#conda">conda</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html#pip">pip</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html#documenting">documenting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html#fundamentals">fundamentals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html#oop">OOP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html#practice">practice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html#regex">regex</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html#scraping">scraping</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html#threading">threading</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html#parsing">parsing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python.html#library">library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html#toolkit">toolkit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#first-collection">first collection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python.html#conda">conda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html#install">install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#environments">environments</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#managing-environments">managing environments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#backup-environment">backup environment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#packages">packages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#search">search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#backup-used-packages">backup used packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#install-required-packages">install required packages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python.html#pip">pip</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html#package-mgmt">package mgmt</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#backup-required-packages">backup required packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#id1">install required packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#virtualenvwrapper">virtualenvwrapper</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python.html#documenting">documenting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html#sphinx">sphinx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#setup-sphinx">setup sphinx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#pip3-requirements">pip3 requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python.html#fundamentals">fundamentals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html#modularity">modularity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#main-function-cli-arguments">main function &amp; cli arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#docstrings">docstrings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#objects">objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#function-default-values-for-arguments">function default values for arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#collections">collections</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#tuple">tuple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#string">string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#range">range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#list">list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#shallow-copies">shallow copies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#list-repetition">list repetition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#more-on-list">more on list</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#growing-lists">growing lists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#reversing-and-sorting-lists">reversing and sorting lists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#dictionary">dictionary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#set">set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#collection-protocols">collection protocols</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#handling-exceptions">handling exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#exception-and-control-flow">exception and control flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#handling-raised-exceptions">handling raised exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#programmer-errors">programmer errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#re-raising-exceptions">re-raising exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#exceptions-as-apis">exceptions as APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#clean-up-actions">clean-up actions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#platform-specific-code">platform-specific code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#comprehensions-iterables-and-generators">Comprehensions, iterables and generators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#list-comprehensions">list comprehensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#set-comprehensions">set comprehensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#dictionary-comprehensions">dictionary comprehensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#filtering-predicates">filtering predicates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#iteration-protocols">iteration protocols</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#generators">generators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#stateful-generators">stateful generators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#generator-comprehensions">generator comprehensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#using-itertools">using itertools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#summary-comprehensions-generators">summary comprehensions generators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#classes">classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#summary-classes">summary classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#recursion">recursion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#files-and-resource-management">files and resource management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#zip-files">zip files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#json">json</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#csv">csv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#xml">xml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#concatenate-files">concatenate files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#dask">dask</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python.html#oop">OOP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html#theory">theory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#static-methods">static methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#class-methods">class methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#inheritance">inheritance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#private-vars">private vars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#property">&#64;property</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#scoping-rules">scoping rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python.html#practice">practice</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html#using-classes">using classes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#guess-a-number">guess a number</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#validation">validation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#non-regex-ip-validation">non regex ip validation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python.html#regex">regex</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html#searching">searching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#substitution">substitution</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#substitution-by-function">substitution by function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#limit-number-of-replacements">limit number of replacements</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#utility-functions">utility functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#re-escape">re.escape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#re-compile">re.compile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#regex-oject-attributes">regex oject attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#match-object">match object</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#match-object-is-truthy">match object is truthy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#match-object-methods">match object methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#match-object-attributes">match object attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#lookaround">lookaround</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#positive-lookahead">positive lookahead</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#negative-lookahead">negative lookahead</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#lookbehind">lookbehind</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#positive-lookbehind">positive lookbehind</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#negative-lookbehind">negative lookbehind</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python.html#scraping">scraping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html#beautiful-soup">beautiful soup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#setup-bs4">setup bs4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#find-html-elements">find html elements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#apply-regex-on-element-string">apply regex on element string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#http-requests">HTTP requests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#selenium">selenium</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#handy-libraries">handy libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#scraping-training">scraping training</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#inquisitive-with-bs4-selenium">inquisitive with bs4 &amp; selenium</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python.html#threading">threading</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html#non-blocking">non-blocking</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#first-example">first example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#thread-synchronization">thread synchronization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#example">example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#lock">lock</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python.html#parsing">parsing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html#parsing-cli-options">parsing cli options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#code-with-cli-parsing">code with cli parsing</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="techtalk/main.html">techtalks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="techtalk/main.html#open-markets">open markets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="techtalk/main.html#time-to-choose">time to choose</a></li>
-<li class="toctree-l2"><a class="reference internal" href="techtalk/main.html#demo-time">demo time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="techtalk/main.html#open-markets">open markets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#the-space-race-for-open-markets">the space race for open markets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#why-we-need-open-markets">why we need open markets</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#current-state-of-defi">current state of defi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#supercharged-blowouts">supercharged blowouts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#a-solution-called-vega">a solution called vega</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#demo-on-open-marketplace">demo on open marketplace</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#vegawallet-usage">vegawallet usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#testnet-exploration">testnet exploration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#links">links</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#time-to-choose">time to choose</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#when-moon">when moon?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#advice">advice</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#addendum">addendum</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

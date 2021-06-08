@@ -11,10 +11,10 @@
   
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
 
@@ -91,11 +91,13 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
-<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html">python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ansible.html">ansible</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidoc/modules.html">becode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="techtalk/main.html">techtalks</a></li>
 </ul>
 
             
@@ -390,72 +392,7 @@ def print_text():</p>
 &gt;if we wrote a useful decorator we might want to replace print_text with the decorated version
 &gt;altogether so we always got our “plus something” version of print_text
 &gt;***</p>
-<p>## Recursion
-- Solve problems that can be broken up into sub-problems of the same type</p>
-<ul class="simple">
-<li><p>eg: 5! (5 factorial) is 5 * 4 * 3 * 2 * 1 (120)</p></li>
-<li><p>n! = n * (n-1)!</p></li>
-<li><p>BASE CASE: 1! = 1 -&gt; can be calculated without performing any more factorial function calls</p></li>
-</ul>
-<p>&gt;***
-&gt;**note**
-&gt;The base case acts as the exit condition of the recursion
-&gt;***</p>
-<p><a href="#id45"><span class="problematic" id="id46">``</span></a><a href="#id47"><span class="problematic" id="id48">`</span></a>python
-def factorial(x):</p>
-<blockquote>
-<div><p># base case
-if x == 1:</p>
-<blockquote>
-<div><p>return 1</p>
-</div></blockquote>
-<dl class="simple">
-<dt>else:</dt><dd><p>return x * factorial(x-1)</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>print(factorial(5))  # 120</p>
-<p>“””fibonacci”””
-def fibo(n):</p>
-<blockquote>
-<div><dl class="simple">
-<dt>if n &lt;= 1:</dt><dd><p>return n  # returns 0 &amp; 1’s</p>
-</dd>
-<dt>else:</dt><dd><p>return fibo(n-1) + fibo(n-2)</p>
-</dd>
-</dl>
-</div></blockquote>
-<p>number = 6
-for i in range(6):</p>
-<blockquote>
-<div><p>print(fibo(i))</p>
-</div></blockquote>
-<dl class="simple">
-<dt>def power(x, y):</dt><dd><dl class="simple">
-<dt>if y == 0:</dt><dd><p>return 1</p>
-</dd>
-<dt>else:</dt><dd><p>return x * power(x, y-1)</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>print(power(2, 3))  # 8</p>
-<p>“””Recursion can also be indirect. One function can call a second, which calls the first, which calls the second, and so on. This can occur with any number of functions”””</p>
-<dl class="simple">
-<dt>def is_even(x):</dt><dd><dl class="simple">
-<dt>if x == 0:</dt><dd><p>return True</p>
-</dd>
-<dt>else:</dt><dd><p>return is_odd(x-1)</p>
-</dd>
-</dl>
-</dd>
-<dt>def is_odd(x):</dt><dd><p>return not is_even(x)  # not! else will also return True when odd</p>
-</dd>
-</dl>
-<p>is_even(9)  # False
-is_even(12) # True
-is_odd(17)  # True</p>
-<p><a href="#id49"><span class="problematic" id="id50">``</span></a>`
+<p><a href="#id45"><span class="problematic" id="id46">``</span></a>`
 ## sets
 - Are unordered, so can’t be indexed
 - Cannot contain duplicate elements
@@ -463,32 +400,32 @@ is_odd(17)  # True</p>
 - ~~append~~ use set.add()
 - set.remove(x) # specific element
 - set.pop(x) # remove arbirary element</p>
-<p><a href="#id213"><span class="problematic" id="id214">|set operation|</span></a> operator| description|
-<a href="#id215"><span class="problematic" id="id216">|:---:|</span></a>:—:<a href="#id217"><span class="problematic" id="id218">|---|</span></a>
-<a href="#id219"><span class="problematic" id="id220">|union       |   \|  | combine 2 sets to form new one |
+<p><a href="#id209"><span class="problematic" id="id210">|set operation|</span></a> operator| description|
+<a href="#id211"><span class="problematic" id="id212">|:---:|</span></a>:—:<a href="#id213"><span class="problematic" id="id214">|---|</span></a>
+<a href="#id215"><span class="problematic" id="id216">|union       |   \|  | combine 2 sets to form new one |
 |intersection|</span></a>   &amp;   | get items present in both |
-<a href="#id221"><span class="problematic" id="id222">|difference  |   -   | get items in 1st set but not in 2nd|</span></a>
-<a href="#id223"><span class="problematic" id="id224">|symmetric difference|^|get items in either but not both|</span></a>
-<a href="#id51"><span class="problematic" id="id52">``</span></a><a href="#id53"><span class="problematic" id="id54">`</span></a>python
+<a href="#id217"><span class="problematic" id="id218">|difference  |   -   | get items in 1st set but not in 2nd|</span></a>
+<a href="#id219"><span class="problematic" id="id220">|symmetric difference|^|get items in either but not both|</span></a>
+<a href="#id47"><span class="problematic" id="id48">``</span></a><a href="#id49"><span class="problematic" id="id50">`</span></a>python
 first = {1, 2, 3, 4, 5, 6}
 second = {4, 5, 6, 7, 8, 9}</p>
 <p>print(first | second) # {1, 2, 3, 4, 5, 6, 7, 8, 9}
 print(first &amp; second) # {4, 5, 6}
 print(first - second) # {1, 2, 3}
 print(first ^ second) # {1, 2, 3, 7, 8, 9}</p>
-<p><a href="#id55"><span class="problematic" id="id56">``</span></a>`
+<p><a href="#id51"><span class="problematic" id="id52">``</span></a>`
 ## itertools
 ### count accumulate cycle repeat takewhile chain</p>
 <p>One type of function it produces is <strong>infinite iterators</strong>
 | function | description |
-<a href="#id225"><span class="problematic" id="id226">|---|</span></a>:—|
+<a href="#id221"><span class="problematic" id="id222">|---|</span></a>:—|
 | Count | <strong>counts up</strong> infinitely from a value|
 | Cycle | <em>infinitely iterates through an iterable</em> (for instance a list or string)|
 | Repeat| <strong>repeats an object</strong>, either infinitely or a specific number of times|
 | Takewhile| takes items from iterable while predicate function remains True |
 | Chain | <strong>combines</strong> iterables |
-| Accumulate <a href="#id227"><span class="problematic" id="id228">|returns a **running total** of values in an iterable|</span></a></p>
-<p><a href="#id57"><span class="problematic" id="id58">``</span></a><a href="#id59"><span class="problematic" id="id60">`</span></a>python
+| Accumulate <a href="#id223"><span class="problematic" id="id224">|returns a **running total** of values in an iterable|</span></a></p>
+<p><a href="#id53"><span class="problematic" id="id54">``</span></a><a href="#id55"><span class="problematic" id="id56">`</span></a>python
 from itertools import count</p>
 <dl>
 <dt>for i in count(3): # counts up starting from 3</dt><dd><p>print(i)
@@ -509,9 +446,9 @@ print(nums)  # [0,  1,   3,   6,  10,   15,   21, 28]</p>
 <p># takewhile stops as soon as predicate == FALSE!
 nums = [2, 4, 6, 7, 9, 8]  # will stop returning at hitting value 7
 print(list(takewhile(lambda x: x%2==0, nums)))  # [2, 4, 6]</p>
-<p><a href="#id61"><span class="problematic" id="id62">``</span></a><a href="#id63"><span class="problematic" id="id64">`</span></a></p>
+<p><a href="#id57"><span class="problematic" id="id58">``</span></a><a href="#id59"><span class="problematic" id="id60">`</span></a></p>
 <p>### itertools combinatoric functions (get all combo’s)</p>
-<p><a href="#id65"><span class="problematic" id="id66">``</span></a><a href="#id67"><span class="problematic" id="id68">`</span></a>python</p>
+<p><a href="#id61"><span class="problematic" id="id62">``</span></a><a href="#id63"><span class="problematic" id="id64">`</span></a>python</p>
 <p>from itertools import product, permutations</p>
 <p>letters = (“A”, “B”)</p>
 <p>print(list(product(letters, range(2)))) # [(‘A’, 0), (‘A’, 1), (‘B’, 0), (‘B’, 1)]
@@ -522,11 +459,11 @@ print(list(permutations(letters)))
 <p>a={1, 2}
 print(len(list(product(range(3), a)))) # 6
 print(list(product(range(3), a)))  # [(0, 1), (0, 2), (1, 1), (1, 2), (2, 1), (2, 2)]</p>
-<p><a href="#id69"><span class="problematic" id="id70">``</span></a><a href="#id71"><span class="problematic" id="id72">`</span></a></p>
+<p><a href="#id65"><span class="problematic" id="id66">``</span></a><a href="#id67"><span class="problematic" id="id68">`</span></a></p>
 <p># OOP
 ## Classes
 ### Superclass</p>
-<p><a href="#id73"><span class="problematic" id="id74">``</span></a><a href="#id75"><span class="problematic" id="id76">`</span></a>python</p>
+<p><a href="#id69"><span class="problematic" id="id70">``</span></a><a href="#id71"><span class="problematic" id="id72">`</span></a>python</p>
 <p># Superclass
 class Animal:</p>
 <blockquote>
@@ -548,9 +485,9 @@ class Cat(Animal):</p>
 <p>tiger = Cat(“tiger”, “black”)
 print(tiger.color)
 tiger.purr
-<a href="#id77"><span class="problematic" id="id78">``</span></a>`
+<a href="#id73"><span class="problematic" id="id74">``</span></a>`
 ### indirect inheritance
-<a href="#id79"><span class="problematic" id="id80">``</span></a><a href="#id81"><span class="problematic" id="id82">`</span></a>python
+<a href="#id75"><span class="problematic" id="id76">``</span></a><a href="#id77"><span class="problematic" id="id78">`</span></a>python
 class A:</p>
 <blockquote>
 <div><dl class="simple">
@@ -574,9 +511,9 @@ class A:</p>
 c.method()
 c.another_method()
 c.third_method()
-<a href="#id83"><span class="problematic" id="id84">``</span></a><a href="#id85"><span class="problematic" id="id86">`</span></a></p>
+<a href="#id79"><span class="problematic" id="id80">``</span></a><a href="#id81"><span class="problematic" id="id82">`</span></a></p>
 <p>### super function
-<a href="#id87"><span class="problematic" id="id88">``</span></a><a href="#id89"><span class="problematic" id="id90">`</span></a>python
+<a href="#id83"><span class="problematic" id="id84">``</span></a><a href="#id85"><span class="problematic" id="id86">`</span></a>python
 class A: # superclass</p>
 <blockquote>
 <div><dl class="simple">
@@ -593,7 +530,7 @@ super().spam() # calls spam method of superclass</p>
 </dd>
 </dl>
 <p>B().spam()
-<a href="#id91"><span class="problematic" id="id92">``</span></a>`
+<a href="#id87"><span class="problematic" id="id88">``</span></a>`
 ### magic methods
 [special method names](<a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#special-method-names">https://docs.python.org/3/reference/datamodel.html#special-method-names</a>)
 [nice summary on github](<a class="reference external" href="https://github.com/RafeKettler/magicmethods/blob/master/magicmethods.markdown">https://github.com/RafeKettler/magicmethods/blob/master/magicmethods.markdown</a>)</p>
@@ -601,17 +538,17 @@ super().spam() # calls spam method of superclass</p>
 <li><p>f __ne__ is not implemented, it returns the opposite of __eq__</p></li>
 </ul>
 <p>There are no other relationships between the other operators</p>
-<p><a href="#id229"><span class="problematic" id="id230">|magic method|</span></a> operator |
-<a href="#id231"><span class="problematic" id="id232">|------------|</span></a>:——–:|
-<a href="#id233"><span class="problematic" id="id234">|\_\_sub__|</span></a> - |
-<a href="#id235"><span class="problematic" id="id236">|\_\_mul__|</span></a> * |
-<a href="#id237"><span class="problematic" id="id238">|\_\_truediv__|</span></a> / |
-<a href="#id239"><span class="problematic" id="id240">|\_\_floordiv__|</span></a> // |
-<a href="#id241"><span class="problematic" id="id242">|\_\_mod__|</span></a> % |
-<a href="#id243"><span class="problematic" id="id244">|\_\_pow__|</span></a> ** |
-<a href="#id245"><span class="problematic" id="id246">|\_\_and__|</span></a> &amp; |
-<a href="#id247"><span class="problematic" id="id248">|\_\_xor__|</span></a> ^ |
-<a href="#id249"><span class="problematic" id="id250">|\_\_or__|</span></a> | |</p>
+<p><a href="#id225"><span class="problematic" id="id226">|magic method|</span></a> operator |
+<a href="#id227"><span class="problematic" id="id228">|------------|</span></a>:——–:|
+<a href="#id229"><span class="problematic" id="id230">|\_\_sub__|</span></a> - |
+<a href="#id231"><span class="problematic" id="id232">|\_\_mul__|</span></a> * |
+<a href="#id233"><span class="problematic" id="id234">|\_\_truediv__|</span></a> / |
+<a href="#id235"><span class="problematic" id="id236">|\_\_floordiv__|</span></a> // |
+<a href="#id237"><span class="problematic" id="id238">|\_\_mod__|</span></a> % |
+<a href="#id239"><span class="problematic" id="id240">|\_\_pow__|</span></a> ** |
+<a href="#id241"><span class="problematic" id="id242">|\_\_and__|</span></a> &amp; |
+<a href="#id243"><span class="problematic" id="id244">|\_\_xor__|</span></a> ^ |
+<a href="#id245"><span class="problematic" id="id246">|\_\_or__|</span></a> | |</p>
 <ul class="simple">
 <li><p>if x hasn’t implemented __add__, and x and y are of different types, then y.__radd__(x) is called. There are equivalent r methods for all magic methods in table</p></li>
 <li><p>If __ne__ is not implemented, it returns the opposite of __eq__</p></li>
@@ -628,7 +565,7 @@ Reference count is the number of variables and other elements that refer to an o
 * Its only actual effect is that from module_name import * won’t import variables that start with a single underscore
 * Strongly private methods and attributes have a <strong>double underscore</strong> at the beginning of their names. This causes their names to be mangled, which means that they can’t be accessed from outside the class
 * Name mangled methods can still be accessed externally, but by a different name. The method __privatemethod of class Spam could be accessed externally with _Spam__privatemethod
-<a href="#id93"><span class="problematic" id="id94">``</span></a><a href="#id95"><span class="problematic" id="id96">`</span></a>python
+<a href="#id89"><span class="problematic" id="id90">``</span></a><a href="#id91"><span class="problematic" id="id92">`</span></a>python
 class Spam:</p>
 <blockquote>
 <div><p>__egg = 7
@@ -651,7 +588,7 @@ print(_Spam__egg)</p>
 <li><p>A common use of these are factory methods, which instantiate an instance of a class, using different parameters than those usually passed to the class constructor</p></li>
 <li><p>&#64;classmethod</p></li>
 </ul>
-<p><a href="#id97"><span class="problematic" id="id98">``</span></a><a href="#id99"><span class="problematic" id="id100">`</span></a>python
+<p><a href="#id93"><span class="problematic" id="id94">``</span></a><a href="#id95"><span class="problematic" id="id96">`</span></a>python
 class Rectangle:</p>
 <blockquote>
 <div><dl class="simple">
@@ -687,18 +624,18 @@ return Juice(combined_name, combined_cap)</p>
 b = Juice(‘Apple’, 2.0)</p>
 <p>result = a + b
 print(result)</p>
-<p><a href="#id101"><span class="problematic" id="id102">``</span></a>`
+<p><a href="#id97"><span class="problematic" id="id98">``</span></a>`
 ### static methods
 - don’t receive additional arguments
 - &#64;staticmethod
-<a href="#id103"><span class="problematic" id="id104">``</span></a><a href="#id105"><span class="problematic" id="id106">`</span></a>python</p>
-<p><a href="#id107"><span class="problematic" id="id108">``</span></a>`
+<a href="#id99"><span class="problematic" id="id100">``</span></a><a href="#id101"><span class="problematic" id="id102">`</span></a>python</p>
+<p><a href="#id103"><span class="problematic" id="id104">``</span></a>`
 ### properties
 - customizing access to instance attributes
 - &#64;property
 - method will be called instead of attribute with same name
 - common use is to make it read-only</p>
-<p><a href="#id109"><span class="problematic" id="id110">``</span></a><a href="#id111"><span class="problematic" id="id112">`</span></a>python
+<p><a href="#id105"><span class="problematic" id="id106">``</span></a><a href="#id107"><span class="problematic" id="id108">`</span></a>python
 class Pizza:</p>
 <blockquote>
 <div><dl class="simple">
@@ -714,11 +651,11 @@ def pineapple_allowed(self):</p>
 <p>pizza = Pizza([“cheese”, “tomato”])
 print(pizza.pinapple_allowed)
 pizza.pineapple_allowed = True
-<a href="#id113"><span class="problematic" id="id114">``</span></a>`
+<a href="#id109"><span class="problematic" id="id110">``</span></a>`
 #### setter/getter
 - to define a setter you use decorator of the same name as property dot setter
 - &#64;skin_color.setter</p>
-<p><a href="#id115"><span class="problematic" id="id116">``</span></a><a href="#id117"><span class="problematic" id="id118">`</span></a>python
+<p><a href="#id111"><span class="problematic" id="id112">``</span></a><a href="#id113"><span class="problematic" id="id114">`</span></a>python
 class Pizza:</p>
 <blockquote>
 <div><dl>
@@ -807,18 +744,18 @@ if thing.health &lt;= 0:</p>
 <p>return msg</p>
 </dd>
 </dl>
-<p><a href="#id119"><span class="problematic" id="id120">``</span></a>`
+<p><a href="#id115"><span class="problematic" id="id116">``</span></a>`
 # regex</p>
 <p>## regex functions
-<a href="#id251"><span class="problematic" id="id252">|function|desciption|</span></a>
-<a href="#id253"><span class="problematic" id="id254">|--|</span></a>:–:|
-<a href="#id255"><span class="problematic" id="id256">|re.match|</span></a> determine whether it matches at the <strong>beginning</strong> of a string|
-<a href="#id257"><span class="problematic" id="id258">|re.search|finds a match of a pattern **anywhere** in the string|</span></a>
-<a href="#id259"><span class="problematic" id="id260">|re.findall|returns a **list** of all substrings that match a pattern|</span></a>
-<a href="#id261"><span class="problematic" id="id262">|re.iter|</span></a> same as re.findall but returns an <strong>iterator</strong>
-<a href="#id263"><span class="problematic" id="id264">|re.sub|</span></a> replace all (or count) occurences of pattern in string
-<a href="#id265"><span class="problematic" id="id266">|re.split(delim, string)|</span></a> split string into list using delimiter|
-<a href="#id121"><span class="problematic" id="id122">``</span></a><a href="#id123"><span class="problematic" id="id124">`</span></a>python</p>
+<a href="#id247"><span class="problematic" id="id248">|function|desciption|</span></a>
+<a href="#id249"><span class="problematic" id="id250">|--|</span></a>:–:|
+<a href="#id251"><span class="problematic" id="id252">|re.match|</span></a> determine whether it matches at the <strong>beginning</strong> of a string|
+<a href="#id253"><span class="problematic" id="id254">|re.search|finds a match of a pattern **anywhere** in the string|</span></a>
+<a href="#id255"><span class="problematic" id="id256">|re.findall|returns a **list** of all substrings that match a pattern|</span></a>
+<a href="#id257"><span class="problematic" id="id258">|re.iter|</span></a> same as re.findall but returns an <strong>iterator</strong>
+<a href="#id259"><span class="problematic" id="id260">|re.sub|</span></a> replace all (or count) occurences of pattern in string
+<a href="#id261"><span class="problematic" id="id262">|re.split(delim, string)|</span></a> split string into list using delimiter|
+<a href="#id117"><span class="problematic" id="id118">``</span></a><a href="#id119"><span class="problematic" id="id120">`</span></a>python</p>
 <p>import re</p>
 <p>pattern = r”pam”
 match = re.search(pattern, “eggspamsausage”)
@@ -837,38 +774,38 @@ str = “My name is David. Hi David.”
 pattern = r”David”
 new_str = re.sub(pattern, “Patrick”, str, count=1)
 print(new_str)  # My name is Patrick. Hi David.</p>
-<p><a href="#id125"><span class="problematic" id="id126">``</span></a>`
+<p><a href="#id121"><span class="problematic" id="id122">``</span></a>`
 ## metacharacters
-<a href="#id267"><span class="problematic" id="id268">|char|description|example|</span></a>
-<a href="#id269"><span class="problematic" id="id270">|:--:|</span></a>———–<a href="#id271"><span class="problematic" id="id272">|-------|</span></a>
-[]      <a href="#id273"><span class="problematic" id="id274">|A set of characters    |&quot;[a-m]&quot;        |
+<a href="#id263"><span class="problematic" id="id264">|char|description|example|</span></a>
+<a href="#id265"><span class="problematic" id="id266">|:--:|</span></a>———–<a href="#id267"><span class="problematic" id="id268">|-------|</span></a>
+[]      <a href="#id269"><span class="problematic" id="id270">|A set of characters    |&quot;[a-m]&quot;        |
 |\      |Signals a special sequence (can also be used to escape special characters)     |&quot;\d&quot;
 |.      |Any character (except newline character)|</span></a>      “he..o” |
-<a href="#id275"><span class="problematic" id="id276">|^      |Starts with    |&quot;^hello&quot;       |
+<a href="#id271"><span class="problematic" id="id272">|^      |Starts with    |&quot;^hello&quot;       |
 |$      |Ends with      |&quot;world$&quot;|</span></a>
-<a href="#id277"><span class="problematic" id="id278">|*      |Zero or more occurrences|</span></a>      “aix*”  |
-<a href="#id279"><span class="problematic" id="id280">|+      |One or more occurrences        |&quot;aix+&quot; |
+<a href="#id273"><span class="problematic" id="id274">|*      |Zero or more occurrences|</span></a>      “aix*”  |
+<a href="#id275"><span class="problematic" id="id276">|+      |One or more occurrences        |&quot;aix+&quot; |
 |{}     |Exactly the specified number of occurrences|</span></a>   “al{2}” |
-<a href="#id281"><span class="problematic" id="id282">|\|     |Either or      |&quot;falls|stays&quot;  |
+<a href="#id277"><span class="problematic" id="id278">|\|     |Either or      |&quot;falls|stays&quot;  |
 |()     |Capture and group|</span></a></p>
 <p>## special sequences aka character classes
-<a href="#id283"><span class="problematic" id="id284">|Character|</span></a>     Description|Example|
-<a href="#id285"><span class="problematic" id="id286">|---------|</span></a>————<a href="#id287"><span class="problematic" id="id288">|-------|</span></a>
-A      <a href="#id289"><span class="problematic" id="id290">|Returns a match if the specified characters are at the beginning of the string|</span></a>        “AThe”
-b      <a href="#id291"><span class="problematic" id="id292">|Returns a match where the specified characters are at the beginning or at the end of a word    |r&quot;\bain&quot;
+<a href="#id279"><span class="problematic" id="id280">|Character|</span></a>     Description|Example|
+<a href="#id281"><span class="problematic" id="id282">|---------|</span></a>————<a href="#id283"><span class="problematic" id="id284">|-------|</span></a>
+A      <a href="#id285"><span class="problematic" id="id286">|Returns a match if the specified characters are at the beginning of the string|</span></a>        “AThe”
+b      <a href="#id287"><span class="problematic" id="id288">|Returns a match where the specified characters are at the beginning or at the end of a word    |r&quot;\bain&quot;
 |||r&quot;ain\b&quot;
 \B      |Returns a match where the specified characters are present, but NOT at the beginning (or at the end) of a word|</span></a>        r”Bain”
 |||r”ainB”
-d      <a href="#id293"><span class="problematic" id="id294">|Returns a match where the string contains digits (numbers from 0-9)|</span></a>   “d”
-D      <a href="#id295"><span class="problematic" id="id296">|Returns a match where the string DOES NOT contain digits|</span></a>      “D”
-s      <a href="#id297"><span class="problematic" id="id298">|Returns a match where the string contains a white space character|</span></a>     “s”
-S      <a href="#id299"><span class="problematic" id="id300">|Returns a match where the string DOES NOT contain a white space character|</span></a>     “S”
-w      <a href="#id301"><span class="problematic" id="id302">|Returns a match where the string contains any word characters (characters from a to Z, digits from 0-9, and the underscore _ character)        |&quot;\w&quot;
+d      <a href="#id289"><span class="problematic" id="id290">|Returns a match where the string contains digits (numbers from 0-9)|</span></a>   “d”
+D      <a href="#id291"><span class="problematic" id="id292">|Returns a match where the string DOES NOT contain digits|</span></a>      “D”
+s      <a href="#id293"><span class="problematic" id="id294">|Returns a match where the string contains a white space character|</span></a>     “s”
+S      <a href="#id295"><span class="problematic" id="id296">|Returns a match where the string DOES NOT contain a white space character|</span></a>     “S”
+w      <a href="#id297"><span class="problematic" id="id298">|Returns a match where the string contains any word characters (characters from a to Z, digits from 0-9, and the underscore _ character)        |&quot;\w&quot;
 \W      |Returns a match where the string DOES NOT contain any word characters|</span></a> “W”
-Z      <a href="#id127"><span class="problematic" id="id128">|</span></a>Returns a match if the specified characters are at the end of the string       <a href="#id129"><span class="problematic" id="id130">|</span></a>”SpainZ”</p>
+Z      <a href="#id123"><span class="problematic" id="id124">|</span></a>Returns a match if the specified characters are at the end of the string       <a href="#id125"><span class="problematic" id="id126">|</span></a>”SpainZ”</p>
 <p>## sets
 | set| description|
-<a href="#id303"><span class="problematic" id="id304">|--|</span></a>—|
+<a href="#id299"><span class="problematic" id="id300">|--|</span></a>—|
 [ ] | Contains a set of characters to match
 [amk] | Matches either a, m, or k. It does not match amk
 [a-z] | Matches any alphabet from a to z
@@ -876,11 +813,11 @@ Z      <a href="#id127"><span class="problematic" id="id128">|</span></a>Returns
 [a-] | Matches a or -, because - is not being used to indicate a series of characters
 [-a] | As above, matches a or -
 [a-z0-9] | Matches characters from a to z and also from 0 to 9
-[(+*)] | Special characters become literal inside a set, so this matches (, +, <a href="#id131"><span class="problematic" id="id132">*</span></a>, and )
+[(+*)] | Special characters become literal inside a set, so this matches (, +, <a href="#id127"><span class="problematic" id="id128">*</span></a>, and )
 [^ab5] | Adding ^ excludes any character in the set. Here, it matches characters that are not a, b, or 5</p>
 <p>## groups
-<a href="#id305"><span class="problematic" id="id306">|group|description|</span></a>
-<a href="#id307"><span class="problematic" id="id308">|-----|</span></a>———–|
+<a href="#id301"><span class="problematic" id="id302">|group|description|</span></a>
+<a href="#id303"><span class="problematic" id="id304">|-----|</span></a>———–|
 ( ) | Matches the expression inside the parentheses and groups it
 (? ) | Inside parentheses like this, ? acts as an extension notation. Its meaning depends on the character immediately to its right
 (?PAB) | Matches the expression AB, and it can be accessed with the group name
@@ -900,7 +837,7 @@ A(?!B) | Negative lookahead assertion. This matches the expression A only if it 
 (?&lt;!B)A | Negative lookbehind assertion. This matches the expression A only if B is not immediately to its left. This can only matched fixed length expressions
 (?P=name) | Matches the expression matched by an earlier group named “name”
 (…)\1 | The number 1 corresponds to the first group to be matched. If we want to match more instances, use 1 up to 99 (1 = repeat the same thing)
-<a href="#id133"><span class="problematic" id="id134">``</span></a><a href="#id135"><span class="problematic" id="id136">`</span></a>python</p>
+<a href="#id129"><span class="problematic" id="id130">``</span></a><a href="#id131"><span class="problematic" id="id132">`</span></a>python</p>
 <p>import re</p>
 <p>pattern = r”(?P&lt;first&gt;abc)(?:def)(ghi)”
 # named group matching ‘abc’ followed by non-capturing group ‘def’ followed by ‘ghi’
@@ -918,32 +855,32 @@ b(cat)b” basically matches the word “cat” surrounded by word boundaries
 “””</p>
 <p>str = “Please contact <a class="reference external" href="mailto:info&#37;&#52;&#48;sololearn&#46;com">info<span>&#64;</span>sololearn<span>&#46;</span>com</a> for assistance”
 pattern = r”([w.-]+)&#64;([w.-]+)(.[w.]+)”</p>
-<p><a href="#id137"><span class="problematic" id="id138">``</span></a>`
+<p><a href="#id133"><span class="problematic" id="id134">``</span></a>`
 # good to know
 ## tuple unpacking
 - Tuple unpacking allows you to assign each item in an <strong>iterable</strong> (often a tuple) to a variable
 - can be also used to swap variables by doing a, b = b, a
 since b, a on the right hand side forms the tuple (b, a) which is then unpacked
 - A variable that is prefaced with an asterisk (*) takes all values from the iterable that are left over from the other variables
-<a href="#id139"><span class="problematic" id="id140">``</span></a><a href="#id141"><span class="problematic" id="id142">`</span></a>python
-a, b, <a href="#id143"><span class="problematic" id="id144">*</span></a>c, d = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+<a href="#id135"><span class="problematic" id="id136">``</span></a><a href="#id137"><span class="problematic" id="id138">`</span></a>python
+a, b, <a href="#id139"><span class="problematic" id="id140">*</span></a>c, d = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 print(a)  # 1
 print(b)  # 2
 print(c)  # [3, 4, 5, 6, 7, 8]
 print(d)  # 9</p>
-<p><a href="#id145"><span class="problematic" id="id146">``</span></a>`
+<p><a href="#id141"><span class="problematic" id="id142">``</span></a>`
 ## Ternary operator</p>
-<p><a href="#id147"><span class="problematic" id="id148">``</span></a><a href="#id149"><span class="problematic" id="id150">`</span></a>python
+<p><a href="#id143"><span class="problematic" id="id144">``</span></a><a href="#id145"><span class="problematic" id="id146">`</span></a>python
 a = 7
 b = 1 if a &gt;= 5 else 42
 print(b) # b = 1 cuz 7&gt;=5</p>
 <p>status = 1
 msg = “logout” if status = 1 else “login”</p>
 <p>b = 1 if 2+2 == 5 else 2
-<a href="#id151"><span class="problematic" id="id152">``</span></a>`
+<a href="#id147"><span class="problematic" id="id148">``</span></a>`
 ## more on else
 * With the for or while loop, the code within it is called if the loop finishes normally (when a break statement does not cause an exit from the loop)
-<a href="#id153"><span class="problematic" id="id154">``</span></a><a href="#id155"><span class="problematic" id="id156">`</span></a>python
+<a href="#id149"><span class="problematic" id="id150">``</span></a><a href="#id151"><span class="problematic" id="id152">`</span></a>python
 for i in range(10):</p>
 <blockquote>
 <div><dl class="simple">
@@ -972,9 +909,9 @@ for i in range(10):</p>
 <dt>else:</dt><dd><p>print(“7”)</p>
 </dd>
 </dl>
-<p><a href="#id157"><span class="problematic" id="id158">``</span></a>`
+<p><a href="#id153"><span class="problematic" id="id154">``</span></a>`
 * executed if NO ERROR occurs in TRY statement
-<a href="#id159"><span class="problematic" id="id160">``</span></a><a href="#id161"><span class="problematic" id="id162">`</span></a>python
+<a href="#id155"><span class="problematic" id="id156">``</span></a><a href="#id157"><span class="problematic" id="id158">`</span></a>python
 try:</p>
 <blockquote>
 <div><p>print(5 * 4/0)</p>
@@ -985,7 +922,7 @@ try:</p>
 <dt>else:</dt><dd><p>print(“yay else ran”) # did not run bc error ocurred</p>
 </dd>
 </dl>
-<p><a href="#id163"><span class="problematic" id="id164">``</span></a>`
+<p><a href="#id159"><span class="problematic" id="id160">``</span></a>`
 ## <cite>__main__</cite>
 - to make a file that can be both imported as a module and run as a script</p>
 <ul class="simple">
@@ -1002,7 +939,7 @@ try:</p>
 - involves use of the modules setuptools and distutils
 - should contain a file called <cite>__init__.py</cite>
 - parent dir has to have: <cite>README.txt LICENSE.txt setup.py</cite></p>
-<p><a href="#id165"><span class="problematic" id="id166">``</span></a><a href="#id167"><span class="problematic" id="id168">`</span></a>python
+<p><a href="#id161"><span class="problematic" id="id162">``</span></a><a href="#id163"><span class="problematic" id="id164">`</span></a>python
 # example
 SoloLearn/</p>
 <blockquote>
@@ -1016,7 +953,7 @@ sololearn.py
 sololearn2.py</p>
 </div></blockquote>
 </div></blockquote>
-<p><a href="#id169"><span class="problematic" id="id170">``</span></a>`
+<p><a href="#id165"><span class="problematic" id="id166">``</span></a>`
 ## setup.py
 - contains information necessary to assemble the package so it can be uploaded to PyPI and installed with pip
 - After creating the setup.py file, upload it to PyPI, or use the command line to create a binary distribution (an executable installer)
@@ -1024,7 +961,7 @@ sololearn2.py</p>
 - Run <cite>python setup.py bdist</cite> or, for Windows, python setup.py bdist_wininst to build a <strong>binary distribution</strong>
 - Use <cite>python setup.py register</cite>, followed by <cite>python setup.py sdist upload</cite> to upload a package
 - Finally, install a package with <cite>python setup.py install</cite>
-<a href="#id171"><span class="problematic" id="id172">``</span></a><a href="#id173"><span class="problematic" id="id174">`</span></a>python
+<a href="#id167"><span class="problematic" id="id168">``</span></a><a href="#id169"><span class="problematic" id="id170">`</span></a>python
 # example setup.py
 from distutils.core import setup</p>
 <dl class="simple">
@@ -1036,25 +973,25 @@ long_description=open(‘README.txt’).read(),</p>
 </dd>
 </dl>
 <p>)</p>
-<p><a href="#id175"><span class="problematic" id="id176">``</span></a>`
+<p><a href="#id171"><span class="problematic" id="id172">``</span></a>`
 &gt;***
 &gt;**NOTE**
 &gt;For Windows, many tools are available for converting scripts to executables. For example, &gt;py2exe, can be used to package a Python script, along with the libraries it requires, into a &gt;single executable. PyInstaller and cx_Freeze serve the same purpose
 &gt;
 &gt;For Macs, use py2app, PyInstaller or cx_Freeze.</p>
 <p>&gt;***
-<a href="#id177"><span class="problematic" id="id178">``</span></a><a href="#id179"><span class="problematic" id="id180">`</span></a>python</p>
-<p><a href="#id181"><span class="problematic" id="id182">``</span></a>`
-<a href="#id183"><span class="problematic" id="id184">``</span></a><a href="#id185"><span class="problematic" id="id186">`</span></a>python</p>
-<p><a href="#id187"><span class="problematic" id="id188">``</span></a>`
-<a href="#id189"><span class="problematic" id="id190">``</span></a><a href="#id191"><span class="problematic" id="id192">`</span></a>python</p>
-<p><a href="#id193"><span class="problematic" id="id194">``</span></a>`
-<a href="#id195"><span class="problematic" id="id196">``</span></a><a href="#id197"><span class="problematic" id="id198">`</span></a>python</p>
-<p><a href="#id199"><span class="problematic" id="id200">``</span></a>`
-<a href="#id201"><span class="problematic" id="id202">``</span></a><a href="#id203"><span class="problematic" id="id204">`</span></a>python</p>
-<p><a href="#id205"><span class="problematic" id="id206">``</span></a>`
-<a href="#id207"><span class="problematic" id="id208">``</span></a><a href="#id209"><span class="problematic" id="id210">`</span></a>python</p>
-<p><a href="#id211"><span class="problematic" id="id212">``</span></a>`
+<a href="#id173"><span class="problematic" id="id174">``</span></a><a href="#id175"><span class="problematic" id="id176">`</span></a>python</p>
+<p><a href="#id177"><span class="problematic" id="id178">``</span></a>`
+<a href="#id179"><span class="problematic" id="id180">``</span></a><a href="#id181"><span class="problematic" id="id182">`</span></a>python</p>
+<p><a href="#id183"><span class="problematic" id="id184">``</span></a>`
+<a href="#id185"><span class="problematic" id="id186">``</span></a><a href="#id187"><span class="problematic" id="id188">`</span></a>python</p>
+<p><a href="#id189"><span class="problematic" id="id190">``</span></a>`
+<a href="#id191"><span class="problematic" id="id192">``</span></a><a href="#id193"><span class="problematic" id="id194">`</span></a>python</p>
+<p><a href="#id195"><span class="problematic" id="id196">``</span></a>`
+<a href="#id197"><span class="problematic" id="id198">``</span></a><a href="#id199"><span class="problematic" id="id200">`</span></a>python</p>
+<p><a href="#id201"><span class="problematic" id="id202">``</span></a>`
+<a href="#id203"><span class="problematic" id="id204">``</span></a><a href="#id205"><span class="problematic" id="id206">`</span></a>python</p>
+<p><a href="#id207"><span class="problematic" id="id208">``</span></a>`
 &gt;***
 &gt;**NOTE**
 &gt;
@@ -1082,7 +1019,7 @@ encryption_cipher_text:
 encryption_applied: 0
 markup_language: 1
 is_shared: 0
-<a href="#id309"><span class="problematic" id="id310">type_</span></a>: 1</p>
+<a href="#id305"><span class="problematic" id="id306">type_</span></a>: 1</p>
 
 
            </div>

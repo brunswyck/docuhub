@@ -11,10 +11,10 @@
   
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
 
@@ -2051,7 +2051,8 @@ item = next(iterator)</p>
 
 
 <span class="sd">&quot;&quot;&quot; itertools.chain(*iterables)</span>
-<span class="sd">Make an iterator that returns elements from the first iterable until it is exhausted, then proceeds to the next iterable, until all of the iterables are exhausted. Used for treating consecutive sequences as a single sequence &quot;&quot;&quot;</span>
+<span class="sd">Make an iterator that returns elements from the first iterable until it is exhausted, then proceeds to the next iterable, until all of the iterables are exhausted. Used for treating consecutive sequences as a single sequence</span>
+<span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://docs.python.org/3/library/itertools.html#itertools.chain">https://docs.python.org/3/library/itertools.html#itertools.chain</a></p>
@@ -2751,50 +2752,50 @@ You can define your own dialect using register_dialect method</p>
 </div>
 <div class="section" id="lxml">
 <h5>lxml<a class="headerlink" href="#lxml" title="Permalink to this headline">¶</a></h5>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>import sys
-# !conda install --yes --prefix {sys.prefix} lxml
-!{sys.executable} -m pip install numpy
-from lxml import etree
-# I define my source document
-filename = &#39;assets/data.xml&#39;
-tree = etree.parse(filename)
-# so in tree.xpath(&quot;/users/user/name&quot;) there are the tags associated with our search
-for user in tree.xpath(&quot;/users/user/nom&quot;):
-    # I want to display only the content (.text) of these tags /users/user/name
-    print(user.text)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="c1"># !conda install --yes --prefix {sys.prefix} lxml</span>
+<span class="c1"># !{sys.executable} -m pip install numpy</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="c1"># I define my source document</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;assets/data.xml&#39;</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="c1"># so in tree.xpath(&quot;/users/user/name&quot;) there are the tags associated with our search</span>
+<span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;/users/user/nom&quot;</span><span class="p">):</span>
+    <span class="c1"># I want to display only the content (.text) of these tags /users/user/name</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 
-&quot;&quot;&quot;
-Zorro
-Hulk
-Zidane
-Beans
-Batman
-Spiderman
-&quot;&quot;&quot;
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Zorro</span>
+<span class="sd">Hulk</span>
+<span class="sd">Zidane</span>
+<span class="sd">Beans</span>
+<span class="sd">Batman</span>
+<span class="sd">Spiderman</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
-tree.xpath(&quot;/users/user/nom&quot;)[0].text
-# &#39;Zorro&#39;
+<span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;/users/user/nom&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span>
+<span class="c1"># &#39;Zorro&#39;</span>
 
-# You can display the attributes of the tags that store this information
-tree = etree.parse(filename)
-for user in tree.xpath(&quot;/users/user&quot;):
-    print(user.get(&quot;data-id&quot;))
-&quot;&quot;&quot;
-101
-102
-103
-104
-105
-106
-&quot;&quot;&quot;
+<span class="c1"># You can display the attributes of the tags that store this information</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;/users/user&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;data-id&quot;</span><span class="p">))</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">101</span>
+<span class="sd">102</span>
+<span class="sd">103</span>
+<span class="sd">104</span>
+<span class="sd">105</span>
+<span class="sd">106</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
-# You can refine the display by proposing to display only users whose job is Veterinary
-tree = etree.parse(filename)
+<span class="c1"># You can refine the display by proposing to display only users whose job is Veterinary</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
-for user in tree.xpath(&quot;/users/user[metier=&#39;Veterinaire&#39;]/nom&quot;):
-    print(user.text)
-# Batman
-# Spiderman
+<span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;/users/user[metier=&#39;Veterinaire&#39;]/nom&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="c1"># Batman</span>
+<span class="c1"># Spiderman</span>
 </pre></div>
 </div>
 </div>
@@ -3055,25 +3056,28 @@ This technique wouldn’t be as flexible in the long run because it hardcodes th
 </div>
 <div class="section" id="private-vars">
 <h4>private vars<a class="headerlink" href="#private-vars" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>class Mine:
-    def __init__(self):
-        self.x = 2
-        self.__y = 3
-    def print_y(self):
-        print(self.__y)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mine</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__y</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="k">def</span> <span class="nf">print_y</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__y</span><span class="p">)</span>
 
-&gt;&gt;&gt; m = Mine()
-&gt;&gt;&gt; print(m.x)
-2
-&gt;&gt;&gt; print(m.__y)
-Traceback (innermost last):
-  File &quot;&lt;stdin&gt;&quot;, line 1, in ?
-AttributeError: &#39;Mine&#39; object has no attribute &#39;__y&#39;
-&gt;&gt;&gt; m.print_y()
-3
+<span class="c1"># &gt;&gt;&gt; m = Mine()</span>
+<span class="c1"># &gt;&gt;&gt; print(m.x)</span>
+<span class="c1"># 2</span>
+<span class="c1"># &gt;&gt;&gt; print(m.__y)</span>
+<span class="c1"># Traceback (innermost last):</span>
+<span class="c1">#   File &quot;&lt;stdin&gt;&quot;, line 1, in ?</span>
+<span class="c1"># AttributeError: &#39;Mine&#39; object has no attribute &#39;__y&#39;</span>
+<span class="c1"># &gt;&gt;&gt; m.print_y()</span>
+<span class="c1"># 3</span>
 </pre></div>
 </div>
-<p>to provide privacy mangles the name of private variables and private methods when the code is compiled to bytecode. What specifically happens is that _classname is prepended to the variable name:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>to provide privacy it mangles the name of private variables and private methods when the code is compiled to bytecode. What specifically happens is that _classname is prepended to the variable name:</p>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 <span class="go">[&#39;_Mine__y&#39;, &#39;x&#39;, ...]</span>
 </pre></div>
@@ -4167,36 +4171,32 @@ match.endpos</p></li>
 <h4>lock<a class="headerlink" href="#lock" title="Permalink to this headline">¶</a></h4>
 <p>There are several ways to “synchronize” our threads, i.e. to make some of the code only run if no one is using the shared resource. The simplest synchronization mechanism is the lock.</p>
 <p>It is an object proposed by <cite>threading</cite> that is extremely simple to use: at the beginning of our instructions that use our shared resource, we tell the lock to block for the other threads. If another thread wants to use this resource, it must wait until it is released.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span><span class="p">,</span> <span class="n">RLock</span>
+
+<span class="n">lock</span> <span class="o">=</span> <span class="n">RLock</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">SyncThread</span><span class="p">(</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;synch_thread.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">thread_1</span> <span class="o">=</span> <span class="n">SyncThread</span><span class="p">(</span><span class="s2">&quot;Thread 1 /&quot;</span><span class="p">)</span>
+<span class="n">thread_2</span> <span class="o">=</span> <span class="n">SyncThread</span><span class="p">(</span><span class="s2">&quot;Thread 2 /&quot;</span><span class="p">)</span>
+<span class="n">thread_3</span> <span class="o">=</span> <span class="n">SyncThread</span><span class="p">(</span><span class="s2">&quot;Thread 3 /&quot;</span><span class="p">)</span>
+<span class="n">thread_4</span> <span class="o">=</span> <span class="n">SyncThread</span><span class="p">(</span><span class="s2">&quot;Thread 4 /&quot;</span><span class="p">)</span>
+
+<span class="n">thread_1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">thread_2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">thread_3</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">thread_4</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>from threading import Thread, RLock</p>
-<p>lock = RLock()</p>
-<dl>
-<dt>class SyncThread(Thread):</dt><dd><dl>
-<dt>def __init__(self, text):</dt><dd><p>Thread.__init__(self)
-self.text = text</p>
-</dd>
-<dt>def run(self):</dt><dd><dl>
-<dt>with lock:</dt><dd><p>print(self.text)
-with open(‘synch_thread.txt’, ‘a’) as file:</p>
-<blockquote>
-<div><p>file.write(self.text)</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>thread_1 = SyncThread(“Thread 1 /”)
-thread_2 = SyncThread(“Thread 2 /”)
-thread_3 = SyncThread(“Thread 3 /”)
-thread_4 = SyncThread(“Thread 4 /”)</p>
-<p>thread_1.start()
-thread_2.start()
-thread_3.start()
-thread_4.start()</p>
 <ul class="simple">
 <li><p>We import <cite>RLock</cite> from the threading module</p></li>
 <li><p>We create a lock that we put into our <cite>lock</cite> variable</p></li>

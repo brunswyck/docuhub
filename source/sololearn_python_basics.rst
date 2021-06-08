@@ -236,71 +236,7 @@ print_text()
 >altogether so we always got our "plus something" version of print_text
 >***
 
-## Recursion
-- Solve problems that can be broken up into sub-problems of the same type
 
-- eg: 5! (5 factorial) is 5 * 4 * 3 * 2 * 1 (120)
-- n! = n * (n-1)!
-- BASE CASE: 1! = 1 -> can be calculated without performing any more factorial function calls
-
->***
->**note**
->The base case acts as the exit condition of the recursion
->***
-
-```python
-def factorial(x):
-	# base case
-	if x == 1:
-		return 1
-	else:
-		return x * factorial(x-1)
-
-
-print(factorial(5))  # 120
-
-
-"""fibonacci"""
-def fibo(n):
-    if n <= 1:
-        return n  # returns 0 & 1's
-    else:
-        return fibo(n-1) + fibo(n-2)
-
-
-number = 6
-for i in range(6):
-    print(fibo(i))
-		
-
-
-def power(x, y):
-    if y == 0:
-        return 1
-    else:
-        return x * power(x, y-1)
-
-
-print(power(2, 3))  # 8
-
-
-"""Recursion can also be indirect. One function can call a second, which calls the first, which calls the second, and so on. This can occur with any number of functions"""
-
-
-def is_even(x):
-	if x == 0:
-		return True
-	else:
-		return is_odd(x-1)
-
-
-def is_odd(x):
-	return not is_even(x)  # not! else will also return True when odd
-
-
-is_even(9)  # False
-is_even(12) # True
-is_odd(17)  # True
 
 ```
 ## sets

@@ -11,10 +11,10 @@
   
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
 
@@ -91,11 +91,13 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
-<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html">python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ansible.html">ansible</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidoc/modules.html">becode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="techtalk/main.html">techtalks</a></li>
 </ul>
 
             
@@ -242,36 +244,32 @@
 <h3>lock<a class="headerlink" href="#lock" title="Permalink to this headline">¶</a></h3>
 <p>There are several ways to “synchronize” our threads, i.e. to make some of the code only run if no one is using the shared resource. The simplest synchronization mechanism is the lock.</p>
 <p>It is an object proposed by <cite>threading</cite> that is extremely simple to use: at the beginning of our instructions that use our shared resource, we tell the lock to block for the other threads. If another thread wants to use this resource, it must wait until it is released.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span><span class="p">,</span> <span class="n">RLock</span>
+
+<span class="n">lock</span> <span class="o">=</span> <span class="n">RLock</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">SyncThread</span><span class="p">(</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="n">Thread</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;synch_thread.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">thread_1</span> <span class="o">=</span> <span class="n">SyncThread</span><span class="p">(</span><span class="s2">&quot;Thread 1 /&quot;</span><span class="p">)</span>
+<span class="n">thread_2</span> <span class="o">=</span> <span class="n">SyncThread</span><span class="p">(</span><span class="s2">&quot;Thread 2 /&quot;</span><span class="p">)</span>
+<span class="n">thread_3</span> <span class="o">=</span> <span class="n">SyncThread</span><span class="p">(</span><span class="s2">&quot;Thread 3 /&quot;</span><span class="p">)</span>
+<span class="n">thread_4</span> <span class="o">=</span> <span class="n">SyncThread</span><span class="p">(</span><span class="s2">&quot;Thread 4 /&quot;</span><span class="p">)</span>
+
+<span class="n">thread_1</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">thread_2</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">thread_3</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">thread_4</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>from threading import Thread, RLock</p>
-<p>lock = RLock()</p>
-<dl>
-<dt>class SyncThread(Thread):</dt><dd><dl>
-<dt>def __init__(self, text):</dt><dd><p>Thread.__init__(self)
-self.text = text</p>
-</dd>
-<dt>def run(self):</dt><dd><dl>
-<dt>with lock:</dt><dd><p>print(self.text)
-with open(‘synch_thread.txt’, ‘a’) as file:</p>
-<blockquote>
-<div><p>file.write(self.text)</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
-<p>thread_1 = SyncThread(“Thread 1 /”)
-thread_2 = SyncThread(“Thread 2 /”)
-thread_3 = SyncThread(“Thread 3 /”)
-thread_4 = SyncThread(“Thread 4 /”)</p>
-<p>thread_1.start()
-thread_2.start()
-thread_3.start()
-thread_4.start()</p>
 <ul class="simple">
 <li><p>We import <cite>RLock</cite> from the threading module</p></li>
 <li><p>We create a lock that we put into our <cite>lock</cite> variable</p></li>

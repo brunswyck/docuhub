@@ -48,6 +48,7 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_dark_mode'
+html_style = 'css/my_theme.css'
 #html_theme = 'sphinx_rtd_theme'
 #html_theme = 'groundwork'
 

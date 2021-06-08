@@ -10,71 +10,90 @@ open markets
 ************
 
 
-the space race for open finance
+the space race for open markets
 ===============================
 
-the why
--------
+why we need open markets
+------------------------
 
-Big markets, big bullshit
-Obfuscating collateral, hidden risk
+tradfi:
 
-Banks plebs and psychology
-Banks plebs and lemons
+- obfuscating collateral, hidden risk
+  mother of all blowups 2008
+- banks plebs and psychology
+- inflation at will since USA ditched gold backing
+- HFT frontrunning by large institutions with deep pockets
+- closed markets are highly standardized, unfit for purpose and tend toward monopolistic structure
+- very restricted access (even for analysis)
+- venture capitalism
+- transparancy anyone?
+- shorting & gamestop anyone?
+- new crowdloan models and it's promise
+- trading sessions
 
-How do markets work?
-How can we make this more transparent?
+current state of defi
+---------------------
 
-cons in tradfi
-- 
-
-
-promises promises
------------------
-
-crypto:
- - power of incorruptible collateral
- - verify without rating agencies/banks
+pros:
+ - 24/7
+ - superpro power of incorruptible pristine collateral
+   1btc = 1btc
+ - verify without rating agencies/banks = transparancy
  - non-custodial wallets
+ - ability to invest in crowdloan models
 
-reality:
+cons:
+ - lessons learned in cefi repeating itself
  - CeFi cascades of `doom`_
    who got `rekt today`?
- - `MEV`_ (Miner Extractable Value)
+   trading against own customers
+ - difficult to use
+ - HFT's cousin`MEV`_ (Miner Extractable Value)
    miners can determine the order of when transactions are processed, mempool
-
-.. image:: picture.jpg
-   :width: 200px
-   :height: 100px
-   :scale: 50 %
-   :alt: alternate text
-   :align: right
-
  - gazmataz
    `example ethereum`
  - shitcoins memecoins
+
+.. image:: ../files/img/darkforest.jpg
 
 .. _doom: https://cointelegraph.com/news/cointelegraph-consulting-defi-hit-by-a-tsunami-of-liquidations-in-may
 .. _rekt today: https://app.rek.to/
 .. _MEV: https://blog.chain.link/what-is-miner-extractable-value-mev/
 .. _example ethereum: https://etherscan.io/gastracker
 
-got stopped out?
-verify what happened = difference with cefi
+supercharged blowouts
+---------------------
 
-vega can't put in a stop order
-check github discussions on that (obfuscation stuff)
-vega is an orderbook exchange initially later amm style
-key: target liquidity level
-liquidityprovider:  incentivized liquidity protection, share price price, stop providing liquidity = loose share. Dig into liquidity protection
+In TradFi, infrastructure
+isn’t pushed to its limits. It’s usually the collateral that breaks. In crypto, the collateral
+never breaks, but infrastructure breaks regularly. Crypto is perfect collateral, and as we discussed above,
+it encourages a certain type of derivatives offering. But when supercharged collateral is combined with
+a naive version of TradFi infrastructure without any of its backstops, the system becomes prone to these
+extreme wipeouts.
 
-it is not just about swapping tokens :)
-trade data
-might be the weather!
 
-vega is looking at perpetuals, hourly perpetuals
+.. image:: ../files/img/blowout.png
 
-deriviatives = set of rules of how you gonna swap assets under various conditions in the future
+a solution called vega
+----------------------
+
+- extremely open, not anonymous but pseudonymous
+- everything is verifiable, so the desk can't trade against you
+- open markets, the community decides the markets
+  eg: big mac index
+- why a vega token (not btc/eth)
+
+incentivized liquidity pools
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- no race to zero as there is incentive to keep providing liquidity
+- LP providers loose their incentivized share when not providing liquidity when the going gets tough
+
+hourly perpetuals
+trade on what the price will be in an hour
+
+markets based on web2
+^^^^^^^^^^^^^^^^^^^^^
 
 ssl example
 
@@ -165,29 +184,134 @@ ssl example
    * Connection #0 to host www.reddit.com left intact
 
 
+you'll be able to use these SSL header information to put web2 information on web3 and prove it is legit
+How will that be done?
+with zero knowledge proofs, namely zk-snarks (chain of snapshots vs chain of blocks)
+
+
+ELI5 zero knowledge snarks
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- A geologist hiking through a forest encounters a row of heavy boulders (Blocks in the chain)
+- She wants to examine their marble interior (Validate their transactions)
+- She cuts them open, studies them and reports her findings
+- Colleagues from around the world (other validators) want to see the boulders, but can’t afford the cost of travel. (The cost of running a fully validating node).
+- Her solution: she takes a photo of each boulder. (The photos are zero knowledge proofs, aka zk-SNARKs — a snapshot of each block)
+- Now she doesn’t need the boulders — the photos are just as good
+- enable full nodes to discard blocks after they’re validated, replacing them with zk-SNARKs, a snapshot of each block
+- A chain of snapshots is a huge improvement over a chain of blocks, but the problem isn’t solved: the chain will still grow, and we want it constant-sized.
+- Our geologist has a novel solution. She takes a photo of the first boulder…then takes a photo of the second boulder and the first photo.
+- Now she doesn’t need the first photo. After all, it’s in the second photo.
+- She keeps taking snapshots of each boulder alongside the most recent photo, and sends her colleagues the last one.
+
+
+
+
 shitcoins & rug pulls
-*********************
-some other talk
-***************
-**************
+
+
+demo on open marketplace
+========================
+
+vegawallet usage
+----------------
+
+download the wallet here: https://github.com/vegaprotocol/go-wallet/releases/latest
+
+.. code-block:: bash
+
+   ./vegawallet -h
+   Usage:
+     vegawallet [command]
+
+   Available Commands:
+     genkey      Generate a new keypair for a wallet
+     help        Help about any command
+     list        List keypairs of a wallet
+     meta        Add metadata to a public key
+     service     The wallet service
+     sign        Sign a blob of data
+     taint       Taint a public key
+     verify      Verify the signature
+     version     Show the version of the vega wallet
+
+   Flags:
+     -h, --help               help for vegawallet
+         --no-version-check   Do not check for new version of the Vega wallet
+         --root-path string   Root directory for the Vega wallet configuration (default "/home/dadude/.vega")
+
+   Use "vegawallet [command] --help" for more information about a command.
+
+.. code-block:: bash
+
+   $ ./vegawallet service run
+   Wallet http service started at: http://localhost:1789
+   Wallet console proxy started at: http://localhost:1847 proxying testnet.vega.trading
+   
+   Available endpoints:
+    - status:          GET    http://localhost:1789/api/v1/status
+    - login:           POST   http://localhost:1789/api/v1/auth/token
+    - logout:          DELETE http://localhost:1789/api/v1/auth/token
+    - create wallet:   POST   http://localhost:1789/api/v1/wallets
+    - create key:      POST   http://localhost:1789/api/v1/keys
+    - list keys:       GET    http://localhost:1789/api/v1/keys
+    - get key:         GET    http://localhost:1789/api/v1/keys/:keyid
+    - taint key:       PUT    http://localhost:1789/api/v1/keys/:keyid/taint
+    - update meta:     PUT    http://localhost:1789/api/v1/keys/:keyid/metadata
+    - sign data:       POST   http://localhost:1789/api/v1/sign
+    - sign:            POST   http://localhost:1789/api/v1/messages
+    - sign sync:       POST   http://localhost:1789/api/v1/messages/sync
+    - sign commit:     POST   http://localhost:1789/api/v1/messages/commit
+    - download wallet: GET    http://localhost:1789/api/v1/wallets
+
+
+testnet exploration
+-------------------
+
+https://testnet.vega.trading
+
+username: lemonlizard :)
+
+links
+-----
+
++ https://console.fairground.wtf/
++ https://linktr.ee/vegaprotocol
++ https://github.com/vegaprotocol/go-wallet
++ https://github.com/vegaprotocol/sample-api-scripts
++ https://community.vega.xyz/c/testnet/12
++ https://docs.fairground.vega.xyz/
+
+
 time to choose
-**************
-Vega or Bitmex?
+==============
 
-here for open markets: https://linktr.ee/vegaprotocol
+when moon?
+----------
 
-here to get rekt on bitmex
+.. image:: ../files/img/whenmoon.jpg
 
-*********
-demo time
-*********
-vega
-====
+centralized markets or open markets
+it is your time to choose ...
 
-api howto
----------
+I leave you with the same advice Dr. Freeman got before when he had to choose :)~
 
-api howto guide
+advice
+------
 
-watching the mempool
-https://www.blocknative.com/blog/explorer
+`advice`_ for dr. freeman
+
+.. _advice: https://www.youtube.com/watch?v=14cgH6MiYf8
+
+addendum
+--------
+
+stats on MEV: https://explore.flashbots.net/
+
+possible solutions to the MEV problem
+
+- privacy-preserving smart contracts
+  https://defiprime.com/secretswap
+- order fairness via randomized transaction execution order
+  https://medium.com/coinmonks/mangata-a-polkadots-new-hero-decentralized-exchange-e17eb0105942
+- will add more- 

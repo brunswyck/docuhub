@@ -93,30 +93,30 @@ It is an object proposed by `threading` that is extremely simple to use: at the 
 
 .. code-block:: python
 
-from threading import Thread, RLock
+   from threading import Thread, RLock
 
-lock = RLock()
+   lock = RLock()
 
-class SyncThread(Thread):
-    def __init__(self, text):
-        Thread.__init__(self)
-        self.text = text
+   class SyncThread(Thread):
+       def __init__(self, text):
+           Thread.__init__(self)
+           self.text = text
 
-    def run(self):
-        with lock:
-            print(self.text)
-            with open('synch_thread.txt', 'a') as file:
-                file.write(self.text)
+       def run(self):
+           with lock:
+               print(self.text)
+               with open('synch_thread.txt', 'a') as file:
+                   file.write(self.text)
 
-thread_1 = SyncThread("Thread 1 /")
-thread_2 = SyncThread("Thread 2 /")
-thread_3 = SyncThread("Thread 3 /")
-thread_4 = SyncThread("Thread 4 /")
+   thread_1 = SyncThread("Thread 1 /")
+   thread_2 = SyncThread("Thread 2 /")
+   thread_3 = SyncThread("Thread 3 /")
+   thread_4 = SyncThread("Thread 4 /")
 
-thread_1.start()
-thread_2.start()
-thread_3.start()
-thread_4.start()
+   thread_1.start()
+   thread_2.start()
+   thread_3.start()
+   thread_4.start()
 
 
 - We import `RLock` from the threading module
