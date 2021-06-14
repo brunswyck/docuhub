@@ -46,7 +46,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="techtalks" href="techtalk/main.html" />
-    <link rel="prev" title="Links" href="links.html" /> 
+    <link rel="prev" title="links" href="links.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,10 +94,10 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="ansible.html">ansible</a></li>
-<li class="toctree-l1"><a class="reference internal" href="apidoc/modules.html">becode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheats/main.html">cheatsheets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">links</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">python</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#library">library</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#toolkit">toolkit</a><ul>
@@ -139,6 +139,17 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#fundamentals">fundamentals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#summary">summary</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#list-indices">list indices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-operations">list operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nested-lists">nested lists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deep-copy">deep copy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tuples">tuples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dictionaries">dictionaries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-loop-tuple">for loop tuple</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#combining-iterables-to-for-loop-over">combining iterables to for loop over</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#modularity">modularity</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#main-function-cli-arguments">main function &amp; cli arguments</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#docstrings">docstrings</a></li>
@@ -250,9 +261,21 @@
 <li class="toctree-l4"><a class="reference internal" href="#negative-lookbehind">negative lookbehind</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#multi-line">multi-line</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#re-dotall">re.DOTALL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#re-multiline">re.MULTILINE</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#greedy-vs-non-greedy">greedy vs non-greedy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#re-verbose">re.VERBOSE</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#scraping">scraping</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scrapy">scrapy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-spider">create spider</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#find-elements-with-scrapy-shell">find elements with scrapy shell</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#beautiful-soup">beautiful soup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#setup-bs4">setup bs4</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#find-html-elements">find html elements</a></li>
@@ -616,6 +639,491 @@ cd ~/gits;git clone git@github.com:brunswyck/docuhub.git;cd ~/gits/docuhub
 </div>
 <div class="section" id="fundamentals">
 <h2>fundamentals<a class="headerlink" href="#fundamentals" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="summary">
+<h3>summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="list-indices">
+<h4>list indices<a class="headerlink" href="#list-indices" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="s2">&quot;third&quot;</span><span class="p">,</span> <span class="s2">&quot;fourth&quot;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default" id="id4">
+<caption><span class="caption-text">indices</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>x = [</p></th>
+<th class="head"><p>“first”,</p></th>
+<th class="head"><p>“second”,</p></th>
+<th class="head"><p>“third”,</p></th>
+<th class="head"><p>“fourth”     ]</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>positive index</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>negative index</p></td>
+<td><p>-4</p></td>
+<td><p>-3</p></td>
+<td><p>-2</p></td>
+<td><p>-1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span><span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="s2">&quot;third&quot;</span><span class="p">]</span>
+
+<span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="s2">&quot;third&quot;</span><span class="p">]</span>  <span class="c1"># last index not included!</span>
+
+<span class="n">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="s2">&quot;third&quot;</span><span class="p">]</span>
+
+<span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="p">[</span><span class="s2">&quot;third&quot;</span><span class="p">,</span> <span class="s2">&quot;fourth&quot;</span><span class="p">]</span>
+
+<span class="c1"># append list to end of list</span>
+<span class="n">x</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">):]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="c1"># make copy you can modify</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:]</span>
+
+<span class="c1"># add list to front of list (prepend)</span>
+<span class="n">x</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># up to first element</span>
+<span class="n">x</span><span class="p">[:</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">x</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="c1"># delete part of list</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 2nd element up to last (0 -&gt; 7) not including 7</span>
+<span class="n">x</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="c1"># glue one list to another</span>
+<span class="n">x</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># x.append(y) will add y list as an element, not extend</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span>
+
+<span class="k">del</span> <span class="n">x</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="k">del</span> <span class="n">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="n">z</span>
+<span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>x.remove(3) doesn’t remove 4th element, it removes the first 3 it finds in the list</p>
+</div>
+</div>
+<div class="section" id="list-operations">
+<h4>list operations<a class="headerlink" href="#list-operations" title="Permalink to this headline">¶</a></h4>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">list operations</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 60%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>List operation</p></th>
+<th class="head"><p>Explanation</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[]</p></td>
+<td><p>Creates an empty list</p></td>
+<td><p>x = []</p></td>
+</tr>
+<tr class="row-odd"><td><p>len</p></td>
+<td><p>Returns the length of a list</p></td>
+<td><p>len(x)</p></td>
+</tr>
+<tr class="row-even"><td><p>append</p></td>
+<td><p>Adds a single element to the end of a list</p></td>
+<td><p>x.append(‘y’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>extend</p></td>
+<td><p>Adds another list to the end of the list</p></td>
+<td><p>x.extend([‘a’, ‘b’])</p></td>
+</tr>
+<tr class="row-even"><td><p>insert</p></td>
+<td><p>Inserts a new element at a given position in the list</p></td>
+<td><p>x.insert(0, ‘y’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>del</p></td>
+<td><p>Removes a list element or slice</p></td>
+<td><p>del(x[0])</p></td>
+</tr>
+<tr class="row-even"><td><p>remove</p></td>
+<td><p>Searches for and removes a given value from a list</p></td>
+<td><p>x.remove(‘y’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>reverse</p></td>
+<td><p>Reverses a list in place</p></td>
+<td><p>x.reverse()</p></td>
+</tr>
+<tr class="row-even"><td><p>sort</p></td>
+<td><p>Sorts a list in place</p></td>
+<td><p>x.sort()</p></td>
+</tr>
+<tr class="row-odd"><td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Adds two lists together</p></td>
+<td><p>x1 + x2</p></td>
+</tr>
+<tr class="row-even"><td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Replicates a list</p></td>
+<td><p>x = [‘y’] * 3</p></td>
+</tr>
+<tr class="row-odd"><td><p>min</p></td>
+<td><p>Returns the smallest element in a list</p></td>
+<td><p>min(x)</p></td>
+</tr>
+<tr class="row-even"><td><p>max</p></td>
+<td><p>Returns the largest element in a list</p></td>
+<td><p>max(x)</p></td>
+</tr>
+<tr class="row-odd"><td><p>index</p></td>
+<td><p>Returns the position of a value in a list</p></td>
+<td><p>x.index[‘y’]</p></td>
+</tr>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>Counts the number of times a value occurs in a list</p></td>
+<td><p>x.count(‘y’)</p></td>
+</tr>
+<tr class="row-odd"><td><p>sum</p></td>
+<td><p>Sums the items (if they can be summed)</p></td>
+<td><p>sum(x)</p></td>
+</tr>
+<tr class="row-even"><td><p>in</p></td>
+<td><p>Returns whether an item is in a list</p></td>
+<td><p>‘y’ in x</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="nested-lists">
+<h4>nested lists<a class="headerlink" href="#nested-lists" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">]]</span>
+<span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># [0, 1, 2]</span>
+<span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># 1</span>
+<span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="c1"># [20, 21, 22]</span>
+<span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+<span class="c1"># 22</span>
+</pre></div>
+</div>
+<p>lists are mutable so can change inside a variable, watch out</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nested</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">original</span> <span class="o">=</span> <span class="p">[</span><span class="n">nested</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">original</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">nested</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;zero&#39;</span>
+<span class="n">original</span>
+<span class="p">[[</span><span class="s1">&#39;zero&#39;</span><span class="p">],</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">original</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">nested</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">original</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">]</span>
+<span class="c1"># the following makes nested point to a different list</span>
+<span class="n">nested</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="c1"># so original no longer points to the same list but another one</span>
+<span class="n">original</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deep-copy">
+<h4>deep copy<a class="headerlink" href="#deep-copy" title="Permalink to this headline">¶</a></h4>
+<p>if your list has other lists nested in it you may want a <strong>deep copy</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">original</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;-----</span>
+<span class="c1"># shallow copy just refer|ences to original list</span>
+<span class="n">shallow</span> <span class="o">=</span> <span class="n">original</span><span class="p">[:]</span> <span class="o">----</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="c1"># deep copy doesn&#39;t reference but creates new list</span>
+<span class="n">deep</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tuples">
+<h4>tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>add a comma to force a tuple!</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="mi">7</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># &lt;class &#39;int&#39;&gt;</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="c1"># &lt;class &#39;int&#39;&gt;</span>
+<span class="c1"># z is not a tuple!</span>
+<span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="c1"># &lt;class &#39;int&#39;&gt;</span>
+<span class="c1"># adding a comma it now is a tuple!</span>
+<span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">,)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="c1"># &lt;class &#39;tuple&#39;&gt;</span>
+<span class="c1"># create empty tuple</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">()</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1"># &lt;class &#39;tuple&#39;&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="packing-unpacking">
+<h5>packing unpacking<a class="headerlink" href="#packing-unpacking" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">one</span><span class="p">,</span> <span class="n">two</span><span class="p">,</span> <span class="n">three</span><span class="p">,</span> <span class="n">four</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">one</span><span class="p">)</span>
+<span class="c1"># &lt;class &#39;int&#39;&gt;</span>
+<span class="n">one</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="variable-swapping">
+<h5>variable swapping<a class="headerlink" href="#variable-swapping" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span> <span class="o">=</span> <span class="n">var2</span><span class="p">,</span> <span class="n">var1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extended-unpacking">
+<h5>extended unpacking<a class="headerlink" href="#extended-unpacking" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="o">*</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span>
+<span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="o">*</span><span class="n">e</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">[])</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>element with * absorbs all elements not matching the others as a list
+if there are no surplus items it receives an empty list</p>
+</div>
+</div>
+</div>
+<div class="section" id="dictionaries">
+<h4>dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="get-function">
+<h5>get function<a class="headerlink" href="#get-function" title="Permalink to this headline">¶</a></h5>
+<p>if the dictionary doesn’t contain the key, it returns a second argument</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">en_to_nl</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;no translation&#39;</span><span class="p">)</span>
+<span class="n">blauw</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">en_to_nl</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;purp&#39;</span><span class="p">,</span> <span class="s1">&#39;no translation&#39;</span><span class="p">)</span>
+<span class="n">no</span> <span class="n">translation</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>2nd arg is optional, if not present it returns None</p>
+</div>
+</div>
+<div class="section" id="setdefault">
+<h5>setdefault<a class="headerlink" href="#setdefault" title="Permalink to this headline">¶</a></h5>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>set a key value if there is no value set! awesome</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;four&#39;</span><span class="p">}</span>
+<span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="s1">&#39;two&#39;</span>
+<span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;pump it&#39;</span><span class="p">)</span>
+<span class="s1">&#39;two&#39;</span>
+<span class="c1"># no key 5, so it will return &#39;pump it&#39;</span>
+<span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;pump it&#39;</span><span class="p">)</span>
+<span class="s1">&#39;pump it&#39;</span>
+<span class="n">x</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">)</span>
+<span class="s1">&#39;&#39;</span>
+<span class="c1"># no key 5, so the message &#39;five&#39; is returned but key not created</span>
+<span class="n">x</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;five&#39;</span><span class="p">)</span>
+<span class="s1">&#39;five&#39;</span>
+<span class="n">x</span>
+<span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;four&#39;</span><span class="p">}</span>
+<span class="c1"># no key 5, so the key is created along with &#39;five&#39; value</span>
+<span class="n">x</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;five&#39;</span><span class="p">)</span>
+<span class="s1">&#39;five&#39;</span>
+<span class="n">x</span>
+<span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;five&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-text">values that can be used as dictionary keys</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>type</p></th>
+<th class="head"><p>immutable?</p></th>
+<th class="head"><p>hashable?</p></th>
+<th class="head"><p>dictionary key?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>int</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>float</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>boolean</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>complex</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>str</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>bytes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-even"><td><p>bytearray</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-odd"><td><p>list</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>tuple</p></td>
+<td><p>yes</p></td>
+<td><p>sometimes</p></td>
+<td><p>sometimes</p></td>
+</tr>
+<tr class="row-odd"><td><p>set</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+<tr class="row-even"><td><p>frozenset</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+<td><p>yes</p></td>
+</tr>
+<tr class="row-odd"><td><p>dictionary</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+<td><p>no</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dictionary-as-cache">
+<h5>dictionary as cache<a class="headerlink" href="#dictionary-as-cache" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">calc_cache</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">def</span> <span class="nf">calculation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="ow">in</span> <span class="n">calc_cache</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">calc_cache</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># some time-consuming calculation</span>
+        <span class="n">calc_cache</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)]</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="for-loop-tuple">
+<h4>for loop tuple<a class="headerlink" href="#for-loop-tuple" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">somelist</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># this isn&#39;t a dictionary but tuple unpacking</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">somelist</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">result</span>
+<span class="mi">44</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the enumerate function returns (index, item) tuples</p>
+</div>
+</div>
+<div class="section" id="combining-iterables-to-for-loop-over">
+<h4>combining iterables to for loop over<a class="headerlink" href="#combining-iterables-to-for-loop-over" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="n">z</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">z</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="modularity">
 <h3>modularity<a class="headerlink" href="#modularity" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="main-function-cli-arguments">
@@ -3420,13 +3928,35 @@ There are also the classes defined in the module (the class C and the superclass
 <h2>regex<a class="headerlink" href="#regex" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="searching">
 <h3>searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>re.match: returns first occurence matching pattern in a string as a <strong>match object</strong></p></li>
-<li><p>re.search: returns a <strong>match object</strong> if there is a match <strong>anywhere</strong> in the string, unlike match</p></li>
-<li><p>re.fullmatch: looks for match on an <strong>entire string</strong></p></li>
-<li><p>re.findall: returns a <strong>list</strong> containing all matches, iterates over all lines</p></li>
-<li><p>re.finditer: returns an <strong>iterator</strong> that yields regex matches from a string</p></li>
-</ul>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">searching</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>search method</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>re.match</p></td>
+<td><p>returns first occurence matching pattern in a string as a <strong>match object</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>re.search</p></td>
+<td><p>returns a <strong>match object</strong> if there is a match <strong>anywhere</strong> in the string, unlike match</p></td>
+</tr>
+<tr class="row-even"><td><p>re.fullmatch</p></td>
+<td><p>looks for match on an <strong>entire string</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>re.findall</p></td>
+<td><p>returns a <strong>list</strong> containing all matches, iterates over all lines</p></td>
+</tr>
+<tr class="row-even"><td><p>re.finditer</p></td>
+<td><p>returns an <strong>iterator</strong> that yields regex matches from a string</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>match only works on the WHOLE string, use search to get a match within a string eg. find a number in xqsdf88mlkj</p>
@@ -3434,10 +3964,26 @@ There are also the classes defined in the module (the class C and the superclass
 </div>
 <div class="section" id="substitution">
 <h3>substitution<a class="headerlink" href="#substitution" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>re.sub: replaces 1 or many matches with a string and returns the result</p></li>
-<li><p>re.subn: like sub but also returns info on <strong>number of substitutions</strong> made</p></li>
-</ul>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-text">substitution</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>sub method</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>re.sub</p></td>
+<td><p>replaces 1 or many matches with a string and returns the result</p></td>
+</tr>
+<tr class="row-odd"><td><p>re.subn</p></td>
+<td><p>like sub but also returns info on <strong>number of substitutions</strong> made</p></td>
+</tr>
+</tbody>
+</table>
 <div class="section" id="substitution-by-function">
 <h4>substitution by function<a class="headerlink" href="#substitution-by-function" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
@@ -3611,12 +4157,32 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 </div>
 <div class="section" id="regex-oject-attributes">
 <h3>regex oject attributes<a class="headerlink" href="#regex-oject-attributes" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>re_obj.flags: shows any flags that are in effect for the regex</p></li>
-<li><p>re_obj.groups: the number of capturing groups in the regex</p></li>
-<li><p>re_obj.groupindex: a dict mapping each symbolic group name defined by the <cite>(?P&lt;name&gt;)</cite> construct to corresponding group number</p></li>
-<li><p>re_obj.pattern: regex pattern that produced this object</p></li>
-</ul>
+<table class="colwidths-given docutils align-default" id="id9">
+<caption><span class="caption-text">object attributes</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>object attribute</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>re_obj.flags</p></td>
+<td><p>shows any flags that are in effect for the regex</p></td>
+</tr>
+<tr class="row-odd"><td><p>re_obj.groups</p></td>
+<td><p>the number of capturing groups in the regex</p></td>
+</tr>
+<tr class="row-even"><td><p>re_obj.groupindex</p></td>
+<td><p>a dict mapping each symbolic group name defined by the <cite>(?P&lt;name&gt;)</cite> construct to corresponding group number</p></td>
+</tr>
+<tr class="row-odd"><td><p>re_obj.pattern</p></td>
+<td><p>regex pattern that produced this object</p></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">re_obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?m)(\w+),(\w+)&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
 <span class="n">re_obj</span><span class="o">.</span><span class="n">flags</span>
 <span class="mi">42</span>
@@ -3661,37 +4227,91 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 <div class="section" id="match-object-methods">
 <h4>match object methods<a class="headerlink" href="#match-object-methods" title="Permalink to this headline">¶</a></h4>
 <p>methods that are available for a match object match:</p>
-<ul class="simple">
-<li><p>match.group(): The specified captured group or groups from match</p></li>
-<li><p>match.__getitem__(): A captured group from match</p></li>
-<li><p>match.groups(): All the captured groups from match</p></li>
-<li><p>match.groupdict(): A dictionary of named captured groups from match</p></li>
-<li><p>match.expand(): The result of performing backreference substitutions from match</p></li>
-<li><p>match.start(): The starting index of match</p></li>
-<li><p>match.end(): The ending index of match</p></li>
-<li><p>match.span(): Both the starting and ending indices of match as a tuple</p></li>
-</ul>
+<table class="colwidths-given docutils align-default" id="id10">
+<caption><span class="caption-text">match methods</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>match method</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>match.group()</p></td>
+<td><p>The specified captured group or groups from match</p></td>
+</tr>
+<tr class="row-odd"><td><p>match.__getitem__()</p></td>
+<td><p>A captured group from match</p></td>
+</tr>
+<tr class="row-even"><td><p>match.groups()</p></td>
+<td><p>All the captured groups from match</p></td>
+</tr>
+<tr class="row-odd"><td><p>match.groupdict()</p></td>
+<td><p>A dictionary of named captured groups from match</p></td>
+</tr>
+<tr class="row-even"><td><p>match.expand()</p></td>
+<td><p>The result of performing backreference substitutions from match</p></td>
+</tr>
+<tr class="row-odd"><td><p>match.start()</p></td>
+<td><p>The starting index of match</p></td>
+</tr>
+<tr class="row-even"><td><p>match.end()</p></td>
+<td><p>The ending index of match</p></td>
+</tr>
+<tr class="row-odd"><td><p>match.span()</p></td>
+<td><p>Both the starting and ending indices of match as a tuple</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="match-object-attributes">
 <h4>match object attributes<a class="headerlink" href="#match-object-attributes" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li><p>match.pos: The effective values of the pos &amp; endpos arguments for the match
-match.endpos</p></li>
-<li><p>match.lastindex: The index of the last captured group</p></li>
-<li><p>match.lastgroup: The name of the last captured group</p></li>
-<li><p>match.re: the compiled regex object for the match</p></li>
-<li><p>match.string: the search string for the match</p></li>
-</ul>
+<table class="colwidths-given docutils align-default" id="id11">
+<caption><span class="caption-text">match attributes</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>match attribute</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>match.pos</p></td>
+<td><p>effective values of the pos &amp; endpos arguments for the match</p></td>
+</tr>
+<tr class="row-odd"><td><p>match.endpos</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>match.lastindex</p></td>
+<td><p>index of the last captured group</p></td>
+</tr>
+<tr class="row-odd"><td><p>match.lastgroup</p></td>
+<td><p>name of the last captured group</p></td>
+</tr>
+<tr class="row-even"><td><p>match.re</p></td>
+<td><p>the compiled regex object for the match</p></td>
+</tr>
+<tr class="row-odd"><td><p>match.string</p></td>
+<td><p>the search string for the match</p></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">re_obj</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">)</span>
 <span class="n">m</span> <span class="o">=</span> <span class="n">re_obj</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;foo123bar&#39;</span><span class="p">)</span>
 <span class="n">m</span>
 <span class="o">&lt;</span><span class="n">_sre</span><span class="o">.</span><span class="n">SRE_Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;123&#39;</span><span class="o">&gt;</span>
+
 <span class="n">m</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">endpos</span>
 <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
 
 <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="s1">&#39;foo123bar&#39;</span><span class="p">)</span>
 <span class="n">m</span>
 <span class="o">&lt;</span><span class="n">_sre</span><span class="o">.</span><span class="n">SRE_Match</span> <span class="nb">object</span><span class="p">;</span> <span class="n">span</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">match</span><span class="o">=</span><span class="s1">&#39;123&#39;</span><span class="o">&gt;</span>
+
 <span class="n">m</span><span class="o">.</span><span class="n">pos</span><span class="p">,</span> <span class="n">m</span><span class="o">.</span><span class="n">endpos</span>
 <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
 
@@ -3746,9 +4366,102 @@ match.endpos</p></li>
 (?&lt;=-)+</p>
 </div>
 </div>
+<div class="section" id="multi-line">
+<h3>multi-line<a class="headerlink" href="#multi-line" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> \
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">&lt;p&gt;</span>
+<span class="sd">This is a paragraph.</span>
+<span class="sd">It has got muliple lines.</span>
+<span class="sd">&lt;/p&gt;</span>
+<span class="sd">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<div class="section" id="re-dotall">
+<h4>re.DOTALL<a class="headerlink" href="#re-dotall" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&lt;p&gt;.*&lt;/p&gt;&#39;</span><span class="p">,</span> <span class="n">paragraph</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+<span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="s1">&#39;&lt;p&gt;</span><span class="se">\n</span><span class="s1">This is a pragraph.</span><span class="se">\n</span><span class="s1">It has multiple lines.</span><span class="se">\n</span><span class="s1">&lt;/p&gt;&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>using the re.DOTALL flag, we can match patterns that span multiple lines</p>
+</div>
+</div>
+<div class="section" id="re-multiline">
+<h4>re.MULTILINE<a class="headerlink" href="#re-multiline" title="Permalink to this headline">¶</a></h4>
+<p>By default the ‘^’ and ‘$’ special characters only apply to the start and end of the entire string.</p>
+<p>There is a flag to modify this behavior, The <strong>re.MULTILINE</strong> flag tells python to make the ‘^’ and ‘$’ special characters match the start or end of any line within a string. Using this flag</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^It has.*&#39;</span><span class="p">,</span> <span class="n">paragraph</span><span class="p">)</span>
+<span class="c1"># no result</span>
+
+<span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^It has.*&#39;</span><span class="p">,</span> <span class="n">paragraph</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">MULTILINE</span><span class="p">)</span>
+<span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="s1">&#39;It has multiple lines.i&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="greedy-vs-non-greedy">
+<h3>greedy vs non-greedy<a class="headerlink" href="#greedy-vs-non-greedy" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://docs.python.org/3/howto/regex.html#greedy-versus-non-greedy">docs</a> on greedy vs non-greedy</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;Title&lt;/title&gt;&#39;</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="mi">32</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;&lt;.*&gt;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">span</span><span class="p">())</span>
+<span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;&lt;.*&gt;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;&lt;</span><span class="n">head</span><span class="o">&gt;&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">Title</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;&lt;.*?&gt;&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">())</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="re-verbose">
+<h3>re.VERBOSE<a class="headerlink" href="#re-verbose" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pat</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2"> \s*                 # Skip leading whitespace</span>
+<span class="s2"> (?P&lt;header&gt;[^:]+)   # Header name</span>
+<span class="s2"> \s* :               # Whitespace, and a colon</span>
+<span class="s2"> (?P&lt;value&gt;.*?)      # The header&#39;s value -- *? used to</span>
+<span class="s2">                     # lose the following trailing whitespace</span>
+<span class="s2"> \s*$                # Trailing whitespace to end-of-line</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is far more readable than:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pat</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\s*(?P&lt;header&gt;[^:]+)\s*:(?P&lt;value&gt;.*?)\s*$&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="scraping">
 <h2>scraping<a class="headerlink" href="#scraping" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="scrapy">
+<h3>scrapy<a class="headerlink" href="#scrapy" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://docs.scrapy.org/en/latest/index.html">scrapy docs</a></p>
+<div class="section" id="create-spider">
+<h4>create spider<a class="headerlink" href="#create-spider" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">startproject</span> <span class="n">immoscrape</span>
+<span class="n">cd</span> <span class="n">immoscrape</span>
+<span class="n">scrapy</span> <span class="n">genspider</span> <span class="n">ImmoSpider</span> <span class="n">immoweb</span><span class="o">.</span><span class="n">be</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="find-elements-with-scrapy-shell">
+<h4>find elements with scrapy shell<a class="headerlink" href="#find-elements-with-scrapy-shell" title="Permalink to this headline">¶</a></h4>
+<p>test if scrapy can find the elements on a page by invoking the <strong>scrapy shell</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">shell</span> <span class="s1">&#39;https://www.immoweb.be/en/search/house/for-sale/eeklo/9900?countries=BE&amp;minPrice=100000&amp;maxPrice=300000&amp;page=1&amp;orderBy=relevance&#39;</span>
+<span class="c1"># &gt;&gt;&gt; response</span>
+<span class="c1"># &lt;200 https://www.immoweb.be/en/search/house/for-sale/eeklo/9900?countries=BE&amp;page=4&amp;orderBy=relevance&gt;</span>
+<span class="c1"># &gt;&gt;&gt; view(response)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="beautiful-soup">
 <h3>beautiful soup<a class="headerlink" href="#beautiful-soup" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">https://www.crummy.com/software/BeautifulSoup/bs4/doc/</a></p>
@@ -4423,7 +5136,7 @@ match.endpos</p></li>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="techtalk/main.html" class="btn btn-neutral float-right" title="techtalks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="links.html" class="btn btn-neutral float-left" title="Links" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="links.html" class="btn btn-neutral float-left" title="links" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

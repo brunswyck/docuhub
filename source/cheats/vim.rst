@@ -1,10 +1,22 @@
-###
+***
 vim
-###
+***
 
-*************
-tips n tricks
-*************
+search replace
+==============
+
+visual mode replace
+-------------------
+
+.. code-block:: vim
+
+   change_me::
+   # ctrl-v to select change_me::
+   # then hit ':' to enter command
+   # \%V = last visual selection
+   %s/\%Vchange_me/changed/g
+
+
 
 copy pasting
 ============
@@ -13,8 +25,6 @@ using mark
 ----------
 
 .. code-block:: bash
-
-   .. code-block:: bash
 
    # mark as k
    mk
@@ -46,29 +56,44 @@ copy a block
 
    # mark block start x
    mx
-   
+
    # goto end of block
    use move keys
-   
+
    # mark block end y
    my
-   
+
    # move to block start
    `x
-   
+
    # yank up to block end
    y`y
-   
+
    # or cut the block
    d`y
 
+change case
+-----------
 
-******
-.vimrc
-******
+.. code-block:: vim
 
-setting up vim
-==============
+   ctrl-v + u
+   # lowercase line
+   guu
+   # lowercase text in that direction
+   gu[motion]
+   # uppercase with U
+   guU
+   gU[motion]
+   # all lowercase
+   ggguG
+   # gg = goto 1st line, g=(action)start converting from here, till G = end of file
+
+   # toggle case with ~
+   g~[motion]
+
+vimrc file
+==========
 
 setting up plugins
 ------------------

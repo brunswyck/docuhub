@@ -2,6 +2,34 @@
 scraping
 ********
 
+scrapy
+======
+
+`scrapy docs`_
+
+.. _scrapy docs: https://docs.scrapy.org/en/latest/index.html
+
+create spider
+-------------
+
+.. code-block:: python
+
+   scrapy startproject immoscrape
+   cd immoscrape
+   scrapy genspider ImmoSpider immoweb.be
+
+find elements with scrapy shell
+-------------------------------
+
+test if scrapy can find the elements on a page by invoking the **scrapy shell**
+
+.. code-block:: python
+
+   scrapy shell 'https://www.immoweb.be/en/search/house/for-sale/eeklo/9900?countries=BE&minPrice=100000&maxPrice=300000&page=1&orderBy=relevance'
+   # >>> response
+   # <200 https://www.immoweb.be/en/search/house/for-sale/eeklo/9900?countries=BE&page=4&orderBy=relevance>
+   # >>> view(response)
+
 beautiful soup
 ==============
 
@@ -207,7 +235,7 @@ handy libraries
    print(date)
 
 scraping training
-======================
+=================
 
 inquisitive with bs4 & selenium
 -------------------------------

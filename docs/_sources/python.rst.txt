@@ -1,7 +1,6 @@
 ######
 python
 ######
-
 *******
 library
 *******
@@ -296,7 +295,445 @@ pip3 requirements
 ************
 fundamentals
 ************
+summary
+=======
 
+list indices
+------------
+
+.. code-block:: python
+
+   x = ["first", "second", "third", "fourth"]
+   y = [1, 2, 3, 4]
+
+.. list-table:: indices
+   :widths: 20 20 20 20 20
+   :header-rows: 1
+
+   * - x = [
+     - "first",
+     - "second",
+     - "third",
+     - "fourth"     ]
+   * - positive index
+     - 0
+     - 1
+     - 2
+     - 3
+   * - negative index
+     - -4
+     - -3
+     - -2
+     - -1
+
+.. code-block:: python
+
+   x[1:-1]
+   ["second", "third"]
+
+   x[0:3]
+   ["first", "second", "third"]  # last index not included!
+
+   x[:3]
+   ["first", "second", "third"]
+
+   x[2:]
+   ["third", "fourth"]
+
+   # append list to end of list
+   x[len(x):] = [5, 6, 7]
+
+   # make copy you can modify
+   y = x[:]
+
+   # add list to front of list (prepend)
+   x[:0] # up to first element
+   x[:0] = [-1, 0]
+   x
+   [-1, 0, 1, 2, 3, 4, 5, 6, 7]
+
+   # delete part of list
+   x[1:-1] = []  # 2nd element up to last (0 -> 7) not including 7
+   x
+   [-1, 7]
+
+   # glue one list to another
+   x.extend(y)
+
+   # x.append(y) will add y list as an element, not extend
+   [1, 2, 3, 4, [5, 6, 7]]
+
+   del x[4]
+   [1, 2, 3, 4]
+
+   del x[:3]
+   [4]
+
+   z = [None] * 4
+   z
+   [None, None, None, None]
+
+
+.. warning:: x.remove(3) doesn't remove 4th element, it removes the first 3 it finds in the list
+
+list operations
+---------------
+
+.. list-table:: list operations
+   :widths: 25 75 25
+   :header-rows: 1
+
+   * - List operation
+     - Explanation
+     - Example
+   * - []
+     - Creates an empty list 
+     - x = []
+   * - len
+     - Returns the length of a list
+     - len(x)
+   * - append
+     - Adds a single element to the end of a list
+     - x.append('y')
+   * - extend
+     - Adds another list to the end of the list
+     - x.extend(['a', 'b'])
+   * - insert
+     - Inserts a new element at a given position in the list
+     - x.insert(0, 'y')
+   * - del
+     - Removes a list element or slice
+     - del(x[0])
+   * - remove
+     - Searches for and removes a given value from a list
+     - x.remove('y')
+   * - reverse
+     - Reverses a list in place
+     - x.reverse()
+   * - sort
+     - Sorts a list in place
+     - x.sort()
+   * - +
+     - Adds two lists together
+     - x1 + x2
+   * - *
+     - Replicates a list
+     - x = ['y'] * 3
+   * - min
+     - Returns the smallest element in a list
+     - min(x)
+   * - max
+     - Returns the largest element in a list
+     - max(x)
+   * - index
+     - Returns the position of a value in a list
+     - x.index['y']
+   * - count
+     - Counts the number of times a value occurs in a list
+     - x.count('y')
+   * - sum
+     - Sums the items (if they can be summed)
+     - sum(x)
+   * - in
+     - Returns whether an item is in a list
+     - 'y' in x
+
+
+nested lists
+------------
+
+.. code-block:: python
+
+   m = [[0, 1, 2], [10, 11, 12], [20, 21, 22]]
+   m[0]
+   # [0, 1, 2]
+   m[0][1]
+   # 1
+   m[2]
+   # [20, 21, 22]
+   m[2][2]
+   # 22
+
+lists are mutable so can change inside a variable, watch out
+
+.. code-block:: python
+
+   nested = [0]
+   original = [nested, 1]
+   original
+   [[0], 1]
+   nested[0] = 'zero'
+   original
+   [['zero'], 1]
+   original[0][0] = 0
+   nested
+   [0]
+   original
+   [[0], 1]
+   # the following makes nested point to a different list
+   nested = [2]
+   # so original no longer points to the same list but another one
+   original
+   [[0], 1]
+
+deep copy
+---------
+
+if your list has other lists nested in it you may want a **deep copy**
+
+.. code-block:: python
+
+   original = [[0], 1] <-----
+   # shallow copy just refer|ences to original list
+   shallow = original[:] ----
+   import copy
+   # deep copy doesn't reference but creates new list
+   deep = copy.deepcopy(original)
+
+
+tuples
+------
+
+.. note::
+   add a comma to force a tuple!
+
+
+.. code-block:: python
+
+   x = 3
+   y = 4
+   (x+y)
+   7
+   type(x)
+   # <class 'int'>
+   type(x+y)
+   # <class 'int'>
+   # z is not a tuple!
+   z = (x+y)
+   type(z)
+   # <class 'int'>
+   # adding a comma it now is a tuple!
+   z = (x+y,)
+   type(z)
+   # <class 'tuple'>
+   # create empty tuple
+   x = ()
+   type(x)
+   # <class 'tuple'>
+
+
+packing unpacking
+^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+   (one, two, three, four) = (1, 2, 3, 4)
+   type(one)
+   # <class 'int'>
+   one
+   1
+
+variable swapping
+^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+   var1, var2 = var2, var1
+
+extended unpacking
+^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+   x = (1, 2, 3, 4)
+   a, b, *c = x
+   a, b, c
+   (1, 2, [3, 4])
+
+   a, *b, c = x
+   a, b, c
+   (1, [2, 3], 4)
+
+   *a, b, c = x
+   a, b, c
+   ([1, 2], 3, 4)
+
+   a, b, c, d, *e = x
+   a, b, c, d, e
+   (1, 2, 3, 4, [])
+
+
+.. note::
+
+   element with * absorbs all elements not matching the others as a list
+   if there are no surplus items it receives an empty list
+
+
+dictionaries
+------------
+
+get function
+^^^^^^^^^^^^
+
+if the dictionary doesn't contain the key, it returns a second argument
+
+.. code-block:: python
+
+   print(en_to_nl.get('blue', 'no translation')
+   blauw
+   print(en_to_nl.get('purp', 'no translation')
+   no translation
+
+.. note:: 2nd arg is optional, if not present it returns None
+
+setdefault
+^^^^^^^^^^
+
+.. note:: set a key value if there is no value set! awesome
+
+.. code-block:: python
+
+   x = {1: 'one', 2: 'two', 3: '', 4: 'four'}
+   x.get(2)
+   'two'
+   x.get(2, 'pump it')
+   'two'
+   # no key 5, so it will return 'pump it'
+   x.get(5, 'pump it')
+   'pump it'
+   x.setdefault(3, 'three')
+   ''
+   # no key 5, so the message 'five' is returned but key not created
+   x.get(5, 'five')
+   'five'
+   x
+   {1: 'one', 2: 'two', 3: '', 4: 'four'}
+   # no key 5, so the key is created along with 'five' value
+   x.setdefault(5, 'five')
+   'five'
+   x
+   {1: 'one', 2: 'two', 3: '', 4: 'four', 5: 'five'}
+
+
+.. list-table:: values that can be used as dictionary keys
+   :widths: 25 25 25 25
+   :header-rows: 1
+
+   * - type
+     - immutable?
+     - hashable?
+     - dictionary key?
+   * - int
+     - yes
+     - yes
+     - yes
+   * - float
+     - yes
+     - yes
+     - yes
+   * - boolean
+     - yes
+     - yes
+     - yes
+   * - complex
+     - yes
+     - yes
+     - yes
+   * - str
+     - yes
+     - yes
+     - yes
+   * - bytes
+     - yes
+     - yes
+     - yes
+   * - bytearray
+     - no
+     - no
+     - no
+   * - list
+     - no
+     - no
+     - no
+   * - tuple
+     - yes
+     - sometimes
+     - sometimes
+   * - set
+     - no
+     - no
+     - no
+   * - frozenset
+     - yes
+     - yes
+     - yes
+   * - dictionary
+     - no
+     - no
+     - no
+
+dictionary as cache
+^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: python
+
+   calc_cache = {}
+
+   def calculation(x, y, z):
+       if (x, y, z) in calc_cache:
+           return calc_cache[(x, y, z)]
+       else:
+           # some time-consuming calculation
+           calc_cache[(x, y, z)] = result
+           return result
+
+
+
+for loop tuple
+--------------
+
+.. code-block:: python
+
+   somelist = [(1, 2), (3, 4), (5, 6)]
+   result = 0
+   # this isn't a dictionary but tuple unpacking
+   for x, y in somelist:
+       result = result + (x * y)
+
+   result
+   44
+
+.. note:: the enumerate function returns (index, item) tuples
+
+combining iterables to for loop over
+------------------------------------
+
+.. code-block:: python
+
+   x = [1, 2, 3, 4]
+   y = ['a', 'b', 'c']
+   z = zip(x, y)
+   for element in z:
+       print(element)
+   (1, 'a')
+   (2, 'b')
+   (3, 'c')
+
+.. code-block:: python
+
+   
+.. code-block:: python
+
+   
+.. code-block:: python
+
+   
+.. code-block:: python
+
+   
+.. code-block:: python
+
+   
 modularity
 ==========
 
@@ -3213,11 +3650,22 @@ regex
 searching
 =========
 
-- re.match: returns first occurence matching pattern in a string as a **match object**
-- re.search: returns a **match object** if there is a match **anywhere** in the string, unlike match
-- re.fullmatch: looks for match on an **entire string**
-- re.findall: returns a **list** containing all matches, iterates over all lines
-- re.finditer: returns an **iterator** that yields regex matches from a string
+.. list-table:: searching
+   :widths: 25 75
+   :header-rows: 1
+
+   * - search method
+     - description
+   * - re.match
+     - returns first occurence matching pattern in a string as a **match object**
+   * - re.search
+     - returns a **match object** if there is a match **anywhere** in the string, unlike match
+   * - re.fullmatch
+     - looks for match on an **entire string**
+   * - re.findall
+     - returns a **list** containing all matches, iterates over all lines
+   * - re.finditer
+     - returns an **iterator** that yields regex matches from a string
 
 .. warning::
 
@@ -3226,8 +3674,16 @@ searching
 substitution
 ============
 
-- re.sub: replaces 1 or many matches with a string and returns the result
-- re.subn: like sub but also returns info on **number of substitutions** made
+.. list-table:: substitution
+   :widths: 25 75
+   :header-rows: 1
+
+   * - sub method
+     - description
+   * - re.sub
+     - replaces 1 or many matches with a string and returns the result
+   * - re.subn
+     - like sub but also returns info on **number of substitutions** made
 
 
 
@@ -3413,10 +3869,20 @@ re.compile
 regex oject attributes
 ======================
 
-- re_obj.flags: shows any flags that are in effect for the regex
-- re_obj.groups: the number of capturing groups in the regex
-- re_obj.groupindex: a dict mapping each symbolic group name defined by the `(?P<name>)` construct to corresponding group number
-- re_obj.pattern: regex pattern that produced this object
+.. list-table:: object attributes
+   :widths: 25 75
+   :header-rows: 1
+
+   * - object attribute
+     - description
+   * - re_obj.flags
+     - shows any flags that are in effect for the regex
+   * - re_obj.groups
+     - the number of capturing groups in the regex
+   * - re_obj.groupindex
+     - a dict mapping each symbolic group name defined by the `(?P<name>)` construct to corresponding group number
+   * - re_obj.pattern
+     - regex pattern that produced this object
 
 .. code-block:: python
 
@@ -3465,25 +3931,53 @@ match object methods
 
 methods that are available for a match object match:
 
-- match.group(): The specified captured group or groups from match
-- match.__getitem__(): A captured group from match
-- match.groups(): All the captured groups from match
-- match.groupdict(): A dictionary of named captured groups from match
-- match.expand(): The result of performing backreference substitutions from match
-- match.start(): The starting index of match
-- match.end(): The ending index of match
-- match.span(): Both the starting and ending indices of match as a tuple
+.. list-table:: match methods
+   :widths: 25 75
+   :header-rows: 1
+
+   * - match method
+     - description
+   * - match.group()
+     - The specified captured group or groups from match
+   * - match.__getitem__()
+     - A captured group from match
+   * - match.groups()
+     - All the captured groups from match
+   * - match.groupdict()
+     - A dictionary of named captured groups from match
+   * - match.expand()
+     - The result of performing backreference substitutions from match
+   * - match.start()
+     - The starting index of match
+   * - match.end()
+     - The ending index of match
+   * - match.span()
+     - Both the starting and ending indices of match as a tuple
 
 
 match object attributes
 -----------------------
 
-- match.pos: The effective values of the pos & endpos arguments for the match
-  match.endpos
-- match.lastindex: The index of the last captured group
-- match.lastgroup: The name of the last captured group
-- match.re: the compiled regex object for the match
-- match.string: the search string for the match
+
+.. list-table:: match attributes
+   :widths: 25 75
+   :header-rows: 1
+
+   * - match attribute
+     - description
+   * - match.pos
+     - effective values of the pos & endpos arguments for the match
+   * - match.endpos
+     - 
+   * - match.lastindex
+     - index of the last captured group
+   * - match.lastgroup
+     - name of the last captured group
+   * - match.re
+     - the compiled regex object for the match
+   * - match.string
+     - the search string for the match
+
 
 .. code-block:: python
 
@@ -3491,12 +3985,14 @@ match object attributes
    m = re_obj.search('foo123bar')
    m
    <_sre.SRE_Match object; span=(3, 6), match='123'>
+   
    m.pos, m.endpos
    (0, 9)
-   
+
    m = re.search(r'\d+', 'foo123bar')
    m
    <_sre.SRE_Match object; span=(3, 6), match='123'>
+   
    m.pos, m.endpos
    (0, 9)
 
@@ -3508,11 +4004,12 @@ match object attributes
    m = re.search(r'(\w+),(\w+),(\w+)', 'foo,bar,baz')
    m.string
    'foo,bar,baz'
-   
+
    re_obj = re.compile(r'(\w+),(\w+),(\w+)')
    m = re_obj.search('foo,bar,baz')
    m.string
    'foo,bar,baz'
+
 
 lookaround
 ==========
@@ -3568,7 +4065,90 @@ match a '+' when NOT preceeded by a '-'
 .. image: files/img/negative_lookbehind2.png
 
 
+
+multi-line
+==========
+
+.. code::
+
+   paragraph = \
+   '''
+   <p>
+   This is a paragraph.
+   It has got muliple lines.
+   </p>
+   '''
+
+re.DOTALL
+---------
+
+.. code-block:: python
+
+   match = re.search(r'<p>.*</p>', paragraph, re.DOTALL)
+   match.group(0)
+   '<p>\nThis is a pragraph.\nIt has multiple lines.\n</p>'
+
+.. note:: using the re.DOTALL flag, we can match patterns that span multiple lines
+
+re.MULTILINE
+------------
+
+By default the ‘^’ and ‘$’ special characters only apply to the start and end of the entire string.
+
+There is a flag to modify this behavior, The **re.MULTILINE** flag tells python to make the ‘^’ and ‘$’ special characters match the start or end of any line within a string. Using this flag
+
+.. code-block:: python
+
+   re.search(r'^It has.*', paragraph)
+   # no result
+
+   match = re.search(r'^It has.*', paragraph, re.MULTILINE)
+   match.group(0)
+   'It has multiple lines.i'
+
+greedy vs non-greedy
+====================
+
+`docs`_ on greedy vs non-greedy
+
+.. code-block:: python
+
+   s = '<html><head><title>Title</title>'
+   len(s)
+   32
+   print(re.match('<.*>', s).span())
+   (0, 32)
+   print(re.match('<.*>', s).group())
+   <html><head><title>Title</title>
+
+.. code-block:: python
+
+   print(re.match('<.*?>', s).group())
+   <html>
+
+.. _docs: https://docs.python.org/3/howto/regex.html#greedy-versus-non-greedy
+
+
+re.VERBOSE
+==========
+
+.. code-block:: python
+
+   pat = re.compile(r"""
+    \s*                 # Skip leading whitespace
+    (?P<header>[^:]+)   # Header name
+    \s* :               # Whitespace, and a colon
+    (?P<value>.*?)      # The header's value -- *? used to
+                        # lose the following trailing whitespace
+    \s*$                # Trailing whitespace to end-of-line
+   """, re.VERBOSE)
+
+This is far more readable than:
+
+.. code-block:: python
+
+   pat = re.compile(r"\s*(?P<header>[^:]+)\s*:(?P<value>.*?)\s*$")
+
 .. include:: scraping.rst
 .. include:: threading.rst
 .. include:: cli_parsing.rst
-

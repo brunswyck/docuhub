@@ -1,0 +1,553 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>tmux &mdash; Patrick&#39;s Docs alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/dark_mode_css/general.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/dark_mode_css/dark.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/dark_mode_js/default_dark.js"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Patrick's Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ansible.html">ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main.html">cheatsheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../git.html">GIT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../links.html">links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python.html">python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../techtalk/main.html">techtalks</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Patrick's Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>tmux</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/cheats/tmux.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tmux">
+<h1>tmux<a class="headerlink" href="#tmux" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="session-control">
+<h2>session control<a class="headerlink" href="#session-control" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">sessions</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>tmux new-session</p></th>
+<th class="head"><p>:new # start a new session</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>tmux new -s becode</p></td>
+<td><p>:new -s becode  # start new session with name becode</p></td>
+</tr>
+<tr class="row-odd"><td><p>tmux kill-ses -t becode</p></td>
+<td><p>tmux kill-session -t becode  # kill/delete session becode</p></td>
+</tr>
+<tr class="row-even"><td><p>tmux kill-session -a</p></td>
+<td><p>kill/delete all sessions but the current</p></td>
+</tr>
+<tr class="row-odd"><td><p>tmux kill-session -a -t becode</p></td>
+<td><p>kill/delete all sessions but becode</p></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b $</p></td>
+<td><p>rename session</p></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b d</p></td>
+<td><p>detach from session</p></td>
+</tr>
+<tr class="row-even"><td><p>attach -d</p></td>
+<td><p>detach others on the session (Maximize window by detach other clients)</p></td>
+</tr>
+<tr class="row-odd"><td><p>tmux ls</p></td>
+<td><p>tmux list-sessions</p></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b s</p></td>
+<td><p>show all sessions</p></td>
+</tr>
+<tr class="row-odd"><td><p>tmux attach-session</p></td>
+<td><p>attach to last session</p></td>
+</tr>
+<tr class="row-even"><td><p>tmux a -t mysession</p></td>
+<td><p>tmux attach -t mysession</p></td>
+</tr>
+<tr class="row-odd"><td><p>tmux attach-session -t mysession</p></td>
+<td><p>attach to a session with the name mysession</p></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b (</p></td>
+<td><p>move to previous session</p></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b )</p></td>
+<td><p>move to next session</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">windows</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ctrl + b c</p></th>
+<th class="head"><p>create window</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ctrl + b ,</p></td>
+<td><p>rename current window</p></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b &amp;</p></td>
+<td><p>close current window</p></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b p</p></td>
+<td><p>previous window</p></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b n</p></td>
+<td><p>next window</p></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b 0…9</p></td>
+<td><p>switch/select window by number</p></td>
+</tr>
+<tr class="row-odd"><td><p>:swap-window -s 2 -t 1</p></td>
+<td><p>reorder window, swap window 2(src) and 1(dest)</p></td>
+</tr>
+<tr class="row-even"><td><p>:swap-window -t -1</p></td>
+<td><p>move current window to the left by one position</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-text">panes</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ctrl + b ;</p></th>
+<th class="head"><p>toggle last active pane</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ctrl + b %</p></td>
+<td><p>split pane vertically</p></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b “</p></td>
+<td><p>split pane horizontally</p></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b {</p></td>
+<td><p>move the current pane left</p></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b }</p></td>
+<td><p>move the current pane right</p></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b &lt;up&gt;  Ctrl + b &lt;down&gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b &lt;right&gt;  Ctrl + b &lt;left&gt;</p></td>
+<td><p>switch to pane in that direction</p></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b q</p></td>
+<td><p>show pane numbers</p></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b q 0…9</p></td>
+<td><p>switch/select pane by number</p></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b z</p></td>
+<td><p>toggle pane zoom</p></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b !</p></td>
+<td><p>convert pane into a window</p></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b &lt;up&gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b ctrl + &lt;up&gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b &lt;down&gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b ctrl + &lt;down&gt;</p></td>
+<td><p>resize current pane <strong>height</strong> (holding 2nd key is optional)</p></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b &lt;right&gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b ctrl + &lt;right&gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b &lt;left&gt;</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b ctrl + &lt;left&gt;</p></td>
+<td><p>resize current pane <strong>width</strong> (holding 2nd key is optional)</p></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b x</p></td>
+<td><p>close current pane</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id4">
+<caption><span class="caption-text">copy mode</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>setw -g mode-keys vi</p></th>
+<th class="head"><p>use vi keys in buffer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ctrl + b [</p></td>
+<td><p>enter copy mode</p></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b PgUp</p></td>
+<td><p>enter copy mode and scroll one page up</p></td>
+</tr>
+<tr class="row-even"><td><p>q</p></td>
+<td><p>quit mode</p></td>
+</tr>
+<tr class="row-odd"><td><p>g</p></td>
+<td><p>go to top line</p></td>
+</tr>
+<tr class="row-even"><td><p>g</p></td>
+<td><p>go to bottom line</p></td>
+</tr>
+<tr class="row-odd"><td><p>scroll up</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>scroll down</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>h</p></td>
+<td><p>move cursor left</p></td>
+</tr>
+<tr class="row-even"><td><p>j</p></td>
+<td><p>move cursor down</p></td>
+</tr>
+<tr class="row-odd"><td><p>k</p></td>
+<td><p>move cursor up</p></td>
+</tr>
+<tr class="row-even"><td><p>l</p></td>
+<td><p>move cursor right</p></td>
+</tr>
+<tr class="row-odd"><td><p>w</p></td>
+<td><p>move cursor forward one word at a time</p></td>
+</tr>
+<tr class="row-even"><td><p>b</p></td>
+<td><p>move cursor backward one word at a time</p></td>
+</tr>
+<tr class="row-odd"><td><p>/</p></td>
+<td><p>search forward</p></td>
+</tr>
+<tr class="row-even"><td><p>?</p></td>
+<td><p>search backward</p></td>
+</tr>
+<tr class="row-odd"><td><p>n</p></td>
+<td><p>next keyword occurance</p></td>
+</tr>
+<tr class="row-even"><td><p>n</p></td>
+<td><p>previous keyword occurance</p></td>
+</tr>
+<tr class="row-odd"><td><p>spacebar</p></td>
+<td><p>start selection</p></td>
+</tr>
+<tr class="row-even"><td><p>esc</p></td>
+<td><p>clear selection</p></td>
+</tr>
+<tr class="row-odd"><td><p>enter</p></td>
+<td><p>copy selection</p></td>
+</tr>
+<tr class="row-even"><td><p>ctrl + b ]</p></td>
+<td><p>paste contents of buffer_0</p></td>
+</tr>
+<tr class="row-odd"><td><p>:show-buffer</p></td>
+<td><p>display buffer_0 contents</p></td>
+</tr>
+<tr class="row-even"><td><p>:capture-pane</p></td>
+<td><p>copy entire visible contents of pane to a buffer</p></td>
+</tr>
+<tr class="row-odd"><td><p>:list-buffers</p></td>
+<td><p>show all buffers</p></td>
+</tr>
+<tr class="row-even"><td><p>:choose-buffer</p></td>
+<td><p>show all buffers and paste selected</p></td>
+</tr>
+<tr class="row-odd"><td><p>:save-buffer buf.txt</p></td>
+<td><p>save buffer contents to buf.txt</p></td>
+</tr>
+<tr class="row-even"><td><p>:delete-buffer -b 1</p></td>
+<td><p>delete buffer_1</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">other</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ctrl + b :</p></th>
+<th class="head"><p>enter command mode</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>:set -g OPTION</p></td>
+<td><p>set option for all sessions</p></td>
+</tr>
+<tr class="row-odd"><td><p>:setw -g OPTION</p></td>
+<td><p>set option for all windows</p></td>
+</tr>
+<tr class="row-even"><td><p>tmux info</p></td>
+<td><p>show every session, window, pane, etc…</p></td>
+</tr>
+<tr class="row-odd"><td><p>ctrl + b ?</p></td>
+<td><p>show shortcuts</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Patrick Brunswyck.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

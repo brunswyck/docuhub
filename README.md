@@ -1,2 +1,3 @@
 # Patrick's Documentation
-this is my documentation repository
+here I document most one tends to forget
+searching the web takes up to much of your time

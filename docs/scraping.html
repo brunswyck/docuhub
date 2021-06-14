@@ -92,10 +92,10 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="ansible.html">ansible</a></li>
-<li class="toctree-l1"><a class="reference internal" href="apidoc/modules.html">becode</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheats/main.html">cheatsheets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techtalk/main.html">techtalks</a></li>
 </ul>
@@ -167,6 +167,28 @@
             
   <div class="section" id="scraping">
 <h1>scraping<a class="headerlink" href="#scraping" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="scrapy">
+<h2>scrapy<a class="headerlink" href="#scrapy" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://docs.scrapy.org/en/latest/index.html">scrapy docs</a></p>
+<div class="section" id="create-spider">
+<h3>create spider<a class="headerlink" href="#create-spider" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">startproject</span> <span class="n">immoscrape</span>
+<span class="n">cd</span> <span class="n">immoscrape</span>
+<span class="n">scrapy</span> <span class="n">genspider</span> <span class="n">ImmoSpider</span> <span class="n">immoweb</span><span class="o">.</span><span class="n">be</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="find-elements-with-scrapy-shell">
+<h3>find elements with scrapy shell<a class="headerlink" href="#find-elements-with-scrapy-shell" title="Permalink to this headline">¶</a></h3>
+<p>test if scrapy can find the elements on a page by invoking the <strong>scrapy shell</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scrapy</span> <span class="n">shell</span> <span class="s1">&#39;https://www.immoweb.be/en/search/house/for-sale/eeklo/9900?countries=BE&amp;minPrice=100000&amp;maxPrice=300000&amp;page=1&amp;orderBy=relevance&#39;</span>
+<span class="c1"># &gt;&gt;&gt; response</span>
+<span class="c1"># &lt;200 https://www.immoweb.be/en/search/house/for-sale/eeklo/9900?countries=BE&amp;page=4&amp;orderBy=relevance&gt;</span>
+<span class="c1"># &gt;&gt;&gt; view(response)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="beautiful-soup">
 <h2>beautiful soup<a class="headerlink" href="#beautiful-soup" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">https://www.crummy.com/software/BeautifulSoup/bs4/doc/</a></p>
