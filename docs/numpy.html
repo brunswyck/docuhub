@@ -708,8 +708,8 @@ ValueError: operands could not be broadcast together with shapes (2,3) (2,2)
 </div>
 <div class="section" id="universal-functions">
 <h2>universal functions<a class="headerlink" href="#universal-functions" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="wrappers">
-<h3>wrappers<a class="headerlink" href="#wrappers" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="wrappers-ufuncs">
+<h3>wrappers/ufuncs<a class="headerlink" href="#wrappers-ufuncs" title="Permalink to this headline">¶</a></h3>
 <p>NumPy also provides fast elementwise functions called universal functions, or ufunc. They are vectorized wrappers of simple functions. For example square returns a new ndarray which is a copy of the original ndarray except that each element is squared:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]])</span>
 <span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -892,7 +892,7 @@ ValueError: operands could not be broadcast together with shapes (2,3) (2,2)
 </div>
 <div class="section" id="create-3x3-matrix-w-values-ranging-from-0-to-8">
 <h3>create 3x3 matrix w values ranging from 0 to 8<a class="headerlink" href="#create-3x3-matrix-w-values-ranging-from-0-to-8" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.reshape.html?highlight=reshape#numpy.reshape">https://numpy.org/doc/stable/reference/generated/numpy.reshape.html?highlight=reshape#numpy.reshape</a></p>
+<p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.reshape.html">https://numpy.org/doc/stable/reference/generated/numpy.reshape.html</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">)])</span>
 <span class="c1"># now with reshape</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>

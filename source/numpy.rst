@@ -594,8 +594,8 @@ These functions accept an optional argument axis which lets you ask for the oper
 universal functions
 ===================
 
-wrappers
---------
+wrappers/ufuncs
+---------------
 
 NumPy also provides fast elementwise functions called universal functions, or ufunc. They are vectorized wrappers of simple functions. For example square returns a new ndarray which is a copy of the original ndarray except that each element is squared:
 
@@ -794,7 +794,7 @@ https://numpy.org/doc/stable/reference/generated/numpy.flip.html?highlight=rever
 create 3x3 matrix w values ranging from 0 to 8
 ----------------------------------------------
 
-https://numpy.org/doc/stable/reference/generated/numpy.reshape.html?highlight=reshape#numpy.reshape
+https://numpy.org/doc/stable/reference/generated/numpy.reshape.html
 
 .. code-block:: python
 
