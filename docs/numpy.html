@@ -167,6 +167,15 @@
             
   <div class="section" id="numpy">
 <h1>numpy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="links">
+<h2>links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/doc">https://numpy.org/doc</a></p></li>
+<li><p><a class="reference external" href="https://www.guru99.com/numpy-tutorial.html">https://www.guru99.com/numpy-tutorial.html</a></p></li>
+<li><p><a class="reference external" href="https://www.w3schools.com/python/numpy_intro.asp">https://www.w3schools.com/python/numpy_intro.asp</a></p></li>
+<li><p><a class="reference external" href="https://cs231n.github.io/python-numpy-tutorial">https://cs231n.github.io/python-numpy-tutorial</a></p></li>
+</ul>
+</div>
 <div class="section" id="vocabulary">
 <h2>vocabulary<a class="headerlink" href="#vocabulary" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -752,6 +761,538 @@ ValueError: operands could not be broadcast together with shapes (2,3) (2,2)
  <span class="n">cos</span>
 <span class="p">[[</span><span class="o">-</span><span class="mf">0.80114362</span> <span class="o">-</span><span class="mf">0.99913515</span>  <span class="mf">0.75390225</span><span class="p">]</span>
  <span class="p">[</span><span class="o">-</span><span class="mf">0.83907153</span>  <span class="mf">0.0044257</span>   <span class="mf">0.84385396</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="numpractice">
+<h2>numpractice<a class="headerlink" href="#numpractice" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="print-numpy-version-and-the-configuration">
+<h3>print numpy version and the configuration<a class="headerlink" href="#print-numpy-version-and-the-configuration" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">full_version</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">version</span><span class="o">.</span><span class="n">full_version</span><span class="p">)</span>
+<span class="mf">1.20.3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-null-vector-of-size-10">
+<h3>create a null vector of size 10<a class="headerlink" href="#create-a-null-vector-of-size-10" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="find-memory-size-of-any-array">
+<h3>find memory size of any array<a class="headerlink" href="#find-memory-size-of-any-array" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">size</span>  <span class="c1"># 10</span>
+<span class="n">x</span><span class="o">.</span><span class="n">itemsize</span>  <span class="c1"># 8 in bytes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">x</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="nbytes-attribute-gives-total-bytes-consumed-by-the-elements-of-the-numpy-array">
+<h3>nbytes: attribute gives total bytes consumed by the elements of the NumPy array<a class="headerlink" href="#nbytes-attribute-gives-total-bytes-consumed-by-the-elements-of-the-numpy-array" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mem size of numpy array: </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">nbytes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="mi">80</span>
+<span class="n">mem</span> <span class="n">size</span> <span class="n">of</span> <span class="n">numpy</span> <span class="n">array</span><span class="p">:</span> <span class="mi">80</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-the-docs-on-numpy-add-function">
+<h3>get the docs on numpy add function<a class="headerlink" href="#get-the-docs-on-numpy-add-function" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">))</span>
+<span class="n">add</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">casting</span><span class="o">=</span><span class="s1">&#39;same_kind&#39;</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">subok</span><span class="o">=</span><span class="kc">True</span><span class="p">[,</span> <span class="n">signature</span><span class="p">,</span> <span class="n">extobj</span><span class="p">])</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Add arguments element-wise.</span>
+
+<span class="sd">Parameters</span>
+<span class="sd">----------</span>
+<span class="sd">x1, x2 : array_like</span>
+<span class="sd">    The arrays to be added.</span>
+<span class="sd">    If ``x1.shape != x2.shape``, they must be broadcastable to a common</span>
+<span class="sd">    shape (which becomes the shape of the output).</span>
+<span class="sd">out : ndarray, None, or tuple of ndarray and None, optional</span>
+<span class="sd">    A location into which the result is stored. If provided, it must have</span>
+<span class="sd">    a shape that the inputs broadcast to. If not provided or None,</span>
+<span class="sd">    a freshly-allocated array is returned. A tuple (possible only as a</span>
+<span class="sd">    keyword argument) must have length equal to the number of outputs.</span>
+<span class="sd">where : array_like, optional</span>
+<span class="sd">    This condition is broadcast over the input. At locations where the</span>
+<span class="sd">    condition is True, the `out` array will be set to the ufunc result.</span>
+<span class="sd">    Elsewhere, the `out` array will retain its original value.</span>
+<span class="sd">    Note that if an uninitialized `out` array is created via the default</span>
+<span class="sd">    ``out=None``, locations within it where the condition is False will</span>
+<span class="sd">    remain uninitialized.</span>
+<span class="sd">**kwargs</span>
+<span class="sd">    For other keyword-only arguments, see the</span>
+<span class="sd">    :ref:`ufunc docs &lt;ufuncs.kwargs&gt;`.</span>
+
+<span class="sd">Returns</span>
+<span class="sd">-------</span>
+<span class="sd">add : ndarray or scalar</span>
+<span class="sd">    The sum of `x1` and `x2`, element-wise.</span>
+<span class="sd">    This is a scalar if both `x1` and `x2` are scalars.</span>
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">Equivalent to `x1` + `x2` in terms of array broadcasting.</span>
+
+<span class="sd">Examples</span>
+<span class="sd">--------</span>
+<span class="sd">&gt;&gt;&gt; np.add(1.0, 4.0)</span>
+<span class="sd">5.0</span>
+<span class="sd">&gt;&gt;&gt; x1 = np.arange(9.0).reshape((3, 3))</span>
+<span class="sd">&gt;&gt;&gt; x2 = np.arange(3.0)</span>
+<span class="sd">&gt;&gt;&gt; np.add(x1, x2)</span>
+<span class="sd">array([[  0.,   2.,   4.],</span>
+<span class="sd">       [  3.,   5.,   7.],</span>
+<span class="sd">       [  6.,   8.,  10.]])</span>
+
+<span class="sd">The ``+`` operator can be used as a shorthand for ``np.add`` on ndarrays.</span>
+
+<span class="sd">&gt;&gt;&gt; x1 = np.arange(9.0).reshape((3, 3))</span>
+<span class="sd">&gt;&gt;&gt; x2 = np.arange(3.0)</span>
+<span class="sd">&gt;&gt;&gt; x1 + x2</span>
+<span class="sd">array([[ 0.,  2.,  4.],</span>
+<span class="sd">       [ 3.,  5.,  7.],</span>
+<span class="sd">       [ 6.,  8., 10.]])</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-vector-with-values-ranging-from-10-to-49">
+<h3>create a vector with values ranging from 10 to 49<a class="headerlink" href="#create-a-vector-with-values-ranging-from-10-to-49" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://numpy.org/doc/stable/reference/generated/numpy.arange.html</span>
+<span class="c1"># numpy.arange([start, ]stop, [step, ]dtype=None, *, like=None)¶</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span>
+<span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span>
+       <span class="mi">27</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span>
+       <span class="mi">44</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">49</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reverse-a-vector-first-element-becomes-last">
+<h3>Reverse a vector (first element becomes last)<a class="headerlink" href="#reverse-a-vector-first-element-becomes-last" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://numpy.org/doc/stable/reference/generated/numpy.flip.html?highlight=reverse</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="n">B</span>
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span><span class="p">]]</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-3x3-matrix-w-values-ranging-from-0-to-8">
+<h3>create 3x3 matrix w values ranging from 0 to 8<a class="headerlink" href="#create-3x3-matrix-w-values-ranging-from-0-to-8" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">)])</span>
+<span class="c1"># now with reshape</span>
+<span class="c1"># https://numpy.org/doc/stable/reference/generated/numpy.reshape.html?highlight=reshape#numpy.reshape</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">B</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="find-indices-of-non-zero-elements-from-1-2-0-0-4-0">
+<h3>Find indices of non-zero elements from [1,2,0,0,4,0]<a class="headerlink" href="#find-indices-of-non-zero-elements-from-1-2-0-0-4-0" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://numpy.org/doc/stable/reference/generated/numpy.nonzero.html</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="p">(</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]),)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-3x3-identity-matrix">
+<h3>create a 3x3 identity matrix<a class="headerlink" href="#create-a-3x3-identity-matrix" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">X</span>
+<span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-3x3x3-array-with-random-values">
+<h3>create a 3x3x3 array with random values<a class="headerlink" href="#create-a-3x3x3-array-with-random-values" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">Y</span>
+<span class="p">[[</span><span class="mf">0.98332566</span> <span class="mf">0.84116444</span> <span class="mf">0.75410407</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.9790408</span>  <span class="mf">0.15237009</span> <span class="mf">0.35937882</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.60683975</span> <span class="mf">0.3339919</span>  <span class="mf">0.41256535</span><span class="p">]]</span>
+<span class="n">array</span><span class="p">([[[</span><span class="mf">0.76573681</span><span class="p">,</span> <span class="mf">0.29366637</span><span class="p">,</span> <span class="mf">0.47391383</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.71257996</span><span class="p">,</span> <span class="mf">0.62837487</span><span class="p">,</span> <span class="mf">0.95957082</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.92516253</span><span class="p">,</span> <span class="mf">0.38340549</span><span class="p">,</span> <span class="mf">0.74710955</span><span class="p">]],</span>
+
+       <span class="p">[[</span><span class="mf">0.02144192</span><span class="p">,</span> <span class="mf">0.00834815</span><span class="p">,</span> <span class="mf">0.48610525</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.00178446</span><span class="p">,</span> <span class="mf">0.91594102</span><span class="p">,</span> <span class="mf">0.9474838</span> <span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.21823699</span><span class="p">,</span> <span class="mf">0.77754962</span><span class="p">,</span> <span class="mf">0.5684341</span> <span class="p">]],</span>
+
+       <span class="p">[[</span><span class="mf">0.04352024</span><span class="p">,</span> <span class="mf">0.91370673</span><span class="p">,</span> <span class="mf">0.52169201</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.55976612</span><span class="p">,</span> <span class="mf">0.54704399</span><span class="p">,</span> <span class="mf">0.29708297</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.43227997</span><span class="p">,</span> <span class="mf">0.94912278</span><span class="p">,</span> <span class="mf">0.79186423</span><span class="p">]]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-10x10-array-with-random-values-and-find-the-min-max-values">
+<h3>create a 10x10 array with random values and find the min max values<a class="headerlink" href="#create-a-10x10-array-with-random-values-and-find-the-min-max-values" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span>
+<span class="p">(</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.68245006</span><span class="p">,</span> <span class="mf">0.33805442</span><span class="p">,</span> <span class="mf">0.64817297</span><span class="p">,</span> <span class="mf">0.7701081</span> <span class="p">,</span> <span class="mf">0.43707238</span><span class="p">,</span>
+         <span class="mf">0.47236216</span><span class="p">,</span> <span class="mf">0.52916113</span><span class="p">,</span> <span class="mf">0.12676572</span><span class="p">,</span> <span class="mf">0.02807957</span><span class="p">,</span> <span class="mf">0.92689844</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.59196201</span><span class="p">,</span> <span class="mf">0.93834978</span><span class="p">,</span> <span class="mf">0.88414265</span><span class="p">,</span> <span class="mf">0.89950303</span><span class="p">,</span> <span class="mf">0.6424275</span> <span class="p">,</span>
+         <span class="mf">0.83488977</span><span class="p">,</span> <span class="mf">0.73490878</span><span class="p">,</span> <span class="mf">0.10112525</span><span class="p">,</span> <span class="mf">0.53945921</span><span class="p">,</span> <span class="mf">0.86992843</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.72687907</span><span class="p">,</span> <span class="mf">0.91081264</span><span class="p">,</span> <span class="mf">0.73671922</span><span class="p">,</span> <span class="mf">0.84801847</span><span class="p">,</span> <span class="mf">0.28416749</span><span class="p">,</span>
+         <span class="mf">0.44848551</span><span class="p">,</span> <span class="mf">0.92801694</span><span class="p">,</span> <span class="mf">0.10887357</span><span class="p">,</span> <span class="mf">0.16693172</span><span class="p">,</span> <span class="mf">0.33413767</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.03412656</span><span class="p">,</span> <span class="mf">0.37407818</span><span class="p">,</span> <span class="mf">0.96190285</span><span class="p">,</span> <span class="mf">0.60326469</span><span class="p">,</span> <span class="mf">0.10789708</span><span class="p">,</span>
+         <span class="mf">0.53779934</span><span class="p">,</span> <span class="mf">0.43094553</span><span class="p">,</span> <span class="mf">0.94931895</span><span class="p">,</span> <span class="mf">0.77332064</span><span class="p">,</span> <span class="mf">0.23077922</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.51224525</span><span class="p">,</span> <span class="mf">0.43105436</span><span class="p">,</span> <span class="mf">0.72417317</span><span class="p">,</span> <span class="mf">0.41080638</span><span class="p">,</span> <span class="mf">0.11075047</span><span class="p">,</span>
+         <span class="mf">0.5238756</span> <span class="p">,</span> <span class="mf">0.91185676</span><span class="p">,</span> <span class="mf">0.36304757</span><span class="p">,</span> <span class="mf">0.7213532</span> <span class="p">,</span> <span class="mf">0.1998049</span> <span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.81966608</span><span class="p">,</span> <span class="mf">0.36168062</span><span class="p">,</span> <span class="mf">0.24690469</span><span class="p">,</span> <span class="mf">0.23518279</span><span class="p">,</span> <span class="mf">0.04569355</span><span class="p">,</span>
+         <span class="mf">0.99256271</span><span class="p">,</span> <span class="mf">0.17775566</span><span class="p">,</span> <span class="mf">0.29407587</span><span class="p">,</span> <span class="mf">0.46219508</span><span class="p">,</span> <span class="mf">0.92000002</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.58264479</span><span class="p">,</span> <span class="mf">0.3913255</span> <span class="p">,</span> <span class="mf">0.1487941</span> <span class="p">,</span> <span class="mf">0.93989212</span><span class="p">,</span> <span class="mf">0.93152326</span><span class="p">,</span>
+         <span class="mf">0.63672583</span><span class="p">,</span> <span class="mf">0.49067863</span><span class="p">,</span> <span class="mf">0.99631981</span><span class="p">,</span> <span class="mf">0.22439821</span><span class="p">,</span> <span class="mf">0.13945929</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.11131928</span><span class="p">,</span> <span class="mf">0.699683</span>  <span class="p">,</span> <span class="mf">0.00827745</span><span class="p">,</span> <span class="mf">0.33092946</span><span class="p">,</span> <span class="mf">0.54675461</span><span class="p">,</span>
+         <span class="mf">0.44746111</span><span class="p">,</span> <span class="mf">0.48443178</span><span class="p">,</span> <span class="mf">0.25829608</span><span class="p">,</span> <span class="mf">0.40651901</span><span class="p">,</span> <span class="mf">0.34711342</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.64217007</span><span class="p">,</span> <span class="mf">0.29458234</span><span class="p">,</span> <span class="mf">0.63254603</span><span class="p">,</span> <span class="mf">0.38620369</span><span class="p">,</span> <span class="mf">0.73063494</span><span class="p">,</span>
+         <span class="mf">0.47140773</span><span class="p">,</span> <span class="mf">0.80645127</span><span class="p">,</span> <span class="mf">0.56806584</span><span class="p">,</span> <span class="mf">0.37139742</span><span class="p">,</span> <span class="mf">0.63902335</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.90009945</span><span class="p">,</span> <span class="mf">0.48907321</span><span class="p">,</span> <span class="mf">0.37904051</span><span class="p">,</span> <span class="mf">0.80038649</span><span class="p">,</span> <span class="mf">0.79737416</span><span class="p">,</span>
+         <span class="mf">0.10121237</span><span class="p">,</span> <span class="mf">0.77313591</span><span class="p">,</span> <span class="mf">0.16813614</span><span class="p">,</span> <span class="mf">0.43280661</span><span class="p">,</span> <span class="mf">0.74821215</span><span class="p">]]),</span>
+ <span class="mf">0.00827744590659174</span><span class="p">,</span>
+ <span class="mf">0.996319810057414</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-random-vector-of-size-30-and-find-mean-value">
+<h3>create a random vector of size 30 and find mean value<a class="headerlink" href="#create-a-random-vector-of-size-30-and-find-mean-value" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_sample</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">mean_value</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">mean_value</span>
+<span class="p">(</span><span class="n">array</span><span class="p">([</span><span class="mf">0.97879743</span><span class="p">,</span> <span class="mf">0.99007651</span><span class="p">,</span> <span class="mf">0.62769786</span><span class="p">,</span> <span class="mf">0.79962993</span><span class="p">,</span> <span class="mf">0.76487594</span><span class="p">,</span>
+        <span class="mf">0.28558696</span><span class="p">,</span> <span class="mf">0.80630438</span><span class="p">,</span> <span class="mf">0.01818697</span><span class="p">,</span> <span class="mf">0.50862024</span><span class="p">,</span> <span class="mf">0.9552484</span> <span class="p">,</span>
+        <span class="mf">0.51288462</span><span class="p">,</span> <span class="mf">0.01863474</span><span class="p">,</span> <span class="mf">0.34000259</span><span class="p">,</span> <span class="mf">0.59681974</span><span class="p">,</span> <span class="mf">0.59793668</span><span class="p">,</span>
+        <span class="mf">0.2089018</span> <span class="p">,</span> <span class="mf">0.79393369</span><span class="p">,</span> <span class="mf">0.64916354</span><span class="p">,</span> <span class="mf">0.01968166</span><span class="p">,</span> <span class="mf">0.05974539</span><span class="p">,</span>
+        <span class="mf">0.61850869</span><span class="p">,</span> <span class="mf">0.50107583</span><span class="p">,</span> <span class="mf">0.61428685</span><span class="p">,</span> <span class="mf">0.96729492</span><span class="p">,</span> <span class="mf">0.59925488</span><span class="p">,</span>
+        <span class="mf">0.89414214</span><span class="p">,</span> <span class="mf">0.15592456</span><span class="p">,</span> <span class="mf">0.89784793</span><span class="p">,</span> <span class="mf">0.7398289</span> <span class="p">,</span> <span class="mf">0.70381768</span><span class="p">]),</span>
+ <span class="mf">0.5741570486620552</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-2d-array-with-1s-on-the-border-and-0s-inside">
+<h3>create a 2d array with 1s on the border and 0s inside<a class="headerlink" href="#create-a-2d-array-with-1s-on-the-border-and-0s-inside" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># all but first and last in row and column</span>
+<span class="n">A</span>
+<span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-a-border-filled-with-0-s-around-an-existing-array">
+<h3>add a border (filled with 0’s) around an existing array<a class="headerlink" href="#add-a-border-filled-with-0-s-around-an-existing-array" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">,</span> <span class="n">Y</span>
+<span class="c1"># numpy.pad(array, pad_width, mode=&#39;constant&#39;, **kwargs)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">pad_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">constant_values</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">A</span><span class="p">,</span> <span class="n">Y</span>
+<span class="p">(</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]]),</span>
+ <span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+        <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]]))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="results-of-np-nan-expressions">
+<h3>results of np.nan expressions<a class="headerlink" href="#results-of-np-nan-expressions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>```python
+0 * np.nan
+np.nan == np.nan
+np.inf &gt; np.nan
+np.nan - np.nan
+np.nan in set([np.nan])
+0.3 == 3 * 0.1
+```
+# document examples here
+# https://numpy.org/doc/stable/user/misc.html
+X = np.nan
+X == np.nan  # is always False! Use special numpy functions
+False
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-5x5-matrix-with-values-1-2-3-4-just-below-the-diagonal">
+<h3>create a 5x5 matrix with values 1,2,3,4 just below the diagonal<a class="headerlink" href="#create-a-5x5-matrix-with-values-1-2-3-4-just-below-the-diagonal" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">A</span> <span class="c1"># so that would be on position row,col (1,0)(2,1)(3,2)(4,3)</span>
+<span class="n">sub_diagonal_positions</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">sub_diagonal_positions</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(row,col): </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">A</span>
+<span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">):</span> <span class="mi">1</span><span class="p">,</span><span class="mi">0</span>
+<span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">):</span> <span class="mi">2</span><span class="p">,</span><span class="mi">1</span>
+<span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">):</span> <span class="mi">3</span><span class="p">,</span><span class="mi">2</span>
+<span class="p">(</span><span class="n">row</span><span class="p">,</span><span class="n">col</span><span class="p">):</span> <span class="mi">4</span><span class="p">,</span><span class="mi">3</span>
+<span class="n">array</span><span class="p">([[</span><span class="mf">0.47562091</span><span class="p">,</span> <span class="mf">0.8459493</span> <span class="p">,</span> <span class="mf">0.70160341</span><span class="p">,</span> <span class="mf">0.32535192</span><span class="p">,</span> <span class="mf">0.35934161</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.84101674</span><span class="p">,</span> <span class="mf">0.14958274</span><span class="p">,</span> <span class="mf">0.55761373</span><span class="p">,</span> <span class="mf">0.78466964</span><span class="p">,</span> <span class="mf">0.53366355</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.14600348</span><span class="p">,</span> <span class="mf">0.41870539</span><span class="p">,</span> <span class="mf">0.16958068</span><span class="p">,</span> <span class="mf">0.37412754</span><span class="p">,</span> <span class="mf">0.88409359</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.70830397</span><span class="p">,</span> <span class="mf">0.30946462</span><span class="p">,</span> <span class="mf">0.53519198</span><span class="p">,</span> <span class="mf">0.75792345</span><span class="p">,</span> <span class="mf">0.93940042</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.65121911</span><span class="p">,</span> <span class="mf">0.12916815</span><span class="p">,</span> <span class="mf">0.31555863</span><span class="p">,</span> <span class="mf">0.51943925</span><span class="p">,</span> <span class="mf">0.48102947</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-8x8-matrix-and-fill-with-a-checkerboard-pattern">
+<h3>create a 8x8 matrix and fill with a checkerboard pattern<a class="headerlink" href="#create-a-8x8-matrix-and-fill-with-a-checkerboard-pattern" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># fill with 1 from row 1 -&gt; till 1+2+2...</span>
+<span class="n">x</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># fill with 1 from row 0 -&gt; till 0+2+2...</span>
+<span class="n">x</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="given-a-6-7-8-shape-array-what-is-the-index-x-y-z-of-the-100th-element">
+<h3>given a (6,7,8) shape array, what is the index (x,y,z) of the 100th element<a class="headerlink" href="#given-a-6-7-8-shape-array-what-is-the-index-x-y-z-of-the-100th-element" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">indices_wanted</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">99</span><span class="p">]</span>  <span class="c1"># as check also show first value</span>
+<span class="n">bingo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">indices_wanted</span><span class="p">)</span>
+<span class="c1"># x = np.where(A == bingo)</span>
+<span class="n">A</span><span class="p">,</span> <span class="n">bingo</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">(array([[[14,  7, 14,  7, 17,  6, 17,  1],</span>
+<span class="sd">         [10, 12, 13,  9,  8,  8,  2, 16],</span>
+<span class="sd">         [ 7, 10, 12,  9, 11,  7,  8,  5],</span>
+<span class="sd">         [ 4, 10,  6, 11, 18, 12, 12, 10],</span>
+<span class="sd">         [ 2, 17,  1, 11, 18, 19, 16,  7],</span>
+<span class="sd">         [ 9,  2, 17, 19, 15, 17, 19,  5],</span>
+<span class="sd">         [11,  9, 10, 14,  9, 17,  3, 10]],</span>
+
+<span class="sd">        [[12, 12,  8, 18,  3, 16, 10, 17],</span>
+<span class="sd">         [ 1,  6,  9, 16, 18,  7, 17, 19],</span>
+<span class="sd">         [17,  6,  8,  7, 19,  2, 16,  1],</span>
+<span class="sd">         [12,  1,  7,  9, 15, 18,  6,  5],</span>
+<span class="sd">         [ 4,  2,  9,  6, 13, 19,  9,  3],</span>
+<span class="sd">         [17, 19,  6,  4,  6,  9, 18,  9],</span>
+<span class="sd">         [ 3,  1, 18, 11,  2, 16, 19, 19]],</span>
+
+<span class="sd">        [[13,  3,  6, 18,  9,  9,  7, 13],</span>
+<span class="sd">         [ 3,  4,  7, 11, 18, 14,  8, 13],</span>
+<span class="sd">         [19,  2, 10, 19,  3, 15, 13, 11],</span>
+<span class="sd">         [ 6,  5, 13,  2,  6, 19, 15,  7],</span>
+<span class="sd">         [ 2, 12, 13, 11,  4,  6,  5, 17],</span>
+<span class="sd">         [ 6, 15, 19, 12, 12, 11, 19,  4],</span>
+<span class="sd">         [11, 13, 12, 13, 16,  2,  9, 13]],</span>
+
+<span class="sd">        [[ 9, 19, 19,  1,  7, 10, 15, 19],</span>
+<span class="sd">         [ 7,  4, 17, 11, 13, 13,  6,  3],</span>
+<span class="sd">         [13,  6, 17,  7,  3, 19, 15,  6],</span>
+<span class="sd">         [ 2, 11,  1, 15, 13,  3, 13,  7],</span>
+<span class="sd">         [ 2, 12,  7, 12,  4, 11,  4, 19],</span>
+<span class="sd">         [ 8,  2, 15,  3, 12,  7, 10,  8],</span>
+<span class="sd">         [ 4,  5, 18, 12, 19,  9,  7, 18]],</span>
+
+<span class="sd">        [[ 5, 18, 16,  9, 13,  9, 10, 18],</span>
+<span class="sd">         [17, 13, 17, 11, 16, 11,  4,  8],</span>
+<span class="sd">         [18, 19,  5, 14,  5, 14,  2,  2],</span>
+<span class="sd">         [12, 19,  8, 16, 15,  9,  5,  9],</span>
+<span class="sd">         [11, 19, 13, 19,  6,  2,  3,  1],</span>
+<span class="sd">         [ 3,  7, 19,  8, 11, 19,  3,  3],</span>
+<span class="sd">         [13, 19,  8, 18,  4,  4, 14, 15]],</span>
+
+<span class="sd">        [[ 6, 18, 14,  3,  4, 13, 15, 14],</span>
+<span class="sd">         [ 2,  1,  9,  5,  2, 19,  4, 15],</span>
+<span class="sd">         [ 8,  9,  9, 19,  7, 15, 19,  9],</span>
+<span class="sd">         [ 2, 12, 18, 18, 15, 14,  9, 12],</span>
+<span class="sd">         [14, 14,  9, 17,  1,  5,  1,  4],</span>
+<span class="sd">         [15,  5,  1, 11,  3,  6, 10, 14],</span>
+<span class="sd">         [10,  2, 16, 13, 11, 10, 12,  7]]]),</span>
+<span class="sd"> array([14,  4]))&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="checkerboard">
+<h3>checkerboard<a class="headerlink" href="#checkerboard" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Create a checkerboard 8x8 matrix using the tile function</span>
+<span class="sd">https://numpy.org/doc/stable/reference/generated/numpy.tile.html</span>
+<span class="sd">use Numpy&#39;s tile function to get checkerboard array of size n*m where n and m should be even numbers&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">create_checkboard</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">):</span>
+    <span class="n">list_0_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">])</span>
+    <span class="n">checkerboard</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">list_0_1</span><span class="p">,</span> <span class="p">(</span> <span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="o">//</span><span class="mi">2</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">checkerboard</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">checkerboard</span>
+
+<span class="n">create_checkboard</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="normalize-a-5x5-random-matrix">
+<h3>normalize a 5x5 random matrix<a class="headerlink" href="#normalize-a-5x5-random-matrix" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;before normalize: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">xmax</span><span class="p">,</span> <span class="n">xmin</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xmin</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span><span class="p">)</span>
+<span class="n">x</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">before normalize: [[0.61887892 0.48893607 0.5047862  0.74653032 0.09313412]</span>
+<span class="sd"> [0.30621631 0.83629173 0.98807878 0.16518118 0.97542081]</span>
+<span class="sd"> [0.1876475  0.04579762 0.67820882 0.38155519 0.90372504]</span>
+<span class="sd"> [0.08171901 0.63700914 0.96842558 0.9939399  0.02900476]</span>
+<span class="sd"> [0.11294267 0.6768546  0.24658038 0.02097271 0.77710329]]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">array</span><span class="p">([[</span><span class="mf">0.61451837</span><span class="p">,</span> <span class="mf">0.4809652</span> <span class="p">,</span> <span class="mf">0.49725571</span><span class="p">,</span> <span class="mf">0.74571642</span><span class="p">,</span> <span class="mf">0.07416633</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.29316878</span><span class="p">,</span> <span class="mf">0.83797176</span><span class="p">,</span> <span class="mf">0.99397603</span><span class="p">,</span> <span class="mf">0.14821514</span><span class="p">,</span> <span class="mf">0.98096638</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.17130566</span><span class="p">,</span> <span class="mf">0.02551464</span><span class="p">,</span> <span class="mf">0.67549669</span><span class="p">,</span> <span class="mf">0.37060086</span><span class="p">,</span> <span class="mf">0.90727862</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.06243406</span><span class="p">,</span> <span class="mf">0.63315232</span><span class="p">,</span> <span class="mf">0.9737768</span> <span class="p">,</span> <span class="mf">1.</span>        <span class="p">,</span> <span class="mf">0.00825521</span><span class="p">],</span>
+       <span class="p">[</span><span class="mf">0.09452524</span><span class="p">,</span> <span class="mf">0.67410484</span><span class="p">,</span> <span class="mf">0.23187592</span><span class="p">,</span> <span class="mf">0.</span>        <span class="p">,</span> <span class="mf">0.77713883</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-custom-dtype-describing-rgba-color-as-four-unsigned-bytes">
+<h3>create custom dtype describing RGBA color as four unsigned bytes<a class="headerlink" href="#create-custom-dtype-describing-rgba-color-as-four-unsigned-bytes" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">([(</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ubyte</span><span class="p">),</span>
+                  <span class="p">(</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ubyte</span><span class="p">),</span>
+                  <span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ubyte</span><span class="p">),</span>
+                  <span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ubyte</span><span class="p">)])</span>
+<span class="n">color</span>
+<span class="n">dtype</span><span class="p">([(</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;u1&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;u1&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;u1&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;u1&#39;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="multiply-5x3-matrix-by-a-3x2-matrix-real-matrix-product">
+<h3>multiply 5x3 matrix by a 3x2 matrix (real matrix product)<a class="headerlink" href="#multiply-5x3-matrix-by-a-3x2-matrix-real-matrix-product" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">array</span><span class="p">([[</span> <span class="mi">10</span><span class="p">,</span>  <span class="mi">13</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">28</span><span class="p">,</span>  <span class="mi">40</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">46</span><span class="p">,</span>  <span class="mi">67</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">64</span><span class="p">,</span>  <span class="mi">94</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">121</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="in-normal-array-negate-elements-that-are-between-3-and-8-in-place">
+<h3>in normal array negate elements that are between 3 and 8, in place<a class="headerlink" href="#in-normal-array-negate-elements-that-are-between-3-and-8-in-place" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span><span class="p">[(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">8</span><span class="p">)]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">x</span>
+<span class="p">[</span> <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span>  <span class="mi">8</span>  <span class="mi">9</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">array</span><span class="p">([</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="output-of-the-following-script">
+<h3>output of the following script<a class="headerlink" href="#output-of-the-following-script" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># 9</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="mi">9</span>
+<span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="consider-integer-vector-z-which-of-these-expressions-are-legal">
+<h3>consider integer vector Z, which  of these expressions are legal<a class="headerlink" href="#consider-integer-vector-z-which-of-these-expressions-are-legal" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span><span class="o">**</span><span class="n">Z</span>
+<span class="mi">2</span> <span class="o">&lt;&lt;</span> <span class="n">Z</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>
+<span class="n">Z</span> <span class="o">&lt;-</span> <span class="n">Z</span>
+<span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">Z</span>
+<span class="n">Z</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span>
+<span class="n">Z</span><span class="o">&lt;</span><span class="n">Z</span><span class="o">&gt;</span><span class="n">Z</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">Z</span> <span class="o">**</span> <span class="n">Z</span>       <span class="c1"># = [0^0, 1^1, 2^2] = [1, 1, 4]</span>
+<span class="mi">2</span> <span class="o">&lt;&lt;</span> <span class="n">Z</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>  <span class="c1"># = [0, 1, 2]</span>
+<span class="n">Z</span> <span class="o">&lt;</span> <span class="o">-</span> <span class="n">Z</span>      <span class="c1"># = [False, False, False]</span>
+<span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">Z</span>       <span class="c1"># = [0 + 0.j, 0 + 1.j, 0 + 2.j]</span>
+<span class="n">Z</span> <span class="o">/</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">1</span>    <span class="c1"># = [0, 1, 2] # array([0., 1., 2.])</span>
+<span class="c1"># Z &lt; Z &gt; Z    # ValueError</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="np-nan">
+<h3>np.nan<a class="headerlink" href="#np-nan" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># results of the following expressions
+```
+np.array(0) / np.array(0)
+np.array(0) // np.array(0)
+np.array([np.nan]).astype(int).astype(float)
+```
+np.array(0) / np.array(0)
+```
+&lt;ipython-input-162-3585dcb7ab9b&gt;:1: RuntimeWarning: invalid value encountered in true_divide
+  np.array(0) / np.array(0)
+```
+nan
+
+np.array(0) // np.array(0)
+```
+&lt;ipython-input-163-4764261090d0&gt;:1: RuntimeWarning: divide by zero encountered in floor_divide
+  np.array(0) // np.array(0)
+```
+0
+
+np.array([np.nan]).astype(int).astype(float)
+array([-9.22337204e+18])
+</pre></div>
+</div>
+</div>
+<div class="section" id="round-x-decimals-from-zero-in-a-float-array">
+<h3>round x decimals from zero in a float array<a class="headerlink" href="#round-x-decimals-from-zero-in-a-float-array" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.round.html#numpy.ndarray.round</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># round to 2 decimals</span>
+<span class="n">array</span><span class="p">([</span> <span class="mf">9.05</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.04</span><span class="p">,</span>  <span class="mf">8.09</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.67</span><span class="p">,</span>  <span class="mf">5.4</span> <span class="p">,</span> <span class="o">-</span><span class="mf">3.2</span> <span class="p">,</span> <span class="o">-</span><span class="mf">0.67</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.7</span> <span class="p">,</span> <span class="o">-</span><span class="mf">2.66</span><span class="p">,</span>
+        <span class="mf">8.66</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.95</span><span class="p">,</span>  <span class="mf">5.56</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="find-common-values-between-two-arrays">
+<h3>find common values between two arrays<a class="headerlink" href="#find-common-values-between-two-arrays" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">intersect1d</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">0</span> <span class="mi">7</span> <span class="mi">6</span> <span class="mi">1</span> <span class="mi">7</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">8</span> <span class="mi">0</span> <span class="mi">5</span> <span class="mi">4</span> <span class="mi">7</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">5</span> <span class="mi">7</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">0</span> <span class="mi">2</span> <span class="mi">7</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
