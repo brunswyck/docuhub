@@ -763,9 +763,10 @@ get the docs on numpy add function
 create a vector with values ranging from 10 to 49
 -------------------------------------------------
 
+https://numpy.org/doc/stable/reference/generated/numpy.arange.html
+
 .. code-block:: python
 
-   # https://numpy.org/doc/stable/reference/generated/numpy.arange.html
    # numpy.arange([start, ]stop, [step, ]dtype=None, *, like=None)¶
    x = np.arange(10, 50, 1)
    x
@@ -776,9 +777,10 @@ create a vector with values ranging from 10 to 49
 Reverse a vector (first element becomes last)
 ---------------------------------------------
 
+https://numpy.org/doc/stable/reference/generated/numpy.flip.html?highlight=reverse
+
 .. code-block:: python
 
-   # https://numpy.org/doc/stable/reference/generated/numpy.flip.html?highlight=reverse
    import copy
    A = np.arange(8).reshape((2, 4))
    print(A)
@@ -792,11 +794,12 @@ Reverse a vector (first element becomes last)
 create 3x3 matrix w values ranging from 0 to 8
 ----------------------------------------------
 
+https://numpy.org/doc/stable/reference/generated/numpy.reshape.html?highlight=reshape#numpy.reshape
+
 .. code-block:: python
 
    A = np.array([np.arange(0,3), np.arange(3, 6), np.arange(6, 9)])
    # now with reshape
-   # https://numpy.org/doc/stable/reference/generated/numpy.reshape.html?highlight=reshape#numpy.reshape
    B = np.arange(0, 9, 1).reshape(3, 3)
    B
    array([[0, 1, 2],
@@ -806,9 +809,10 @@ create 3x3 matrix w values ranging from 0 to 8
 Find indices of non-zero elements from [1,2,0,0,4,0]
 ----------------------------------------------------
 
+https://numpy.org/doc/stable/reference/generated/numpy.nonzero.html
+
 .. code-block:: python
 
-   # https://numpy.org/doc/stable/reference/generated/numpy.nonzero.html
    x = np.array([1,2,0,0,4,0])
    np.nonzero(x)
    (array([0, 1, 4]),)
@@ -932,6 +936,9 @@ add a border (filled with 0's) around an existing array
 results of np.nan expressions
 -----------------------------
 
+examples here
+https://numpy.org/doc/stable/user/misc.html
+
 .. code-block:: python
 
    ```python
@@ -942,8 +949,6 @@ results of np.nan expressions
    np.nan in set([np.nan])
    0.3 == 3 * 0.1
    ```
-   # document examples here
-   # https://numpy.org/doc/stable/user/misc.html
    X = np.nan
    X == np.nan  # is always False! Use special numpy functions
    False
@@ -1050,11 +1055,12 @@ given a (6,7,8) shape array, what is the index (x,y,z) of the 100th element
 checkerboard
 ------------
 
+https://numpy.org/doc/stable/reference/generated/numpy.tile.html
+
 .. code-block:: python
 
    """
    Create a checkerboard 8x8 matrix using the tile function
-   https://numpy.org/doc/stable/reference/generated/numpy.tile.html
    use Numpy's tile function to get checkerboard array of size n*m where n and m should be even numbers"""
 
    def create_checkboard(n,m):
@@ -1198,9 +1204,10 @@ np.nan
 round x decimals from zero in a float array
 -------------------------------------------
 
+https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.round.html
+
 .. code-block:: python
 
-   # https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.round.html#numpy.ndarray.round
    data = np.random.uniform(-10, +10, 12)
    np.round(data, 2)  # round to 2 decimals
    array([ 9.05, -9.04,  8.09, -5.67,  5.4 , -3.2 , -0.67, -1.7 , -2.66,
