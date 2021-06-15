@@ -3643,6 +3643,122 @@ unittest
    if __name__ == '__main__':
        unittest.main()
 
+web
+===
+urllib
+------
+
+.. code-block:: python
+
+   import pathlib
+   import pprint
+   from urllib import parse, request
+   
+   import lxml
+   # from fake_headers import Headers
+   import requests
+   import pathlib
+   from bs4 import BeautifulSoup
+   
+   
+   # def generate_fake_headers():
+   #     header = Headers(
+   #         browser="chrome",  # Generate only Chrome UA
+   #         os="win",  # Generate ony Windows platform
+   #         headers=True  # generate misc headers
+   #     )
+   #     fake_headers = []
+   #     for i in range(10):
+   #         fake_headers.append(header.generate())
+   #     return fake_headers
+   
+   
+   def cleanup_url(baseurl: str, url_extension: str):
+       base = "https://"
+       url = base + parse.quote(baseurl)
+       data = parse.quote(url_extension)
+       clean_url = parse.urljoin(url, data)
+       return clean_url
+   
+   
+   if __name__ == '__main__':
+       # cookies_available = generate_fake_headers()
+       # cookie_we_will_use = cookies_available[0]
+   
+       # https://docs.python-requests.org/en/master/user/advanced/#session-objects
+       s = requests.Session()
+       # all cookies received will be stored in the session object
+   
+       # r = requests.get(cleanup_url(base_url, string_to_forward), cookies=cookie_we_will_use)
+       sample_url = "https://www.immoweb.be/en/classified/house/for-sale/eeklo/9900/9356868?searchId=60c1d6b1ddb17"
+       r = requests.get(sample_url)
+       print(r.status_code)
+       wanted_html_for_bs = r.content.decode()  # <-------- html needed to work with beautiful soup
+   
+       # file we should write our html to
+       file_location = pathlib.Path("files/search_results")
+   
+       # only write if the file doesn't exist yet
+       if not pathlib.Path.exists(file_location):
+           with open(file_location, "w+") as f:
+               f.write(wanted_html_for_bs)
+   
+       # load the file and make a soup of it!
+       page = open(file_location)
+       soup = BeautifulSoup(page.read(), features="lxml")
+   
+       # get something you want from the soup
+       wanted = soup.script
+       print(wanted)
+
+
+selenium
+--------
+
+.. code-block:: python
+
+   import os.path
+   
+   from bs4 import BeautifulSoup
+   import pathlib
+   from selenium import webdriver
+   import pickle
+   # conda install selenium
+   
+   start_url = 'https://www.immoweb.be/en/search/house/for-sale/eeklo/9900?countries=BE&orderBy=relevance'
+   
+   # file we should write our list with urls to
+   file_location = pathlib.Path("files/search_results")
+   
+   # create files folder if it doesn't exist yet
+   files_folder = "files"
+   if not pathlib.Path.exists(pathlib.Path(files_folder)):
+       os.mkdir(files_folder)
+   
+   # only open up with selenium if file hasn't been created for us yet with list of links
+   if not pathlib.Path.exists(file_location):
+       driver_path = os.path.join(os.environ["HOME"], "drivers", "chromedriver")
+       driver = webdriver.Chrome(driver_path)
+       driver.get(start_url)
+       soup = BeautifulSoup(driver.page_source, features='lxml')
+       driver.quit()
+       search_results = []
+   
+       # todo: loop over every page not just the start_url
+       for elem in soup.find_all('a', {'class': 'card__title-link'}):
+           search_results.append(elem.get('href'))
+   
+       with open(file_location, "wb") as fp:
+           pickle.dump(search_results, fp)
+   
+   # load the file and make a soup of it!
+   page = open(file_location, 'rb')
+   soup = BeautifulSoup(page.read(), features="lxml")
+   
+   with open("files/search_results", "rb") as fp:
+       search_results = pickle.load(fp)
+
+
 *****
 regex
 *****
@@ -4152,3 +4268,5 @@ This is far more readable than:
 .. include:: scraping.rst
 .. include:: threading.rst
 .. include:: cli_parsing.rst
+.. include:: numpy.rst
+.. include:: pandas.rst

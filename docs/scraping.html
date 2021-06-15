@@ -178,6 +178,121 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="immo-spider-project">
+<h3>immo spider project<a class="headerlink" href="#immo-spider-project" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-spider">
+<h4>the spider<a class="headerlink" href="#the-spider" title="Permalink to this headline">¶</a></h4>
+<p>immo/spiders/ImmoSpider.py</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="c1"># https://docs.python.org/3/library/codecs.html</span>
+<span class="kn">import</span> <span class="nn">codecs</span>  <span class="c1"># string encoding and decoding</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">run &quot;scrapy shell&quot; from within immo folder to troubleshoot</span>
+<span class="sd">run spider from repository immo folder:</span>
+<span class="sd">    (immo) (immo) user@pc ~/gits/challenge-collecting-data/immo (main)$ scrapy crawl ImmoSpider</span>
+
+
+<span class="sd"># spiders folder contains all the spiders for scrapy as Spider classes</span>
+<span class="sd"># whenever crawling, scrapy looks inside this dir to find the spider with its name provided by the user</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">..items</span> <span class="kn">import</span> <span class="n">ImmoItem</span>
+<span class="n">file_with_search_results</span> <span class="o">=</span> <span class="s2">&quot;../files/search_results&quot;</span>
+
+<span class="k">class</span> <span class="nc">ImmoSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="c1"># add fields our spider class will need</span>
+    <span class="n">txt</span> <span class="o">=</span> <span class="s1">&#39;.txt&#39;</span>  <span class="c1"># save scrape results</span>
+    <span class="nb">all</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># scrape whole site or just part of it?</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="s1">&#39;immoweb&#39;</span>  <span class="c1"># filename where results are stored</span>
+    <span class="n">dn</span> <span class="o">=</span> <span class="n">fn</span> <span class="o">+</span> <span class="s1">&#39;.be&#39;</span>  <span class="c1"># dn = domain name</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_with_search_results</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="n">search_results</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fp</span><span class="p">)</span>
+
+    <span class="n">first_page</span> <span class="o">=</span> <span class="n">search_results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;first page ------&gt; </span><span class="si">{</span><span class="n">first_page</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># other pages from same site that will be scraped when all = False</span>
+    <span class="n">scope</span> <span class="o">=</span> <span class="p">[</span><span class="n">link</span> <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">search_results</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;-------------------scope start-------------------------&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scope</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;--------------------scope end--------------------------&gt;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># what you call with `$ scrapy crawl ImmoSpider`</span>
+    <span class="c1"># to save to file `$ scrapy crawl ImmoSpider -o quotes.json`</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ImmoSpider&#39;</span>
+    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="n">dn</span><span class="p">]</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="n">dn</span><span class="p">]</span>
+
+    <span class="c1"># delete scrape results file from disk so each time spider runs, results are fresh</span>
+    <span class="k">def</span> <span class="nf">del_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fn</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">txt</span><span class="p">):</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fn</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">txt</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">write_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fn</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">txt</span><span class="p">,</span> <span class="s1">&#39;a+&#39;</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># del files and loop over pages based on how all is True or False</span>
+    <span class="k">def</span> <span class="nf">start_requests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">del_file</span><span class="p">()</span>  <span class="c1"># delete old file</span>
+        <span class="n">pages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">first_page</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">all</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">scope</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;--------printing pages start---------&gt;&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pages</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&lt;----------printing pages end---------&gt;&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">pages</span><span class="p">:</span>
+            <span class="c1"># self.write_text(f&quot;item: {page}&quot;)</span>
+            <span class="k">yield</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse</span><span class="p">)</span>  <span class="c1"># you could add headers={&quot;User-Agent&quot;: &quot;Your Custom User Agent&quot;} here</span>
+
+    <span class="c1"># used to extract data from each page (self.parse called with yield)</span>
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extract_data</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+
+    <span class="c1"># find needed data inside returned scrapy response</span>
+    <span class="k">def</span> <span class="nf">extract_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="n">ImmoItem</span><span class="p">()</span>  <span class="c1"># placeholder for data we&#39;ll extract</span>
+        <span class="c1"># items you set here -&gt; item[&#39;x&#39;] -&gt; have to be set in items.py</span>
+        <span class="c1"># https://doc.scrapy.org/en/latest/topics/selectors.html</span>
+        <span class="c1"># To actually extract the textual data, you must call the selector .get() or .getall() methods</span>
+        <span class="k">for</span> <span class="n">table_row</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&quot;tr.classified-table__row&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getall</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------response-------------------&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">table_row</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------response-------------------&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;table_row: </span><span class="si">{</span><span class="n">table_row</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">item</span><span class="p">[</span><span class="s1">&#39;table_row&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">table_row</span>
+        <span class="c1"># https://docs.scrapy.org/en/latest/topics/debug.html</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="items">
+<h4>items<a class="headerlink" href="#items" title="Permalink to this headline">¶</a></h4>
+<p>immo/items.py</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://docs.scrapy.org/en/latest/topics/items.html</span>
+
+<span class="c1"># containers that will be loaded with scraped data</span>
+<span class="c1"># are like dictionaries but provide additional protection against populating undeclared fields &amp; typo&#39;s</span>
+<span class="kn">import</span> <span class="nn">scrapy</span>
+
+
+<span class="c1"># here we define the attributes that will be extracted</span>
+<span class="k">class</span> <span class="nc">ImmoItem</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+    <span class="n">table_row</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="settings-py">
+<h4>settings.py<a class="headerlink" href="#settings-py" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span>
+<span class="c1">#USER_AGENT = &#39;immo (+http://www.yourdomain.com)&#39;</span>
+<span class="n">USER_AGENT</span> <span class="o">=</span> <span class="s1">&#39;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="find-elements-with-scrapy-shell">
 <h3>find elements with scrapy shell<a class="headerlink" href="#find-elements-with-scrapy-shell" title="Permalink to this headline">¶</a></h3>
 <p>test if scrapy can find the elements on a page by invoking the <strong>scrapy shell</strong></p>

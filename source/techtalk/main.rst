@@ -5,6 +5,28 @@ techtalks
 .. toctree::
    :maxdepth: 5
 
+********
+pycharms
+********
+
+
+setting up a project
+====================
+
+venv + git configured
+---------------------
+
+demo opening up a git repo
+changing python interpreter to conda venv
+
+debugging
+---------
+
+easy debug yet not immediately obvious demo
+
+using addons
+------------
+
 ************
 open markets
 ************

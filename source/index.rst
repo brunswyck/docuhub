@@ -7,10 +7,11 @@ Welcome to bedocs's documentation!
 .. toctree::
    :maxdepth: 4
    :caption: Contents:
+   :glob:
 
    ansible
-   apidoc/modules
    bash
+   cheats/main
    git
    links
    python

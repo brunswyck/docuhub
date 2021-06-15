@@ -2,6 +2,156 @@
 scraping
 ********
 
+scrapy
+======
+
+`scrapy docs`_
+
+.. _scrapy docs: https://docs.scrapy.org/en/latest/index.html
+
+create spider
+-------------
+
+.. code-block:: python
+
+   scrapy startproject immoscrape
+   cd immoscrape
+   scrapy genspider ImmoSpider immoweb.be
+
+immo spider project
+-------------------
+the spider
+^^^^^^^^^^
+
+immo/spiders/ImmoSpider.py
+
+.. code-block:: python
+
+   import scrapy
+   import os
+   import re
+   from bs4 import BeautifulSoup
+   # https://docs.python.org/3/library/codecs.html
+   import codecs  # string encoding and decoding
+   import pickle
+   """
+   run "scrapy shell" from within immo folder to troubleshoot
+   run spider from repository immo folder:
+       (immo) (immo) user@pc ~/gits/challenge-collecting-data/immo (main)$ scrapy crawl ImmoSpider
+
+
+   # spiders folder contains all the spiders for scrapy as Spider classes
+   # whenever crawling, scrapy looks inside this dir to find the spider with its name provided by the user
+   """
+   from ..items import ImmoItem
+   file_with_search_results = "../files/search_results"
+
+   class ImmoSpider(scrapy.Spider):
+       # add fields our spider class will need
+       txt = '.txt'  # save scrape results
+       all = False  # scrape whole site or just part of it?
+       fn = 'immoweb'  # filename where results are stored
+       dn = fn + '.be'  # dn = domain name
+
+       with open(file_with_search_results, "rb") as fp:
+           search_results = pickle.load(fp)
+
+       first_page = search_results[0]
+       print(f"first page ------> {first_page}")
+
+       # other pages from same site that will be scraped when all = False
+       scope = [link for link in search_results]
+       print(f"<-------------------scope start------------------------->\n")
+       print(f"{scope}")
+       print(f"<--------------------scope end-------------------------->\n")
+
+       # what you call with `$ scrapy crawl ImmoSpider`
+       # to save to file `$ scrapy crawl ImmoSpider -o quotes.json`
+       name = 'ImmoSpider'
+       allowed_domains = [dn]
+       start_urls = [dn]
+
+       # delete scrape results file from disk so each time spider runs, results are fresh
+       def del_file(self):
+           if os.path.exists(self.fn + self.txt):
+               os.remove(self.fn + self.txt)
+
+       def write_text(self, i):
+           with codecs.open(self.fn + self.txt, 'a+', 'utf-8') as f:
+               f.write(i + '\r\n')
+
+       # del files and loop over pages based on how all is True or False
+       def start_requests(self):
+           self.del_file()  # delete old file
+           pages = self.first_page if self.all else self.scope
+           print(f"<--------printing pages start--------->")
+           print(f"{pages}")
+           print(f"<----------printing pages end--------->")
+           for page in pages:
+               # self.write_text(f"item: {page}")
+               yield scrapy.Request(page, self.parse)  # you could add headers={"User-Agent": "Your Custom User Agent"} here
+
+       # used to extract data from each page (self.parse called with yield)
+       def parse(self, response, **kwargs):
+           print(f"{response.body}")
+           self.extract_data(response)
+
+       # find needed data inside returned scrapy response
+       def extract_data(self, response):
+           item = ImmoItem()  # placeholder for data we'll extract
+           # items you set here -> item['x'] -> have to be set in items.py
+           # https://doc.scrapy.org/en/latest/topics/selectors.html
+           # To actually extract the textual data, you must call the selector .get() or .getall() methods
+           for table_row in response.css("tr.classified-table__row").getall():
+               print("--------------response-------------------")
+               print(f"{table_row}")
+               print("--------------response-------------------")
+               self.write_text(f"table_row: {table_row}")
+               item['table_row'] = table_row
+           # https://docs.scrapy.org/en/latest/topics/debug.html
+
+
+items
+^^^^^
+
+immo/items.py
+
+.. code-block:: python
+
+   # https://docs.scrapy.org/en/latest/topics/items.html
+   
+   # containers that will be loaded with scraped data
+   # are like dictionaries but provide additional protection against populating undeclared fields & typo's
+   import scrapy
+   
+   
+   # here we define the attributes that will be extracted
+   class ImmoItem(scrapy.Item):
+       table_row = scrapy.Field()
+
+
+settings.py
+^^^^^^^^^^^
+
+.. code-block:: python
+
+   # Crawl responsibly by identifying yourself (and your website) on the user-agent
+   #USER_AGENT = 'immo (+http://www.yourdomain.com)'
+   USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36'
+   
+
+find elements with scrapy shell
+-------------------------------
+
+test if scrapy can find the elements on a page by invoking the **scrapy shell**
+
+.. code-block:: python
+
+   scrapy shell 'https://www.immoweb.be/en/search/house/for-sale/eeklo/9900?countries=BE&minPrice=100000&maxPrice=300000&page=1&orderBy=relevance'
+   # >>> response
+   # <200 https://www.immoweb.be/en/search/house/for-sale/eeklo/9900?countries=BE&page=4&orderBy=relevance>
+   # >>> view(response)
+
 beautiful soup
 ==============
 
@@ -207,7 +357,7 @@ handy libraries
    print(date)
 
 scraping training
-======================
+=================
 
 inquisitive with bs4 & selenium
 -------------------------------
