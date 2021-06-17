@@ -43,10 +43,26 @@ using mark
 
 .. note:: **.** means line at cursor position
 
+.. note:: specify lines relative to the current position with +n and -n
+
+- yank range lines into register x `:[range]y[ank] [x]`
+- the entire buffer `:%yank`
+
+
 .. code-block:: bash
 
    # range from cursor -> +5 lines
    .,+5
+   :+2y      " two lines after the current line
+   :-2y      " two lines before the current line
+   :-2,+2y   " two lines before the cursor and two lines after
+   :.,+3     " yank current line and the next 3
+   :-3,.yank " current line and the previous 3
+   :4yank    " copy line 4
+
+   :4t.      " copy line 4 to below current position
+   :4t-      " copy line 4 to 1 line above
+   :-27,-26y " copy the line at -27 lines current position
 
 
 copy a block

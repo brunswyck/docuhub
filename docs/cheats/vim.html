@@ -97,17 +97,13 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../ansible.html">code plot graphics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ansible.html#ansible">ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ansible.html">ansible</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="main.html">cheatsheets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../git.html">GIT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../links.html">links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python.html">python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../techtalk/main.html">techtalks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sampledoc/extensions.html">Sphinx extensions for embedded plots, math and more</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sampledoc/ipython_directive.html">IPython Directive</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sampledoc/cheatsheet.html">Sphinx cheat sheet</a></li>
 </ul>
 
             
@@ -213,8 +209,26 @@ y<span class="s1">&#39;k</span>
 <p class="admonition-title">Note</p>
 <p><strong>.</strong> means line at cursor position</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>specify lines relative to the current position with +n and -n</p>
+</div>
+<ul class="simple">
+<li><p>yank range lines into register x <cite>:[range]y[ank] [x]</cite></p></li>
+<li><p>the entire buffer <cite>:%yank</cite></p></li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># range from cursor -&gt; +5 lines</span>
 .,+5
+:+2y      <span class="s2">&quot; two lines after the current line</span>
+<span class="s2">:-2y      &quot;</span> two lines before the current line
+:-2,+2y   <span class="s2">&quot; two lines before the cursor and two lines after</span>
+<span class="s2">:.,+3     &quot;</span> yank current line and the next <span class="m">3</span>
+:-3,.yank <span class="s2">&quot; current line and the previous 3</span>
+<span class="s2">:4yank    &quot;</span> copy line <span class="m">4</span>
+
+:4t.      <span class="s2">&quot; copy line 4 to below current position</span>
+<span class="s2">:4t-      &quot;</span> copy line <span class="m">4</span> to <span class="m">1</span> line above
+:-27,-26y <span class="s2">&quot; copy the line at -27 lines current position</span>
 </pre></div>
 </div>
 </div>

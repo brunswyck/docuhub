@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>vim &mdash; Patrick&#39;s Docs alpha documentation</title>
+  <title>pandas &mdash; Patrick&#39;s Docs alpha documentation</title>
   
 
   
@@ -152,7 +152,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>vim</li>
+      <li>pandas</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -171,96 +171,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="vim">
-<h1>vim<a class="headerlink" href="#vim" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="search-replace">
-<h2>search replace<a class="headerlink" href="#search-replace" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="visual-mode-replace">
-<h3>visual mode replace<a class="headerlink" href="#visual-mode-replace" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-vim notranslate"><div class="highlight"><pre><span></span>change_me::
-# ctrl<span class="p">-</span><span class="k">v</span> <span class="k">to</span> select change_me::
-# then hit <span class="s1">&#39;:&#39;</span> <span class="k">to</span> enter command
-# \%V <span class="p">=</span> last visual <span class="nb">selection</span>
-%s<span class="sr">/\%Vchange_me/</span>changed/<span class="k">g</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="copy-pasting">
-<h2>copy pasting<a class="headerlink" href="#copy-pasting" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="using-mark">
-<h3>using mark<a class="headerlink" href="#using-mark" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mark as k</span>
-mk
-
-<span class="c1"># go to end of section you want to copy</span>
-<span class="c1"># &#39; means till (so yank till k mark):</span>
-y<span class="s1">&#39;k</span>
-
-<span class="s1"># cut till mark</span>
-<span class="s1">d&#39;</span>k
-
-<span class="s2">&quot; is into</span>
-<span class="s2">&#39; is till</span>
-</pre></div>
-</div>
-<p>“ay’k” means <cite>into a yank till k</cite></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>.</strong> means line at cursor position</p>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># range from cursor -&gt; +5 lines</span>
-.,+5
-</pre></div>
-</div>
-</div>
-<div class="section" id="copy-a-block">
-<h3>copy a block<a class="headerlink" href="#copy-a-block" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mark block start x</span>
-mx
-
-<span class="c1"># goto end of block</span>
-use move keys
-
-<span class="c1"># mark block end y</span>
-my
-
-<span class="c1"># move to block start</span>
-<span class="sb">`</span>x
-
-<span class="c1"># yank up to block end</span>
-y<span class="sb">`</span>y
-
-<span class="c1"># or cut the block</span>
-d<span class="sb">`</span>y
-</pre></div>
-</div>
-</div>
-<div class="section" id="change-case">
-<h3>change case<a class="headerlink" href="#change-case" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-vim notranslate"><div class="highlight"><pre><span></span>ctrl<span class="p">-</span><span class="k">v</span> <span class="p">+</span> <span class="k">u</span>
-# lowercase line
-guu
-# lowercase text <span class="k">in</span> that direction
-gu[motion]
-# uppercase with U
-guU
-gU[motion]
-# <span class="k">all</span> lowercase
-ggguG
-# gg <span class="p">=</span> <span class="k">goto</span> <span class="m">1</span>st line<span class="p">,</span> <span class="k">g</span><span class="p">=(</span>action<span class="p">)</span><span class="k">start</span> converting from here<span class="p">,</span> till G <span class="p">=</span> <span class="k">end</span> of <span class="k">file</span>
-
-# toggle case with <span class="p">~</span>
-<span class="k">g</span><span class="p">~</span>[motion]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="vimrc-file">
-<h2>vimrc file<a class="headerlink" href="#vimrc-file" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="setting-up-plugins">
-<h3>setting up plugins<a class="headerlink" href="#setting-up-plugins" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+  <div class="section" id="pandas">
+<h1>pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-science">
+<h2>data science<a class="headerlink" href="#data-science" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="importing-data">
+<h3>importing data<a class="headerlink" href="#importing-data" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

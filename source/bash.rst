@@ -57,6 +57,11 @@ in .bashrc file looks like this
 scripting
 *********
 
+examples
+========
+
+.. literalinclude:: code/bash/download_pdf.sh
+
 file test operators
 ===================
 
@@ -132,4 +137,143 @@ check multiple files
 -x
  True if the FILE exists and is executable
 
+loops
+=====
 
+conditional exit with break
+---------------------------
+
+.. code-block:: bash
+
+   for I in 1 2 3 4 5
+   do
+     statements1      #Executed for all values of ''I'', up to a disaster-condition if any
+     statements2
+     if (disaster-condition)
+     then
+       break             #Abandon the loop
+     fi
+     statements3      #While good and, no disaster-condition
+   done
+
+   #!/bin/bash
+   for file in /etc/*
+   do
+     if [ "${file}" == "/etc/resolv.conf" ]
+     then
+       countNameservers=$(grep -c nameserver /etc/resolv.conf)
+       echo "Total  ${countNameservers} nameservers defined in ${file}"
+       break
+     fi
+   done
+
+
+make backup of all file names specified on command line. If .bak file exists, it will skip the cp command
+
+.. code-block:: bash
+
+   for I in 1 2 3 4 5
+   do
+     statements1      #Executed for all values of ''I'', up to a disaster-condition if any.
+     statements2
+     if (condition)
+     then
+       continue   #Go to next iteration of I in the loop and skip statements3
+     fi
+     statements3
+   done
+   
+   #!/bin/bash
+   FILES="$@"
+   for f in $FILES
+   do
+           # if .bak backup file exists, read next file
+       if [ -f ${f}.bak ]
+       then
+           echo "Skiping $f file..."
+           continue  # read next file and skip the cp command
+       fi
+           # we are here means no backup file exists, just use cp command to copy file
+       /bin/cp $f $f.bak
+   done
+
+for loop with array elements
+----------------------------
+
+.. code-block:: bash
+
+   DB_AWS_ZONE=('us-east-2a' 'us-west-1a' 'eu-central-1a')
+
+   for zone in "${DB_AWS_ZONE[@]}"
+   do
+     echo "Creating rds (DB) server in $zone, please wait ..."
+     aws rds create-db-instance \
+     --availability-zone "$zone"
+     --allocated-storage 20 --db-instance-class db.m1.small \
+     --db-instance-identifier test-instance \
+     --engine mariadb \
+     --master-username my_user_name \
+     --master-user-password my_password_here
+   done
+
+loop with a shell variable
+--------------------------
+
+store important data in the shell variable, and we can use for a loop as follows to read the data:
+
+.. code-block:: bash
+
+   _admin_ip="202.54.1.33|MUM_VPN_GATEWAY 23.1.2.3|DEL_VPN_GATEWAY 13.1.2.3|SG_VPN_GATEWAY"
+   for e in $_admin_ip
+   do
+      ufw allow from "${e%%|*}" to any port 22 proto tcp comment 'Open SSH port for ${e##*|}'
+   done
+
+
+loop with a number using range
+------------------------------
+
+.. code-block:: bash
+
+   for i in {START..END}
+   do
+      commands
+   done
+   ## step value ##
+   for i in {START..END..STEP}
+   do
+      commands
+   done
+   ## example: ping cbz01, cbz02, cbz03, and cbz04 using a loop ##
+   for i in 0{1..4}
+   do
+       h="cbz${i}"
+       ping -c 1 -q "$h" &>/dev/null 
+       if [ $? -eq 0 ]
+       then
+           echo "server $h alive" 
+       else
+           echo "server $h dead or can not ping."
+       fi
+   done
+
+
+loop with strings
+-----------------
+
+.. code-block:: bash
+
+   PKGS="python-openssl  python3-aioopenssl  rsyslog-openssl"
+   for p in $PKGS
+   do
+      echo "Installing $p package"
+      sudo apk add "$p"
+   done
+
+.. code-block:: bash
+.. code-block:: bash
+.. code-block:: bash
+.. code-block:: bash
+.. code-block:: bash
+.. code-block:: bash
+.. code-block:: bash

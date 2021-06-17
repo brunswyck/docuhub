@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="cheatsheets" href="cheats/main.html" />
-    <link rel="prev" title="code plot graphics" href="ansible.html" /> 
+    <link rel="prev" title="ansible" href="ansible.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,8 +99,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="ansible.html">code plot graphics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ansible.html#ansible">ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ansible.html">ansible</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">bash</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#bashrc-config">bashrc config</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#prompt-customs">prompt customs</a><ul>
@@ -110,9 +109,18 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#scripting">scripting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples">examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#file-test-operators">file test operators</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#check-file-exists">check file exists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#check-multiple-files">check multiple files</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#loops">loops</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#conditional-exit-with-break">conditional exit with break</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#for-loop-with-array-elements">for loop with array elements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loop-with-a-shell-variable">loop with a shell variable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loop-with-a-number-using-range">loop with a number using range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loop-with-strings">loop with strings</a></li>
 </ul>
 </li>
 </ul>
@@ -124,9 +132,6 @@
 <li class="toctree-l1"><a class="reference internal" href="links.html">links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techtalk/main.html">techtalks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sampledoc/extensions.html">Sphinx extensions for embedded plots, math and more</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sampledoc/ipython_directive.html">IPython Directive</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sampledoc/cheatsheet.html">Sphinx cheat sheet</a></li>
 </ul>
 
             
@@ -243,6 +248,20 @@ parse_git_branch<span class="o">()</span> <span class="o">{</span>
 </div>
 <div class="section" id="scripting">
 <h2>scripting<a class="headerlink" href="#scripting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="examples">
+<h3>examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+limit=$(wc -l &lt; pdf_urls.txt)
+counter=0
+for PDF in $(cat pdf_urls.txt)
+do
+  echo &quot;$PDF&quot;
+  ((counter=counter+1))
+  curl --parallel-max 3 --location &quot;$PDF&quot; --output &quot;$counter&quot;.pdf
+done
+</pre></div>
+</div>
+</div>
 <div class="section" id="file-test-operators">
 <h3>file test operators<a class="headerlink" href="#file-test-operators" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Conditional-Constructs">http://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Conditional-Constructs</a></p>
@@ -332,6 +351,149 @@ parse_git_branch<span class="o">()</span> <span class="o">{</span>
 </dl>
 </div>
 </div>
+<div class="section" id="loops">
+<h3>loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="conditional-exit-with-break">
+<h4>conditional exit with break<a class="headerlink" href="#conditional-exit-with-break" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> I <span class="k">in</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span>
+<span class="k">do</span>
+  statements1      <span class="c1">#Executed for all values of &#39;&#39;I&#39;&#39;, up to a disaster-condition if any</span>
+  statements2
+  <span class="k">if</span> <span class="o">(</span>disaster-condition<span class="o">)</span>
+  <span class="k">then</span>
+    <span class="nb">break</span>             <span class="c1">#Abandon the loop</span>
+  <span class="k">fi</span>
+  statements3      <span class="c1">#While good and, no disaster-condition</span>
+<span class="k">done</span>
+
+<span class="c1">#!/bin/bash</span>
+<span class="k">for</span> file <span class="k">in</span> /etc/*
+<span class="k">do</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">file</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">==</span> <span class="s2">&quot;/etc/resolv.conf&quot;</span> <span class="o">]</span>
+  <span class="k">then</span>
+    <span class="nv">countNameservers</span><span class="o">=</span><span class="k">$(</span>grep -c nameserver /etc/resolv.conf<span class="k">)</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Total  </span><span class="si">${</span><span class="nv">countNameservers</span><span class="si">}</span><span class="s2"> nameservers defined in </span><span class="si">${</span><span class="nv">file</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="nb">break</span>
+  <span class="k">fi</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>make backup of all file names specified on command line. If .bak file exists, it will skip the cp command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> I <span class="k">in</span> <span class="m">1</span> <span class="m">2</span> <span class="m">3</span> <span class="m">4</span> <span class="m">5</span>
+<span class="k">do</span>
+  statements1      <span class="c1">#Executed for all values of &#39;&#39;I&#39;&#39;, up to a disaster-condition if any.</span>
+  statements2
+  <span class="k">if</span> <span class="o">(</span>condition<span class="o">)</span>
+  <span class="k">then</span>
+    <span class="k">continue</span>   <span class="c1">#Go to next iteration of I in the loop and skip statements3</span>
+  <span class="k">fi</span>
+  statements3
+<span class="k">done</span>
+
+<span class="c1">#!/bin/bash</span>
+<span class="nv">FILES</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+<span class="k">for</span> f <span class="k">in</span> <span class="nv">$FILES</span>
+<span class="k">do</span>
+        <span class="c1"># if .bak backup file exists, read next file</span>
+    <span class="k">if</span> <span class="o">[</span> -f <span class="si">${</span><span class="nv">f</span><span class="si">}</span>.bak <span class="o">]</span>
+    <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&quot;Skiping </span><span class="nv">$f</span><span class="s2"> file...&quot;</span>
+        <span class="k">continue</span>  <span class="c1"># read next file and skip the cp command</span>
+    <span class="k">fi</span>
+        <span class="c1"># we are here means no backup file exists, just use cp command to copy file</span>
+    /bin/cp <span class="nv">$f</span> <span class="nv">$f</span>.bak
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-loop-with-array-elements">
+<h4>for loop with array elements<a class="headerlink" href="#for-loop-with-array-elements" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">DB_AWS_ZONE</span><span class="o">=(</span><span class="s1">&#39;us-east-2a&#39;</span> <span class="s1">&#39;us-west-1a&#39;</span> <span class="s1">&#39;eu-central-1a&#39;</span><span class="o">)</span>
+
+<span class="k">for</span> zone <span class="k">in</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">DB_AWS_ZONE</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">do</span>
+  <span class="nb">echo</span> <span class="s2">&quot;Creating rds (DB) server in </span><span class="nv">$zone</span><span class="s2">, please wait ...&quot;</span>
+  aws rds create-db-instance <span class="se">\</span>
+  --availability-zone <span class="s2">&quot;</span><span class="nv">$zone</span><span class="s2">&quot;</span>
+  --allocated-storage <span class="m">20</span> --db-instance-class db.m1.small <span class="se">\</span>
+  --db-instance-identifier test-instance <span class="se">\</span>
+  --engine mariadb <span class="se">\</span>
+  --master-username my_user_name <span class="se">\</span>
+  --master-user-password my_password_here
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loop-with-a-shell-variable">
+<h4>loop with a shell variable<a class="headerlink" href="#loop-with-a-shell-variable" title="Permalink to this headline">¶</a></h4>
+<p>store important data in the shell variable, and we can use for a loop as follows to read the data:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">_admin_ip</span><span class="o">=</span><span class="s2">&quot;202.54.1.33|MUM_VPN_GATEWAY 23.1.2.3|DEL_VPN_GATEWAY 13.1.2.3|SG_VPN_GATEWAY&quot;</span>
+<span class="k">for</span> e <span class="k">in</span> <span class="nv">$_admin_ip</span>
+<span class="k">do</span>
+   ufw allow from <span class="s2">&quot;</span><span class="si">${</span><span class="nv">e</span><span class="p">%%|*</span><span class="si">}</span><span class="s2">&quot;</span> to any port <span class="m">22</span> proto tcp comment <span class="s1">&#39;Open SSH port for ${e##*|}&#39;</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loop-with-a-number-using-range">
+<h4>loop with a number using range<a class="headerlink" href="#loop-with-a-number-using-range" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> i <span class="k">in</span> <span class="o">{</span>START..END<span class="o">}</span>
+<span class="k">do</span>
+   commands
+<span class="k">done</span>
+<span class="c1">## step value ##</span>
+<span class="k">for</span> i <span class="k">in</span> <span class="o">{</span>START..END..STEP<span class="o">}</span>
+<span class="k">do</span>
+   commands
+<span class="k">done</span>
+<span class="c1">## example: ping cbz01, cbz02, cbz03, and cbz04 using a loop ##</span>
+<span class="k">for</span> i <span class="k">in</span> <span class="m">0</span><span class="o">{</span><span class="m">1</span>..4<span class="o">}</span>
+<span class="k">do</span>
+    <span class="nv">h</span><span class="o">=</span><span class="s2">&quot;cbz</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">&quot;</span>
+    ping -c <span class="m">1</span> -q <span class="s2">&quot;</span><span class="nv">$h</span><span class="s2">&quot;</span> <span class="p">&amp;</span>&gt;/dev/null
+    <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span>
+    <span class="k">then</span>
+        <span class="nb">echo</span> <span class="s2">&quot;server </span><span class="nv">$h</span><span class="s2"> alive&quot;</span>
+    <span class="k">else</span>
+        <span class="nb">echo</span> <span class="s2">&quot;server </span><span class="nv">$h</span><span class="s2"> dead or can not ping.&quot;</span>
+    <span class="k">fi</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loop-with-strings">
+<h4>loop with strings<a class="headerlink" href="#loop-with-strings" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PKGS</span><span class="o">=</span><span class="s2">&quot;python-openssl  python3-aioopenssl  rsyslog-openssl&quot;</span>
+<span class="k">for</span> p <span class="k">in</span> <span class="nv">$PKGS</span>
+<span class="k">do</span>
+   <span class="nb">echo</span> <span class="s2">&quot;Installing </span><span class="nv">$p</span><span class="s2"> package&quot;</span>
+   sudo apk add <span class="s2">&quot;</span><span class="nv">$p</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -342,7 +504,7 @@ parse_git_branch<span class="o">()</span> <span class="o">{</span>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="cheats/main.html" class="btn btn-neutral float-right" title="cheatsheets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="ansible.html" class="btn btn-neutral float-left" title="code plot graphics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ansible.html" class="btn btn-neutral float-left" title="ansible" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
