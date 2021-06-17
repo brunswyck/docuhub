@@ -292,9 +292,248 @@ pip3 requirements
    sphinx-autobuild
    sphinx-rtd-theme
 
+extensions
+----------
+
+graphviz
+^^^^^^^^
+
+http://graphviz.org/
+
+::
+  sudo apt-get install graphviz
+
+revealjs
+^^^^^^^^
+
+https://sphinx-revealjs.readthedocs.io/en/latest/
+https://pypi.org/project/sphinx-revealjs/
+
+.. code-block:: python
+
+   pip install sphinx-revealjs
+   """
+   extensions = [
+     'sphinx_revealjs',
+   ]
+   """
+
+matplotlib
+^^^^^^^^^^
+
+https://matplotlib.org/
+
+::
+  sudo apt-get install python3-matplotlib
+
+
+pytest
+^^^^^^
+
+https://pypi.org/project/pytest-sphinx/
+
+https://numpydoc.readthedocs.io/en/latest/format.html
+https://numpydoc.readthedocs.io/en/latest/
+https://pypi.org/project/numpydoc/
+
+numpydoc
+^^^^^^^^
+
+::
+  pip install numpydoc
+
+https://ipython.readthedocs.io/en/stable/sphinxext.html
+
+ipython
+^^^^^^^
+
+::
+  pip install ipython
+
+sphinx-gallery
+^^^^^^^^^^^^^^
+
+https://pypi.org/project/sphinx-gallery
+
+https://sphinx-gallery.github.io/stable/getting_started.html
+
+.. code-block:: bash
+
+   pip install pillow
+   pip install matplotlib
+   pip install seaborn
+   pip install sphinx-gallery # extension wanted
+
+create these dirs & files
+
+a py file with *plot_* prefix that generates the plot
+a py file with just the code
+a readme file
+
+.. code-block:: bash
+
+   (docuhub) ~/gits/docuhub (main)$ mkdir gallery_code
+   (docuhub) ~/gits/docuhub (main)$ mkdir source/gallery
+   (docuhub) ~/gits/docuhub (main)$ touch gallery_code/README.rst gallery_code/example.py gallery_code/plot_example.py 
+
+content for examples
+
+structure examples/example.py
+
+https://sphinx-gallery.github.io/stable/syntax.html#python-script-syntax
+
+::
+
+  """
+  "This" is my example-script
+  ===========================
+  
+  This example doesn't do much, it just makes a simple plot
+  """
+
+  # Code source: Óscar Nájera
+  # License: BSD 3 clause
+  
+  import numpy as np
+  import matplotlib.pyplot as plt
+  
+  x = np.linspace(0, 2 * np.pi, 100)
+  y = np.sin(x)
+  
+  plt.plot(x, y)
+  plt.xlabel(r'$x$')
+  plt.ylabel(r'$\sin(x)$')
+  # To avoid matplotlib text output
+  plt.show()
+
+add to source/conf.py
+
+.. code-block:: bash
+
+   extensions = [
+       ...
+       'sphinx_gallery.gen_gallery',
+       ]
+
+   sphinx_gallery_conf = {
+        'examples_dirs': '../gallery_code',   # code here
+        'gallery_dirs': 'gallery',  # gallery generated output
+   }
+
+   html_static_path = ['_static', 'gallery']
+
+disable download files
+
+::
+
+  Disable joint download of all gallery scripts
+  By default Sphinx-Gallery prepares zip files of all python scripts and all Jupyter notebooks for each gallery section and makes them available for download at the end of each section. To disable this behavior add to the configuration dictionary in your conf.py file
+  
+  sphinx_gallery_conf = {
+      'download_all_examples'  : False}
+
+to check on generated images
+
+.. code-block::
+
+   (docuhub) ~/gits/docuhub (main)$ ls docs/_images/sphx*
+   docs/_images/sphx_glr_plot_example_001.png
+   docs/_images/sphx_glr_plot_example_thumb1.png
+   docs/_images/sphx_glr_plot_example_thumb.png
+   docs/_images/sphx_glr_sin_demo_thumb.png
+
+
+cross referencing to gallery code
+
+https://sphinx-gallery.github.io/stable/advanced.html#cross-referencing
+
+.. code-block::
+
+   :ref:`sphx_glr_auto_examples_plot_example.py`
+
+
+The examples directory is also copied to doc/gallery by sphinx-gallery, so plots from the examples directory can be included using
+
+.. include:: ../gallery_code/sin_demo.py
+
+to add the code from gallery_code/plot_example.py file
+
+::
+
+  .. literalinclude:: ../../gallery_code/plot_example.py
+
+to add the generated image
+
+::
+
+  .. image:: ../../_images/sphx_glr_plot_example_001.png
+
+ignore with `sphinx-autobuild --ignore "*.pickle"`
+
 ************
 fundamentals
 ************
+code examples
+=============
+
+for x in range(number+1)
+------------------------
+
+.. code-block:: python
+
+   for count_25 in range(4+1):  # note the +1 to indicate 4 is not included
+       print(count_25)
+   for count_25 in range(4+1):
+       print(count_25)
+   0
+   1
+   2
+   3
+   4
+
+.. code-block:: python
+
+   # loop over all possible counts for each coin (summing up to <= 1$);
+   # if the total amount is exactly $1, add current counts to "combinations"
+   
+   combinations = []
+   
+   for count_100 in range(1+1):
+       for count_50 in range(2+1):
+           for count_25 in range(4+1):
+               for count_10 in range(10+1):
+                   for count_5 in range(20+1):
+                       for count_1 in range(100+1):
+                           if 100*count_100 + 50*count_50 + 25*count_25 + 10*count_10 + 5*count_5 + count_1 == 100:
+                               combinations.append([count_100, count_50, count_25, count_10, count_5, count_1])
+
+   combinations
+   [[0, 0, 0, 0, 0, 100],
+    [0, 0, 0, 0, 1, 95],
+    [0, 0, 0, 0, 2, 90],
+    [0, 0, 0, 0, 3, 85],
+    [0, 0, 0, 0, 4, 80],
+    [0, 0, 0, 0, 5, 75],
+    [0, 0, 0, 0, 6, 70],
+    [0, 0, 0, 0, 7, 65],
+    [0, 0, 0, 0, 8, 60],
+    [0, 0, 0, 0, 9, 55], # cut here ..
+    [0, 1, 1, 0, 2, 15],
+    [0, 1, 1, 0, 3, 10],
+    [0, 1, 1, 0, 4, 5],
+    [0, 1, 1, 0, 5, 0],
+    [0, 1, 1, 1, 0, 15],
+    [0, 1, 1, 1, 1, 10],
+    [0, 1, 1, 1, 2, 5],
+    [0, 1, 1, 1, 3, 0],
+    [0, 1, 1, 2, 0, 5],
+    [0, 1, 1, 2, 1, 0],
+    [0, 1, 2, 0, 0, 0],
+    [0, 2, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0]]
+    len(combinations)
+    293
+
 summary
 =======
 

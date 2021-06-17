@@ -15,6 +15,12 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/plot_directive.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-rendered-html.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
 
@@ -37,6 +43,7 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script src="_static/dark_mode_js/default_dark.js"></script>
         <script src="_static/dark_mode_js/theme_switcher.js"></script>
     
@@ -134,11 +141,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#sphinx">sphinx</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#setup-sphinx">setup sphinx</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pip3-requirements">pip3 requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extensions">extensions</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#fundamentals">fundamentals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code-examples">code examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#for-x-in-range-number-1">for x in range(number+1)</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#summary">summary</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#list-indices">list indices</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#list-operations">list operations</a></li>
@@ -369,9 +381,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#nbytes-attribute-gives-total-bytes-consumed-by-the-elements-of-the-numpy-array">nbytes: attribute gives total bytes consumed by the elements of the NumPy array</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#get-the-docs-on-numpy-add-function">get the docs on numpy add function</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-a-vector-with-values-ranging-from-10-to-49">create a vector with values ranging from 10 to 49</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reverse-a-vector-first-element-becomes-last">Reverse a vector (first element becomes last)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reverse-a-vector-first-element-becomes-last">reverse a vector (first element becomes last)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-3x3-matrix-w-values-ranging-from-0-to-8">create 3x3 matrix w values ranging from 0 to 8</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#find-indices-of-non-zero-elements-from-1-2-0-0-4-0">Find indices of non-zero elements from [1,2,0,0,4,0]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#find-indices-of-non-zero-elements-from-1-2-0-0-4-0">find indices of non-zero elements from [1,2,0,0,4,0]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-a-3x3-identity-matrix">create a 3x3 identity matrix</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-a-3x3x3-array-with-random-values">create a 3x3x3 array with random values</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-a-10x10-array-with-random-values-and-find-the-min-max-values">create a 10x10 array with random values and find the min max values</a></li>
@@ -397,8 +409,20 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#pandas">pandas</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#pandass">pandass</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#pump-it">pump it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#csv-schema">csv schema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-a-schema-to-csv">add a schema to csv</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#basics">basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#access-values">access values</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get-max-in-col-x">get max in col X</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#if-max-in-col-x-show-value-in-col-y">if max in col X show value in col Y</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-vs-location">label vs location</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#label-location-loc">label-location loc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#select-range-of-rows">select range of rows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#select-column-value-with-loc">select column value with loc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#at-when-you-know-row-column-label">at() when you know row &amp; column label</a></li>
 </ul>
 </li>
 </ul>
@@ -726,10 +750,247 @@ cd ~/gits;git clone git@github.com:brunswyck/docuhub.git;cd ~/gits/docuhub
 </pre></div>
 </div>
 </div>
+<div class="section" id="extensions">
+<h4>extensions<a class="headerlink" href="#extensions" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="graphviz">
+<h5>graphviz<a class="headerlink" href="#graphviz" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="http://graphviz.org/">http://graphviz.org/</a></p>
+<dl class="simple">
+<dt>::</dt><dd><p>sudo apt-get install graphviz</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="revealjs">
+<h5>revealjs<a class="headerlink" href="#revealjs" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="https://sphinx-revealjs.readthedocs.io/en/latest/">https://sphinx-revealjs.readthedocs.io/en/latest/</a>
+<a class="reference external" href="https://pypi.org/project/sphinx-revealjs/">https://pypi.org/project/sphinx-revealjs/</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">revealjs</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">extensions = [</span>
+<span class="sd">  &#39;sphinx_revealjs&#39;,</span>
+<span class="sd">]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="matplotlib">
+<h5>matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="https://matplotlib.org/">https://matplotlib.org/</a></p>
+<dl class="simple">
+<dt>::</dt><dd><p>sudo apt-get install python3-matplotlib</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="pytest">
+<h5>pytest<a class="headerlink" href="#pytest" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="https://pypi.org/project/pytest-sphinx/">https://pypi.org/project/pytest-sphinx/</a></p>
+<p><a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">https://numpydoc.readthedocs.io/en/latest/format.html</a>
+<a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/">https://numpydoc.readthedocs.io/en/latest/</a>
+<a class="reference external" href="https://pypi.org/project/numpydoc/">https://pypi.org/project/numpydoc/</a></p>
+</div>
+<div class="section" id="numpydoc">
+<h5>numpydoc<a class="headerlink" href="#numpydoc" title="Permalink to this headline">¶</a></h5>
+<dl class="simple">
+<dt>::</dt><dd><p>pip install numpydoc</p>
+</dd>
+</dl>
+<p><a class="reference external" href="https://ipython.readthedocs.io/en/stable/sphinxext.html">https://ipython.readthedocs.io/en/stable/sphinxext.html</a></p>
+</div>
+<div class="section" id="ipython">
+<h5>ipython<a class="headerlink" href="#ipython" title="Permalink to this headline">¶</a></h5>
+<dl class="simple">
+<dt>::</dt><dd><p>pip install ipython</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="sphinx-gallery">
+<h5>sphinx-gallery<a class="headerlink" href="#sphinx-gallery" title="Permalink to this headline">¶</a></h5>
+<p><a class="reference external" href="https://pypi.org/project/sphinx-gallery">https://pypi.org/project/sphinx-gallery</a></p>
+<p><a class="reference external" href="https://sphinx-gallery.github.io/stable/getting_started.html">https://sphinx-gallery.github.io/stable/getting_started.html</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pillow
+pip install matplotlib
+pip install seaborn
+pip install sphinx-gallery <span class="c1"># extension wanted</span>
+</pre></div>
+</div>
+<p>create these dirs &amp; files</p>
+<p>a py file with <em>plot_</em> prefix that generates the plot
+a py file with just the code
+a readme file</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>docuhub<span class="o">)</span> ~/gits/docuhub <span class="o">(</span>main<span class="o">)</span>$ mkdir gallery_code
+<span class="o">(</span>docuhub<span class="o">)</span> ~/gits/docuhub <span class="o">(</span>main<span class="o">)</span>$ mkdir source/gallery
+<span class="o">(</span>docuhub<span class="o">)</span> ~/gits/docuhub <span class="o">(</span>main<span class="o">)</span>$ touch gallery_code/README.rst gallery_code/example.py gallery_code/plot_example.py
+</pre></div>
+</div>
+<p>content for examples</p>
+<p>structure examples/example.py</p>
+<p><a class="reference external" href="https://sphinx-gallery.github.io/stable/syntax.html#python-script-syntax">https://sphinx-gallery.github.io/stable/syntax.html#python-script-syntax</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&quot;This&quot; is my example-script</span>
+<span class="sd">===========================</span>
+
+<span class="sd">This example doesn&#39;t do much, it just makes a simple plot</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Code source: Óscar Nájera</span>
+<span class="c1"># License: BSD 3 clause</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\sin(x)$&#39;</span><span class="p">)</span>
+<span class="c1"># To avoid matplotlib text output</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>add to source/conf.py</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">extensions</span> <span class="o">=</span> <span class="o">[</span>
+    ...
+    <span class="s1">&#39;sphinx_gallery.gen_gallery&#39;</span>,
+    <span class="o">]</span>
+
+<span class="nv">sphinx_gallery_conf</span> <span class="o">=</span> <span class="o">{</span>
+     <span class="s1">&#39;examples_dirs&#39;</span>: <span class="s1">&#39;../gallery_code&#39;</span>,   <span class="c1"># code here</span>
+     <span class="s1">&#39;gallery_dirs&#39;</span>: <span class="s1">&#39;gallery&#39;</span>,  <span class="c1"># gallery generated output</span>
+<span class="o">}</span>
+
+<span class="nv">html_static_path</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;_static&#39;</span>, <span class="s1">&#39;gallery&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>disable download files</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Disable</span> <span class="n">joint</span> <span class="n">download</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">gallery</span> <span class="n">scripts</span>
+<span class="n">By</span> <span class="n">default</span> <span class="n">Sphinx</span><span class="o">-</span><span class="n">Gallery</span> <span class="n">prepares</span> <span class="nb">zip</span> <span class="n">files</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">python</span> <span class="n">scripts</span> <span class="ow">and</span> <span class="nb">all</span> <span class="n">Jupyter</span> <span class="n">notebooks</span> <span class="k">for</span> <span class="n">each</span> <span class="n">gallery</span> <span class="n">section</span> <span class="ow">and</span> <span class="n">makes</span> <span class="n">them</span> <span class="n">available</span> <span class="k">for</span> <span class="n">download</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">each</span> <span class="n">section</span><span class="o">.</span> <span class="n">To</span> <span class="n">disable</span> <span class="n">this</span> <span class="n">behavior</span> <span class="n">add</span> <span class="n">to</span> <span class="n">the</span> <span class="n">configuration</span> <span class="n">dictionary</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">conf</span><span class="o">.</span><span class="n">py</span> <span class="n">file</span>
+
+<span class="n">sphinx_gallery_conf</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;download_all_examples&#39;</span>  <span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>to check on generated images</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(docuhub) ~/gits/docuhub (main)$ ls docs/_images/sphx*
+docs/_images/sphx_glr_plot_example_001.png
+docs/_images/sphx_glr_plot_example_thumb1.png
+docs/_images/sphx_glr_plot_example_thumb.png
+docs/_images/sphx_glr_sin_demo_thumb.png
+</pre></div>
+</div>
+<p>cross referencing to gallery code</p>
+<p><a class="reference external" href="https://sphinx-gallery.github.io/stable/advanced.html#cross-referencing">https://sphinx-gallery.github.io/stable/advanced.html#cross-referencing</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:ref:`sphx_glr_auto_examples_plot_example.py`
+</pre></div>
+</div>
+<p>The examples directory is also copied to doc/gallery by sphinx-gallery, so plots from the examples directory can be included using</p>
+<p># -<em>- coding: utf-8 -</em>-
+“””
+Introductory example - Plotting sin
+===================================</p>
+<p>This is a general example demonstrating a Matplotlib plot output, embedded
+rST, the use of math notation and cross-linking to other examples.</p>
+<p>Source files for gallery examples should start with a triple-quoted header
+docstring. Anything before the docstring is ignored by Sphinx-Gallery and will
+not appear in the rendered output, nor will it be executed. This docstring
+requires a rST header, which is used as the title of the example and
+to correctly build cross-referencing links.</p>
+<p>Mathematical expressions can be included as LaTeX, and will be rendered with
+MathJax. To include displayed math notation, use the directive <code class="docutils literal notranslate"><span class="pre">..</span> <span class="pre">math::</span></code>.
+To include inline math notation use the <code class="docutils literal notranslate"><span class="pre">:math:</span></code> role. For example, we are
+about to plot the following function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x \\rightarrow \\sin(x)\end{split}\]</div>
+<p>Here the function <span class="math notranslate nohighlight">\(\\sin\)</span> is evaluated at each point the variable
+<span class="math notranslate nohighlight">\(x\)</span> is defined. When including LaTeX in a Python string, ensure that you
+escape the backslashes or use a <span class="xref std std-ref">raw docstring</span>. You do
+not need to do this in text blocks (see below).
+“””
+# Code source: Óscar Nájera
+# License: BSD 3 clause</p>
+<p>import numpy as np
+import matplotlib.pyplot as plt</p>
+<p>x = np.linspace(0, 2 * np.pi, 100)
+y = np.sin(x)</p>
+<p>plt.plot(x, y)
+plt.xlabel(r’$x$’)
+plt.ylabel(r’$sin(x)$’)
+# To avoid matplotlib text output
+plt.show()</p>
+<p>to add the code from gallery_code/plot_example.py file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">literalinclude</span><span class="p">::</span> <span class="o">../../</span><span class="n">gallery_code</span><span class="o">/</span><span class="n">plot_example</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>to add the generated image</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">image</span><span class="p">::</span> <span class="o">../../</span><span class="n">_images</span><span class="o">/</span><span class="n">sphx_glr_plot_example_001</span><span class="o">.</span><span class="n">png</span>
+</pre></div>
+</div>
+<p>ignore with <cite>sphinx-autobuild –ignore “*.pickle”</cite></p>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="fundamentals">
 <h2>fundamentals<a class="headerlink" href="#fundamentals" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="code-examples">
+<h3>code examples<a class="headerlink" href="#code-examples" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="for-x-in-range-number-1">
+<h4>for x in range(number+1)<a class="headerlink" href="#for-x-in-range-number-1" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">count_25</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># note the +1 to indicate 4 is not included</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">count_25</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">count_25</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">count_25</span><span class="p">)</span>
+<span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># loop over all possible counts for each coin (summing up to &lt;= 1$);</span>
+<span class="c1"># if the total amount is exactly $1, add current counts to &quot;combinations&quot;</span>
+
+<span class="n">combinations</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">count_100</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">count_50</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">count_25</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">count_10</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">count_5</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">count_1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="mi">100</span><span class="o">*</span><span class="n">count_100</span> <span class="o">+</span> <span class="mi">50</span><span class="o">*</span><span class="n">count_50</span> <span class="o">+</span> <span class="mi">25</span><span class="o">*</span><span class="n">count_25</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">count_10</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">count_5</span> <span class="o">+</span> <span class="n">count_1</span> <span class="o">==</span> <span class="mi">100</span><span class="p">:</span>
+                            <span class="n">combinations</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">count_100</span><span class="p">,</span> <span class="n">count_50</span><span class="p">,</span> <span class="n">count_25</span><span class="p">,</span> <span class="n">count_10</span><span class="p">,</span> <span class="n">count_5</span><span class="p">,</span> <span class="n">count_1</span><span class="p">])</span>
+
+<span class="n">combinations</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">95</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">85</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">80</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">75</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">70</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">65</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">55</span><span class="p">],</span> <span class="c1"># cut here ..</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+ <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+ <span class="nb">len</span><span class="p">(</span><span class="n">combinations</span><span class="p">)</span>
+ <span class="mi">293</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="summary">
 <h3>summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="list-indices">
@@ -738,8 +999,8 @@ cd ~/gits;git clone git@github.com:brunswyck/docuhub.git;cd ~/gits/docuhub
 <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
-<table class="colwidths-given docutils align-default" id="id5">
-<caption><span class="caption-text">indices</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-text">indices</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 20%" />
@@ -823,8 +1084,8 @@ cd ~/gits;git clone git@github.com:brunswyck/docuhub.git;cd ~/gits/docuhub
 </div>
 <div class="section" id="list-operations">
 <h4>list operations<a class="headerlink" href="#list-operations" title="Permalink to this headline">¶</a></h4>
-<table class="colwidths-given docutils align-default" id="id6">
-<caption><span class="caption-text">list operations</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">list operations</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 60%" />
@@ -1075,8 +1336,8 @@ if there are no surplus items it receives an empty list</p>
 <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;five&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
-<table class="colwidths-given docutils align-default" id="id7">
-<caption><span class="caption-text">values that can be used as dictionary keys</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-text">values that can be used as dictionary keys</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -4132,8 +4393,8 @@ There are also the classes defined in the module (the class C and the superclass
 <h2>regex<a class="headerlink" href="#regex" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="searching">
 <h3>searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id8">
-<caption><span class="caption-text">searching</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id9">
+<caption><span class="caption-text">searching</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -4168,8 +4429,8 @@ There are also the classes defined in the module (the class C and the superclass
 </div>
 <div class="section" id="substitution">
 <h3>substitution<a class="headerlink" href="#substitution" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id9">
-<caption><span class="caption-text">substitution</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id10">
+<caption><span class="caption-text">substitution</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -4361,8 +4622,8 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 </div>
 <div class="section" id="regex-oject-attributes">
 <h3>regex oject attributes<a class="headerlink" href="#regex-oject-attributes" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id10">
-<caption><span class="caption-text">object attributes</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id11">
+<caption><span class="caption-text">object attributes</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -4431,8 +4692,8 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 <div class="section" id="match-object-methods">
 <h4>match object methods<a class="headerlink" href="#match-object-methods" title="Permalink to this headline">¶</a></h4>
 <p>methods that are available for a match object match:</p>
-<table class="colwidths-given docutils align-default" id="id11">
-<caption><span class="caption-text">match methods</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id12">
+<caption><span class="caption-text">match methods</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -4472,8 +4733,8 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 </div>
 <div class="section" id="match-object-attributes">
 <h4>match object attributes<a class="headerlink" href="#match-object-attributes" title="Permalink to this headline">¶</a></h4>
-<table class="colwidths-given docutils align-default" id="id12">
-<caption><span class="caption-text">match attributes</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-text">match attributes</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -5459,33 +5720,20 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 </div>
 <div class="section" id="vocabulary">
 <h3>vocabulary<a class="headerlink" href="#vocabulary" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
+<ul>
 <li><p>each dimension = an axis</p></li>
-<li><p>number of axes = the rank</p></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li><p>a 3x4 matrix is an array of rank 2 (2-dimensional)</p></li>
-<li><p>first axis has length 3, second length 4</p></li>
-</ul>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+<li><p>number of axes = the rank
+- a 3x4 matrix is an array of rank 2 (2-dimensional)
+- first axis has length 3, second length 4</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
        <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
        <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]])</span>
 </pre></div>
 </div>
-</div></blockquote>
-</div></blockquote>
-<ul class="simple">
-<li><p>list(axis length) = shape of array</p></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li><p>matrix shape = (3, 4)</p></li>
-<li><p>rank is equal to shape’s length</p></li>
-</ul>
-</div></blockquote>
-<ul class="simple">
+</li>
+<li><p>list(axis length) = shape of array
+- matrix shape = (3, 4)
+- rank is equal to shape’s length</p></li>
 <li><p>size of an array = total number of elements = product axis lengths (3*4=12)</p></li>
 </ul>
 </div>
@@ -6157,7 +6405,7 @@ ValueError: operands could not be broadcast together with shapes (2,3) (2,2)
 </div>
 </div>
 <div class="section" id="reverse-a-vector-first-element-becomes-last">
-<h4>Reverse a vector (first element becomes last)<a class="headerlink" href="#reverse-a-vector-first-element-becomes-last" title="Permalink to this headline">¶</a></h4>
+<h4>reverse a vector (first element becomes last)<a class="headerlink" href="#reverse-a-vector-first-element-becomes-last" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.flip.html?highlight=reverse">https://numpy.org/doc/stable/reference/generated/numpy.flip.html?highlight=reverse</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -6185,7 +6433,7 @@ ValueError: operands could not be broadcast together with shapes (2,3) (2,2)
 </div>
 </div>
 <div class="section" id="find-indices-of-non-zero-elements-from-1-2-0-0-4-0">
-<h4>Find indices of non-zero elements from [1,2,0,0,4,0]<a class="headerlink" href="#find-indices-of-non-zero-elements-from-1-2-0-0-4-0" title="Permalink to this headline">¶</a></h4>
+<h4>find indices of non-zero elements from [1,2,0,0,4,0]<a class="headerlink" href="#find-indices-of-non-zero-elements-from-1-2-0-0-4-0" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.nonzero.html">https://numpy.org/doc/stable/reference/generated/numpy.nonzero.html</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -6307,17 +6555,15 @@ ValueError: operands could not be broadcast together with shapes (2,3) (2,2)
 <h4>results of np.nan expressions<a class="headerlink" href="#results-of-np-nan-expressions" title="Permalink to this headline">¶</a></h4>
 <p>examples here
 <a class="reference external" href="https://numpy.org/doc/stable/user/misc.html">https://numpy.org/doc/stable/user/misc.html</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>```python
-0 * np.nan
-np.nan == np.nan
-np.inf &gt; np.nan
-np.nan - np.nan
-np.nan in set([np.nan])
-0.3 == 3 * 0.1
-```
-X = np.nan
-X == np.nan  # is always False! Use special numpy functions
-False
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+<span class="mf">0.3</span> <span class="o">==</span> <span class="mi">3</span> <span class="o">*</span> <span class="mf">0.1</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">X</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>  <span class="c1"># is always False! Use special numpy functions</span>
+<span class="kc">False</span>
 </pre></div>
 </div>
 </div>
@@ -6529,28 +6775,26 @@ False
 </div>
 <div class="section" id="np-nan">
 <h4>np.nan<a class="headerlink" href="#np-nan" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># results of the following expressions
-```
-np.array(0) / np.array(0)
-np.array(0) // np.array(0)
-np.array([np.nan]).astype(int).astype(float)
-```
-np.array(0) / np.array(0)
-```
-&lt;ipython-input-162-3585dcb7ab9b&gt;:1: RuntimeWarning: invalid value encountered in true_divide
-  np.array(0) / np.array(0)
-```
-nan
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># results of the following expressions</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">//</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&lt;ipython-input-162-3585dcb7ab9b&gt;:1: RuntimeWarning: invalid value encountered in true_divide</span>
+<span class="sd">  np.array(0) / np.array(0)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">nan</span>
 
-np.array(0) // np.array(0)
-```
-&lt;ipython-input-163-4764261090d0&gt;:1: RuntimeWarning: divide by zero encountered in floor_divide
-  np.array(0) // np.array(0)
-```
-0
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">//</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&lt;ipython-input-163-4764261090d0&gt;:1: RuntimeWarning: divide by zero encountered in floor_divide</span>
+<span class="sd">  np.array(0) // np.array(0)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="mi">0</span>
 
-np.array([np.nan]).astype(int).astype(float)
-array([-9.22337204e+18])
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">9.22337204e+18</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -6599,12 +6843,447 @@ array([-9.22337204e+18])
 </div>
 <div class="section" id="pandas">
 <h2>pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="pandass">
-<h3>pandass<a class="headerlink" href="#pandass" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="pump-it">
-<h4>pump it<a class="headerlink" href="#pump-it" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="section" id="id5">
+<h3>links<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/10min.html">http://pandas.pydata.org/pandas-docs/stable/10min.html</a></p></li>
+<li><p><a class="reference external" href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python">https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python</a></p></li>
+<li><p><a class="reference external" href="http://www.gregreda.com/2013/10/26/intro-to-pandas-data-structures/">http://www.gregreda.com/2013/10/26/intro-to-pandas-data-structures/</a></p></li>
+<li><p><a class="reference external" href="https://www.dataquest.io/blog/pandas-python-tutorial/">https://www.dataquest.io/blog/pandas-python-tutorial/</a></p></li>
+<li><p><a class="reference external" href="https://www.w3resource.com/python-exercises/pandas/index.php">https://www.w3resource.com/python-exercises/pandas/index.php</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/playlist?list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y">https://www.youtube.com/playlist?list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y</a></p></li>
+<li><p><a class="reference external" href="https://www.machinelearningplus.com/python/101-pandas-exercises-python/">https://www.machinelearningplus.com/python/101-pandas-exercises-python/</a></p></li>
+<li><p><a class="reference external" href="https://www.kaggle.com/python10pm/pandas-75-exercises-with-solutions">https://www.kaggle.com/python10pm/pandas-75-exercises-with-solutions</a></p></li>
+</ul>
+</div>
+<div class="section" id="csv-schema">
+<h3>csv schema<a class="headerlink" href="#csv-schema" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="add-a-schema-to-csv">
+<h4>add a schema to csv<a class="headerlink" href="#add-a-schema-to-csv" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/survey_results_public.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Respondent&#39;</span><span class="p">)</span>
+<span class="n">schema_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/survey_results_schema.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Column&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="basics">
+<h3>basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;pandas_tutorial_read.csv&#39;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># dimensions df</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="c1"># [&#39;ins&#39;, &#39;type_entity&#39;, &#39;entity&#39;, &#39;period&#39;, &#39;value&#39;]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>ins</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>291.000000</p></td>
+<td><p>291.000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>mean</p></td>
+<td><p>64080.941581</p></td>
+<td><p>319.149828</p></td>
+</tr>
+<tr class="row-even"><td><p>std</p></td>
+<td><p>19262.087619</p></td>
+<td><p>428.431706</p></td>
+</tr>
+<tr class="row-odd"><td><p>min</p></td>
+<td><p>3000.000000</p></td>
+<td><p>24.500000</p></td>
+</tr>
+<tr class="row-even"><td><p>25%</p></td>
+<td><p>55019.500000</p></td>
+<td><p>79.400000</p></td>
+</tr>
+<tr class="row-odd"><td><p>50%</p></td>
+<td><p>62096.000000</p></td>
+<td><p>186.000000</p></td>
+</tr>
+<tr class="row-even"><td><p>75%</p></td>
+<td><p>83020.500000</p></td>
+<td><p>323.700000</p></td>
+</tr>
+<tr class="row-odd"><td><p>max</p></td>
+<td><p>93090.000000</p></td>
+<td><p>3518.600000</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="c1"># max accross all columns</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ins</p></th>
+<th class="head"><p>93090</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type_entity</p></td>
+<td><p>Région</p></td>
+</tr>
+<tr class="row-odd"><td><p>entity</p></td>
+<td><p>Étalle</p></td>
+</tr>
+<tr class="row-even"><td><p>period</p></td>
+<td><p>01/01/2019</p></td>
+</tr>
+<tr class="row-odd"><td><p>value</p></td>
+<td><p>3518.6</p></td>
+</tr>
+<tr class="row-even"><td><p>dtype: object</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>  <span class="c1"># max 1 column</span>
+<span class="mf">3518.6</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="mf">319.1498281786941</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span> <span class="c1"># id row index of max value</span>
+<span class="mi">144</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="c1"># times a value occurs in column</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">49.4     3</span>
+<span class="sd">292.3    2</span>
+<span class="sd">642.8    2</span>
+<span class="sd">30.6     2</span>
+<span class="sd">36.4     2</span>
+<span class="sd">      ..</span>
+<span class="sd">144.8    1</span>
+<span class="sd">38.1     1</span>
+<span class="sd">144.1    1</span>
+<span class="sd">242.5    1</span>
+<span class="sd">764.8    1</span>
+<span class="sd">Name: value, Length: 280, dtype: int64</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="access-values">
+<h3>access values<a class="headerlink" href="#access-values" title="Permalink to this headline">¶</a></h3>
+<p><cite>df.iloc[[df[‘value’].idxmax()]]</cite> get row = iloc[] (use when you know row index integer)</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>ins</p></th>
+<th class="head"><p>type_entity</p></th>
+<th class="head"><p>entity</p></th>
+<th class="head"><p>period</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>144</p></td>
+<td><p>62093</p></td>
+<td><p>Commune</p></td>
+<td><p>Saint-Nicolas</p></td>
+<td><p>01/01/2019</p></td>
+<td><p>3518.6</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="get-max-in-col-x">
+<h4>get max in col X<a class="headerlink" href="#get-max-in-col-x" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># get row = iloc[] (use when you know row index integer)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]]</span>
+<span class="mi">144</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="if-max-in-col-x-show-value-in-col-y">
+<h4>if max in col X show value in col Y<a class="headerlink" href="#if-max-in-col-x-show-value-in-col-y" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># iloc[[int 144]][select value of col &#39;ins&#39;]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]][</span><span class="s1">&#39;ins&#39;</span><span class="p">]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">144    62093</span>
+<span class="sd">Name: ins, dtype: int64</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]][</span><span class="s1">&#39;ins&#39;</span><span class="p">])</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">Series</span>
+
+<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]])</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>when you see data displayed in the above format, you’re dealing with a pandas <strong>series</strong> object, not a dataframe object</p>
+</div>
+</div>
+<div class="section" id="label-vs-location">
+<h4>label vs location<a class="headerlink" href="#label-vs-location" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>loc gets rows (and/or columns) with particular labels</p></li>
+<li><p>iloc gets rows (and/or columns) at integer locations</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>loc = inclusive of endpoint
+iloc = exclusive of endpoint</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abcdef&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">49</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="mi">49</span>    <span class="n">a</span>
+<span class="mi">48</span>    <span class="n">b</span>
+<span class="mi">47</span>    <span class="n">c</span>
+<span class="mi">0</span>     <span class="n">d</span>
+<span class="mi">1</span>     <span class="n">e</span>
+<span class="mi">2</span>     <span class="n">f</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="c1"># value at index label 0</span>
+<span class="s1">&#39;d&#39;</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># value at index location 0</span>
+<span class="s1">&#39;a&#39;</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># rows at index labels between 0 and 1 (inclusive)</span>
+<span class="mi">0</span>    <span class="n">d</span>
+<span class="mi">1</span>    <span class="n">e</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># rows at index location between 0 and 1 (exclusive)</span>
+<span class="mi">49</span>    <span class="n">a</span>
+</pre></div>
+</div>
+<p>Here’s a Series where the index contains string objects:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">s2</span>
+<span class="n">a</span>    <span class="mi">49</span>
+<span class="n">b</span>    <span class="mi">48</span>
+<span class="n">c</span>    <span class="mi">47</span>
+<span class="n">d</span>     <span class="mi">0</span>
+<span class="n">e</span>     <span class="mi">1</span>
+<span class="n">f</span>     <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Since loc is label-based, it can fetch the first value in the Series using s2.loc[‘a’]. It can also slice with non-integer objects</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="s1">&#39;e&#39;</span><span class="p">]</span>  <span class="c1"># all rows lying between &#39;c&#39; and &#39;e&#39; (inclusive)</span>
+<span class="n">c</span>    <span class="mi">47</span>
+<span class="n">d</span>     <span class="mi">0</span>
+<span class="n">e</span>     <span class="mi">1</span>
+</pre></div>
+</div>
+<p>for DateTime indexes, we don’t need to pass the exact date/time to fetch by label</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcde&#39;</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">))</span>
+<span class="n">s3</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">31</span> <span class="mi">16</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mf">31.879768</span>    <span class="n">a</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">28</span> <span class="mi">16</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mf">31.879768</span>    <span class="n">b</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">31</span> <span class="mi">16</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mf">31.879768</span>    <span class="n">c</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mf">31.879768</span>    <span class="n">d</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">31</span> <span class="mi">16</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mf">31.879768</span>    <span class="n">e</span>
+</pre></div>
+</div>
+<p>to fetch the row’s for march/april</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s3</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2021-03&#39;</span><span class="p">:</span><span class="s1">&#39;2021-04&#39;</span><span class="p">]</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">31</span> <span class="mi">17</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">30.742316</span>    <span class="n">c</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">30</span> <span class="mi">17</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">30.742316</span>    <span class="n">d</span>
+</pre></div>
+</div>
+<p>more is better</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">,</span> <span class="p">:</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>  <span class="c1"># rows &#39;c&#39; and onwards AND columns up to &#39;z&#39;</span>
+    <span class="n">x</span>   <span class="n">y</span>   <span class="n">z</span>
+<span class="n">c</span>  <span class="mi">10</span>  <span class="mi">11</span>  <span class="mi">12</span>
+<span class="n">d</span>  <span class="mi">15</span>  <span class="mi">16</span>  <span class="mi">17</span>
+<span class="n">e</span>  <span class="mi">20</span>  <span class="mi">21</span>  <span class="mi">22</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>        <span class="c1"># all rows, but only the column at index location 3</span>
+<span class="n">a</span>     <span class="mi">3</span>
+<span class="n">b</span>     <span class="mi">8</span>
+<span class="n">c</span>    <span class="mi">13</span>
+<span class="n">d</span>    <span class="mi">18</span>
+<span class="n">e</span>    <span class="mi">23</span>
+</pre></div>
+</div>
+<p>how to slice rows up to &amp; including ‘c’ and take the first 4 columns?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+                      <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcde&#39;</span><span class="p">),</span>
+                      <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">df</span>
+    <span class="n">x</span>   <span class="n">y</span>   <span class="n">z</span>   <span class="mi">8</span>   <span class="mi">9</span>
+<span class="n">a</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>   <span class="mi">4</span>
+<span class="n">b</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>   <span class="mi">8</span>   <span class="mi">9</span>
+<span class="n">c</span>  <span class="mi">10</span>  <span class="mi">11</span>  <span class="mi">12</span>  <span class="mi">13</span>  <span class="mi">14</span>
+<span class="n">d</span>  <span class="mi">15</span>  <span class="mi">16</span>  <span class="mi">17</span>  <span class="mi">18</span>  <span class="mi">19</span>
+<span class="n">e</span>  <span class="mi">20</span>  <span class="mi">21</span>  <span class="mi">22</span>  <span class="mi">23</span>  <span class="mi">24</span>
+</pre></div>
+</div>
+<p>answer</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">x</span>   <span class="n">y</span>   <span class="n">z</span>   <span class="mi">8</span>
+<span class="n">a</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>
+<span class="n">b</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>   <span class="mi">8</span>
+<span class="n">c</span>  <span class="mi">10</span>  <span class="mi">11</span>  <span class="mi">12</span>  <span class="mi">13</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>get_loc() is an index method meaning “get the position of the label in this index”
+since slicing with iloc is exclusive of its endpoint
+we must add 1 to this value if we want row ‘c’ as well</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="label-location-loc">
+<h4>label-location loc<a class="headerlink" href="#label-location-loc" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>loc() means you have to pass the <strong>name</strong> of row/column you want to select</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>you can use boolean conditions with loc()</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Brand&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Maruti&#39;</span><span class="p">,</span> <span class="s1">&#39;Hyundai&#39;</span><span class="p">,</span> <span class="s1">&#39;Tata&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;Mahindra&#39;</span><span class="p">,</span> <span class="s1">&#39;Maruti&#39;</span><span class="p">,</span> <span class="s1">&#39;Hyundai&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;Renault&#39;</span><span class="p">,</span> <span class="s1">&#39;Tata&#39;</span><span class="p">,</span> <span class="s1">&#39;Maruti&#39;</span><span class="p">],</span>
+                     <span class="s1">&#39;Year&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span>
+                               <span class="mi">2016</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">],</span>
+                     <span class="s1">&#39;Kms Driven&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">30000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span>
+                                     <span class="mi">25000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">46000</span><span class="p">,</span>
+                                     <span class="mi">31000</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="mi">12000</span><span class="p">],</span>
+                     <span class="s1">&#39;City&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Gurgaon&#39;</span><span class="p">,</span> <span class="s1">&#39;Delhi&#39;</span><span class="p">,</span> <span class="s1">&#39;Mumbai&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;Delhi&#39;</span><span class="p">,</span> <span class="s1">&#39;Mumbai&#39;</span><span class="p">,</span> <span class="s1">&#39;Delhi&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;Mumbai&#39;</span><span class="p">,</span><span class="s1">&#39;Chennai&#39;</span><span class="p">,</span>  <span class="s1">&#39;Ghaziabad&#39;</span><span class="p">],</span>
+                     <span class="s1">&#39;Mileage&#39;</span> <span class="p">:</span>  <span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span>
+                                   <span class="mi">29</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">]})</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">data</span><span class="o">.</span><span class="n">Brand</span> <span class="o">==</span> <span class="s1">&#39;Maruti&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Mileage</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)])</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Brand  Year  Kms  Drive  City    Mileage</span>
+<span class="sd">0 Maruti 2012       50000  Gurgaon      28</span>
+<span class="sd">4 Maruti 2012       10000   Mumbai      28</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-range-of-rows">
+<h4>select range of rows<a class="headerlink" href="#select-range-of-rows" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>index includes start:stop values</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># selecting range of rows from 2 to 5</span>
+<span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span> <span class="p">:</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-column-value-with-loc">
+<h4>select column value with loc<a class="headerlink" href="#select-column-value-with-loc" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(),</span> <span class="s1">&#39;ins&#39;</span><span class="p">]</span>
+<span class="mi">62093</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="at-when-you-know-row-column-label">
+<h4>at() when you know row &amp; column label<a class="headerlink" href="#at-when-you-know-row-column-label" title="Permalink to this headline">¶</a></h4>
+<p>at() is faster</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(),</span> <span class="s1">&#39;ins&#39;</span><span class="p">]</span>
+<span class="mi">62093</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

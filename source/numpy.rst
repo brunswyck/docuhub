@@ -14,16 +14,16 @@ vocabulary
 
 - each dimension = an axis
 - number of axes = the rank
- - a 3x4 matrix is an array of rank 2 (2-dimensional)
- - first axis has length 3, second length 4
+  - a 3x4 matrix is an array of rank 2 (2-dimensional)
+  - first axis has length 3, second length 4
   ::
 
     array([[0., 0., 0., 0.],
            [0., 0., 0., 0.],
            [0., 0., 0., 0.]])
 - list(axis length) = shape of array
- - matrix shape = (3, 4)
- - rank is equal to shape's length
+  - matrix shape = (3, 4)
+  - rank is equal to shape's length
 - size of an array = total number of elements = product axis lengths (3*4=12)
 
 creating arrays
@@ -774,7 +774,7 @@ https://numpy.org/doc/stable/reference/generated/numpy.arange.html
           27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43,
           44, 45, 46, 47, 48, 49])
 
-Reverse a vector (first element becomes last)
+reverse a vector (first element becomes last)
 ---------------------------------------------
 
 https://numpy.org/doc/stable/reference/generated/numpy.flip.html?highlight=reverse
@@ -806,7 +806,7 @@ https://numpy.org/doc/stable/reference/generated/numpy.reshape.html
           [3, 4, 5],
           [6, 7, 8]])
 
-Find indices of non-zero elements from [1,2,0,0,4,0]
+find indices of non-zero elements from [1,2,0,0,4,0]
 ----------------------------------------------------
 
 https://numpy.org/doc/stable/reference/generated/numpy.nonzero.html
@@ -941,14 +941,12 @@ https://numpy.org/doc/stable/user/misc.html
 
 .. code-block:: python
 
-   ```python
    0 * np.nan
    np.nan == np.nan
    np.inf > np.nan
    np.nan - np.nan
    np.nan in set([np.nan])
    0.3 == 3 * 0.1
-   ```
    X = np.nan
    X == np.nan  # is always False! Use special numpy functions
    False
@@ -1178,23 +1176,21 @@ np.nan
 .. code-block:: python
 
    # results of the following expressions
-   ```
    np.array(0) / np.array(0)
    np.array(0) // np.array(0)
    np.array([np.nan]).astype(int).astype(float)
-   ```
    np.array(0) / np.array(0)
-   ```
+   """
    <ipython-input-162-3585dcb7ab9b>:1: RuntimeWarning: invalid value encountered in true_divide
      np.array(0) / np.array(0)
-   ```
+   """
    nan
 
    np.array(0) // np.array(0)
-   ```
+   """
    <ipython-input-163-4764261090d0>:1: RuntimeWarning: divide by zero encountered in floor_divide
      np.array(0) // np.array(0)
-   ```
+   """
    0
 
    np.array([np.nan]).astype(int).astype(float)

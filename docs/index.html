@@ -15,6 +15,12 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/plot_directive.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-rendered-html.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
 
@@ -395,11 +401,16 @@
 <li class="toctree-l3"><a class="reference internal" href="python.html#sphinx">sphinx</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="python.html#setup-sphinx">setup sphinx</a></li>
 <li class="toctree-l4"><a class="reference internal" href="python.html#pip3-requirements">pip3 requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#extensions">extensions</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="python.html#fundamentals">fundamentals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python.html#code-examples">code examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#for-x-in-range-number-1">for x in range(number+1)</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="python.html#summary">summary</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="python.html#list-indices">list indices</a></li>
 <li class="toctree-l4"><a class="reference internal" href="python.html#list-operations">list operations</a></li>
@@ -630,9 +641,9 @@
 <li class="toctree-l4"><a class="reference internal" href="python.html#nbytes-attribute-gives-total-bytes-consumed-by-the-elements-of-the-numpy-array">nbytes: attribute gives total bytes consumed by the elements of the NumPy array</a></li>
 <li class="toctree-l4"><a class="reference internal" href="python.html#get-the-docs-on-numpy-add-function">get the docs on numpy add function</a></li>
 <li class="toctree-l4"><a class="reference internal" href="python.html#create-a-vector-with-values-ranging-from-10-to-49">create a vector with values ranging from 10 to 49</a></li>
-<li class="toctree-l4"><a class="reference internal" href="python.html#reverse-a-vector-first-element-becomes-last">Reverse a vector (first element becomes last)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#reverse-a-vector-first-element-becomes-last">reverse a vector (first element becomes last)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="python.html#create-3x3-matrix-w-values-ranging-from-0-to-8">create 3x3 matrix w values ranging from 0 to 8</a></li>
-<li class="toctree-l4"><a class="reference internal" href="python.html#find-indices-of-non-zero-elements-from-1-2-0-0-4-0">Find indices of non-zero elements from [1,2,0,0,4,0]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#find-indices-of-non-zero-elements-from-1-2-0-0-4-0">find indices of non-zero elements from [1,2,0,0,4,0]</a></li>
 <li class="toctree-l4"><a class="reference internal" href="python.html#create-a-3x3-identity-matrix">create a 3x3 identity matrix</a></li>
 <li class="toctree-l4"><a class="reference internal" href="python.html#create-a-3x3x3-array-with-random-values">create a 3x3x3 array with random values</a></li>
 <li class="toctree-l4"><a class="reference internal" href="python.html#create-a-10x10-array-with-random-values-and-find-the-min-max-values">create a 10x10 array with random values and find the min max values</a></li>
@@ -658,8 +669,20 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="python.html#pandas">pandas</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="python.html#pandass">pandass</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="python.html#pump-it">pump it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#id5">links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#csv-schema">csv schema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#add-a-schema-to-csv">add a schema to csv</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#basics">basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python.html#access-values">access values</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="python.html#get-max-in-col-x">get max in col X</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#if-max-in-col-x-show-value-in-col-y">if max in col X show value in col Y</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#label-vs-location">label vs location</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#label-location-loc">label-location loc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#select-range-of-rows">select range of rows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#select-column-value-with-loc">select column value with loc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="python.html#at-when-you-know-row-column-label">at() when you know row &amp; column label</a></li>
 </ul>
 </li>
 </ul>
@@ -667,33 +690,33 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="techtalk/main.html">techtalks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="techtalk/main.html#pycharms">pycharms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#setting-up-a-project">setting up a project</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#venv-git-configured">venv + git configured</a></li>
-<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#debugging">debugging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#using-addons">using addons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="techtalk/main.html#pycharm-you">pycharm you</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#agenda">agenda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#find-action">find action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#navig8-by-code">navig8 by code</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#cool-kids-on-the-block">cool kids on the block</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#in-place-refactoring">in-place refactoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#jump-around">jump around</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#care-to-comment">care to comment?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#shakespeare">shakespeare</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#tdd-w00t">tdd w00t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#import-hell">import hell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#f-strings">F* strings</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="techtalk/main.html#open-markets">open markets</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#the-space-race-for-open-markets">the space race for open markets</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#why-we-need-open-markets">why we need open markets</a></li>
-<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#current-state-of-defi">current state of defi</a></li>
-<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#supercharged-blowouts">supercharged blowouts</a></li>
-<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#a-solution-called-vega">a solution called vega</a></li>
+<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#python-interpreter">python interpreter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#debugging-work">debugging &#64;work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#meditation">meditation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#zen-mode">zen mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#terminal">terminal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#recent-files">recent files</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#demo-on-open-marketplace">demo on open marketplace</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#vegawallet-usage">vegawallet usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#testnet-exploration">testnet exploration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#links">links</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#time-to-choose">time to choose</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#when-moon">when moon?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#advice">advice</a></li>
-<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#addendum">addendum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="techtalk/main.html#for-diehards-only">for diehards only</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#move-block">move block</a></li>
+<li class="toctree-l4"><a class="reference internal" href="techtalk/main.html#d-d-dw">d D dw</a></li>
 </ul>
 </li>
 </ul>

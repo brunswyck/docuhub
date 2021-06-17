@@ -6,6 +6,14 @@ ansible
 installation
 ************
 
+.. graphviz::
+
+     digraph example {
+         a [label="sphinx", href="https://sphinx-doc.org", target="_top"];
+         b [label="other"];
+         a -> b;
+     }
+
 prepwork
 ========
 

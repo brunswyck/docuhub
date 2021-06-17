@@ -15,6 +15,12 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/plot_directive.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery-rendered-html.css" type="text/css" />
   <link rel="stylesheet" href="../_static/dark_mode_css/general.css" type="text/css" />
   <link rel="stylesheet" href="../_static/dark_mode_css/dark.css" type="text/css" />
 
@@ -99,33 +105,33 @@
 <li class="toctree-l1"><a class="reference internal" href="../links.html">links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python.html">python</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">techtalks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#pycharms">pycharms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#setting-up-a-project">setting up a project</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#venv-git-configured">venv + git configured</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#debugging">debugging</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#using-addons">using addons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pycharm-you">pycharm you</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agenda">agenda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#find-action">find action</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#navig8-by-code">navig8 by code</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#cool-kids-on-the-block">cool kids on the block</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#in-place-refactoring">in-place refactoring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jump-around">jump around</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#care-to-comment">care to comment?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shakespeare">shakespeare</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tdd-w00t">tdd w00t</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-hell">import hell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#f-strings">F* strings</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#open-markets">open markets</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#the-space-race-for-open-markets">the space race for open markets</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#why-we-need-open-markets">why we need open markets</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#current-state-of-defi">current state of defi</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#supercharged-blowouts">supercharged blowouts</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-solution-called-vega">a solution called vega</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-interpreter">python interpreter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-work">debugging &#64;work</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#meditation">meditation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#zen-mode">zen mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#terminal">terminal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recent-files">recent files</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#demo-on-open-marketplace">demo on open marketplace</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#vegawallet-usage">vegawallet usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#testnet-exploration">testnet exploration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#links">links</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#time-to-choose">time to choose</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#when-moon">when moon?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#advice">advice</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#addendum">addendum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-diehards-only">for diehards only</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#move-block">move block</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#d-d-dw">d D dw</a></li>
 </ul>
 </li>
 </ul>
@@ -203,304 +209,98 @@
 <h1>techtalks<a class="headerlink" href="#techtalks" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="pycharms">
-<h2>pycharms<a class="headerlink" href="#pycharms" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="setting-up-a-project">
-<h3>setting up a project<a class="headerlink" href="#setting-up-a-project" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="venv-git-configured">
-<h4>venv + git configured<a class="headerlink" href="#venv-git-configured" title="Permalink to this headline">¶</a></h4>
-<p>demo opening up a git repo
-changing python interpreter to conda venv</p>
-</div>
-<div class="section" id="debugging">
-<h4>debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h4>
-<p>easy debug yet not immediately obvious demo</p>
-</div>
-<div class="section" id="using-addons">
-<h4>using addons<a class="headerlink" href="#using-addons" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-</div>
-<div class="section" id="open-markets">
-<h2>open markets<a class="headerlink" href="#open-markets" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="the-space-race-for-open-markets">
-<h3>the space race for open markets<a class="headerlink" href="#the-space-race-for-open-markets" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="why-we-need-open-markets">
-<h4>why we need open markets<a class="headerlink" href="#why-we-need-open-markets" title="Permalink to this headline">¶</a></h4>
-<p>tradfi:</p>
+<div class="section" id="pycharm-you">
+<h2>pycharm you<a class="headerlink" href="#pycharm-you" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/interpreter.png" src="../_images/interpreter.png" />
+<div class="section" id="agenda">
+<h3>agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>obfuscating collateral, hidden risk
-mother of all blowups 2008</p></li>
-<li><p>banks plebs and psychology</p></li>
-<li><p>inflation at will since USA ditched gold backing</p></li>
-<li><p>HFT frontrunning by large institutions with deep pockets</p></li>
-<li><p>closed markets are highly standardized, unfit for purpose and tend toward monopolistic structure</p></li>
-<li><p>very restricted access (even for analysis)</p></li>
-<li><p>venture capitalism</p></li>
-<li><p>transparancy anyone?</p></li>
-<li><p>shorting &amp; gamestop anyone?</p></li>
-<li><p>new crowdloan models and it’s promise</p></li>
-<li><p>trading sessions</p></li>
+<li class="fragment"><p>find action</p></li>
+<li class="fragment"><p>cool shortcuts</p></li>
+<li class="fragment"><p>configuring python interpreter</p></li>
+<li class="fragment"><p>debugging &#64;work</p></li>
+<li class="fragment"><p>meditation</p></li>
+<li class="fragment"><p>installing plugins</p></li>
 </ul>
 </div>
-<div class="section" id="current-state-of-defi">
-<h4>current state of defi<a class="headerlink" href="#current-state-of-defi" title="Permalink to this headline">¶</a></h4>
-<dl class="simple">
-<dt>pros:</dt><dd><ul class="simple">
-<li><p>24/7</p></li>
-<li><p>superpro power of incorruptible pristine collateral
-1btc = 1btc</p></li>
-<li><p>verify without rating agencies/banks = transparancy</p></li>
-<li><p>non-custodial wallets</p></li>
-<li><p>ability to invest in crowdloan models</p></li>
-</ul>
-</dd>
-<dt>cons:</dt><dd><ul class="simple">
-<li><p>lessons learned in cefi repeating itself</p></li>
-<li><p>CeFi cascades of <a class="reference external" href="https://cointelegraph.com/news/cointelegraph-consulting-defi-hit-by-a-tsunami-of-liquidations-in-may">doom</a>
-who got <cite>rekt today</cite>?
-trading against own customers</p></li>
-<li><p>difficult to use</p></li>
-<li><p>HFT’s cousin`MEV`_ (Miner Extractable Value)
-miners can determine the order of when transactions are processed, mempool</p></li>
-<li><p>gazmataz
-<cite>example ethereum</cite></p></li>
-<li><p>shitcoins memecoins</p></li>
+<div class="section" id="find-action">
+<h3>find action<a class="headerlink" href="#find-action" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="navig8-by-code">
+<h4>navig8 by code<a class="headerlink" href="#navig8-by-code" title="Permalink to this headline">¶</a></h4>
+<dl>
+<dt>Find Action</dt><dd><ul>
+<li><p>winlin: Shift-Ctrl-A</p></li>
+<li><p>mac:    Shift-Cmd-A</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All, Classes, Files, Symbols, Actions</p>
+</div>
+</li>
+<li><p>speed type: fi pa (find in path)</p></li>
+<li><p>Also matches preferences: <cite>Color Scheme</cite></p></li>
 </ul>
 </dd>
 </dl>
-<img alt="../_images/darkforest.jpg" src="../_images/darkforest.jpg" />
-</div>
-<div class="section" id="supercharged-blowouts">
-<h4>supercharged blowouts<a class="headerlink" href="#supercharged-blowouts" title="Permalink to this headline">¶</a></h4>
-<p>In TradFi, infrastructure
-isn’t pushed to its limits. It’s usually the collateral that breaks. In crypto, the collateral
-never breaks, but infrastructure breaks regularly. Crypto is perfect collateral, and as we discussed above,
-it encourages a certain type of derivatives offering. But when supercharged collateral is combined with
-a naive version of TradFi infrastructure without any of its backstops, the system becomes prone to these
-extreme wipeouts.</p>
-<img alt="../_images/blowout.png" src="../_images/blowout.png" />
-</div>
-<div class="section" id="a-solution-called-vega">
-<h4>a solution called vega<a class="headerlink" href="#a-solution-called-vega" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li><p>extremely open, not anonymous but pseudonymous</p></li>
-<li><p>everything is verifiable, so the desk can’t trade against you</p></li>
-<li><p>open markets, the community decides the markets
-eg: big mac index</p></li>
-<li><p>why a vega token (not btc/eth)</p></li>
-</ul>
-<div class="section" id="incentivized-liquidity-pools">
-<h5>incentivized liquidity pools<a class="headerlink" href="#incentivized-liquidity-pools" title="Permalink to this headline">¶</a></h5>
-<ul class="simple">
-<li><p>no race to zero as there is incentive to keep providing liquidity</p></li>
-<li><p>LP providers loose their incentivized share when not providing liquidity when the going gets tough</p></li>
-</ul>
-<p>hourly perpetuals
-trade on what the price will be in an hour</p>
-</div>
-<div class="section" id="markets-based-on-web2">
-<h5>markets based on web2<a class="headerlink" href="#markets-based-on-web2" title="Permalink to this headline">¶</a></h5>
-<p>ssl example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -vvI https://www.reddit.com/search/?q=paypal%20block
-
-*   Trying 151.101.37.140:443...
-* TCP_NODELAY set
-* Connected to www.reddit.com (151.101.37.140) port 443 (#0)
-* ALPN, offering h2
-* ALPN, offering http/1.1
-* successfully set certificate verify locations:
-*   CAfile: /etc/ssl/certs/ca-certificates.crt
-  CApath: /etc/ssl/certs
-* TLSv1.3 (OUT), TLS handshake, Client hello (1):
-* TLSv1.3 (IN), TLS handshake, Server hello (2):
-* TLSv1.2 (IN), TLS handshake, Certificate (11):
-* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
-* TLSv1.2 (IN), TLS handshake, Server finished (14):
-* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
-* TLSv1.2 (OUT), TLS change cipher, Change cipher spec (1):
-* TLSv1.2 (OUT), TLS handshake, Finished (20):
-* TLSv1.2 (IN), TLS handshake, Finished (20):
-* SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
-* ALPN, server accepted to use h2
-* Server certificate:
-*  subject: C=US; ST=CALIFORNIA; L=SAN FRANCISCO; O=Reddit Inc.; CN=*.reddit.com
-*  start date: May 23 00:00:00 2021 GMT
-*  expire date: Nov 18 23:59:59 2021 GMT
-*  subjectAltName: host &quot;www.reddit.com&quot; matched cert&#39;s &quot;*.reddit.com&quot;
-*  issuer: C=US; O=DigiCert Inc; CN=DigiCert TLS RSA SHA256 2020 CA1
-*  SSL certificate verify ok.
-* Using HTTP2, server supports multi-use
-* Connection state changed (HTTP/2 confirmed)
-* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
-* Using Stream ID: 1 (easy handle 0x55f8f2c2ee10)
-&gt; HEAD /search/?q=paypal%20block HTTP/2
-&gt; Host: www.reddit.com
-&gt; user-agent: curl/7.68.0
-&gt; accept: */*
-&gt;
-* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
-&lt; HTTP/2 429
-HTTP/2 429
-&lt; content-type: text/html; charset=UTF-8
-content-type: text/html; charset=UTF-8
-&lt; x-ua-compatible: IE=edge
-x-ua-compatible: IE=edge
-&lt; retry-after: 5
-retry-after: 5
-&lt; x-frame-options: SAMEORIGIN
-x-frame-options: SAMEORIGIN
-&lt; x-content-type-options: nosniff
-x-content-type-options: nosniff
-&lt; x-xss-protection: 1; mode=block
-x-xss-protection: 1; mode=block
-&lt; cache-control: max-age=0, must-revalidate
-cache-control: max-age=0, must-revalidate
-&lt; x-moose: majestic
-x-moose: majestic
-&lt; accept-ranges: bytes
-accept-ranges: bytes
-&lt; date: Tue, 08 Jun 2021 06:54:15 GMT
-date: Tue, 08 Jun 2021 06:54:15 GMT
-&lt; via: 1.1 varnish
-via: 1.1 varnish
-&lt; vary: accept-encoding
-vary: accept-encoding
-&lt; set-cookie: loid=0000000000clhaklhm.2.1623135255310.Z0FBQUFBQmd2eFFYRGJJV3RsWFA4aWJ4djlOXzdLV2o5eXh0bFNFZ1A4SDBpZXJiWUhpTktUR3dRUUJQc19LQVJuVnh1N1RwT2hHZGsyUEdqWXNzTllRVVdrNGNYVUVMOWpTT0V4eDFjekZjNzQ2RnFtbjZDQlB4LWhlYlFvT0dWeDRsV1BnZU01NzM; Domain=reddit.com; Max-Age=63071999; Path=/; expires=Thu, 08-Jun-2023 06:54:15 GMT; secure; SameSite=None; Secure
-set-cookie: loid=0000000000clhaklhm.2.1623135255310.Z0FBQUFBQmd2eFFYRGJJV3RsWFA4aWJ4djlOXzdLV2o5eXh0bFNFZ1A4SDBpZXJiWUhpTktUR3dRUUJQc19LQVJuVnh1N1RwT2hHZGsyUEdqWXNzTllRVVdrNGNYVUVMOWpTT0V4eDFjekZjNzQ2RnFtbjZDQlB4LWhlYlFvT0dWeDRsV1BnZU01NzM; Domain=reddit.com; Max-Age=63071999; Path=/; expires=Thu, 08-Jun-2023 06:54:15 GMT; secure; SameSite=None; Secure
-&lt; set-cookie: session_tracker=Pbpr8DDPWUwkRPyT5F.0.1623135255310.Z0FBQUFBQmd2eFFYaVYzWEhXR1BERzg4OWpJSmVhNnB2dHM3dWRVM0NibU5fUDZEbjVMYk9WZXNDYzQ0QzJ2MjZrWjhOcVM4eVFJUkR6MTRucWdGWWRpWEMxM19xTnVCMlVfMnd1Z1hYRjg4cEcwSzBfUUxVbk5XS2J0eUhKaDBrWUZpcHRTLVczSGU; Domain=reddit.com; Max-Age=7199; Path=/; expires=Tue, 08-Jun-2021 08:54:15 GMT; secure; SameSite=None; Secure
-set-cookie: session_tracker=Pbpr8DDPWUwkRPyT5F.0.1623135255310.Z0FBQUFBQmd2eFFYaVYzWEhXR1BERzg4OWpJSmVhNnB2dHM3dWRVM0NibU5fUDZEbjVMYk9WZXNDYzQ0QzJ2MjZrWjhOcVM4eVFJUkR6MTRucWdGWWRpWEMxM19xTnVCMlVfMnd1Z1hYRjg4cEcwSzBfUUxVbk5XS2J0eUhKaDBrWUZpcHRTLVczSGU; Domain=reddit.com; Max-Age=7199; Path=/; expires=Tue, 08-Jun-2021 08:54:15 GMT; secure; SameSite=None; Secure
-&lt; set-cookie: csv=1; Max-Age=63072000; Domain=.reddit.com; Path=/; Secure; SameSite=None
-set-cookie: csv=1; Max-Age=63072000; Domain=.reddit.com; Path=/; Secure; SameSite=None
-&lt; set-cookie: edgebucket=kaModUrAuC4Jaj8L9A; Domain=reddit.com; Max-Age=63071999; Path=/;  secure
-set-cookie: edgebucket=kaModUrAuC4Jaj8L9A; Domain=reddit.com; Max-Age=63071999; Path=/;  secure
-&lt; strict-transport-security: max-age=15552000; includeSubDomains; preload
-strict-transport-security: max-age=15552000; includeSubDomains; preload
-&lt; server: snooserv
-server: snooserv
-&lt; x-clacks-overhead: GNU Terry Pratchett
-x-clacks-overhead: GNU Terry Pratchett
-&lt; content-length: 1064
-content-length: 1064
-
-&lt;
-* Connection #0 to host www.reddit.com left intact
-</pre></div>
-</div>
-<p>you’ll be able to use these SSL header information to put web2 information on web3 and prove it is legit
-How will that be done?
-with zero knowledge proofs, namely zk-snarks (chain of snapshots vs chain of blocks)</p>
-</div>
-<div class="section" id="eli5-zero-knowledge-snarks">
-<h5>ELI5 zero knowledge snarks<a class="headerlink" href="#eli5-zero-knowledge-snarks" title="Permalink to this headline">¶</a></h5>
-<ul class="simple">
-<li><p>A geologist hiking through a forest encounters a row of heavy boulders (Blocks in the chain)</p></li>
-<li><p>She wants to examine their marble interior (Validate their transactions)</p></li>
-<li><p>She cuts them open, studies them and reports her findings</p></li>
-<li><p>Colleagues from around the world (other validators) want to see the boulders, but can’t afford the cost of travel. (The cost of running a fully validating node).</p></li>
-<li><p>Her solution: she takes a photo of each boulder. (The photos are zero knowledge proofs, aka zk-SNARKs — a snapshot of each block)</p></li>
-<li><p>Now she doesn’t need the boulders — the photos are just as good</p></li>
-<li><p>enable full nodes to discard blocks after they’re validated, replacing them with zk-SNARKs, a snapshot of each block</p></li>
-<li><p>A chain of snapshots is a huge improvement over a chain of blocks, but the problem isn’t solved: the chain will still grow, and we want it constant-sized.</p></li>
-<li><p>Our geologist has a novel solution. She takes a photo of the first boulder…then takes a photo of the second boulder and the first photo.</p></li>
-<li><p>Now she doesn’t need the first photo. After all, it’s in the second photo.</p></li>
-<li><p>She keeps taking snapshots of each boulder alongside the most recent photo, and sends her colleagues the last one.</p></li>
-</ul>
-<p>shitcoins &amp; rug pulls</p>
 </div>
 </div>
+<div class="section" id="cool-kids-on-the-block">
+<h3>cool kids on the block<a class="headerlink" href="#cool-kids-on-the-block" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="in-place-refactoring">
+<h4>in-place refactoring<a class="headerlink" href="#in-place-refactoring" title="Permalink to this headline">¶</a></h4>
+<p>rename? -&gt; alt + enter</p>
 </div>
-<div class="section" id="demo-on-open-marketplace">
-<h3>demo on open marketplace<a class="headerlink" href="#demo-on-open-marketplace" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="vegawallet-usage">
-<h4>vegawallet usage<a class="headerlink" href="#vegawallet-usage" title="Permalink to this headline">¶</a></h4>
-<p>download the wallet here: <a class="reference external" href="https://github.com/vegaprotocol/go-wallet/releases/latest">https://github.com/vegaprotocol/go-wallet/releases/latest</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./vegawallet -h
-Usage:
-  vegawallet <span class="o">[</span>command<span class="o">]</span>
-
-Available Commands:
-  genkey      Generate a new keypair <span class="k">for</span> a wallet
-  <span class="nb">help</span>        Help about any <span class="nb">command</span>
-  list        List keypairs of a wallet
-  meta        Add metadata to a public key
-  service     The wallet service
-  sign        Sign a blob of data
-  taint       Taint a public key
-  verify      Verify the signature
-  version     Show the version of the vega wallet
-
-Flags:
-  -h, --help               <span class="nb">help</span> <span class="k">for</span> vegawallet
-      --no-version-check   Do not check <span class="k">for</span> new version of the Vega wallet
-      --root-path string   Root directory <span class="k">for</span> the Vega wallet configuration <span class="o">(</span>default <span class="s2">&quot;/home/dadude/.vega&quot;</span><span class="o">)</span>
-
-Use <span class="s2">&quot;vegawallet [command] --help&quot;</span> <span class="k">for</span> more information about a command.
-</pre></div>
+<div class="section" id="jump-around">
+<h4>jump around<a class="headerlink" href="#jump-around" title="Permalink to this headline">¶</a></h4>
+<p>jump around: alt + up/down</p>
+<p>autoindent: ctrl + alt + i</p>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./vegawallet service run
-Wallet http service started at: http://localhost:1789
-Wallet console proxy started at: http://localhost:1847 proxying testnet.vega.trading
-
-Available endpoints:
- - status:          GET    http://localhost:1789/api/v1/status
- - login:           POST   http://localhost:1789/api/v1/auth/token
- - logout:          DELETE http://localhost:1789/api/v1/auth/token
- - create wallet:   POST   http://localhost:1789/api/v1/wallets
- - create key:      POST   http://localhost:1789/api/v1/keys
- - list keys:       GET    http://localhost:1789/api/v1/keys
- - get key:         GET    http://localhost:1789/api/v1/keys/:keyid
- - taint key:       PUT    http://localhost:1789/api/v1/keys/:keyid/taint
- - update meta:     PUT    http://localhost:1789/api/v1/keys/:keyid/metadata
- - sign data:       POST   http://localhost:1789/api/v1/sign
- - sign:            POST   http://localhost:1789/api/v1/messages
- - sign sync:       POST   http://localhost:1789/api/v1/messages/sync
- - sign commit:     POST   http://localhost:1789/api/v1/messages/commit
- - download wallet: GET    http://localhost:1789/api/v1/wallets
-</pre></div>
+<div class="section" id="care-to-comment">
+<h4>care to comment?<a class="headerlink" href="#care-to-comment" title="Permalink to this headline">¶</a></h4>
+<p>(un)comment: ctrl + /</p>
+</div>
+<div class="section" id="shakespeare">
+<h4>shakespeare<a class="headerlink" href="#shakespeare" title="Permalink to this headline">¶</a></h4>
+<p>todo or not todo: # todo: gonna forget this</p>
+</div>
+<div class="section" id="tdd-w00t">
+<h4>tdd w00t<a class="headerlink" href="#tdd-w00t" title="Permalink to this headline">¶</a></h4>
+<p>fire up tests: ctrl + shift + t</p>
+</div>
+<div class="section" id="import-hell">
+<h4>import hell<a class="headerlink" href="#import-hell" title="Permalink to this headline">¶</a></h4>
+<p>optimize imports: ctrl + alt + o</p>
+</div>
+<div class="section" id="f-strings">
+<h4>F* strings<a class="headerlink" href="#f-strings" title="Permalink to this headline">¶</a></h4>
+<p>print(“some big var”) -&gt; curly enter</p>
 </div>
 </div>
-<div class="section" id="testnet-exploration">
-<h4>testnet exploration<a class="headerlink" href="#testnet-exploration" title="Permalink to this headline">¶</a></h4>
-<p><a class="reference external" href="https://testnet.vega.trading">https://testnet.vega.trading</a></p>
-<p>username: lemonlizard :)</p>
+<div class="section" id="python-interpreter">
+<h3>python interpreter<a class="headerlink" href="#python-interpreter" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="links">
-<h4>links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h4>
-<ul class="simple">
-<li><p><a class="reference external" href="https://console.fairground.wtf/">https://console.fairground.wtf/</a></p></li>
-<li><p><a class="reference external" href="https://linktr.ee/vegaprotocol">https://linktr.ee/vegaprotocol</a></p></li>
-<li><p><a class="reference external" href="https://github.com/vegaprotocol/go-wallet">https://github.com/vegaprotocol/go-wallet</a></p></li>
-<li><p><a class="reference external" href="https://github.com/vegaprotocol/sample-api-scripts">https://github.com/vegaprotocol/sample-api-scripts</a></p></li>
-<li><p><a class="reference external" href="https://community.vega.xyz/c/testnet/12">https://community.vega.xyz/c/testnet/12</a></p></li>
-<li><p><a class="reference external" href="https://docs.fairground.vega.xyz/">https://docs.fairground.vega.xyz/</a></p></li>
-</ul>
+<div class="section" id="debugging-work">
+<h3>debugging &#64;work<a class="headerlink" href="#debugging-work" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="meditation">
+<h3>meditation<a class="headerlink" href="#meditation" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="zen-mode">
+<h4>zen mode<a class="headerlink" href="#zen-mode" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="terminal">
+<h4>terminal<a class="headerlink" href="#terminal" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="recent-files">
+<h4>recent files<a class="headerlink" href="#recent-files" title="Permalink to this headline">¶</a></h4>
 </div>
 </div>
-<div class="section" id="time-to-choose">
-<h3>time to choose<a class="headerlink" href="#time-to-choose" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="when-moon">
-<h4>when moon?<a class="headerlink" href="#when-moon" title="Permalink to this headline">¶</a></h4>
-<img alt="../_images/whenmoon.jpg" src="../_images/whenmoon.jpg" />
-<p>centralized markets or open markets
-it is your time to choose …</p>
-<p>I leave you with the same advice Dr. Freeman got before when he had to choose :)~</p>
+<div class="section" id="for-diehards-only">
+<h3>for diehards only<a class="headerlink" href="#for-diehards-only" title="Permalink to this headline">¶</a></h3>
+<p>the <em>ideavim</em> plugin :D</p>
+<div class="section" id="move-block">
+<h4>move block<a class="headerlink" href="#move-block" title="Permalink to this headline">¶</a></h4>
 </div>
-<div class="section" id="advice">
-<h4>advice<a class="headerlink" href="#advice" title="Permalink to this headline">¶</a></h4>
-<p><a class="reference external" href="https://www.youtube.com/watch?v=14cgH6MiYf8">advice</a> for dr. freeman</p>
-</div>
-<div class="section" id="addendum">
-<h4>addendum<a class="headerlink" href="#addendum" title="Permalink to this headline">¶</a></h4>
-<p>stats on MEV: <a class="reference external" href="https://explore.flashbots.net/">https://explore.flashbots.net/</a></p>
-<p>possible solutions to the MEV problem</p>
-<ul class="simple">
-<li><p>privacy-preserving smart contracts
-<a class="reference external" href="https://defiprime.com/secretswap">https://defiprime.com/secretswap</a></p></li>
-<li><p>order fairness via randomized transaction execution order
-<a class="reference external" href="https://medium.com/coinmonks/mangata-a-polkadots-new-hero-decentralized-exchange-e17eb0105942">https://medium.com/coinmonks/mangata-a-polkadots-new-hero-decentralized-exchange-e17eb0105942</a></p></li>
-<li><p>will add more-</p></li>
-</ul>
+<div class="section" id="d-d-dw">
+<h4>d D dw<a class="headerlink" href="#d-d-dw" title="Permalink to this headline">¶</a></h4>
 </div>
 </div>
 </div>

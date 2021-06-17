@@ -15,6 +15,12 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/plot_directive.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-rendered-html.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
 
@@ -167,12 +173,447 @@
             
   <div class="section" id="pandas">
 <h1>pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="pandass">
-<h2>pandass<a class="headerlink" href="#pandass" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="pump-it">
-<h3>pump it<a class="headerlink" href="#pump-it" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="section" id="links">
+<h2>links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/10min.html">http://pandas.pydata.org/pandas-docs/stable/10min.html</a></p></li>
+<li><p><a class="reference external" href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python">https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python</a></p></li>
+<li><p><a class="reference external" href="http://www.gregreda.com/2013/10/26/intro-to-pandas-data-structures/">http://www.gregreda.com/2013/10/26/intro-to-pandas-data-structures/</a></p></li>
+<li><p><a class="reference external" href="https://www.dataquest.io/blog/pandas-python-tutorial/">https://www.dataquest.io/blog/pandas-python-tutorial/</a></p></li>
+<li><p><a class="reference external" href="https://www.w3resource.com/python-exercises/pandas/index.php">https://www.w3resource.com/python-exercises/pandas/index.php</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/playlist?list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y">https://www.youtube.com/playlist?list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y</a></p></li>
+<li><p><a class="reference external" href="https://www.machinelearningplus.com/python/101-pandas-exercises-python/">https://www.machinelearningplus.com/python/101-pandas-exercises-python/</a></p></li>
+<li><p><a class="reference external" href="https://www.kaggle.com/python10pm/pandas-75-exercises-with-solutions">https://www.kaggle.com/python10pm/pandas-75-exercises-with-solutions</a></p></li>
+</ul>
+</div>
+<div class="section" id="csv-schema">
+<h2>csv schema<a class="headerlink" href="#csv-schema" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="add-a-schema-to-csv">
+<h3>add a schema to csv<a class="headerlink" href="#add-a-schema-to-csv" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/survey_results_public.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Respondent&#39;</span><span class="p">)</span>
+<span class="n">schema_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/survey_results_schema.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Column&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="basics">
+<h2>basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;pandas_tutorial_read.csv&#39;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># dimensions df</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="c1"># [&#39;ins&#39;, &#39;type_entity&#39;, &#39;entity&#39;, &#39;period&#39;, &#39;value&#39;]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>ins</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>291.000000</p></td>
+<td><p>291.000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>mean</p></td>
+<td><p>64080.941581</p></td>
+<td><p>319.149828</p></td>
+</tr>
+<tr class="row-even"><td><p>std</p></td>
+<td><p>19262.087619</p></td>
+<td><p>428.431706</p></td>
+</tr>
+<tr class="row-odd"><td><p>min</p></td>
+<td><p>3000.000000</p></td>
+<td><p>24.500000</p></td>
+</tr>
+<tr class="row-even"><td><p>25%</p></td>
+<td><p>55019.500000</p></td>
+<td><p>79.400000</p></td>
+</tr>
+<tr class="row-odd"><td><p>50%</p></td>
+<td><p>62096.000000</p></td>
+<td><p>186.000000</p></td>
+</tr>
+<tr class="row-even"><td><p>75%</p></td>
+<td><p>83020.500000</p></td>
+<td><p>323.700000</p></td>
+</tr>
+<tr class="row-odd"><td><p>max</p></td>
+<td><p>93090.000000</p></td>
+<td><p>3518.600000</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="c1"># max accross all columns</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ins</p></th>
+<th class="head"><p>93090</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type_entity</p></td>
+<td><p>Région</p></td>
+</tr>
+<tr class="row-odd"><td><p>entity</p></td>
+<td><p>Étalle</p></td>
+</tr>
+<tr class="row-even"><td><p>period</p></td>
+<td><p>01/01/2019</p></td>
+</tr>
+<tr class="row-odd"><td><p>value</p></td>
+<td><p>3518.6</p></td>
+</tr>
+<tr class="row-even"><td><p>dtype: object</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>  <span class="c1"># max 1 column</span>
+<span class="mf">3518.6</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="mf">319.1498281786941</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span> <span class="c1"># id row index of max value</span>
+<span class="mi">144</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="c1"># times a value occurs in column</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">49.4     3</span>
+<span class="sd">292.3    2</span>
+<span class="sd">642.8    2</span>
+<span class="sd">30.6     2</span>
+<span class="sd">36.4     2</span>
+<span class="sd">      ..</span>
+<span class="sd">144.8    1</span>
+<span class="sd">38.1     1</span>
+<span class="sd">144.1    1</span>
+<span class="sd">242.5    1</span>
+<span class="sd">764.8    1</span>
+<span class="sd">Name: value, Length: 280, dtype: int64</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="access-values">
+<h2>access values<a class="headerlink" href="#access-values" title="Permalink to this headline">¶</a></h2>
+<p><cite>df.iloc[[df[‘value’].idxmax()]]</cite> get row = iloc[] (use when you know row index integer)</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>ins</p></th>
+<th class="head"><p>type_entity</p></th>
+<th class="head"><p>entity</p></th>
+<th class="head"><p>period</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>144</p></td>
+<td><p>62093</p></td>
+<td><p>Commune</p></td>
+<td><p>Saint-Nicolas</p></td>
+<td><p>01/01/2019</p></td>
+<td><p>3518.6</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="get-max-in-col-x">
+<h3>get max in col X<a class="headerlink" href="#get-max-in-col-x" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># get row = iloc[] (use when you know row index integer)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]]</span>
+<span class="mi">144</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="if-max-in-col-x-show-value-in-col-y">
+<h3>if max in col X show value in col Y<a class="headerlink" href="#if-max-in-col-x-show-value-in-col-y" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># iloc[[int 144]][select value of col &#39;ins&#39;]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]][</span><span class="s1">&#39;ins&#39;</span><span class="p">]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">144    62093</span>
+<span class="sd">Name: ins, dtype: int64</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]][</span><span class="s1">&#39;ins&#39;</span><span class="p">])</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">Series</span>
+
+<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]])</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>when you see data displayed in the above format, you’re dealing with a pandas <strong>series</strong> object, not a dataframe object</p>
+</div>
+</div>
+<div class="section" id="label-vs-location">
+<h3>label vs location<a class="headerlink" href="#label-vs-location" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>loc gets rows (and/or columns) with particular labels</p></li>
+<li><p>iloc gets rows (and/or columns) at integer locations</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>loc = inclusive of endpoint
+iloc = exclusive of endpoint</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abcdef&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">49</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="mi">49</span>    <span class="n">a</span>
+<span class="mi">48</span>    <span class="n">b</span>
+<span class="mi">47</span>    <span class="n">c</span>
+<span class="mi">0</span>     <span class="n">d</span>
+<span class="mi">1</span>     <span class="n">e</span>
+<span class="mi">2</span>     <span class="n">f</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="c1"># value at index label 0</span>
+<span class="s1">&#39;d&#39;</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># value at index location 0</span>
+<span class="s1">&#39;a&#39;</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># rows at index labels between 0 and 1 (inclusive)</span>
+<span class="mi">0</span>    <span class="n">d</span>
+<span class="mi">1</span>    <span class="n">e</span>
+
+<span class="n">s</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># rows at index location between 0 and 1 (exclusive)</span>
+<span class="mi">49</span>    <span class="n">a</span>
+</pre></div>
+</div>
+<p>Here’s a Series where the index contains string objects:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">s2</span>
+<span class="n">a</span>    <span class="mi">49</span>
+<span class="n">b</span>    <span class="mi">48</span>
+<span class="n">c</span>    <span class="mi">47</span>
+<span class="n">d</span>     <span class="mi">0</span>
+<span class="n">e</span>     <span class="mi">1</span>
+<span class="n">f</span>     <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Since loc is label-based, it can fetch the first value in the Series using s2.loc[‘a’]. It can also slice with non-integer objects</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="s1">&#39;e&#39;</span><span class="p">]</span>  <span class="c1"># all rows lying between &#39;c&#39; and &#39;e&#39; (inclusive)</span>
+<span class="n">c</span>    <span class="mi">47</span>
+<span class="n">d</span>     <span class="mi">0</span>
+<span class="n">e</span>     <span class="mi">1</span>
+</pre></div>
+</div>
+<p>for DateTime indexes, we don’t need to pass the exact date/time to fetch by label</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcde&#39;</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;now&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">))</span>
+<span class="n">s3</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">31</span> <span class="mi">16</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mf">31.879768</span>    <span class="n">a</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">28</span> <span class="mi">16</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mf">31.879768</span>    <span class="n">b</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">31</span> <span class="mi">16</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mf">31.879768</span>    <span class="n">c</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">30</span> <span class="mi">16</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mf">31.879768</span>    <span class="n">d</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">31</span> <span class="mi">16</span><span class="p">:</span><span class="mi">41</span><span class="p">:</span><span class="mf">31.879768</span>    <span class="n">e</span>
+</pre></div>
+</div>
+<p>to fetch the row’s for march/april</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s3</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2021-03&#39;</span><span class="p">:</span><span class="s1">&#39;2021-04&#39;</span><span class="p">]</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">31</span> <span class="mi">17</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">30.742316</span>    <span class="n">c</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">30</span> <span class="mi">17</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mf">30.742316</span>    <span class="n">d</span>
+</pre></div>
+</div>
+<p>more is better</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">,</span> <span class="p">:</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>  <span class="c1"># rows &#39;c&#39; and onwards AND columns up to &#39;z&#39;</span>
+    <span class="n">x</span>   <span class="n">y</span>   <span class="n">z</span>
+<span class="n">c</span>  <span class="mi">10</span>  <span class="mi">11</span>  <span class="mi">12</span>
+<span class="n">d</span>  <span class="mi">15</span>  <span class="mi">16</span>  <span class="mi">17</span>
+<span class="n">e</span>  <span class="mi">20</span>  <span class="mi">21</span>  <span class="mi">22</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>        <span class="c1"># all rows, but only the column at index location 3</span>
+<span class="n">a</span>     <span class="mi">3</span>
+<span class="n">b</span>     <span class="mi">8</span>
+<span class="n">c</span>    <span class="mi">13</span>
+<span class="n">d</span>    <span class="mi">18</span>
+<span class="n">e</span>    <span class="mi">23</span>
+</pre></div>
+</div>
+<p>how to slice rows up to &amp; including ‘c’ and take the first 4 columns?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+                      <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcde&#39;</span><span class="p">),</span>
+                      <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">df</span>
+    <span class="n">x</span>   <span class="n">y</span>   <span class="n">z</span>   <span class="mi">8</span>   <span class="mi">9</span>
+<span class="n">a</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>   <span class="mi">4</span>
+<span class="n">b</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>   <span class="mi">8</span>   <span class="mi">9</span>
+<span class="n">c</span>  <span class="mi">10</span>  <span class="mi">11</span>  <span class="mi">12</span>  <span class="mi">13</span>  <span class="mi">14</span>
+<span class="n">d</span>  <span class="mi">15</span>  <span class="mi">16</span>  <span class="mi">17</span>  <span class="mi">18</span>  <span class="mi">19</span>
+<span class="n">e</span>  <span class="mi">20</span>  <span class="mi">21</span>  <span class="mi">22</span>  <span class="mi">23</span>  <span class="mi">24</span>
+</pre></div>
+</div>
+<p>answer</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">x</span>   <span class="n">y</span>   <span class="n">z</span>   <span class="mi">8</span>
+<span class="n">a</span>   <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>
+<span class="n">b</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>   <span class="mi">8</span>
+<span class="n">c</span>  <span class="mi">10</span>  <span class="mi">11</span>  <span class="mi">12</span>  <span class="mi">13</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>get_loc() is an index method meaning “get the position of the label in this index”
+since slicing with iloc is exclusive of its endpoint
+we must add 1 to this value if we want row ‘c’ as well</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="label-location-loc">
+<h3>label-location loc<a class="headerlink" href="#label-location-loc" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>loc() means you have to pass the <strong>name</strong> of row/column you want to select</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>you can use boolean conditions with loc()</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Brand&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Maruti&#39;</span><span class="p">,</span> <span class="s1">&#39;Hyundai&#39;</span><span class="p">,</span> <span class="s1">&#39;Tata&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;Mahindra&#39;</span><span class="p">,</span> <span class="s1">&#39;Maruti&#39;</span><span class="p">,</span> <span class="s1">&#39;Hyundai&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;Renault&#39;</span><span class="p">,</span> <span class="s1">&#39;Tata&#39;</span><span class="p">,</span> <span class="s1">&#39;Maruti&#39;</span><span class="p">],</span>
+                     <span class="s1">&#39;Year&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span>
+                               <span class="mi">2016</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2018</span><span class="p">,</span> <span class="mi">2019</span><span class="p">],</span>
+                     <span class="s1">&#39;Kms Driven&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">50000</span><span class="p">,</span> <span class="mi">30000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">,</span>
+                                     <span class="mi">25000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">46000</span><span class="p">,</span>
+                                     <span class="mi">31000</span><span class="p">,</span> <span class="mi">15000</span><span class="p">,</span> <span class="mi">12000</span><span class="p">],</span>
+                     <span class="s1">&#39;City&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Gurgaon&#39;</span><span class="p">,</span> <span class="s1">&#39;Delhi&#39;</span><span class="p">,</span> <span class="s1">&#39;Mumbai&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;Delhi&#39;</span><span class="p">,</span> <span class="s1">&#39;Mumbai&#39;</span><span class="p">,</span> <span class="s1">&#39;Delhi&#39;</span><span class="p">,</span>
+                               <span class="s1">&#39;Mumbai&#39;</span><span class="p">,</span><span class="s1">&#39;Chennai&#39;</span><span class="p">,</span>  <span class="s1">&#39;Ghaziabad&#39;</span><span class="p">],</span>
+                     <span class="s1">&#39;Mileage&#39;</span> <span class="p">:</span>  <span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span>
+                                   <span class="mi">29</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">24</span><span class="p">]})</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">data</span><span class="o">.</span><span class="n">Brand</span> <span class="o">==</span> <span class="s1">&#39;Maruti&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">Mileage</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)])</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Brand  Year  Kms  Drive  City    Mileage</span>
+<span class="sd">0 Maruti 2012       50000  Gurgaon      28</span>
+<span class="sd">4 Maruti 2012       10000   Mumbai      28</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-range-of-rows">
+<h3>select range of rows<a class="headerlink" href="#select-range-of-rows" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>index includes start:stop values</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># selecting range of rows from 2 to 5</span>
+<span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span> <span class="p">:</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-column-value-with-loc">
+<h3>select column value with loc<a class="headerlink" href="#select-column-value-with-loc" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(),</span> <span class="s1">&#39;ins&#39;</span><span class="p">]</span>
+<span class="mi">62093</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="at-when-you-know-row-column-label">
+<h3>at() when you know row &amp; column label<a class="headerlink" href="#at-when-you-know-row-column-label" title="Permalink to this headline">¶</a></h3>
+<p>at() is faster</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">(),</span> <span class="s1">&#39;ins&#39;</span><span class="p">]</span>
+<span class="mi">62093</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

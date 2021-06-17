@@ -15,6 +15,12 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/plot_directive.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-rendered-html.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
   <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
 
@@ -91,13 +97,17 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="ansible.html">ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ansible.html">code plot graphics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ansible.html#ansible">ansible</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheats/main.html">cheatsheets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="links.html">links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techtalk/main.html">techtalks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sampledoc/extensions.html">Sphinx extensions for embedded plots, math and more</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sampledoc/ipython_directive.html">IPython Directive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sampledoc/cheatsheet.html">Sphinx cheat sheet</a></li>
 </ul>
 
             
@@ -178,33 +188,20 @@
 </div>
 <div class="section" id="vocabulary">
 <h2>vocabulary<a class="headerlink" href="#vocabulary" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ul>
 <li><p>each dimension = an axis</p></li>
-<li><p>number of axes = the rank</p></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li><p>a 3x4 matrix is an array of rank 2 (2-dimensional)</p></li>
-<li><p>first axis has length 3, second length 4</p></li>
-</ul>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+<li><p>number of axes = the rank
+- a 3x4 matrix is an array of rank 2 (2-dimensional)
+- first axis has length 3, second length 4</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">([[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
        <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
        <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]])</span>
 </pre></div>
 </div>
-</div></blockquote>
-</div></blockquote>
-<ul class="simple">
-<li><p>list(axis length) = shape of array</p></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li><p>matrix shape = (3, 4)</p></li>
-<li><p>rank is equal to shape’s length</p></li>
-</ul>
-</div></blockquote>
-<ul class="simple">
+</li>
+<li><p>list(axis length) = shape of array
+- matrix shape = (3, 4)
+- rank is equal to shape’s length</p></li>
 <li><p>size of an array = total number of elements = product axis lengths (3*4=12)</p></li>
 </ul>
 </div>
@@ -876,7 +873,7 @@ ValueError: operands could not be broadcast together with shapes (2,3) (2,2)
 </div>
 </div>
 <div class="section" id="reverse-a-vector-first-element-becomes-last">
-<h3>Reverse a vector (first element becomes last)<a class="headerlink" href="#reverse-a-vector-first-element-becomes-last" title="Permalink to this headline">¶</a></h3>
+<h3>reverse a vector (first element becomes last)<a class="headerlink" href="#reverse-a-vector-first-element-becomes-last" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.flip.html?highlight=reverse">https://numpy.org/doc/stable/reference/generated/numpy.flip.html?highlight=reverse</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">copy</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -904,7 +901,7 @@ ValueError: operands could not be broadcast together with shapes (2,3) (2,2)
 </div>
 </div>
 <div class="section" id="find-indices-of-non-zero-elements-from-1-2-0-0-4-0">
-<h3>Find indices of non-zero elements from [1,2,0,0,4,0]<a class="headerlink" href="#find-indices-of-non-zero-elements-from-1-2-0-0-4-0" title="Permalink to this headline">¶</a></h3>
+<h3>find indices of non-zero elements from [1,2,0,0,4,0]<a class="headerlink" href="#find-indices-of-non-zero-elements-from-1-2-0-0-4-0" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.nonzero.html">https://numpy.org/doc/stable/reference/generated/numpy.nonzero.html</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -1026,17 +1023,15 @@ ValueError: operands could not be broadcast together with shapes (2,3) (2,2)
 <h3>results of np.nan expressions<a class="headerlink" href="#results-of-np-nan-expressions" title="Permalink to this headline">¶</a></h3>
 <p>examples here
 <a class="reference external" href="https://numpy.org/doc/stable/user/misc.html">https://numpy.org/doc/stable/user/misc.html</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>```python
-0 * np.nan
-np.nan == np.nan
-np.inf &gt; np.nan
-np.nan - np.nan
-np.nan in set([np.nan])
-0.3 == 3 * 0.1
-```
-X = np.nan
-X == np.nan  # is always False! Use special numpy functions
-False
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+<span class="mf">0.3</span> <span class="o">==</span> <span class="mi">3</span> <span class="o">*</span> <span class="mf">0.1</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">X</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>  <span class="c1"># is always False! Use special numpy functions</span>
+<span class="kc">False</span>
 </pre></div>
 </div>
 </div>
@@ -1248,28 +1243,26 @@ False
 </div>
 <div class="section" id="np-nan">
 <h3>np.nan<a class="headerlink" href="#np-nan" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># results of the following expressions
-```
-np.array(0) / np.array(0)
-np.array(0) // np.array(0)
-np.array([np.nan]).astype(int).astype(float)
-```
-np.array(0) / np.array(0)
-```
-&lt;ipython-input-162-3585dcb7ab9b&gt;:1: RuntimeWarning: invalid value encountered in true_divide
-  np.array(0) / np.array(0)
-```
-nan
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># results of the following expressions</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">//</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&lt;ipython-input-162-3585dcb7ab9b&gt;:1: RuntimeWarning: invalid value encountered in true_divide</span>
+<span class="sd">  np.array(0) / np.array(0)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">nan</span>
 
-np.array(0) // np.array(0)
-```
-&lt;ipython-input-163-4764261090d0&gt;:1: RuntimeWarning: divide by zero encountered in floor_divide
-  np.array(0) // np.array(0)
-```
-0
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">//</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">&lt;ipython-input-163-4764261090d0&gt;:1: RuntimeWarning: divide by zero encountered in floor_divide</span>
+<span class="sd">  np.array(0) // np.array(0)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="mi">0</span>
 
-np.array([np.nan]).astype(int).astype(float)
-array([-9.22337204e+18])
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">9.22337204e+18</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>

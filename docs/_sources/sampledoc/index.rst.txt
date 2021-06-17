@@ -1,0 +1,6 @@
+.. toctree::
+   :maxdepth: 2
+
+   extensions.rst
+   ipython_directive.rst
+   cheatsheet.rst
