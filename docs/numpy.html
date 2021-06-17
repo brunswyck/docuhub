@@ -97,17 +97,13 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="ansible.html">code plot graphics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ansible.html#ansible">ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ansible.html">ansible</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheats/main.html">cheatsheets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="links.html">links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python.html">python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techtalk/main.html">techtalks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sampledoc/extensions.html">Sphinx extensions for embedded plots, math and more</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sampledoc/ipython_directive.html">IPython Directive</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sampledoc/cheatsheet.html">Sphinx cheat sheet</a></li>
 </ul>
 
             
@@ -204,6 +200,88 @@
 - rank is equal to shape’s length</p></li>
 <li><p>size of an array = total number of elements = product axis lengths (3*4=12)</p></li>
 </ul>
+</div>
+<div class="section" id="functions-list">
+<h2>functions list<a class="headerlink" href="#functions-list" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>function</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>my_array.shape</p></td>
+<td><p>get dimensions</p></td>
+</tr>
+<tr class="row-odd"><td><p>np.append(other_array)</p></td>
+<td><p>append items to array</p></td>
+</tr>
+<tr class="row-even"><td><p>np.insert(my_array, 1, 5)</p></td>
+<td><p>insert items in an array</p></td>
+</tr>
+<tr class="row-odd"><td><p>np.delete(my_array, [1])</p></td>
+<td><p>delete items in array</p></td>
+</tr>
+<tr class="row-even"><td><p>np.mean</p></td>
+<td><p>mean of the array</p></td>
+</tr>
+<tr class="row-odd"><td><p>np.median</p></td>
+<td><p>median of the array</p></td>
+</tr>
+<tr class="row-even"><td><p>my_array.corrcoef()</p></td>
+<td><p>correlation coefficient</p></td>
+</tr>
+<tr class="row-odd"><td><p>np.std(my_array)</p></td>
+<td><p>standard deviation</p></td>
+</tr>
+<tr class="row-even"><td><p>np.add(arr1, arr2,..)</p></td>
+<td><p>add arrays element wise</p></td>
+</tr>
+<tr class="row-odd"><td><p>np.reciprocal(arr)</p></td>
+<td><p>returns reciprocal of elements of the argument array</p></td>
+</tr>
+<tr class="row-even"><td><p>np.negative(arr)</p></td>
+<td><p>returns numerical negative of elements of an array</p></td>
+</tr>
+<tr class="row-odd"><td><p>np.multiply(arr1,arr2,…)</p></td>
+<td><p>multiply arrays element wise</p></td>
+</tr>
+<tr class="row-even"><td><p>np.divide(arr1,arr2)</p></td>
+<td><p>divide arrays element wise</p></td>
+</tr>
+<tr class="row-odd"><td><p>np.power(arr1,arr2)</p></td>
+<td><p>return the first array with its each of its elements raised to the power of elements in the second array (element wise)</p></td>
+</tr>
+<tr class="row-even"><td><p>np.subtract(arr1,arr2,…)</p></td>
+<td><p>subtract arrays element wise</p></td>
+</tr>
+<tr class="row-odd"><td><p>np.true_divide(arr1,arr2)</p></td>
+<td><p>returns true_divide of an array element wise</p></td>
+</tr>
+<tr class="row-even"><td><p>np.floor_divide(arr1,arr2)</p></td>
+<td><p>returns floor after dividing an array element wise</p></td>
+</tr>
+<tr class="row-odd"><td><p>np.float_power(arr1,arr2)</p></td>
+<td><p>return the first array with its each of its elements raised to the power of elements in the second array (elementwise)</p></td>
+</tr>
+<tr class="row-even"><td><p>np.fmod(arr1,arr2)</p></td>
+<td><p>returns floor of the remainder after division elementwise</p></td>
+</tr>
+<tr class="row-odd"><td><p>np.mod(arr1,arr2)</p></td>
+<td><p>returns remainder after division elementwise</p></td>
+</tr>
+<tr class="row-even"><td><p>np.remainder(arr1,arr2)</p></td>
+<td><p>returns remainder after division elementwise</p></td>
+</tr>
+<tr class="row-odd"><td><p>np.divmod(arr1,arr2)</p></td>
+<td><p>returns remainder and quotient after division elementwise</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="creating-arrays">
 <h2>creating arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this headline">¶</a></h2>

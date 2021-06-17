@@ -26,6 +26,60 @@ vocabulary
   - rank is equal to shape's length
 - size of an array = total number of elements = product axis lengths (3*4=12)
 
+functions list
+==============
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 70
+
+   * - function
+     - description
+   * - my_array.shape
+     - get dimensions
+   * - np.append(other_array)
+     - append items to array
+   * - np.insert(my_array, 1, 5)
+     - insert items in an array
+   * - np.delete(my_array, [1])
+     - delete items in array
+   * - np.mean
+     - mean of the array
+   * - np.median
+     - median of the array
+   * - my_array.corrcoef()
+     - correlation coefficient
+   * - np.std(my_array)
+     - standard deviation
+   * - np.add(arr1, arr2,..)
+     - add arrays element wise
+   * - np.reciprocal(arr)
+     - returns reciprocal of elements of the argument array
+   * - np.negative(arr)
+     - returns numerical negative of elements of an array
+   * - np.multiply(arr1,arr2,…)
+     - multiply arrays element wise
+   * - np.divide(arr1,arr2)
+     - divide arrays element wise
+   * - np.power(arr1,arr2)
+     - return the first array with its each of its elements raised to the power of elements in the second array (element wise)
+   * - np.subtract(arr1,arr2,…)
+     - subtract arrays element wise
+   * - np.true_divide(arr1,arr2)
+     - returns true_divide of an array element wise
+   * - np.floor_divide(arr1,arr2)
+     - returns floor after dividing an array element wise
+   * - np.float_power(arr1,arr2)
+     - return the first array with its each of its elements raised to the power of elements in the second array (elementwise)
+   * - np.fmod(arr1,arr2)
+     - returns floor of the remainder after division elementwise
+   * - np.mod(arr1,arr2)
+     - returns remainder after division elementwise
+   * - np.remainder(arr1,arr2)
+     - returns remainder after division elementwise
+   * - np.divmod(arr1,arr2)
+     - returns remainder and quotient after division elementwise
+
 creating arrays
 ===============
 

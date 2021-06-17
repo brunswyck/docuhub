@@ -186,6 +186,21 @@
 <li><p><a class="reference external" href="https://www.kaggle.com/python10pm/pandas-75-exercises-with-solutions">https://www.kaggle.com/python10pm/pandas-75-exercises-with-solutions</a></p></li>
 </ul>
 </div>
+<div class="section" id="resources">
+<h2>resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/10min.html">http://pandas.pydata.org/pandas-docs/stable/10min.html</a></p></li>
+<li><p><a class="reference external" href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python">https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python</a></p></li>
+<li><p><a class="reference external" href="http://www.gregreda.com/2013/10/26/intro-to-pandas-data-structures/">http://www.gregreda.com/2013/10/26/intro-to-pandas-data-structures/</a></p></li>
+<li><p><a class="reference external" href="https://www.dataquest.io/blog/pandas-python-tutorial/">https://www.dataquest.io/blog/pandas-python-tutorial/</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/playlist?list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y">https://www.youtube.com/playlist?list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y</a></p></li>
+<li><p>read csv file: <a class="reference external" href="https://www.youtube.com/watch?v=vmEHCJofslg">https://www.youtube.com/watch?v=vmEHCJofslg</a></p></li>
+</ul>
+</div>
+<div class="section" id="files">
+<h2>files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h2>
+<p>download csv <a class="reference download internal" download="" href="_downloads/feec67dbe31af16f0ce6740c09e22b00/pandas_tut_read.csv"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></p>
+</div>
 <div class="section" id="csv-schema">
 <h2>csv schema<a class="headerlink" href="#csv-schema" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="add-a-schema-to-csv">
@@ -550,6 +565,274 @@ we must add 1 to this value if we want row ‘c’ as well</p>
 <span class="mi">62093</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="sorting">
+<h2>sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     ins     type_entity     entity              period      value</span>
+<span class="sd">228  84016   Commune         Daverdisse          01/01/2019  24.5</span>
+<span class="sd">265  91143   Commune         Vresse-sur-Semois   01/01/2019  25.8</span>
+<span class="sd">214  82038   Commune         Sainte-Ode          01/01/2019  26.1</span>
+<span class="sd">229  84029   Commune         Herbeumont          01/01/2019  27.8</span>
+<span class="sd">219  83031   Commune         La Roche-en-Ardenne 01/01/2019  28.6</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filtering-rows-conditionally">
+<h2>filtering rows conditionally<a class="headerlink" href="#filtering-rows-conditionally" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     ins     type_entity     entity  period  value</span>
+<span class="sd">0    3000    Région  Wallonie        01/01/2019      215.0</span>
+<span class="sd">1    20002   Province        Brabant Wallon  01/01/2019      367.9</span>
+<span class="sd">2    25000   Arrondissement  Nivelles        01/01/2019      367.9</span>
+<span class="sd">3    25005   Commune Beauvechain     01/01/2019      187.8</span>
+<span class="sd">4    25014   Commune Braine-l&#39;Alleud 01/01/2019      764.8</span>
+<span class="sd">...  ...     ...     ...     ...     ...</span>
+<span class="sd">277  92114   Commune Sombreffe       01/01/2019      235.1</span>
+<span class="sd">278  92137   Commune Sambreville     01/01/2019      825.7</span>
+<span class="sd">280  92140   Commune Jemeppe-sur-Sambre      01/01/2019      408.5</span>
+<span class="sd">281  92141   Commune La Bruyère      01/01/2019      174.9</span>
+<span class="sd">282  92142   Commune Gembloux        01/01/2019      269.7</span>
+<span class="sd">165 rows × 5 columns</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">)]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     ins     type_entity     entity  period  value</span>
+<span class="sd">3    25005   Commune Beauvechain     01/01/2019      187.8</span>
+<span class="sd">8    25031   Commune Genappe 01/01/2019      170.7</span>
+<span class="sd">11   25044   Commune Ittre   01/01/2019      196.7</span>
+<span class="sd">12   25048   Commune Jodoigne        01/01/2019      191.5</span>
+<span class="sd">16   25084   Commune Perwez  01/01/2019      181.8</span>
+<span class="sd">25   25120   Commune Orp-Jauche      01/01/2019      175.7</span>
+<span class="sd">29   25124   Commune Walhain 01/01/2019      188.8</span>
+<span class="sd">31   51000   Arrondissement  Ath     01/01/2019      190.4</span>
+<span class="sd">61   53044   Commune Jurbise 01/01/2019      178.4</span>
+<span class="sd">76   55085   Commune Seneffe 01/01/2019      179.2</span>
+<span class="sd">84   56044   Commune Lobbes  01/01/2019      181.1</span>
+<span class="sd">87   56078   Commune Thuin   01/01/2019      191.7</span>
+<span class="sd">95   57062   Commune Pecq    01/01/2019      171.9</span>
+<span class="sd">99   57093   Commune Brunehaut       01/01/2019      173.5</span>
+<span class="sd">100  57094   Commune Leuze-en-Hainaut        01/01/2019      186.0</span>
+<span class="sd">111  61000   Arrondissement  Huy     01/01/2019      171.5</span>
+<span class="sd">119  61039   Commune Marchin 01/01/2019      181.4</span>
+<span class="sd">121  61043   Commune Nandrin 01/01/2019      159.3</span>
+<span class="sd">123  61063   Commune Verlaine        01/01/2019      173.3</span>
+<span class="sd">124  61068   Commune Villers-le-Bouillet     01/01/2019      197.7</span>
+<span class="sd">132  62009   Commune Aywaille        01/01/2019      155.6</span>
+<span class="sd">147  62100   Commune Sprimont        01/01/2019      197.4</span>
+<span class="sd">182  63088   Commune Plombières      01/01/2019      196.6</span>
+<span class="sd">183  63089   Commune Thimister-Clermont      01/01/2019      199.0</span>
+<span class="sd">189  64025   Commune Fexhe-le-Haut-Clocher   01/01/2019      166.3</span>
+<span class="sd">191  64034   Commune Hannut  01/01/2019      191.6</span>
+<span class="sd">193  64056   Commune Oreye   01/01/2019      199.8</span>
+<span class="sd">200  81000   Arrondissement  Arlon   01/01/2019      196.4</span>
+<span class="sd">205  81015   Commune Messancy        01/01/2019      156.2</span>
+<span class="sd">263  91141   Commune Yvoir   01/01/2019      160.6</span>
+<span class="sd">269  92035   Commune Éghezée 01/01/2019      158.3</span>
+<span class="sd">271  92048   Commune Fosses-la-Ville 01/01/2019      164.1</span>
+<span class="sd">281  92141   Commune La Bruyère      01/01/2019      174.9</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="grouping">
+<h2>grouping<a class="headerlink" href="#grouping" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="groupby">
+<h3>groupby<a class="headerlink" href="#groupby" title="Permalink to this headline">¶</a></h3>
+<p>groupby allows you to group entries by certain attributes (eg grouping entries by ins number) and then perform operations on them</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;ins&#39;</span><span class="p">)[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">ins</span>
+<span class="sd">3000     215.0</span>
+<span class="sd">20002    367.9</span>
+<span class="sd">25000    367.9</span>
+<span class="sd">25005    187.8</span>
+<span class="sd">25014    764.8</span>
+<span class="sd">Name: value, dtype: float64</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>groups all the entities with the same value and finds how many times that specific entity appears on the group</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)[</span><span class="s1">&#39;entity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">value  entity</span>
+<span class="sd">24.5   Daverdisse             1</span>
+<span class="sd">25.8   Vresse-sur-Semois      1</span>
+<span class="sd">26.1   Sainte-Ode             1</span>
+<span class="sd">27.8   Herbeumont             1</span>
+<span class="sd">28.6   La Roche-en-Ardenne    1</span>
+<span class="sd">Name: entity, dtype: int64</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>each df has a <cite>values</cite> attr that is useful as it displays your df in a numpy array style format</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">values</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">array([[3000, &#39;Région&#39;, &#39;Wallonie&#39;, &#39;01/01/2019&#39;, 215.0],</span>
+<span class="sd">       [20002, &#39;Province&#39;, &#39;Brabant Wallon&#39;, &#39;01/01/2019&#39;, 367.9],</span>
+<span class="sd">       [25000, &#39;Arrondissement&#39;, &#39;Nivelles&#39;, &#39;01/01/2019&#39;, 367.9],</span>
+<span class="sd">       ...,</span>
+<span class="sd">       [93056, &#39;Commune&#39;, &#39;Philippeville&#39;, &#39;01/01/2019&#39;, 59.0],</span>
+<span class="sd">       [93088, &#39;Commune&#39;, &#39;Walcourt&#39;, &#39;01/01/2019&#39;, 149.1],</span>
+<span class="sd">       [93090, &#39;Commune&#39;, &#39;Viroinval&#39;, &#39;01/01/2019&#39;, 46.7]], dtype=object)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>now, you can simply just access elements like you would in an array</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="mi">3000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dataframe-iteration">
+<h2>dataframe iteration<a class="headerlink" href="#dataframe-iteration" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">ins                  3000</span>
+<span class="sd">type_entity        Région</span>
+<span class="sd">entity           Wallonie</span>
+<span class="sd">period         01/01/2019</span>
+<span class="sd">value               215.0</span>
+<span class="sd">Name: 0, dtype: object</span>
+<span class="sd">ins                     20002</span>
+<span class="sd">type_entity          Province</span>
+<span class="sd">entity         Brabant Wallon</span>
+<span class="sd">period             01/01/2019</span>
+<span class="sd">value                   367.9</span>
+<span class="sd">Name: 1, dtype: object</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extracting-rows-columns">
+<h2>extracting rows &amp; columns<a class="headerlink" href="#extracting-rows-columns" title="Permalink to this headline">¶</a></h2>
+<p>the bracket indexing operator is one way to extract certain columns from a df</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;entity&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     entity  value</span>
+<span class="sd">0    Wallonie        215.0</span>
+<span class="sd">1    Brabant Wallon  367.9</span>
+<span class="sd">2    Nivelles        367.9</span>
+<span class="sd">3    Beauvechain     187.8</span>
+<span class="sd">4    Braine-l&#39;Alleud 764.8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>you can achieve the same result by using the loc function. loc is a veryyyy versatile function that can help you in a lot of accessing and extracting tasks</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;entity&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     entity  value</span>
+<span class="sd">0    Wallonie        215.0</span>
+<span class="sd">1    Brabant Wallon  367.9</span>
+<span class="sd">2    Nivelles        367.9</span>
+<span class="sd">3    Beauvechain     187.8</span>
+<span class="sd">4    Braine-l&#39;Alleud 764.8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note the difference is the return types when you use brackets and when you use double brackets</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;entity&#39;</span><span class="p">])</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">Series</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;entity&#39;</span><span class="p">]])</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</pre></div>
+</div>
+<p>as seen before you can access columns through df[‘colname’] You can also access rows by using slicing operations</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     ins     type_entity     entity          period      value</span>
+<span class="sd">0    3000    Région          Wallonie        01/01/2019      215.0</span>
+<span class="sd">1    20002   Province            Brabant Wallon      01/01/2019      367.9</span>
+<span class="sd">2    25000   Arrondissement  Nivelles        01/01/2019      367.9</span>
+
+<span class="sd">same using iloc:</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-cleaning">
+<h2>data cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
+<p>isnull function will figure out if there are any missing values in the dataframe, and will then sum up the total for each column</p>
+<div class="section" id="df-isnull">
+<h3>df.isnull()<a class="headerlink" href="#df-isnull" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">ins            0</span>
+<span class="sd">type_entity    0</span>
+<span class="sd">entity         0</span>
+<span class="sd">period         0</span>
+<span class="sd">value          0</span>
+<span class="sd">dtype: int64</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dealing-with-missing-values">
+<h3>dealing with missing values<a class="headerlink" href="#dealing-with-missing-values" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>df.dropna()</strong>: drop all or some of the rows that have missing values</p></li>
+<li><p><strong>df.fillna()</strong>: replace the rows that have missing values with that you pass in</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="kaggle">
+<h2>kaggle<a class="headerlink" href="#kaggle" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.kaggle.com/competitions">https://www.kaggle.com/competitions</a></p>
+<div class="section" id="creating-kaggle-submissions-csv-s">
+<h3>creating kaggle submissions CSV’s<a class="headerlink" href="#creating-kaggle-submissions-csv-s" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">15</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">]]</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="c1"># panda numpy will be deprecated</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">[[ 0 10]</span>
+<span class="sd"> [ 1 15]</span>
+<span class="sd"> [ 2 20]]</span>
+<span class="sd">&lt;ipython-input-37-27b9a7fe8db6&gt;:5: FutureWarning: The pandas.np module is deprecated and will be removed from pandas in a future version. Import numpy directly instead</span>
+<span class="sd">  results = pd.np.array(results)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">firstRow</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;pred&#39;</span><span class="p">]]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;result.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">firstRow</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-pandas-with-scikit-learn">
+<h3>use pandas with scikit-learn<a class="headerlink" href="#use-pandas-with-scikit-learn" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=ylRlGCtAtiE&amp;list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y&amp;index=22">https://www.youtube.com/watch?v=ylRlGCtAtiE&amp;list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y&amp;index=22</a></p>
+</div>
+</div>
+<div class="section" id="function-list">
+<h2>function list<a class="headerlink" href="#function-list" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><cite>drop()</cite> - removes the column or row that you pass in (You also have to specify the axis)</p></li>
+<li><p><cite>agg()</cite> - aggregate function lets you compute summary statistics about each group</p></li>
+<li><p><cite>apply()</cite> - Lets you apply a specific function to any/all elements in a Dataframe or Series</p></li>
+<li><p><cite>get_dummies()</cite> - Helpful for turning categorical data into one hot vectors.</p></li>
+<li><p><cite>drop_duplicates()</cite> - Lets you remove identical rows</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
@@ -561,61 +844,6 @@ we must add 1 to this value if we want row ‘c’ as well</p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 </div>
 </div>
