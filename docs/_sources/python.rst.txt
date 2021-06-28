@@ -2,6 +2,55 @@
 python
 ######
 *******
+pycharm
+*******
+
+output tweaks
+=============
+
+- run code selection: `Alt + Shift + E`
+
+matplotlib
+----------
+
+
+.. code-block:: python
+
+   plt.show()
+
+numpy
+-----
+
+https://numpy.org/doc/stable/reference/generated/numpy.set_printoptions.html
+
+.. code-block:: python
+
+   desired_width = 640
+   np.set_printoptions(linewidth=desired_width)
+
+pandas
+------
+
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.set_option.html
+
+.. code-block:: python
+
+  pd.set_option('display.max_columns', 10)
+  # >>> df.to_html('filename.html')
+  pd.set_option('display.max_rows', 10)
+  pd.set_option('display.width', desired_width)  # make output in console wider
+
+ipynb
+-----
+
+convert them pesky ipynb files to markdown files 
+
+.. code-block:: bash
+
+   find -type f -iname '*.ipynb' -print0 | xargs -0 -n1 -P4 jupyter nbconvert --to markdown
+
+
+*******
 library
 *******
 
@@ -10,6 +59,30 @@ toolkit
 
 first collection
 ----------------
+
+initiating stuff
+
+.. code-block:: python
+
+   def initiate_numpy(console_width=640):
+       # https://numpy.org/doc/stable/reference/generated/numpy.set_printoptions.html
+       try:
+           import numpy as np
+           np.set_printoptions(linewidth=console_width)
+           return np
+       except ImportError:
+           print("numpy not installed")
+
+   def initiate_pandas(max_rows=10, max_cols=10, console_width=640):
+       try:
+           import pandas as pd
+           pd.set_option('display.max_columns', max_cols)
+           pd.set_option('display.max_rows', max_rows)
+           pd.set_option('display.width', console_width)  # make output in console wider
+           return pd
+       except ImportError:
+           print("pandas not installed")
+
 
 .. code-block:: python
 
@@ -4509,3 +4582,4 @@ This is far more readable than:
 .. include:: cli_parsing.rst
 .. include:: numpy.rst
 .. include:: pandas.rst
+.. include:: plotting.rst

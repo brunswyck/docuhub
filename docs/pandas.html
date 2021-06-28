@@ -209,129 +209,13 @@
 <span class="n">schema_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/survey_results_schema.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;Column&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="basics">
-<h2>basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chipo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;chipotle.tsv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">chipo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;chipotle.tsv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;pandas_tutorial_read.csv&#39;</span><span class="p">)</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
-<span class="n">df</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># dimensions df</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-<span class="c1"># [&#39;ins&#39;, &#39;type_entity&#39;, &#39;entity&#39;, &#39;period&#39;, &#39;value&#39;]</span>
-
-<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv&#39;</span>
+<span class="n">chipo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<table class="colwidths-given docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 40%" />
-<col style="width: 40%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>ins</p></th>
-<th class="head"><p>value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>count</p></td>
-<td><p>291.000000</p></td>
-<td><p>291.000000</p></td>
-</tr>
-<tr class="row-odd"><td><p>mean</p></td>
-<td><p>64080.941581</p></td>
-<td><p>319.149828</p></td>
-</tr>
-<tr class="row-even"><td><p>std</p></td>
-<td><p>19262.087619</p></td>
-<td><p>428.431706</p></td>
-</tr>
-<tr class="row-odd"><td><p>min</p></td>
-<td><p>3000.000000</p></td>
-<td><p>24.500000</p></td>
-</tr>
-<tr class="row-even"><td><p>25%</p></td>
-<td><p>55019.500000</p></td>
-<td><p>79.400000</p></td>
-</tr>
-<tr class="row-odd"><td><p>50%</p></td>
-<td><p>62096.000000</p></td>
-<td><p>186.000000</p></td>
-</tr>
-<tr class="row-even"><td><p>75%</p></td>
-<td><p>83020.500000</p></td>
-<td><p>323.700000</p></td>
-</tr>
-<tr class="row-odd"><td><p>max</p></td>
-<td><p>93090.000000</p></td>
-<td><p>3518.600000</p></td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="c1"># max accross all columns</span>
-</pre></div>
-</div>
-<table class="colwidths-given docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>ins</p></th>
-<th class="head"><p>93090</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>type_entity</p></td>
-<td><p>Région</p></td>
-</tr>
-<tr class="row-odd"><td><p>entity</p></td>
-<td><p>Étalle</p></td>
-</tr>
-<tr class="row-even"><td><p>period</p></td>
-<td><p>01/01/2019</p></td>
-</tr>
-<tr class="row-odd"><td><p>value</p></td>
-<td><p>3518.6</p></td>
-</tr>
-<tr class="row-even"><td><p>dtype: object</p></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>  <span class="c1"># max 1 column</span>
-<span class="mf">3518.6</span>
-
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="mf">319.1498281786941</span>
-
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span> <span class="c1"># id row index of max value</span>
-<span class="mi">144</span>
-
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="c1"># times a value occurs in column</span>
-
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">49.4     3</span>
-<span class="sd">292.3    2</span>
-<span class="sd">642.8    2</span>
-<span class="sd">30.6     2</span>
-<span class="sd">36.4     2</span>
-<span class="sd">      ..</span>
-<span class="sd">144.8    1</span>
-<span class="sd">38.1     1</span>
-<span class="sd">144.1    1</span>
-<span class="sd">242.5    1</span>
-<span class="sd">764.8    1</span>
-<span class="sd">Name: value, Length: 280, dtype: int64</span>
-<span class="sd">&quot;&quot;&quot;</span>
-</pre></div>
 </div>
 </div>
 <div class="section" id="access-values">
@@ -566,6 +450,59 @@ we must add 1 to this value if we want row ‘c’ as well</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="extracting-rows-columns">
+<h3>extracting rows &amp; columns<a class="headerlink" href="#extracting-rows-columns" title="Permalink to this headline">¶</a></h3>
+<p>the bracket indexing operator is one way to extract certain columns from a df</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;entity&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     entity  value</span>
+<span class="sd">0    Wallonie        215.0</span>
+<span class="sd">1    Brabant Wallon  367.9</span>
+<span class="sd">2    Nivelles        367.9</span>
+<span class="sd">3    Beauvechain     187.8</span>
+<span class="sd">4    Braine-l&#39;Alleud 764.8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>you can achieve the same result by using the loc function. loc is a very versatile function that can help you in a lot of accessing and extracting tasks</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;entity&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     entity  value</span>
+<span class="sd">0    Wallonie        215.0</span>
+<span class="sd">1    Brabant Wallon  367.9</span>
+<span class="sd">2    Nivelles        367.9</span>
+<span class="sd">3    Beauvechain     187.8</span>
+<span class="sd">4    Braine-l&#39;Alleud 764.8</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note the difference is the return types when you use brackets and when you use double brackets</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;entity&#39;</span><span class="p">])</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">Series</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;entity&#39;</span><span class="p">]])</span>
+<span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
+</pre></div>
+</div>
+<p>as seen before you can access columns through df[‘colname’] You can also access rows by using slicing operations</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     ins     type_entity     entity          period      value</span>
+<span class="sd">0    3000    Région          Wallonie        01/01/2019      215.0</span>
+<span class="sd">1    20002   Province            Brabant Wallon      01/01/2019      367.9</span>
+<span class="sd">2    25000   Arrondissement  Nivelles        01/01/2019      367.9</span>
+
+<span class="sd">same using iloc:</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="sorting">
 <h2>sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">¶</a></h2>
@@ -641,6 +578,723 @@ we must add 1 to this value if we want row ‘c’ as well</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="dataframe-iteration">
+<h2>dataframe iteration<a class="headerlink" href="#dataframe-iteration" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">ins                  3000</span>
+<span class="sd">type_entity        Région</span>
+<span class="sd">entity           Wallonie</span>
+<span class="sd">period         01/01/2019</span>
+<span class="sd">value               215.0</span>
+<span class="sd">Name: 0, dtype: object</span>
+<span class="sd">ins                     20002</span>
+<span class="sd">type_entity          Province</span>
+<span class="sd">entity         Brabant Wallon</span>
+<span class="sd">period             01/01/2019</span>
+<span class="sd">value                   367.9</span>
+<span class="sd">Name: 1, dtype: object</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="data-sources">
+<h2>data sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>data sources:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://www.kaggle.com/">kaggle</a></p></li>
+<li><p><a class="reference external" href="http://www.drivedata.io/">drivedata</a></p></li>
+<li><p><a class="reference external" href="https://www.crowdanalytix.com/">crowdanalytix</a></p></li>
+<li><p><a class="reference external" href="https://www.innocentive.com/">innocentive</a></p></li>
+<li><p><a class="reference external" href="https://codalab.org/">codalab</a></p></li>
+<li><p><a class="reference external" href="https://crowdai.com/">crowdai</a></p></li>
+<li><p>sql</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Toolkit</span>
+<span class="kn">import</span> <span class="nn">tables</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">numpy.loadtxt</span>
+<span class="sd">numpy.genfromtxt</span>
+<span class="sd">pandas.read_csv</span>
+<span class="sd">pandas.read_pickle</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="n">pd</span> <span class="o">=</span> <span class="n">Toolkit</span><span class="o">.</span><span class="n">initiate_pandas</span><span class="p">()</span>
+<span class="n">np</span> <span class="o">=</span> <span class="n">Toolkit</span><span class="o">.</span><span class="n">initiate_numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DataFrame</span><span class="o">.</span><span class="n">at</span>   <span class="c1"># Access a single value for a row/column label pair.</span>
+<span class="n">DataFrame</span><span class="o">.</span><span class="n">loc</span>  <span class="c1"># Access a group of rows and columns by label(s).</span>
+<span class="n">DataFrame</span><span class="o">.</span><span class="n">iloc</span> <span class="c1"># Access a group of rows and columns by integer position</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;pandas_tutorial_read.csv&#39;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># dimensions df</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="c1"># [&#39;ins&#39;, &#39;type_entity&#39;, &#39;entity&#39;, &#39;period&#39;, &#39;value&#39;]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>ins</p></th>
+<th class="head"><p>value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>count</p></td>
+<td><p>291.000000</p></td>
+<td><p>291.000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>mean</p></td>
+<td><p>64080.941581</p></td>
+<td><p>319.149828</p></td>
+</tr>
+<tr class="row-even"><td><p>std</p></td>
+<td><p>19262.087619</p></td>
+<td><p>428.431706</p></td>
+</tr>
+<tr class="row-odd"><td><p>min</p></td>
+<td><p>3000.000000</p></td>
+<td><p>24.500000</p></td>
+</tr>
+<tr class="row-even"><td><p>25%</p></td>
+<td><p>55019.500000</p></td>
+<td><p>79.400000</p></td>
+</tr>
+<tr class="row-odd"><td><p>50%</p></td>
+<td><p>62096.000000</p></td>
+<td><p>186.000000</p></td>
+</tr>
+<tr class="row-even"><td><p>75%</p></td>
+<td><p>83020.500000</p></td>
+<td><p>323.700000</p></td>
+</tr>
+<tr class="row-odd"><td><p>max</p></td>
+<td><p>93090.000000</p></td>
+<td><p>3518.600000</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="c1"># max accross all columns</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ins</p></th>
+<th class="head"><p>93090</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>type_entity</p></td>
+<td><p>Région</p></td>
+</tr>
+<tr class="row-odd"><td><p>entity</p></td>
+<td><p>Étalle</p></td>
+</tr>
+<tr class="row-even"><td><p>period</p></td>
+<td><p>01/01/2019</p></td>
+</tr>
+<tr class="row-odd"><td><p>value</p></td>
+<td><p>3518.6</p></td>
+</tr>
+<tr class="row-even"><td><p>dtype: object</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>  <span class="c1"># max 1 column</span>
+<span class="mf">3518.6</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="mf">319.1498281786941</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span> <span class="c1"># id row index of max value</span>
+<span class="mi">144</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="c1"># times a value occurs in column</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">49.4     3</span>
+<span class="sd">292.3    2</span>
+<span class="sd">642.8    2</span>
+<span class="sd">30.6     2</span>
+<span class="sd">36.4     2</span>
+<span class="sd">      ..</span>
+<span class="sd">144.8    1</span>
+<span class="sd">38.1     1</span>
+<span class="sd">144.1    1</span>
+<span class="sd">242.5    1</span>
+<span class="sd">764.8    1</span>
+<span class="sd">Name: value, Length: 280, dtype: int64</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-dataframes">
+<h2>creating dataframes<a class="headerlink" href="#creating-dataframes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">[[2.73096936e-01 6.65136576e-04 3.71069955e-01 9.37296738e-01 6.96564364e-01]</span>
+<span class="sd"> [8.67359198e-01 9.41641736e-02 3.50042124e-01 6.20751307e-01 4.89966195e-01]</span>
+<span class="sd"> [3.36140496e-01 5.49812902e-01 4.28645470e-01 9.15147038e-02 8.80548474e-01]</span>
+<span class="sd"> [1.11154412e-01 9.48011218e-03 5.72797076e-01 3.04287648e-01 2.99374900e-01]</span>
+<span class="sd"> [5.38842443e-01 9.00000326e-01 3.33998205e-01 4.07660159e-01 5.46279766e-01]]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">])</span>  <span class="c1"># use this</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">          A         B         C         D         E</span>
+<span class="sd">0  0.273097  0.000665  0.371070  0.937297  0.696564</span>
+<span class="sd">1  0.867359  0.094164  0.350042  0.620751  0.489966</span>
+<span class="sd">2  0.336140  0.549813  0.428645  0.091515  0.880548</span>
+<span class="sd">3  0.111154  0.009480  0.572797  0.304288  0.299375</span>
+<span class="sd">4  0.538842  0.900000  0.333998  0.407660  0.546280</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">dtype</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="mi">20</span><span class="p">))]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Sam&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Alex&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;James&quot;</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># [(1, &#39;Sam&#39;) (2, &#39;Alex&#39;) (3, &#39;James&#39;)]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   A      B</span>
+<span class="sd">0  1    Sam</span>
+<span class="sd">1  2   Alex</span>
+<span class="sd">2  3  James</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Sam&quot;</span><span class="p">,</span> <span class="s2">&quot;Alex&quot;</span><span class="p">,</span> <span class="s2">&quot;James&quot;</span><span class="p">]}</span>  <span class="c1"># and use this</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="s2">&quot;Sam&quot;</span><span class="p">},</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="s2">&quot;Alex&quot;</span><span class="p">},{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="s2">&quot;James&quot;</span><span class="p">}]</span>  <span class="c1"># too messy input</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   A      B</span>
+<span class="sd">0  1    Sam</span>
+<span class="sd">1  2   Alex</span>
+<span class="sd">2  3  James</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="saving-serializing">
+<h2>saving &amp; serializing<a class="headerlink" href="#saving-serializing" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="save-to-csv">
+<h3>save to csv<a class="headerlink" href="#save-to-csv" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">random_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100000</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">random_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">          A         B         C         D</span>
+<span class="sd">0  0.545970  0.968191  0.789530  0.904513</span>
+<span class="sd">1  0.870854  0.032239  0.339050  0.212382</span>
+<span class="sd">2  0.140568  0.557831  0.333088  0.994743</span>
+<span class="sd">3  0.271945  0.573094  0.299130  0.497402</span>
+<span class="sd">4  0.306711  0.849376  0.953448  0.70213</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;files/csv/save.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">float_format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%0.4f</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="write-to-csv">
+<h3>write to csv<a class="headerlink" href="#write-to-csv" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">firstRow</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;pred&#39;</span><span class="p">]]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;result.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">firstRow</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pickle">
+<h3>pickle<a class="headerlink" href="#pickle" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># pickle = much faster</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s2">&quot;files/pkl/save.pkl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hdf">
+<h3>hdf<a class="headerlink" href="#hdf" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># conda install pytables</span>
+<span class="c1"># https://anaconda.org/conda-forge/pytables</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_hdf</span><span class="p">(</span><span class="s2">&quot;files/hdf/save.hdf&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;table&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="csv">
+<h3>csv<a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">astronaut_csv</span> <span class="o">=</span> <span class="s2">&quot;files/csv/astronauts.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">astronaut_csv</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">               Name    Year  Group   Status Birth Date  ... Space Walks Space Walks (hr)                                           Missions Death Date Death Mission</span>
+<span class="sd">0   Joseph M. Acaba  2004.0   19.0   Active  5/17/1967  ...           2             13.0             STS-119 (Discovery), ISS-31/32 (Soyuz)        NaN           NaN</span>
+<span class="sd">1    Loren W. Acton     NaN    NaN  Retired   3/7/1936  ...           0              0.0                              STS 51-F (Challenger)        NaN           NaN</span>
+<span class="sd">2  James C. Adamson  1984.0   10.0  Retired   3/3/1946  ...           0              0.0               STS-28 (Columbia), STS-43 (Atlantis)        NaN           NaN</span>
+<span class="sd">3   Thomas D. Akers  1987.0   12.0  Retired  5/20/1951  ...           4             29.0  STS-41 (Discovery), STS-49 (Endeavor), STS-61 ...        NaN           NaN</span>
+<span class="sd">4       Buzz Aldrin  1963.0    3.0  Retired  1/20/1930  ...           2              8.0                               Gemini 12, Apollo 11        NaN           NaN</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;files/csv/astronauts.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">float_format</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%0.4f</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="inspecting-data">
+<h2>inspecting data<a class="headerlink" href="#inspecting-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># random rows</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span> <span class="c1"># useful for troubleshooting your data with quick glance over</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># [5 rows x 19 columns]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>  <span class="c1"># correlations between columns</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<span class="n">df</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>  <span class="c1"># get max for every column</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="labeling-ordering">
+<h2>labeling &amp; ordering<a class="headerlink" href="#labeling-ordering" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Toolkit</span>
+
+<span class="n">np</span> <span class="o">=</span> <span class="n">Toolkit</span><span class="o">.</span><span class="n">initiate_numpy</span><span class="p">()</span>
+<span class="n">pd</span> <span class="o">=</span> <span class="n">Toolkit</span><span class="o">.</span><span class="n">initiate_pandas</span><span class="p">(</span><span class="n">max_cols</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># https://www.kaggle.com/dgomonov/new-york-city-airbnb-open-data</span>
+<span class="n">airbnb_data</span> <span class="o">=</span> <span class="s2">&quot;files/csv/AB_NYC_2019.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">airbnb_data</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="mi">5022</span><span class="p">])</span>
+
+<span class="n">df3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;room_type&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># index becomes the room_type</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>  <span class="c1"># Index([&#39;Entire home/apt&#39;, &#39;Private room&#39;, &#39;Shared room&#39;], dtype=&#39;object&#39;, name=&#39;room_type&#39;)</span>
+<span class="n">df_workaround</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;room_type&quot;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># don&#39;t set as id</span>
+<span class="c1"># print(df_workaround)</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">df3</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df3</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot; After setting an index use sort!! = better performance&quot;&quot;&quot;</span>
+<span class="n">df3</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;host_name&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;host_name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;neighbourhood_group&quot;</span><span class="p">,</span> <span class="s2">&quot;host_name&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">neighbourhood_group</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>  <span class="c1"># [&#39;Brooklyn&#39; &#39;Manhattan&#39; &#39;Queens&#39; &#39;Staten Island&#39; &#39;Bronx&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">neighbourhood_group</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="section" id="rank">
+<h3>rank<a class="headerlink" href="#rank" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot; Rank - what to do when you have equal values in a column - aka sorting with collision detection &quot;&quot;&quot;</span>
+<span class="n">df_price</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_price</span><span class="p">[[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;host_name&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">df_price</span><span class="p">[</span><span class="s2">&quot;price_rank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_price</span><span class="o">.</span><span class="n">price</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;average&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># rank based on avg</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_price</span><span class="p">[[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;host_name&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">,</span> <span class="s2">&quot;price_rank&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="slicing-filtering">
+<h3>slicing &amp; filtering<a class="headerlink" href="#slicing-filtering" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># slicing columns</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;host_name&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">host_name</span><span class="p">)</span>
+<span class="c1"># multiple columns</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;host_name&quot;</span><span class="p">,</span> <span class="s2">&quot;neighbourhood_group&quot;</span><span class="p">]])</span>
+
+<span class="c1"># filtering on rows (mask filtering)</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;host_name&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Taz&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>  <span class="c1"># 6</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">host_name</span> <span class="o">==</span> <span class="s2">&quot;Taz&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">quick_and_cheap</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">price</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">minimum_nights</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quick_and_cheap</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>  <span class="c1"># 12129</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">quick_and_cheap</span><span class="p">])</span>
+
+<span class="n">reviews_consistent</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="o">.</span><span class="n">reviews_per_month</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">number_of_reviews</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reviews_consistent</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># not that you should but you can do it with numpy too</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">((</span><span class="n">df</span><span class="o">.</span><span class="n">reviews_per_month</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">number_of_reviews</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># logical inversion (will now contain inconsistent reviews)</span>
+<span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filtering-with-loc">
+<h3>filtering with loc<a class="headerlink" href="#filtering-with-loc" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;filtering with loc&quot;&quot;&quot;</span>
+<span class="c1"># eg give me just the name of app with consistent reviews</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;host_name&quot;</span><span class="p">]])</span>
+<span class="c1"># use colon &#39;:&#39; if you want everything</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;host_name&quot;</span><span class="p">]])</span>  <span class="c1"># all rows</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>  <span class="c1"># all columns for consistent reviews</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filtering-based-on-index-with-iloc">
+<h3>filtering based on index with iloc<a class="headerlink" href="#filtering-based-on-index-with-iloc" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># just row 0 &amp; all the columns</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span>  <span class="c1"># all columns row 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># Clean &amp; quiet apt home by the park</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">:])</span>  <span class="c1"># all columns row 1 - 3, all cols starting with 6th col</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="provided-mask-helpers">
+<h3>provided mask helpers<a class="headerlink" href="#provided-mask-helpers" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># between</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">price</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># isin</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">price</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">]),</span> <span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>  <span class="c1"># is price 100 or 200</span>
+<span class="c1"># you can apply mask on entire df not just column</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span> <span class="o">==</span> <span class="s2">&quot;John&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">df</span> <span class="o">==</span> <span class="s2">&quot;John&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">())</span>  <span class="c1"># any column that contains &quot;john&quot;</span>
+<span class="c1"># now get rows! by changing default axis</span>
+<span class="nb">print</span><span class="p">((</span><span class="n">df</span> <span class="o">==</span> <span class="s2">&quot;John&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># any column that contains &quot;john&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="views-vs-copy">
+<h3>views vs copy<a class="headerlink" href="#views-vs-copy" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># a common pitfall is to not understand this difference between views &amp; copies</span>
+<span class="n">df_copy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_copy</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;TESTING&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_copy</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="c1"># SettingWithCopyWarning: A value is trying to be set on a copy of a slice from a DataFrame</span>
+<span class="c1"># https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_copy</span><span class="o">.</span><span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;TESTING2&quot;</span>  <span class="c1"># no warning -&gt; loc returns a view &amp; directly affects underlying df</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_copy</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">df_copy</span><span class="p">[</span><span class="n">df_copy</span><span class="o">.</span><span class="n">host_name</span> <span class="o">==</span> <span class="s2">&quot;John&quot;</span><span class="p">][</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;oh no&quot;</span>  <span class="c1"># name is not updated! -&gt; you are not affecting original df but a copy</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_copy</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="data-cleaning">
+<h2>data cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
+<p>isnull function will figure out if there are any missing values in the dataframe, and will then sum up the total for each column</p>
+<div class="section" id="df-isnull">
+<h3>df.isnull()<a class="headerlink" href="#df-isnull" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">ins            0</span>
+<span class="sd">type_entity    0</span>
+<span class="sd">entity         0</span>
+<span class="sd">period         0</span>
+<span class="sd">value          0</span>
+<span class="sd">dtype: int64</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dealing-with-missing-values">
+<h3>dealing with missing values<a class="headerlink" href="#dealing-with-missing-values" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>df.dropna()</strong>: drop all or some of the rows that have missing values</p></li>
+<li><p><strong>df.fillna()</strong>: replace the rows that have missing values with that you pass in</p></li>
+</ul>
+</div>
+<div class="section" id="imputation">
+<h3>imputation<a class="headerlink" href="#imputation" title="Permalink to this headline">¶</a></h3>
+<p>convert string dates to Date format</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># filling in missing/corrupt values in your dataframe. it shouldn&#39;t affect your final result</span>
+<span class="n">dfo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;files/csv/train.csv&quot;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>  <span class="c1"># allow load all in to determine dtype</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dfo</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="c1"># plt.hist(df.Sales)</span>
+<span class="c1"># plt.show()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dfo</span><span class="p">[</span><span class="n">dfo</span><span class="o">.</span><span class="n">Open</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># masked array with stores that are open (removing sunday closed outlier)</span>
+<span class="c1"># plt.hist(df.Sales)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># checking row count</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-transform">
+<h3>using transform<a class="headerlink" href="#using-transform" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># transform -&gt; like apply but has to return a series with same size as the input</span>
+<span class="c1"># https://stackoverflow.com/questions/27517425/apply-vs-transform-on-a-group-object</span>
+<span class="c1"># instead of NaN fill with mean value of the series</span>
+<span class="n">test_fix</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Sales</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+<span class="c1"># sales are heavily dependant on day of the week, so use that intelligence with groupby cuts</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="replacing-tresholding">
+<h3>replacing &amp; tresholding<a class="headerlink" href="#replacing-tresholding" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># dealing with NaN&#39;s -&gt; # get rid of em or put in sensible values</span>
+
+<span class="c1"># you can see that cols with non-null rows have different counts</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>  <span class="c1"># gives you how many rows you would have when no NaN values</span>
+<span class="c1"># you can say only drop it when a row has at least 3 NaN&#39;s in it</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">thresh</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+<span class="c1"># only drop events that have &quot;last_review&quot; = Nan</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;last_review&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>  <span class="c1"># by default we operate on row by row basis</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>  <span class="c1"># you now dropped the entire review column cuz it had a NaN in it :)</span>
+<span class="c1"># df.fillna(0)</span>
+<span class="c1"># if eg you have number_of_items = 0 -&gt; you want total_purchased to be 0 instead of NaN</span>
+<span class="sd">&quot;&quot;&quot; df.fillna(0) # replaces every nan with a 0&quot;&quot;&quot;</span>
+<span class="c1"># for time-series data you can use method like backfill forwardfill (eg fill with previous finite value)</span>
+
+<span class="c1"># generic replace</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Jono&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># on every row and every column by default</span>
+<span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;Jono&quot;</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># John is on 1st row, set a replacement limit</span>
+<span class="n">df</span><span class="o">.</span><span class="n">host_name</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s2">&quot;John&quot;</span><span class="p">:</span> <span class="s2">&quot;Jono&quot;</span><span class="p">,</span> <span class="s2">&quot;James&quot;</span><span class="p">:</span> <span class="s2">&quot;Jamey&quot;</span><span class="p">})</span>  <span class="c1"># on every row and every column by default</span>
+
+<span class="c1"># thresholding - eg enforce a min/max value to keep outliers out of a plot</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># plt.hist(df.price, log=True)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">price</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">upper</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_copy</span><span class="o">.</span><span class="n">price</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># identical to .clip(upper=1000)</span>
+<span class="c1"># plt.hist(df_copy.price)</span>
+<span class="c1"># plt.show()  # todo: remove # if you want to see plot</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">astro_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;files/csv/astronauts.csv&quot;</span><span class="p">)</span>
+<span class="n">astro_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># timeseries</span>
+<span class="c1"># modify column type (BirthDate is a timeseries read as string right now)</span>
+<span class="n">birthdate</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">astro_df</span><span class="p">[</span><span class="s2">&quot;Birth Date&quot;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%m/</span><span class="si">%d</span><span class="s2">/%Y&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">birthdate</span><span class="p">)</span>  <span class="c1"># Name: Birth Date, Length: 357, dtype: datetime64[ns]</span>
+<span class="c1"># now we can work with it (no need to manipulate strings), eg use year</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">birthdate</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+<span class="n">zarya</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;1998-11-20&quot;</span><span class="p">)</span>  <span class="c1"># 1st module ISS</span>
+<span class="c1"># how old were astronauts when zarya was deployed?</span>
+<span class="n">astro_df</span><span class="p">[</span><span class="s2">&quot;age_at_zarya&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">zarya</span> <span class="o">-</span> <span class="n">birthdate</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+    <span class="s1">&#39;timedelta64[Y]&#39;</span><span class="p">)</span>  <span class="c1"># zarya - birthdate = seconds, now turned into years</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">astro_df</span><span class="p">)</span>
+<span class="n">astro_df</span><span class="p">[</span><span class="s2">&quot;birth&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">birthdate</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">astro_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="categoricals">
+<h2>categoricals<a class="headerlink" href="#categoricals" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># info can be used by other libraries, provide explicit sorting order to improve speed on group categories</span>
+<span class="c1"># eg no use sorting military rank alphabetically</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">astro_df</span><span class="p">[</span><span class="s2">&quot;Military Rank&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="c1"># [nan &#39;Colonel&#39; &#39;Lieutenant Colonel&#39; &#39;Captain&#39; &#39;Major General&#39; &#39;Commander&#39; &#39;Lieutenant Commander&#39; &#39;Brigadier General&#39; &#39;Major&#39; &#39;Lieutenant General&#39; &#39;Chief Warrant Officer&#39; &#39;Rear Admiral&#39; &#39;Vice Admiral&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">astro_df</span><span class="p">[</span><span class="s2">&quot;Military Rank&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>  <span class="c1"># object</span>
+<span class="c1"># turn military into a categorical with &quot;category&quot;</span>
+<span class="n">astro_df</span><span class="p">[</span><span class="s2">&quot;Military Rank&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+<span class="n">astro_df</span><span class="p">[</span><span class="s2">&quot;Military Rank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">astro_df</span><span class="p">[</span><span class="s2">&quot;Military Rank&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>  <span class="c1"># overwrite orginal mil rank</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">astro_df</span><span class="p">[</span><span class="s2">&quot;Military Rank&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>  <span class="c1"># category -&gt; no longer a generic object</span>
+</pre></div>
+</div>
+<div class="section" id="numeric-string-conversion">
+<h3>numeric/string conversion<a class="headerlink" href="#numeric-string-conversion" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">astro_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># always convert a string to float first b4 converting to an int</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">astro_df</span><span class="o">.</span><span class="n">age_at_zarya</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">))</span>  <span class="c1"># first astype(&quot;str&quot;) for demo only</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="removing-cols-or-rows">
+<h3>removing cols or rows<a class="headerlink" href="#removing-cols-or-rows" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df4</span> <span class="o">=</span> <span class="n">astro_df</span><span class="p">[[</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;Group&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Group&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># if you want to drop a row instead, change label to a #</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># instead of axis 1 you can solve it syntactically too</span>
+<span class="n">df5</span> <span class="o">=</span> <span class="n">astro_df</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df5</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">,</span> <span class="s2">&quot;Undergraduate Major&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-rows">
+<h3>adding rows<a class="headerlink" href="#adding-rows" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df4</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Senor Gringo&quot;</span><span class="p">,</span> <span class="s2">&quot;Year&quot;</span><span class="p">:</span> <span class="mi">2011</span><span class="p">,</span> <span class="s2">&quot;Group&quot;</span><span class="p">:</span> <span class="mf">20.0</span><span class="p">},</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="p">)</span>
+<span class="n">df_sis</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;El Gringo&quot;</span><span class="p">],</span> <span class="s2">&quot;Year&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2010</span><span class="p">],</span> <span class="s2">&quot;Group&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">20.0</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_sis</span><span class="p">)</span>
+<span class="c1"># glue two dataframes together with append</span>
+<span class="n">df4</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_sis</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-columns">
+<h3>adding columns<a class="headerlink" href="#adding-columns" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df4</span><span class="p">[</span><span class="s2">&quot;Extra Column&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>  <span class="c1"># set value for all rows in col</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="p">)</span>
+<span class="c1"># add col using assing</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">new_col</span><span class="o">=</span><span class="s2">&quot;hello&quot;</span><span class="p">))</span>  <span class="c1"># you can just use [] to add more</span>
+<span class="n">df4</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Firstname&quot;</span><span class="p">,</span>
+           <span class="n">df5</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># expand out to a dataframe so we can access 1st column</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transposing-data">
+<h3>transposing data<a class="headerlink" href="#transposing-data" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># transposing data: cols/rows -&gt; rows/cols</span>
+<span class="c1"># set index to name on copy</span>
+<span class="n">df11</span> <span class="o">=</span> <span class="n">df4</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Name&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df11</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                Firstname    Year  Group Extra Column</span>
+<span class="sd">Name</span>
+<span class="sd">Joseph M. Acaba    Joseph  2004.0   19.0      default</span>
+<span class="sd">Loren W. Acton      Loren     NaN    NaN      default</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">df22</span> <span class="o">=</span> <span class="n">df11</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># .T</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df22</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="apply-map-vectorized-functions">
+<h2>apply map &amp; vectorized functions<a class="headerlink" href="#apply-map-vectorized-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="apply">
+<h3>apply<a class="headerlink" href="#apply" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">eg: df.apply(np.square)</span>
+
+<span class="sd">Apply</span>
+
+<span class="sd">Apply: It is used when you want to apply a function along the axis of a dataframe</span>
+<span class="sd">accepts a Series whose index is either column (axis=0) or row (axis=1)</span>
+<span class="sd">apply works on df and series too</span>
+<span class="sd">map works on series only &quot;&quot;&quot;</span>
+
+<span class="n">random_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 2 decimal points</span>
+<span class="n">dfx</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">random_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dfx</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">dfx</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># apply needs vectorized function</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dfx</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">))</span>  <span class="c1"># abs makes neg number positive</span>
+
+
+<span class="c1"># apply requires a vectorized function!</span>
+<span class="c1"># def double_if_positive(x):</span>
+<span class="c1">#     if x &gt; 0:</span>
+<span class="c1">#         return 2 * x  # x here is an array, not a single number!</span>
+<span class="c1">#     return x</span>
+
+<span class="k">def</span> <span class="nf">double_if_positive</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># prevents you from mutating x datasource</span>
+    <span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*=</span> <span class="mi">2</span>  <span class="c1"># masked array  x[condition]</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfx</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">double_if_positive</span><span class="p">,</span>
+                <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>  <span class="c1"># raw=False -&gt; Panda Series so 1 col at a time, raw=True fast on simple calculations</span>
+<span class="c1"># ValueError: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="map">
+<h3>map<a class="headerlink" href="#map" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># map operates on Series &amp; uses dictionary input not array input</span>
+<span class="n">series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;Steve&quot;</span><span class="p">,</span> <span class="s2">&quot;Alex&quot;</span><span class="p">,</span> <span class="s2">&quot;Jess&quot;</span><span class="p">,</span> <span class="s2">&quot;Mark&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s2">&quot;Steve&quot;</span><span class="p">:</span> <span class="s2">&quot;Stephen&quot;</span><span class="p">}))</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">0    Stephen</span>
+<span class="sd">1        NaN</span>
+<span class="sd">2        NaN</span>
+<span class="sd">3        NaN</span>
+<span class="sd">dtype: object</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># unlike apply (needs vectorized function) this goes over each element 1 at a time</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">fn</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;I am </span><span class="si">{</span><span class="n">fn</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="vectorized-functions">
+<h3>vectorized functions<a class="headerlink" href="#vectorized-functions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vectorized functions</span>
+<span class="c1"># https://medium.com/codex/vectorizing-functions-in-numpy-d00dc5e58f65</span>
+<span class="c1"># import IPython.core.display as dp</span>
+<span class="c1"># dp.display((dfx, dfx.abs()))</span>
+<span class="n">sky_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;Obi-Wan Kenobi&quot;</span><span class="p">,</span> <span class="s2">&quot;Luke Skywalker&quot;</span><span class="p">,</span> <span class="s2">&quot;Han Solo&quot;</span><span class="p">,</span> <span class="s2">&quot;Leia Organa&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Luke Skywalker&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>  <span class="c1"># [&#39;Luke&#39;, &#39;Skywalker&#39;]</span>
+<span class="c1"># sky_series.split()  # series objes has no attr split, you have to str first!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sky_series</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+<span class="sd">&quot;&quot;&quot;[&#39;Luke&#39;, &#39;Skywalker&#39;]</span>
+<span class="sd">   0    [Obi-Wan, Kenobi]</span>
+<span class="sd">   1    [Luke, Skywalker]</span>
+<span class="sd">   2          [Han, Solo]</span>
+<span class="sd">   3       [Leia, Organa]</span>
+<span class="sd">   dtype: object&quot;&quot;&quot;</span>
+
+<span class="c1"># TURN THIS INTO A DATAFRAME WITH EXPAND</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sky_series</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sky_series</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;Skywalker&quot;</span><span class="p">))</span>  <span class="c1"># True for row 1d</span>
+</pre></div>
+</div>
+<p>print(sky_series.str.upper().str.split())  # always use str on a series</p>
+<blockquote>
+<div><p># user defined functions
+data2 = np.random.normal(10, 2, size=(100000, 2))
+df_extra1 = pd.DataFrame(data2, columns=[“x”, “y”])
+print(df_extra1)
+hypot = (df_extra1.x ** 2 + df_extra1.y ** 2) ** 0.5
+print(hypot)
+# non vectorized -&gt; takes 16 seconds
+“””
+def hypot_bad(x, y):</p>
+<blockquote>
+<div><p>return np.sqrt(x**2 + y**2)</p>
+</div></blockquote>
+<p>h1 = []
+for index, (x, y) in df_extra1.iterrows():</p>
+<blockquote>
+<div><p>h1.append(hypot_bad(x, y))</p>
+</div></blockquote>
+<p>print(h1[0])
+“””</p>
+<p># vectorized -&gt; quick 13ms
+def hypot_good(row_of_xs, row_of_ys):  # feed it with rows of data not element by element</p>
+<blockquote>
+<div><p>return np.sqrt(row_of_xs ** 2 + row_of_ys ** 2)</p>
+</div></blockquote>
+<p>h2 = hypot_good(df_extra1.x, df_extra1.y)
+print(h2[0])</p>
+</div></blockquote>
+</div>
+</div>
 <div class="section" id="grouping">
 <h2>grouping<a class="headerlink" href="#grouping" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="groupby">
@@ -689,138 +1343,648 @@ we must add 1 to this value if we want row ‘c’ as well</p>
 <span class="mi">3000</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="dataframe-iteration">
-<h2>dataframe iteration<a class="headerlink" href="#dataframe-iteration" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">break</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">ins                  3000</span>
-<span class="sd">type_entity        Région</span>
-<span class="sd">entity           Wallonie</span>
-<span class="sd">period         01/01/2019</span>
-<span class="sd">value               215.0</span>
-<span class="sd">Name: 0, dtype: object</span>
-<span class="sd">ins                     20002</span>
-<span class="sd">type_entity          Province</span>
-<span class="sd">entity         Brabant Wallon</span>
-<span class="sd">period             01/01/2019</span>
-<span class="sd">value                   367.9</span>
-<span class="sd">Name: 1, dtype: object</span>
-<span class="sd">&quot;&quot;&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="extracting-rows-columns">
-<h2>extracting rows &amp; columns<a class="headerlink" href="#extracting-rows-columns" title="Permalink to this headline">¶</a></h2>
-<p>the bracket indexing operator is one way to extract certain columns from a df</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;entity&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">     entity  value</span>
-<span class="sd">0    Wallonie        215.0</span>
-<span class="sd">1    Brabant Wallon  367.9</span>
-<span class="sd">2    Nivelles        367.9</span>
-<span class="sd">3    Beauvechain     187.8</span>
-<span class="sd">4    Braine-l&#39;Alleud 764.8</span>
-<span class="sd">&quot;&quot;&quot;</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>you can achieve the same result by using the loc function. loc is a veryyyy versatile function that can help you in a lot of accessing and extracting tasks</p>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;entity&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">     entity  value</span>
-<span class="sd">0    Wallonie        215.0</span>
-<span class="sd">1    Brabant Wallon  367.9</span>
-<span class="sd">2    Nivelles        367.9</span>
-<span class="sd">3    Beauvechain     187.8</span>
-<span class="sd">4    Braine-l&#39;Alleud 764.8</span>
-<span class="sd">&quot;&quot;&quot;</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Note the difference is the return types when you use brackets and when you use double brackets</p>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;entity&#39;</span><span class="p">])</span>
-<span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">series</span><span class="o">.</span><span class="n">Series</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;entity&#39;</span><span class="p">]])</span>
-<span class="n">pandas</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">DataFrame</span>
-</pre></div>
-</div>
-<p>as seen before you can access columns through df[‘colname’] You can also access rows by using slicing operations</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">     ins     type_entity     entity          period      value</span>
-<span class="sd">0    3000    Région          Wallonie        01/01/2019      215.0</span>
-<span class="sd">1    20002   Province            Brabant Wallon      01/01/2019      367.9</span>
-<span class="sd">2    25000   Arrondissement  Nivelles        01/01/2019      367.9</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Toolkit</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
 
-<span class="sd">same using iloc:</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,:]</span>
+<span class="n">np</span> <span class="o">=</span> <span class="n">Toolkit</span><span class="o">.</span><span class="n">initiate_numpy</span><span class="p">()</span>
+<span class="n">pd</span> <span class="o">=</span> <span class="n">Toolkit</span><span class="o">.</span><span class="n">initiate_pandas</span><span class="p">(</span><span class="n">max_cols</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;files/csv/train.csv&quot;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>  <span class="c1"># allow load all in to determine dtype</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="c1"># doublecheck dtypes with df.info()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+<span class="c1"># dates is still just dtype object:  2   Date           1017209 non-null  object</span>
+<span class="c1"># fix with parse_dates=[&quot;Date&quot;]</span>
+
+<span class="c1"># https://pandas.pydata.org/pandas-docs/stable/reference/groupby.html</span>
+<span class="n">dfg</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Store&quot;</span><span class="p">)</span>
+<span class="c1"># print(dfg.mean())</span>
+<span class="c1"># put store back into the dataframe with reset_index()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dfg</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">())</span>
+<span class="n">store_avg</span> <span class="o">=</span> <span class="n">dfg</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">store_avg</span> <span class="o">=</span> <span class="n">store_avg</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="c1"># https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">)</span>
+<span class="n">store_avg</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s2">&quot;Store&quot;</span><span class="p">,</span> <span class="s2">&quot;Sales&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;avg sale/store&quot;</span><span class="p">)</span>  <span class="c1"># s = point size</span>
+<span class="c1"># plt.show()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>  <span class="c1"># clear current figure</span>
+<span class="c1"># Multiple groups</span>
+<span class="c1"># group in multiple categories</span>
+<span class="n">store_day</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Store&quot;</span><span class="p">,</span> <span class="s2">&quot;DayOfWeek&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># instead of reset_index -&gt; as_index=False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">store_day</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># print(store_day.Store.unique())</span>
+<span class="k">for</span> <span class="n">store</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">Store</span><span class="o">.</span><span class="n">unique</span><span class="p">()[:</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="n">df_tmp</span> <span class="o">=</span> <span class="n">store_day</span><span class="p">[</span><span class="n">store_day</span><span class="o">.</span><span class="n">Store</span> <span class="o">==</span> <span class="n">store</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_tmp</span><span class="o">.</span><span class="n">DayOfWeek</span><span class="p">,</span> <span class="n">df_tmp</span><span class="o">.</span><span class="n">Sales</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Store </span><span class="si">{</span><span class="n">store</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Day of Week&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Avg Sales&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="c1"># plt.show()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="data-cleaning">
-<h2>data cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
-<p>isnull function will figure out if there are any missing values in the dataframe, and will then sum up the total for each column</p>
-<div class="section" id="df-isnull">
-<h3>df.isnull()<a class="headerlink" href="#df-isnull" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="section" id="multiple-groups">
+<h3>multiple groups<a class="headerlink" href="#multiple-groups" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># group in multiple categories</span>
+<span class="n">store_day</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Store&quot;</span><span class="p">,</span> <span class="s2">&quot;DayOfWeek&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># instead of reset_index -&gt; as_index=False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">store_day</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># print(store_day.Store.unique())</span>
+<span class="k">for</span> <span class="n">store</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">Store</span><span class="o">.</span><span class="n">unique</span><span class="p">()[:</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="n">df_tmp</span> <span class="o">=</span> <span class="n">store_day</span><span class="p">[</span><span class="n">store_day</span><span class="o">.</span><span class="n">Store</span> <span class="o">==</span> <span class="n">store</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_tmp</span><span class="o">.</span><span class="n">DayOfWeek</span><span class="p">,</span> <span class="n">df_tmp</span><span class="o">.</span><span class="n">Sales</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Store </span><span class="si">{</span><span class="n">store</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Day of Week&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Avg Sales&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="c1"># plt.show()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="continuous-grouping">
+<h3>continuous grouping<a class="headerlink" href="#continuous-grouping" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># eg cut sales made</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Sales&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (21734, 6)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Sales</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>  <span class="c1"># check up to where your sales go to know where you should cut</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">ins            0</span>
-<span class="sd">type_entity    0</span>
-<span class="sd">entity         0</span>
-<span class="sd">period         0</span>
-<span class="sd">value          0</span>
-<span class="sd">dtype: int64</span>
+<span class="sd">count    1.017209e+06</span>
+<span class="sd">mean     5.773819e+03</span>
+<span class="sd">std      3.849926e+03</span>
+<span class="sd">min      0.000000e+00</span>
+<span class="sd">25%      3.727000e+03</span>
+<span class="sd">50%      5.744000e+03</span>
+<span class="sd">75%      7.856000e+03</span>
+<span class="sd">max      4.155100e+04</span>
+<span class="sd">Name: Sales, dtype: float64</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mi">6000</span><span class="p">,</span> <span class="mi">8000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">50000</span><span class="p">]</span>
+<span class="n">cuts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Sales</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span>
+              <span class="n">include_lowest</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># cut is not attached to the dataframe itself.. , include sales with 0!</span>
+<span class="c1"># add cuts back into original dataframe</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;SalesGroup&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cuts</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Store&quot;</span><span class="p">,</span> <span class="s2">&quot;SalesGroup&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">DayOfWeek</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Store&quot;</span><span class="p">,</span> <span class="s2">&quot;SalesGroup&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">DayOfWeek</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># fill_value=0 (instead of NaN)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">DayOfWeek                  1   2   3   4   5    6    7</span>
+<span class="sd">Store SalesGroup</span>
+<span class="sd">1     (-0.001, 2000.0]     6   1   3  11   6    0  134</span>
+<span class="sd">      (2000.0, 4000.0]    28  42  42  43  28   13    0</span>
+<span class="sd">      (4000.0, 6000.0]    70  80  83  72  91  109    0</span>
+<span class="sd">      (6000.0, 8000.0]    26  12   7   9   9   10    0</span>
+<span class="sd">      (8000.0, 10000.0]    4   0   0   0   1    2    0</span>
+<span class="sd">...                       ..  ..  ..  ..  ..  ...  ...</span>
+<span class="sd">1115  (2000.0, 4000.0]    15  17  15   9   0    0    0</span>
+<span class="sd">      (4000.0, 6000.0]    34  54  65  64  61   36    0</span>
+<span class="sd">      (6000.0, 8000.0]    30  52  39  39  50   80    0</span>
+<span class="sd">      (8000.0, 10000.0]   37   9  12  10  11   16    0</span>
+<span class="sd">      (10000.0, 50000.0]  12   2   1   2   7    2    0</span>
+
+<span class="sd">[6263 rows x 7 columns]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Store&quot;</span><span class="p">,</span> <span class="s2">&quot;SalesGroup&quot;</span><span class="p">,</span> <span class="s2">&quot;DayOfWeek&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                                    Date  Sales  Customers  Open  Promo  StateHoliday  SchoolHoliday</span>
+<span class="sd">Store SalesGroup         DayOfWeek</span>
+<span class="sd">1     (-0.001, 2000.0]   1             6      6          6     6      6             6              6</span>
+<span class="sd">                         2             1      1          1     1      1             1              1</span>
+<span class="sd">                         3             3      3          3     3      3             3              3</span>
+<span class="sd">                         4            11     11         11    11     11            11             11</span>
+<span class="sd">                         5             6      6          6     6      6             6              6</span>
+<span class="sd">...                                  ...    ...        ...   ...    ...           ...            ...</span>
+<span class="sd">1115  (10000.0, 50000.0] 3             1      1          1     1      1             1              1</span>
+<span class="sd">                         4             2      2          2     2      2             2              2</span>
+<span class="sd">                         5             7      7          7     7      7             7              7</span>
+<span class="sd">                         6             2      2          2     2      2             2              2</span>
+<span class="sd">                         7             0      0          0     0      0             0              0</span>
+
+<span class="sd">[46830 rows x 7 columns]</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="dealing-with-missing-values">
-<h3>dealing with missing values<a class="headerlink" href="#dealing-with-missing-values" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p><strong>df.dropna()</strong>: drop all or some of the rows that have missing values</p></li>
-<li><p><strong>df.fillna()</strong>: replace the rows that have missing values with that you pass in</p></li>
+<div class="section" id="id1">
+<h3>imputation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># filling in missing/corrupt values in your dataframe. it shouldn&#39;t affect your final result</span>
+<span class="n">dfo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;files/csv/train.csv&quot;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>  <span class="c1"># allow load all in to determine dtype</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dfo</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="c1"># plt.hist(df.Sales)</span>
+<span class="c1"># plt.show()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">dfo</span><span class="p">[</span><span class="n">dfo</span><span class="o">.</span><span class="n">Open</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># masked array with stores that are open (removing sunday closed outlier)</span>
+<span class="c1"># plt.hist(df.Sales)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># checking row count</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transform">
+<h3>transform<a class="headerlink" href="#transform" title="Permalink to this headline">¶</a></h3>
+<p>transform -&gt; like apply but has to return a series with same size as the input
+<a class="reference external" href="https://stackoverflow.com/questions/27517425/apply-vs-transform-on-a-group-object">https://stackoverflow.com/questions/27517425/apply-vs-transform-on-a-group-object</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># instead of NaN fill with mean value of the series</span>
+<span class="n">test_fix</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Sales</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+<span class="c1"># sales are heavily dependant on day of the week, so use that intelligence with groupby cuts</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="aggregate">
+<h3>aggregate<a class="headerlink" href="#aggregate" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># different aggregates for different columns</span>
+<span class="c1"># aggregate statistics functions can be used to calc stats on a column of a DataFrame Eg df.columnName.mean()</span>
+<span class="c1"># aggregate statistic functions can be applied across multiple rows by using a groupby function</span>
+<span class="c1"># give the mean for the Sales &amp; Customers column</span>
+<span class="nb">print</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Store&quot;</span><span class="p">,</span> <span class="s2">&quot;DayOfWeek&quot;</span><span class="p">,</span> <span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Sales&quot;</span><span class="p">:</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;Customers&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">}))</span>  <span class="c1"># str for common funcs works too</span>
+
+<span class="c1"># do multiple things with 1 column (pass multiple things through a list)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Store&quot;</span><span class="p">,</span> <span class="s2">&quot;DayOfWeek&quot;</span><span class="p">,</span> <span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Sales&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">],</span> <span class="s2">&quot;Customers&quot;</span><span class="p">:</span> <span class="s2">&quot;count&quot;</span><span class="p">}))</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                       Sales              Customers</span>
+<span class="sd">                        mean    max   min     count</span>
+<span class="sd">Store DayOfWeek</span>
+<span class="sd">1     1          5177.968750   9528  3414       128</span>
+<span class="sd">      2          4685.626866   7959  2362       134</span>
+<span class="sd">      3          4555.712121   7821  2605       132</span>
+<span class="sd">      4          4457.838710   7785  2462       124</span>
+<span class="sd">      5          4726.480620   8414  3198       129</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">monte_carlo_uncertainty</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Store&quot;</span><span class="p">,</span> <span class="s2">&quot;DayOfWeek&quot;</span><span class="p">,</span> <span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Sales&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">monte_carlo_uncertainty</span><span class="p">],</span> <span class="s2">&quot;Customers&quot;</span><span class="p">:</span> <span class="s2">&quot;count&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Sales             Customers</span>
+<span class="sd">                        mean  &lt;lambda_0&gt;     count</span>
+<span class="sd">Store DayOfWeek</span>
+<span class="sd">1     1          5177.968750  108.777349       128</span>
+<span class="sd">      2          4685.626866   88.507530       134</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="override-column-names-using-a-tuple">
+<h4>override column names using a tuple<a class="headerlink" href="#override-column-names-using-a-tuple" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Store&quot;</span><span class="p">,</span> <span class="s2">&quot;DayOfWeek&quot;</span><span class="p">,</span> <span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;Sales&quot;</span><span class="p">:</span>
+                                                    <span class="p">[(</span><span class="s2">&quot;SalesMean&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">),</span>
+                                                     <span class="p">(</span><span class="s2">&quot;SalesUncert&quot;</span><span class="p">,</span> <span class="n">monte_carlo_uncertainty</span><span class="p">)],</span>
+                                                <span class="s2">&quot;Customers&quot;</span><span class="p">:</span> <span class="s2">&quot;count&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="c1"># notice the nested multi-column layout</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">             Sales             Customers</span>
+<span class="sd">                   SalesMean SalesUncert     count</span>
+<span class="sd">Store DayOfWeek</span>
+<span class="sd">1     1          5177.968750  108.777349       128</span>
+<span class="sd">      2          4685.626866   88.507530       134</span>
+<span class="sd">      3          4555.712121   79.957721       132</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="c1"># new way of using aggregates (recommended) won&#39;t work with lambda as all functions need to have a name</span>
+<span class="c1"># =&gt; only 1 layer of columns</span>
+<span class="k">def</span> <span class="nf">mc_uncert</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+<span class="n">dfagg</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Store&quot;</span><span class="p">,</span> <span class="s2">&quot;DayOfWeek&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dfagg</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="n">SalesMean</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Sales&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">),</span>
+    <span class="n">SalesUncert</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Sales&quot;</span><span class="p">,</span> <span class="n">mc_uncert</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   Store  DayOfWeek    SalesMean  SalesUncert</span>
+<span class="sd">0      1          1  5177.968750   108.777349</span>
+<span class="sd">1      1          2  4685.626866    88.507530</span>
+<span class="sd">2      1          3  4555.712121    79.957721</span>
+<span class="sd">3      1          4  4457.838710    82.332880</span>
+<span class="sd">4      1          5  4726.480620    80.066588</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="merging">
+<h2>merging<a class="headerlink" href="#merging" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="db-style-joining-merging">
+<h3>db-style  joining/merging<a class="headerlink" href="#db-style-joining-merging" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">left</span><span class="p">,</span>
+    <span class="n">right</span><span class="p">,</span>
+    <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span>
+    <span class="n">on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">left_on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">right_on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">left_index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">right_index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;_x&quot;</span><span class="p">,</span> <span class="s2">&quot;_y&quot;</span><span class="p">),</span>
+    <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">indicator</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">validate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p><strong>left</strong>: A DataFrame or named Series object</p></li>
+<li><p><strong>right</strong>: Another DataFrame or named Series object</p></li>
+<li><p><strong>on</strong>: Column or index level names to join on. Must be found in both the left and right DataFrame and/or Series objects. If not passed and left_index and right_index are False, the intersection of the columns in the DataFrames and/or Series will be inferred to be the join keys</p></li>
+<li><p><strong>left_on</strong>: Columns or index levels from the left DataFrame or Series to use as keys. Can either be column names, index level names, or arrays with length equal to the length of the DataFrame or Series</p></li>
+<li><p><strong>right_on</strong>: Columns or index levels from the right DataFrame or Series to use as keys. Can either be column names, index level names, or arrays with length equal to the length of the DataFrame or Series</p></li>
+<li><p><strong>left_index</strong>: If True, use the index (row labels) from the left DataFrame or Series as its join key(s). In the case of a DataFrame or Series with a MultiIndex (hierarchical), the number of levels must match the number of join keys from the right DataFrame or Series</p></li>
+<li><p><strong>right_index</strong>: Same usage as left_index for the right DataFrame or Series</p></li>
+<li><p><strong>how</strong>: One of ‘left’, ‘right’, ‘outer’, ‘inner’. Defaults to inner. See below for more detailed description of each method</p></li>
+<li><p><strong>sort</strong>: Sort the result DataFrame by the join keys in lexicographical order. Defaults to True, setting to False will improve performance substantially in many cases</p></li>
+<li><p><strong>suffixes</strong>: A tuple of string suffixes to apply to overlapping columns. Defaults to (‘_x’, ‘_y’)</p></li>
+<li><p><strong>copy</strong>: Always copy data (default True) from the passed DataFrame or named Series objects, even when reindexing is not necessary. Cannot be avoided in many cases but may improve performance / memory usage. The cases where copying can be avoided are somewhat pathological but this option is provided nonetheless</p></li>
+<li><p><strong>indicator</strong>: Add a column to the output DataFrame called _merge with information on the source of each row. _merge is Categorical-type and takes on a value of left_only for observations whose merge key only appears in ‘left’ DataFrame or Series, right_only for observations whose merge key only appears in ‘right’ DataFrame or Series, and both if the observation’s merge key is found in both</p></li>
+<li><p><strong>validate</strong>: string, default None. If specified, checks if merge is of specified type</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>one_to_one</strong> or <strong>1:1</strong>: checks if merge keys are unique in both left and right datasets</p></li>
+<li><p><strong>one_to_many</strong> or <strong>1:m</strong>: checks if merge keys are unique in left dataset</p></li>
+<li><p><strong>many_to_one</strong> or <strong>m:1</strong>: checks if merge keys are unique in right dataset</p></li>
+<li><p><strong>many_to_many</strong> or <strong>m:m</strong>: allowed, but does not result in checks</p></li>
+</ul>
+</div></blockquote>
+</li>
 </ul>
 </div>
+<div class="section" id="merge-methods">
+<h3>merge methods<a class="headerlink" href="#merge-methods" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>merge method</p></th>
+<th class="head"><p>SQL Join Name</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>left</p></td>
+<td><p>LEFT OUTER JOIN</p></td>
+<td><p>use keys from left frame only</p></td>
+</tr>
+<tr class="row-odd"><td><p>right</p></td>
+<td><p>RIGHT OUTER JOIN</p></td>
+<td><p>use keys from right frame only</p></td>
+</tr>
+<tr class="row-even"><td><p>outer</p></td>
+<td><p>FULL OUTER JOIN</p></td>
+<td><p>use union of keys from both frames</p></td>
+</tr>
+<tr class="row-odd"><td><p>inner</p></td>
+<td><p>INNER JOIN</p></td>
+<td><p>use intersection of keys from both frames</p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section" id="kaggle">
-<h2>kaggle<a class="headerlink" href="#kaggle" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://www.kaggle.com/competitions">https://www.kaggle.com/competitions</a></p>
-<div class="section" id="creating-kaggle-submissions-csv-s">
-<h3>creating kaggle submissions CSV’s<a class="headerlink" href="#creating-kaggle-submissions-csv-s" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">csv</span>
-
-<span class="n">results</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">15</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">]]</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="c1"># panda numpy will be deprecated</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<div class="section" id="checking-for-duplicate-keys">
+<h3>checking for duplicate keys<a class="headerlink" href="#checking-for-duplicate-keys" title="Permalink to this headline">¶</a></h3>
+<p>Users can use the <strong>validate</strong> argument to automatically check whether there are unexpected duplicates in their merge keys. Key uniqueness is checked before merge operations and so should protect against memory overflows. Checking key uniqueness is also a good way to ensure user data structures are as expected</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+<span class="n">right</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="s2">&quot;one_to_one&quot;</span><span class="p">)</span>
+<span class="c1"># MergeError: Merge keys are not unique in right dataset; not a one-to-one merge</span>
+</pre></div>
+</div>
+<p>If the user is aware of the duplicates in the right DataFrame but wants to ensure there are no duplicates in the left DataFrame, one can use the <strong>validate=’one_to_many’</strong> argument instead, which will not raise an exception</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="s2">&quot;one_to_many&quot;</span><span class="p">)</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">[[ 0 10]</span>
-<span class="sd"> [ 1 15]</span>
-<span class="sd"> [ 2 20]]</span>
-<span class="sd">&lt;ipython-input-37-27b9a7fe8db6&gt;:5: FutureWarning: The pandas.np module is deprecated and will be removed from pandas in a future version. Import numpy directly instead</span>
-<span class="sd">  results = pd.np.array(results)</span>
+<span class="sd">   A_x  B  A_y</span>
+<span class="sd">0    1  1  NaN</span>
+<span class="sd">1    2  2  4.0</span>
+<span class="sd">2    2  2  5.0</span>
+<span class="sd">3    2  2  6.0</span>
 <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="n">firstRow</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;pred&#39;</span><span class="p">]]</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;result.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-    <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">firstRow</span><span class="p">)</span>
-    <span class="n">writer</span><span class="o">.</span><span class="n">writerows</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="use-pandas-with-scikit-learn">
-<h3>use pandas with scikit-learn<a class="headerlink" href="#use-pandas-with-scikit-learn" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-merge-indicator">
+<h3>The merge indicator<a class="headerlink" href="#the-merge-indicator" title="Permalink to this headline">¶</a></h3>
+<p>merge() accepts the argument <strong>indicator</strong>. If True, a Categorical-type column called _merge will be added to the output object that takes on values:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;col1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;col_left&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]})</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;col1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;col_right&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;col1&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">,</span> <span class="n">indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   col1 col_left  col_right      _merge</span>
+<span class="sd">0     0        a        NaN   left_only</span>
+<span class="sd">1     1        b        2.0        both</span>
+<span class="sd">2     2      NaN        2.0  right_only</span>
+<span class="sd">3     2      NaN        2.0  right_only</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>The indicator argument will also accept string arguments, in which case the indicator function will use the value of the passed string as the name for the indicator column</p>
+</div>
+<div class="section" id="joins">
+<h3>joins<a class="headerlink" href="#joins" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Toolkit</span>
+<span class="c1"># https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html#</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">df_left</span><span class="p">,</span>
+    <span class="n">df_right</span><span class="p">,</span>
+    <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span>
+    <span class="n">on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">left_on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">right_on</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">left_index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">right_index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;_x&quot;</span><span class="p">,</span> <span class="s2">&quot;_y&quot;</span><span class="p">),</span>
+    <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">indicator</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">validate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">pd</span> <span class="o">=</span> <span class="n">Toolkit</span><span class="o">.</span><span class="n">initiate_pandas</span><span class="p">()</span>
+
+<span class="n">students</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;students.csv&quot;</span><span class="p">)</span>
+<span class="n">teachers</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;teachers.csv&quot;</span><span class="p">)</span>
+<span class="n">grades1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;grades1.csv&quot;</span><span class="p">)</span>
+<span class="n">grades2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;grades2.csv&quot;</span><span class="p">)</span>
+<span class="n">contacts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;contacts.csv&quot;</span><span class="p">)</span>
+<span class="n">grades</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">grades1</span><span class="p">,</span> <span class="n">grades2</span><span class="p">])</span>
+
+<span class="c1"># add semesters</span>
+<span class="n">grades1</span><span class="p">[</span><span class="s2">&quot;Semester&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">grades2</span><span class="p">[</span><span class="s2">&quot;Semester&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">grades1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grades2</span><span class="p">)</span>
+<span class="c1"># fix duplicate indexes</span>
+<span class="n">grades</span> <span class="o">=</span> <span class="n">grades</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># if you don&#39;t want to see old index, drop it</span>
+
+<span class="c1"># merging horizontally</span>
+<span class="c1"># grades have student_id, students have id</span>
+<span class="n">student_grades</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">students</span><span class="p">,</span> <span class="n">grades</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">&quot;student_id&quot;</span><span class="p">)</span>
+<span class="c1"># verify with shape that no rows are missing after merge</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">students</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">grades</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">student_grades</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1"># alternatively you could rename column in students before merging</span>
+<span class="n">students2</span> <span class="o">=</span> <span class="n">students</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;student_id&quot;</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">students_full</span> <span class="o">=</span> <span class="n">students2</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">contacts</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;student_id&quot;</span><span class="p">)</span>
+<span class="n">student_grades</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">students2</span><span class="p">,</span> <span class="n">grades</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;student_id&quot;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">student_grades</span><span class="p">,</span> <span class="n">contacts</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;student_id&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">teachers</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;course&quot;</span><span class="p">)</span>
+
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">grade</span> <span class="o">==</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;student_id&quot;</span><span class="p">]</span>
+<span class="n">method1</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="s2">&quot;student_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;counts&quot;</span><span class="p">)</span>  <span class="c1"># name col &amp; counts column</span>
+
+<span class="n">method2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">grade</span> <span class="o">==</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;student_id&quot;</span><span class="p">,</span> <span class="s2">&quot;grade&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;student_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">method2</span><span class="p">)</span>
+<span class="n">method2</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;student_id&quot;</span><span class="p">,</span> <span class="s2">&quot;counts&quot;</span><span class="p">]</span>  <span class="c1"># change grade to counts colname</span>
+<span class="c1"># students failing a high number of classes</span>
+<span class="n">students_failing_alot</span> <span class="o">=</span> <span class="n">method1</span><span class="p">[</span><span class="n">method1</span><span class="o">.</span><span class="n">counts</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">student_id</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">students_failing_alot</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">final</span> <span class="o">=</span> <span class="n">students_full</span><span class="p">[</span><span class="n">students_full</span><span class="o">.</span><span class="n">student_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">students_failing_alot</span><span class="p">)]</span>
+
+<span class="c1"># join, more sql like</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">students</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span> <span class="n">contacts</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">students2</span> <span class="o">=</span> <span class="n">students</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">)</span>
+<span class="n">contacts2</span> <span class="o">=</span> <span class="n">contacts</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;student_id&quot;</span><span class="p">)</span>
+<span class="c1"># directly joining on index</span>
+<span class="n">students2</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">contacts2</span><span class="p">)</span>
+
+<span class="c1"># inner left &amp; outer merging</span>
+
+<span class="n">df_s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;students.csv&quot;</span><span class="p">)</span>
+<span class="n">df_p</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;contacts.csv&quot;</span><span class="p">)</span>
+<span class="n">df_g</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;grades1.csv&quot;</span><span class="p">)</span>
+<span class="n">df_design</span> <span class="o">=</span> <span class="n">df_g</span><span class="p">[</span><span class="n">df_g</span><span class="o">.</span><span class="n">course</span> <span class="o">==</span> <span class="s2">&quot;DESN101&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_design</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">df_s</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (12, 3) (25, 3)  only 12/25 took design 101 course</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_s</span><span class="p">,</span> <span class="n">df_design</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">&quot;student_id&quot;</span><span class="p">)</span>  <span class="c1"># will have exactly 12 rows</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_s</span><span class="p">,</span> <span class="n">df_design</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">&quot;student_id&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>  <span class="c1"># will have exactly 12 rows</span>
+
+<span class="c1"># if not in &quot;DESN101&quot; class then put in NaN value for &quot;course&quot; column</span>
+<span class="c1"># don&#39;t remove things if they don&#39;t exist on the right, fill with NaN</span>
+<span class="c1"># how=&quot;left&quot; =&gt; left join =&gt; KEEP EVERYTHING ON THE LEFT</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_s</span><span class="p">,</span> <span class="n">df_design</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">&quot;student_id&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="c1"># how=&quot;inner&quot; =&gt; HAS TO EXIST ON LEFT &amp; RIGHT SIDE</span>
+
+<span class="c1"># outer =&gt; DOESN&#39;t have to exist on either side</span>
+<span class="c1"># outer demo</span>
+<span class="n">df_a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+<span class="n">df_b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]})</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">df_a</span><span class="p">,</span> <span class="n">df_b</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># outer join</span>
+<span class="n">df_a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+<span class="n">df_b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_a</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">df_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_a</span><span class="p">,</span> <span class="n">df_b</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   A  B    C</span>
+<span class="sd">0  x  1  3.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_a</span><span class="p">,</span> <span class="n">df_b</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   A    B    C</span>
+<span class="sd">0  x  1.0  3.0</span>
+<span class="sd">1  y  2.0  NaN</span>
+<span class="sd">2  z  3.0  NaN</span>
+<span class="sd">3  u  NaN  5.0</span>
+<span class="sd">4  v  NaN  4.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># duplicate keys</span>
+
+<span class="n">df_c</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+<span class="n">df_d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_c</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_c</span><span class="p">,</span> <span class="n">df_d</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   A  B    C</span>
+<span class="sd">0  x  1  4.0   x1 * x4.0</span>
+<span class="sd">1  x  1  3.0   x2 * x3.0</span>
+<span class="sd">2  x  2  4.0   dito</span>
+<span class="sd">3  x  2  3.0   dito</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># duplicate columns</span>
+<span class="n">df_e</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+<span class="n">df_f</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_e</span><span class="p">,</span> <span class="n">df_f</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">))</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   A  B_x  B_y</span>
+<span class="sd">0  x    1  3.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">df_m</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_e</span><span class="p">,</span> <span class="n">df_f</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;_left&quot;</span><span class="p">,</span> <span class="s2">&quot;_right&quot;</span><span class="p">))</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   A  B_left  B_right</span>
+<span class="sd">0  x       1      3.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_m</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;B_left&quot;</span><span class="p">:</span> <span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="s2">&quot;B_right&quot;</span><span class="p">:</span> <span class="s2">&quot;Obi_wan_kenobi&quot;</span><span class="p">}))</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   A  Hello  Obi_wan_kenobi</span>
+<span class="sd">0  x      1             3.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># validating</span>
+<span class="c1"># pd.merge(df_s, df_p, left_on=&quot;id&quot;, right_on=&quot;student_id&quot;, validate=&quot;one_to_one&quot;)</span>
+
+
+<span class="c1"># composite keys</span>
+<span class="n">df_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="mi">2001</span><span class="p">],</span> <span class="s2">&quot;sem&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;fee&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">]})</span>
+<span class="n">df_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;year&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="mi">2001</span><span class="p">],</span> <span class="s2">&quot;sem&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+                     <span class="s2">&quot;student&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;discount&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]})</span>
+<span class="n">df_3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;student&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_3</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   year  sem  fee</span>
+<span class="sd">0  2000    1  200</span>
+<span class="sd">1  2000    2  200</span>
+<span class="sd">2  2001    1  200</span>
+<span class="sd">3  2001    2  200</span>
+<span class="sd">   year  sem  student  discount</span>
+<span class="sd">0  2000    1        1       0.1</span>
+<span class="sd">1  2000    2        2       0.2</span>
+<span class="sd">2  2001    1        2       0.2</span>
+<span class="sd">3  2001    2        3       1.0</span>
+<span class="sd">   student</span>
+<span class="sd">0        1</span>
+<span class="sd">1        2</span>
+<span class="sd">2        3</span>
+<span class="sd">3        4</span>
+<span class="sd">4        5</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">combined</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_1</span><span class="p">,</span> <span class="n">df_2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;sem&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   year  sem  fee  student  discount</span>
+<span class="sd">0  2000    1  200        1       0.1</span>
+<span class="sd">1  2000    2  200        2       0.2</span>
+<span class="sd">2  2001    1  200        2       0.2</span>
+<span class="sd">3  2001    2  200        3       1.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">combined</span><span class="p">[</span><span class="s2">&quot;due_fee&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">combined</span><span class="o">.</span><span class="n">fee</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">combined</span><span class="o">.</span><span class="n">discount</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   year  sem  fee  student  discount  due_fee</span>
+<span class="sd">0  2000    1  200        1       0.1    180.0</span>
+<span class="sd">1  2000    2  200        2       0.2    160.0</span>
+<span class="sd">2  2001    1  200        2       0.2    160.0</span>
+<span class="sd">3  2001    2  200        3       1.0      0.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># after merging we don&#39;t need key column (axis=1) anymore</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_3</span><span class="p">,</span> <span class="n">df_2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">))</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   student    year  sem  discount</span>
+<span class="sd">0        1  2000.0  1.0       0.1</span>
+<span class="sd">1        2  2000.0  2.0       0.2</span>
+<span class="sd">2        2  2001.0  1.0       0.2</span>
+<span class="sd">3        3  2001.0  2.0       1.0</span>
+<span class="sd">4        4     NaN  NaN       NaN</span>
+<span class="sd">5        5     NaN  NaN       NaN</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># cross join aka cartesian product</span>
+<span class="n">df_1</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span> <span class="n">df_3</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">df_cross</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_1</span><span class="p">,</span> <span class="n">df_3</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;key&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_cross</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    year  sem  fee  student</span>
+<span class="sd">0   2000    1  200        1</span>
+<span class="sd">1   2000    1  200        2</span>
+<span class="sd">2   2000    1  200        3</span>
+<span class="sd">3   2000    1  200        4</span>
+<span class="sd">4   2000    1  200        5</span>
+<span class="sd">..   ...  ...  ...      ...</span>
+<span class="sd">15  2001    2  200        1</span>
+<span class="sd">16  2001    2  200        2</span>
+<span class="sd">17  2001    2  200        3</span>
+<span class="sd">18  2001    2  200        4</span>
+<span class="sd">19  2001    2  200        5</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">all_fees</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_cross</span><span class="p">,</span> <span class="n">df_2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;student&quot;</span><span class="p">,</span> <span class="s2">&quot;year&quot;</span><span class="p">,</span> <span class="s2">&quot;sem&quot;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">all_fees</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    year  sem  fee  student  discount</span>
+<span class="sd">0   2000    1  200        1       0.1</span>
+<span class="sd">1   2000    1  200        2       NaN</span>
+<span class="sd">2   2000    1  200        3       NaN</span>
+<span class="sd">3   2000    1  200        4       NaN</span>
+<span class="sd">4   2000    1  200        5       NaN</span>
+<span class="sd">..   ...  ...  ...      ...       ...</span>
+<span class="sd">15  2001    2  200        1       NaN</span>
+<span class="sd">16  2001    2  200        2       NaN</span>
+<span class="sd">17  2001    2  200        3       1.0</span>
+<span class="sd">18  2001    2  200        4       NaN</span>
+<span class="sd">19  2001    2  200        5       NaN</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="n">all_fees</span><span class="o">.</span><span class="n">discount</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">all_fees</span><span class="p">[</span><span class="s2">&quot;due&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">all_fees</span><span class="o">.</span><span class="n">fee</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">all_fees</span><span class="o">.</span><span class="n">discount</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">all_fees</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    year  sem  fee  student  discount    due</span>
+<span class="sd">0   2000    1  200        1       0.1  180.0</span>
+<span class="sd">1   2000    1  200        2       0.0  200.0</span>
+<span class="sd">2   2000    1  200        3       0.0  200.0</span>
+<span class="sd">3   2000    1  200        4       0.0  200.0</span>
+<span class="sd">4   2000    1  200        5       0.0  200.0</span>
+<span class="sd">..   ...  ...  ...      ...       ...    ...</span>
+<span class="sd">15  2001    2  200        1       0.0  200.0</span>
+<span class="sd">16  2001    2  200        2       0.0  200.0</span>
+<span class="sd">17  2001    2  200        3       1.0    0.0</span>
+<span class="sd">18  2001    2  200        4       0.0  200.0</span>
+<span class="sd">19  2001    2  200        5       0.0  200.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="merge-helper-functions">
+<h3>merge helper functions<a class="headerlink" href="#merge-helper-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="pd-merge-ordered">
+<h4>pd.merge_ordered<a class="headerlink" href="#pd-merge-ordered" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ffill = forward fill (take previous value if NaN)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">merge_ordered</span><span class="p">(</span><span class="n">df_be</span><span class="p">,</span> <span class="n">df_nl</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;_be&quot;</span><span class="p">,</span> <span class="s2">&quot;_nl&quot;</span><span class="p">),</span> <span class="n">fill_method</span><span class="o">=</span><span class="s2">&quot;ffill&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pd-merge-asof">
+<h4>pd.merge_asof<a class="headerlink" href="#pd-merge-asof" title="Permalink to this headline">¶</a></h4>
+<p>A merge_asof() is similar to an ordered left-join except that we match on nearest key rather than equal keys. For each row in the left DataFrame, we select the last row in the right DataFrame whose on key is less than the left’s key. Both DataFrames must be sorted by the key</p>
+<p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.asof.html">https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.asof.html</a></p>
+<p>get closest or partial match</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_both</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge_ordered</span><span class="p">(</span><span class="n">df_be</span><span class="p">,</span> <span class="n">df_nl</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;_be&quot;</span><span class="p">,</span> <span class="s2">&quot;_nl&quot;</span><span class="p">),</span> <span class="n">fill_method</span><span class="o">=</span><span class="s2">&quot;ffill&quot;</span><span class="p">)</span>
+<span class="n">df_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span><span class="n">df_both</span><span class="p">,</span> <span class="n">df_bris</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="s2">&quot;temperature_bxl&quot;</span><span class="p">})</span>
+<span class="n">df_all</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;temperature_be&quot;</span><span class="p">,</span> <span class="s2">&quot;temperature_nl&quot;</span><span class="p">,</span> <span class="s2">&quot;temperature_bxl&quot;</span><span class="p">])</span>
+<span class="c1"># on=&quot;date&quot;, tolerance=pd.Timedelta(&quot;14 days&quot;), direction=&quot;neares&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tolerance">
+<h4>tolerance<a class="headerlink" href="#tolerance" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">144</span><span class="p">]:</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span>
+   <span class="o">.....</span><span class="p">:</span>     <span class="n">trades</span><span class="p">,</span>
+   <span class="o">.....</span><span class="p">:</span>     <span class="n">quotes</span><span class="p">,</span>
+   <span class="o">.....</span><span class="p">:</span>     <span class="n">on</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>
+   <span class="o">.....</span><span class="p">:</span>     <span class="n">by</span><span class="o">=</span><span class="s2">&quot;ticker&quot;</span><span class="p">,</span>
+   <span class="o">.....</span><span class="p">:</span>     <span class="n">tolerance</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="s2">&quot;10ms&quot;</span><span class="p">),</span>
+   <span class="o">.....</span><span class="p">:</span>     <span class="n">allow_exact_matches</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+   <span class="o">.....</span><span class="p">:</span> <span class="p">)</span>
+   <span class="o">.....</span><span class="p">:</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">144</span><span class="p">]:</span>
+                     <span class="n">time</span> <span class="n">ticker</span>   <span class="n">price</span>  <span class="n">quantity</span>    <span class="n">bid</span>    <span class="n">ask</span>
+<span class="mi">0</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">25</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mf">00.023</span>   <span class="n">MSFT</span>   <span class="mf">51.95</span>        <span class="mi">75</span>    <span class="n">NaN</span>    <span class="n">NaN</span>
+<span class="mi">1</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">25</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mf">00.038</span>   <span class="n">MSFT</span>   <span class="mf">51.95</span>       <span class="mi">155</span>  <span class="mf">51.97</span>  <span class="mf">51.98</span>
+<span class="mi">2</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">25</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mf">00.048</span>   <span class="n">GOOG</span>  <span class="mf">720.77</span>       <span class="mi">100</span>    <span class="n">NaN</span>    <span class="n">NaN</span>
+<span class="mi">3</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">25</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mf">00.048</span>   <span class="n">GOOG</span>  <span class="mf">720.92</span>       <span class="mi">100</span>    <span class="n">NaN</span>    <span class="n">NaN</span>
+<span class="mi">4</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">25</span> <span class="mi">13</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mf">00.048</span>   <span class="n">AAPL</span>   <span class="mf">98.00</span>       <span class="mi">100</span>    <span class="n">NaN</span>    <span class="n">NaN</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pandas-with-scikit-learn">
+<h3>pandas with scikit-learn<a class="headerlink" href="#pandas-with-scikit-learn" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=ylRlGCtAtiE&amp;list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y&amp;index=22">https://www.youtube.com/watch?v=ylRlGCtAtiE&amp;list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y&amp;index=22</a></p>
 </div>
 </div>

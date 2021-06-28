@@ -1,6 +1,103 @@
 ####
 bash
 ####
+********
+commands
+********
+grep
+====
+
+.. list-table::
+   :widths: 10 90
+   :header-rows: 1
+
+   * - -h
+     - no filename in result
+   * - -n
+     - linenumbers in result
+
+find
+====
+examples
+--------
+
+.. code-block:: bash
+
+   find . -name \*.php -type f -exec [cmd]
+   # find all files, folders, symlinks, etc in the current directory recursively
+   # Its filename must end with .php
+   # Only search for files (not folders)
+   # Execute a command on the results
+
+   find . -name \*.php -type f -exec grep -Hn '$test' {} \+
+
+   find -type f -iname '*.ipynb' -print0 | xargs -0 -n1 -P4 jupyter nbconvert --to markdown
+
+
+.. code-block:: bash
+
+   find . [args] -exec [cmd] {} \;
+   find . [args] -print0 | xargs -0 [cmd]
+
+options
+-------
+
+.. list-table::
+   :widths: 10 90
+   :header-rows: 1
+
+   * - {}
+     - placeholder for result of find
+   * - \;
+     - for each result execute cmd once
+   * - \+
+     - all **results are concatenated** and cmd is executed once as a parameter (eg for all files found when using grep
+   * - -print0 (link to -0)
+     - find prints all results to std (each seperated with ASCII NUL char '\000'
+   * - -0 (link to -print0)
+     - tell xargs the input will be seperated with ASCII NUL char '\000'
+   * - -n1
+     - tell xargs to execute cmd with only **1 argument** (eg for file found by find) 
+   * - xargs -t
+     - print each cmd prior to execution
+   * - xargs -p
+     - print each cmd and ask to execute it (permission)
+   * - xargs -x
+     - make xargs quit if # of arguments too high for system (see -s)
+
+
+.. note:: -print0 and -0 are used in tandem. Results are given to xargs as a single string with no newline seperation. NUL char -> used to escape spaces in filenames
+
+apply cmd to results
+--------------------
+exec
+^^^^
+
+.. note::
+
+   - find|xargs will stop at error in piped cmd
+   - find -exec returns exit code of find itself instead of subcommand and continues if an error occurs
+
+.. code-block:: bash
+
+   time find . -name \*.php -type f -exec grep -Hn '$test' {} \+
+
+xargs
+^^^^^
+
+.. note::
+
+   - use xargs when you want to stop when a cmd fails
+   - find | xargs returns exit code of subcommand
+
+.. code-block:: bash
+
+   # -P4 = use 4 xargs processes for parallel execution
+   find -type f -iname '*.ipynb' -print0 | xargs -0 -n1 -P4 jupyter nbconvert --to markdown
+
+.. note::
+
+   It depends on the subcommand whether you have to use \; for find and -n1 for xargs. If the subcommand is able to use multiple inputs, then use + and no -n1. If the subcommand can only take one argument, you have to use \; and -n1
 
 *************
 bashrc config
