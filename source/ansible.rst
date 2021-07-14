@@ -133,4 +133,8 @@ host groups
        webservers:
          gamma3.example.org
 
+error handling
+==============
+
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_error_handling.html#controlling-what-defines-failure
 

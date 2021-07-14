@@ -8,6 +8,7 @@ links
 - https://www.guru99.com/numpy-tutorial.html
 - https://www.w3schools.com/python/numpy_intro.asp
 - https://cs231n.github.io/python-numpy-tutorial
+- https://numpy.org/doc/stable/reference/generated/numpy.ravel.html
 
 vocabulary
 ==========

@@ -52,7 +52,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="techtalks" href="techtalk/main.html" />
+    <link rel="next" title="linear" href="regression.html" />
     <link rel="prev" title="links" href="links.html" /> 
 </head>
 
@@ -102,12 +102,21 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="ansible.html">ansible</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blockchain.html">social</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cheats/main.html">cheatsheets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datacleaning.html">data cleaning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="links.html">links</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">python</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pycharm">pycharm</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#output-tweaks">output tweaks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#selective-run">selective run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#packages">packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common">common</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#matplotlib">matplotlib</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#numpy">numpy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pandas">pandas</a></li>
@@ -124,13 +133,16 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#conda">conda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#urls">urls</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install">install</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#environments">environments</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#managing-environments">managing environments</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#backup-environment">backup environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-environment">create environment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remove-environment">remove environment</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#packages">packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">packages</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#search">search</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#backup-used-packages">backup used packages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#install-required-packages">install required packages</a></li>
@@ -141,7 +153,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#pip">pip</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#package-mgmt">package mgmt</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#backup-required-packages">backup required packages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">install required packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">install required packages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#virtualenvwrapper">virtualenvwrapper</a></li>
 </ul>
 </li>
@@ -162,6 +174,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#summary">summary</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#underscore">underscore</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#list-indices">list indices</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#list-operations">list operations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#nested-lists">nested lists</a></li>
@@ -219,6 +232,11 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#classes">classes</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#summary-classes">summary classes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#properties">properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#computed-attributes">computed attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extend-property-functionality">extend property functionality</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#recursion">recursion</a></li>
@@ -311,7 +329,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#http-requests">HTTP requests</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">selenium</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">selenium</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#handy-libraries">handy libraries</a></li>
 </ul>
 </li>
@@ -340,7 +358,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">numpy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id7">numpy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#links">links</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vocabulary">vocabulary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#functions-list">functions list</a></li>
@@ -419,8 +437,8 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">pandas</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id8">links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">pandas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">links</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#resources">resources</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#files">files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#csv-schema">csv schema</a><ul>
@@ -442,14 +460,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#filtering-rows-conditionally">filtering rows conditionally</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dataframe-iteration">dataframe iteration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-sources">data sources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#creating-dataframes">creating dataframes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#saving-serializing">saving &amp; serializing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#save-to-csv">save to csv</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#write-to-csv">write to csv</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pickle">pickle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#hdf">hdf</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">csv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">csv</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#inspecting-data">inspecting data</a></li>
@@ -488,7 +506,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#groupby">groupby</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#multiple-groups">multiple groups</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#continuous-grouping">continuous grouping</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">imputation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">imputation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#transform">transform</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#aggregate">aggregate</a></li>
 </ul>
@@ -507,11 +525,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#plotting">plotting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id12">links</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id13">resources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">matplotlib</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id16">first example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">resources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">matplotlib</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17">first example</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#multiple-plots">multiple plots</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#save-plot">save plot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#subplots">subplots</a></li>
@@ -544,7 +562,10 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html">linear</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regression.html#polynomial">polynomial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="techtalk/main.html">techtalks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">tools</a></li>
 </ul>
 
             
@@ -618,9 +639,18 @@
 <h2>pycharm<a class="headerlink" href="#pycharm" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="output-tweaks">
 <h3>output tweaks<a class="headerlink" href="#output-tweaks" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="selective-run">
+<h4>selective run<a class="headerlink" href="#selective-run" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li><p>run code selection: <cite>Alt + Shift + E</cite></p></li>
 </ul>
+</div>
+</div>
+</div>
+<div class="section" id="packages">
+<h2>packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="common">
+<h3>common<a class="headerlink" href="#common" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="matplotlib">
 <h4>matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -756,6 +786,10 @@
 </div>
 <div class="section" id="conda">
 <h2>conda<a class="headerlink" href="#conda" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="urls">
+<h3>urls<a class="headerlink" href="#urls" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/tasks/index.html">https://conda.io/projects/conda/en/latest/user-guide/tasks/index.html</a></p>
+</div>
 <div class="section" id="install">
 <h3>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h3>
 <p>download anaconda from <a class="reference external" href="https://www.anaconda.com/products/individual#Downloads">https://www.anaconda.com/products/individual#Downloads</a></p>
@@ -795,9 +829,25 @@ helloworld               /home/dadude/anaconda3/envs/helloworld
 </pre></div>
 </div>
 </div>
+<div class="section" id="create-environment">
+<h4>create environment<a class="headerlink" href="#create-environment" title="Permalink to this headline">¶</a></h4>
+<p>checkout python version you want to use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">search</span> <span class="n">python</span>
+</pre></div>
 </div>
-<div class="section" id="packages">
-<h3>packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">envname</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.9</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="remove-environment">
+<h4>remove environment<a class="headerlink" href="#remove-environment" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">remove</span> <span class="o">-</span><span class="n">n</span> <span class="n">ENV_NAME</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>packages<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="search">
 <h4>search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">search</span> <span class="n">scipy</span>
@@ -828,8 +878,8 @@ helloworld               /home/dadude/anaconda3/envs/helloworld
 </pre></div>
 </div>
 </div>
-<div class="section" id="id1">
-<h4>install required packages<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id2">
+<h4>install required packages<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">envname</span>
 <span class="n">source</span> <span class="n">env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 <span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">pip_requirements</span><span class="o">.</span><span class="n">txt</span>
@@ -949,8 +999,8 @@ cd ~/gits;git clone git@github.com:brunswyck/docuhub.git;cd ~/gits/docuhub
 </pre></div>
 </div>
 </div>
-<div class="section" id="id3">
-<h5>matplotlib<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id4">
+<h5>matplotlib<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h5>
 <p><a class="reference external" href="https://matplotlib.org/">https://matplotlib.org/</a></p>
 <dl class="simple">
 <dt>::</dt><dd><p>sudo apt-get install python3-matplotlib</p>
@@ -1169,14 +1219,55 @@ plt.show()</p>
 </div>
 <div class="section" id="summary">
 <h3>summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="underscore">
+<h4>underscore<a class="headerlink" href="#underscore" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Underscore _ is considered as “I don’t Care” or “Throwaway” variable in Python</p></li>
+<li><p>ipython stores the last expression value to the special variable called _</p></li>
+<li><p>underscore _ is also used for ignoring the specific values. If the values are not used, just assign the values to underscore</p></li>
+<li><p>particular function implementation doesn’t need all of the parameters</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">10</span>
+<span class="mi">10</span>
+
+<span class="n">_</span>
+<span class="mi">10</span>
+
+<span class="n">_</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="mi">30</span>
+
+<span class="c1"># Ignore a value when unpacking</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">x</span>
+<span class="mi">1</span>
+
+<span class="n">y</span>
+<span class="mi">3</span>
+
+<span class="c1"># Ignore the index</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">do_something</span><span class="p">()</span>
+
+<span class="c1"># not all params in def/lambda are needed</span>
+
+<span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">_</span><span class="p">):</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">lambda</span> <span class="n">_</span><span class="p">:</span> <span class="mf">1.0</span>  <span class="c1"># don&#39;t require argument</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="list-indices">
 <h4>list indices<a class="headerlink" href="#list-indices" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;second&quot;</span><span class="p">,</span> <span class="s2">&quot;third&quot;</span><span class="p">,</span> <span class="s2">&quot;fourth&quot;</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
-<table class="colwidths-given docutils align-default" id="id17">
-<caption><span class="caption-text">indices</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id18">
+<caption><span class="caption-text">indices</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 20%" />
@@ -1260,8 +1351,8 @@ plt.show()</p>
 </div>
 <div class="section" id="list-operations">
 <h4>list operations<a class="headerlink" href="#list-operations" title="Permalink to this headline">¶</a></h4>
-<table class="colwidths-given docutils align-default" id="id18">
-<caption><span class="caption-text">list operations</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id19">
+<caption><span class="caption-text">list operations</span><a class="headerlink" href="#id19" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20%" />
 <col style="width: 60%" />
@@ -1512,8 +1603,8 @@ if there are no surplus items it receives an empty list</p>
 <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;five&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
-<table class="colwidths-given docutils align-default" id="id19">
-<caption><span class="caption-text">values that can be used as dictionary keys</span><a class="headerlink" href="#id19" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id20">
+<caption><span class="caption-text">values that can be used as dictionary keys</span><a class="headerlink" href="#id20" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -3385,6 +3476,141 @@ __init__() instance method for initializing new objects</p>
 </ul>
 </div>
 </div>
+<div class="section" id="properties">
+<h3>properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.learnbyexample.org/python-properties/">https://www.learnbyexample.org/python-properties/</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_name</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Getting name:&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_name</span>
+
+    <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Setting name to&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_name</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@name</span><span class="o">.</span><span class="n">deleter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deleting name&#39;</span><span class="p">)</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_name</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Expected a string&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@name</span><span class="o">.</span><span class="n">deleter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;Can&#39;t delete attribute&quot;</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>      <span class="c1"># Triggers TypeError: Expected a string</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>       <span class="c1"># Prints Bob</span>
+<span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="mi">42</span>         <span class="c1"># Triggers TypeError: Expected a string</span>
+<span class="k">del</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span>          <span class="c1"># Triggers AttributeError: Can&#39;t delete attribute</span>
+</pre></div>
+</div>
+<div class="section" id="computed-attributes">
+<h4>computed attributes<a class="headerlink" href="#computed-attributes" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extend-property-functionality">
+<h4>extend property functionality<a class="headerlink" href="#extend-property-functionality" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Person</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_name</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Getting name:&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_name</span>
+
+    <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Setting name to&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_name</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@name</span><span class="o">.</span><span class="n">deleter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deleting name&#39;</span><span class="p">)</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_name</span>
+
+<span class="k">class</span> <span class="nc">SubPerson</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inside subperson getter&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">name</span>
+
+    <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inside subperson setter&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SubPerson</span><span class="p">,</span> <span class="n">SubPerson</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@name</span><span class="o">.</span><span class="n">deleter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inside subperson deleter&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SubPerson</span><span class="p">,</span> <span class="n">SubPerson</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="fm">__delete__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">SubPerson</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+
+<span class="c1"># calls the getter</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="c1"># Prints Inside subperson getter</span>
+<span class="c1"># Prints Getting name: Bob</span>
+
+<span class="c1"># calls the setter</span>
+<span class="n">s</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Sam&#39;</span>
+<span class="c1"># Prints Inside subperson setter</span>
+<span class="c1"># Prints Setting name to Sam</span>
+
+<span class="c1"># calls the deleter</span>
+<span class="k">del</span> <span class="n">s</span><span class="o">.</span><span class="n">name</span>
+<span class="c1"># Prints Inside subperson deleter</span>
+<span class="c1"># Prints Deleting name</span>
+</pre></div>
+</div>
+<p>If you only want to redefine one of the methods, it’s not enough to use &#64;property by itself, use code such as the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SubPerson</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="nd">@Person</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">getter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inside subperson getter&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<p>If you just want to redefine the setter, use this code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SubPerson</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+    <span class="nd">@Person</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inside subperson setter&#39;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SubPerson</span><span class="p">,</span> <span class="n">SubPerson</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="fm">__set__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="recursion">
 <h3>recursion<a class="headerlink" href="#recursion" title="Permalink to this headline">¶</a></h3>
 <p>Solve problems that can be broken up into sub-problems of the same type</p>
@@ -4569,8 +4795,8 @@ There are also the classes defined in the module (the class C and the superclass
 <h2>regex<a class="headerlink" href="#regex" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="searching">
 <h3>searching<a class="headerlink" href="#searching" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id20">
-<caption><span class="caption-text">searching</span><a class="headerlink" href="#id20" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id21">
+<caption><span class="caption-text">searching</span><a class="headerlink" href="#id21" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -4605,8 +4831,8 @@ There are also the classes defined in the module (the class C and the superclass
 </div>
 <div class="section" id="substitution">
 <h3>substitution<a class="headerlink" href="#substitution" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id21">
-<caption><span class="caption-text">substitution</span><a class="headerlink" href="#id21" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id22">
+<caption><span class="caption-text">substitution</span><a class="headerlink" href="#id22" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -4798,8 +5024,8 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 </div>
 <div class="section" id="regex-oject-attributes">
 <h3>regex oject attributes<a class="headerlink" href="#regex-oject-attributes" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id22">
-<caption><span class="caption-text">object attributes</span><a class="headerlink" href="#id22" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id23">
+<caption><span class="caption-text">object attributes</span><a class="headerlink" href="#id23" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -4868,8 +5094,8 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 <div class="section" id="match-object-methods">
 <h4>match object methods<a class="headerlink" href="#match-object-methods" title="Permalink to this headline">¶</a></h4>
 <p>methods that are available for a match object match:</p>
-<table class="colwidths-given docutils align-default" id="id23">
-<caption><span class="caption-text">match methods</span><a class="headerlink" href="#id23" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id24">
+<caption><span class="caption-text">match methods</span><a class="headerlink" href="#id24" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -4909,8 +5135,8 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 </div>
 <div class="section" id="match-object-attributes">
 <h4>match object attributes<a class="headerlink" href="#match-object-attributes" title="Permalink to this headline">¶</a></h4>
-<table class="colwidths-given docutils align-default" id="id24">
-<caption><span class="caption-text">match attributes</span><a class="headerlink" href="#id24" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id25">
+<caption><span class="caption-text">match attributes</span><a class="headerlink" href="#id25" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 75%" />
@@ -5373,8 +5599,8 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 </div>
 </div>
 </div>
-<div class="section" id="id4">
-<h3>selenium<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>selenium<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="https://selenium-python.readthedocs.io/installation.html#downloading-python-bindings-for-selenium/bin">https://selenium-python.readthedocs.io/installation.html#downloading-python-bindings-for-selenium/bin</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -5716,7 +5942,7 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 <h3>parsing cli options<a class="headerlink" href="#parsing-cli-options" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="code-with-cli-parsing">
 <h4>code with cli parsing<a class="headerlink" href="#code-with-cli-parsing" title="Permalink to this headline">¶</a></h4>
-<div class="admonition-todo admonition" id="id5">
+<div class="admonition-todo admonition" id="id6">
 <p class="admonition-title">Todo</p>
 <p>revise code</p>
 </div>
@@ -5883,8 +6109,8 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 </div>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>numpy<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>numpy<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="links">
 <h3>links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -5892,6 +6118,7 @@ As a result, re.sub() converts each alphanumeric portion of &lt;string&gt; to al
 <li><p><a class="reference external" href="https://www.guru99.com/numpy-tutorial.html">https://www.guru99.com/numpy-tutorial.html</a></p></li>
 <li><p><a class="reference external" href="https://www.w3schools.com/python/numpy_intro.asp">https://www.w3schools.com/python/numpy_intro.asp</a></p></li>
 <li><p><a class="reference external" href="https://cs231n.github.io/python-numpy-tutorial">https://cs231n.github.io/python-numpy-tutorial</a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ravel.html">https://numpy.org/doc/stable/reference/generated/numpy.ravel.html</a></p></li>
 </ul>
 </div>
 <div class="section" id="vocabulary">
@@ -7099,10 +7326,10 @@ ValueError: operands could not be broadcast together with shapes (2,3) (2,2)
 </div>
 </div>
 </div>
-<div class="section" id="id7">
-<h2>pandas<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id8">
-<h3>links<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h2>pandas<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>links<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/10min.html">http://pandas.pydata.org/pandas-docs/stable/10min.html</a></p></li>
 <li><p><a class="reference external" href="https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python">https://www.datacamp.com/community/tutorials/pandas-tutorial-dataframe-python</a></p></li>
@@ -7559,8 +7786,8 @@ we must add 1 to this value if we want row ‘c’ as well</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id9">
-<h3>summary<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>summary<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DataFrame</span><span class="o">.</span><span class="n">at</span>   <span class="c1"># Access a single value for a row/column label pair.</span>
 <span class="n">DataFrame</span><span class="o">.</span><span class="n">loc</span>  <span class="c1"># Access a group of rows and columns by label(s).</span>
 <span class="n">DataFrame</span><span class="o">.</span><span class="n">iloc</span> <span class="c1"># Access a group of rows and columns by integer position</span>
@@ -7784,8 +8011,8 @@ we must add 1 to this value if we want row ‘c’ as well</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id10">
-<h4>csv<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id11">
+<h4>csv<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">astronaut_csv</span> <span class="o">=</span> <span class="s2">&quot;files/csv/astronauts.csv&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">astronaut_csv</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -8393,8 +8620,8 @@ print(h2[0])</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id11">
-<h4>imputation<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id12">
+<h4>imputation<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># filling in missing/corrupt values in your dataframe. it shouldn&#39;t affect your final result</span>
 <span class="n">dfo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;files/csv/train.csv&quot;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Date&quot;</span><span class="p">])</span>  <span class="c1"># allow load all in to determine dtype</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dfo</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
@@ -8941,8 +9168,8 @@ print(h2[0])</p>
 </div>
 <div class="section" id="plotting">
 <h2>plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id12">
-<h3>links<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>links<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://matplotlib.org/stable/gallery/index.html">https://matplotlib.org/stable/gallery/index.html</a></p></li>
 <li><p><a class="reference external" href="https://matplotlib.org/stable/users/index.html">https://matplotlib.org/stable/users/index.html</a></p></li>
@@ -8952,20 +9179,20 @@ print(h2[0])</p>
 <li><p><a class="reference external" href="http://seaborn.pydata.org/examples/">http://seaborn.pydata.org/examples/</a></p></li>
 </ul>
 </div>
-<div class="section" id="id13">
-<h3>resources<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>resources<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=DAQNHzOcO5A">https://www.youtube.com/watch?v=DAQNHzOcO5A</a></p></li>
 </ul>
 </div>
-<div class="section" id="id14">
-<h3>files<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>files<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <p>download csv <a class="reference download internal" download="" href="_downloads/feec67dbe31af16f0ce6740c09e22b00/pandas_tut_read.csv"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></p>
 </div>
-<div class="section" id="id15">
-<h3>matplotlib<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id16">
-<h4>first example<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<h3>matplotlib<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h4>first example<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>  <span class="c1"># clear current figure</span>
@@ -9490,7 +9717,7 @@ scatterplot
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="techtalk/main.html" class="btn btn-neutral float-right" title="techtalks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="regression.html" class="btn btn-neutral float-right" title="linear" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="links.html" class="btn btn-neutral float-left" title="links" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

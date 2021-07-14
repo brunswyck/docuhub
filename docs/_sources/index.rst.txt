@@ -11,11 +11,14 @@ Welcome to bedocs's documentation!
 
    ansible
    bash
+   blockchain
    cheats/main
+   data
    git
    links
    python
    techtalk/main
+   tools
 
 
 Indices and tables

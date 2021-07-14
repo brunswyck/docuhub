@@ -8,7 +8,18 @@ pycharm
 output tweaks
 =============
 
+selective run
+-------------
+
 - run code selection: `Alt + Shift + E`
+
+
+********
+packages
+********
+
+common
+======
 
 matplotlib
 ----------
@@ -17,6 +28,7 @@ matplotlib
 .. code-block:: python
 
    plt.show()
+
 
 numpy
 -----
@@ -159,6 +171,10 @@ initiating stuff
 conda
 *****
 
+urls
+====
+https://conda.io/projects/conda/en/latest/user-guide/tasks/index.html
+
 install
 =======
 
@@ -209,6 +225,27 @@ backup environment
    dependencies:
      - sphinx
      - argcomplete
+
+
+create environment
+------------------
+
+checkout python version you want to use
+
+.. code::
+
+   conda search python
+
+.. code::
+
+   conda create -n envname python=3.9
+
+remove environment
+------------------
+
+.. code::
+
+   conda env remove -n ENV_NAME
 
 packages
 ========
@@ -609,6 +646,48 @@ for x in range(number+1)
 
 summary
 =======
+
+underscore
+----------
+
+* Underscore _ is considered as "I don't Care" or "Throwaway" variable in Python
+* ipython stores the last expression value to the special variable called _
+* underscore _ is also used for ignoring the specific values. If the values are not used, just assign the values to underscore
+* particular function implementation doesn't need all of the parameters
+
+.. code-block:: python
+
+   10
+   10
+
+   _
+   10
+
+   _ * 3
+   30
+
+   # Ignore a value when unpacking
+
+   x, _, y = (1, 2, 3)
+
+   x
+   1
+
+   y
+   3
+
+   # Ignore the index
+
+   for _ in range(10):
+       do_something()
+
+   # not all params in def/lambda are needed
+
+   def callback(_):
+       return True
+
+   lambda _: 1.0  # don't require argument
+
 
 list indices
 ------------
@@ -2574,8 +2653,6 @@ summary comprehensions generators
 list of iteration tools in python: https://docs.python.org/3/library/itertools.html
 
 
-
-
 classes
 =======
 
@@ -2844,6 +2921,155 @@ summary classes
 - Statements can be split over multiple lines using backslash
   - Use this feature sparingly and only when it improves readability
 - Use “Ask! Don’t tell.” to avoid tight coupling between objects
+
+properties
+==========
+
+https://www.learnbyexample.org/python-properties/
+
+.. code-block:: python
+
+   class Person():
+       def __init__(self, value):
+           self.hidden_name = value
+
+       @property
+       def name(self):
+           print('Getting name:')
+           return self.hidden_name
+
+       @name.setter
+       def name(self, value):
+           print('Setting name to', value)
+           self.hidden_name = value
+
+       @name.deleter
+       def name(self):
+           print('Deleting name')
+           del self.hidden_name
+
+
+.. code-block:: python
+
+   class Person:
+       def __init__(self, value):
+           self.name = value
+   
+       @property
+       def name(self):
+           return self._name
+   
+       @name.setter
+       def name(self, value):
+           if not isinstance(value, str):
+               raise TypeError('Expected a string')
+           self._name = value
+   
+       @name.deleter
+       def name(self):
+           raise AttributeError("Can't delete attribute")
+   
+   p = Person(42)      # Triggers TypeError: Expected a string
+   p = Person('Bob')
+   print(p.name)       # Prints Bob
+   p.name = 42         # Triggers TypeError: Expected a string
+   del p.name          # Triggers AttributeError: Can't delete attribute
+
+computed attributes
+-------------------
+
+.. code-block:: python
+
+   class Rectangle(object):
+       def __init__(self, width, height):
+           self.width = width
+           self.height = height
+
+       @property
+       def area(self):
+           return self.width * self.height
+
+extend property functionality
+-----------------------------
+
+.. code-block:: python
+
+   class Person():
+       def __init__(self, value):
+           self.hidden_name = value
+   
+       @property
+       def name(self):
+           print('Getting name:')
+           return self.hidden_name
+   
+       @name.setter
+       def name(self, value):
+           print('Setting name to', value)
+           self.hidden_name = value
+   
+       @name.deleter
+       def name(self):
+           print('Deleting name')
+           del self.hidden_name
+   
+   class SubPerson(Person):
+       @property
+       def name(self):
+           print('Inside subperson getter')
+           return super().name
+   
+       @name.setter
+       def name(self, value):
+           print('Inside subperson setter')
+           super(SubPerson, SubPerson).name.__set__(self, value)
+   
+       @name.deleter
+       def name(self):
+           print('Inside subperson deleter')
+           super(SubPerson, SubPerson).name.__delete__(self)
+
+
+.. code-block:: python
+
+   s = SubPerson('Bob')
+   
+   # calls the getter
+   print(s.name)
+   # Prints Inside subperson getter
+   # Prints Getting name: Bob
+   
+   # calls the setter
+   s.name = 'Sam'
+   # Prints Inside subperson setter
+   # Prints Setting name to Sam
+   
+   # calls the deleter
+   del s.name
+   # Prints Inside subperson deleter
+   # Prints Deleting name
+
+
+If you only want to redefine one of the methods, it’s not enough to use @property by itself, use code such as the following:
+
+.. code-block:: python
+
+   class SubPerson(Person):
+       @Person.name.getter
+       def name(self):
+           print('Inside subperson getter')
+           return super().name
+
+
+If you just want to redefine the setter, use this code:
+
+.. code-block:: python
+
+   class SubPerson(Person):
+       @Person.name.setter
+       def name(self, value):
+           print('Inside subperson setter')
+           super(SubPerson, SubPerson).name.__set__(self, value)
 
 recursion
 =========

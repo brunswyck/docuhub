@@ -1,0 +1,89 @@
+*****************
+linear regression
+*****************
+
+resources
+=========
+
+* https://scikit-learn.org/stable/modules/linear_model.html
+* https://scikit-learn.org/stable/user_guide.html
+* https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score
+
+
+
+
+files
+=====
+
+.. only:: builder_html or readthedocs
+
+   download csv :download:`here <files/csv/Advertising.csv>`
+
+
+sklearn flow
+============
+
+generalized
+-----------
+
+.. code-block:: python
+
+   from sklearn.model_family import ModelAlgo
+
+   # create instance of that model
+   mymodel = ModelAlgo(param1, param2)
+
+   # train the model
+   mymodel.fit(X_train, y_train)
+
+   # get predictions
+   predictions = mymodel.predict(X_test)
+
+   # import some error metric function for performance evaluation
+   from sklearn.metrics import error_metric
+   performance = error_metric(y_test, predictions)
+
+
+beta coefficients
+=================
+
+np.polyfit
+----------
+
+.. code-block:: python
+
+   import pandas as pd
+   import numpy as np
+   import seaborn as sns
+   import matplotlib.pyplot as plt
+   import sklearn
+
+   df = pd.read_csv("data/Advertising.csv")
+   df['total_spend'] = df['TV'] + df['radio'] + df['newspaper']
+
+   # explore relationship with regplot
+   sns.regplot(data=df, x='total_spend', y='sales')
+   plt.show()
+
+   X = df['total_spend']
+   y = df['sales']
+
+   # calculate Ordinary Least Squares with polynomial fit (set degree to 1 for lin reg)
+   beta_coefficients = np.polyfit(X, y, deg=1)  # polyfit returns [0.04868788 4.24302822]
+   # vector to minimize gradient descent/cost function
+   beta1, beta0 = beta_coefficients[0], beta_coefficients[1]
+   potential_spend = np.linspace(0, 500, 100)  # 100 points
+   predicted_sales = beta1 * potential_spend + beta0
+
+
+.. image:: files/img/ml_beta_coefs.png
+
+
+----------
+
+.. code-block:: python
+
+
+.. image:: files/img/ml_truevspredicted.png 
+
+

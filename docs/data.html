@@ -1,0 +1,1245 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>data &mdash; Patrick&#39;s Docs alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/my_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/plot_directive.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-binder.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-dataframe.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery-rendered-html.css" type="text/css" />
+  <link rel="stylesheet" href="_static/dark_mode_css/general.css" type="text/css" />
+  <link rel="stylesheet" href="_static/dark_mode_css/dark.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="_static/dark_mode_js/default_dark.js"></script>
+        <script src="_static/dark_mode_js/theme_switcher.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GIT" href="git.html" />
+    <link rel="prev" title="cheatsheets" href="cheats/main.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Patrick's Docs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ansible.html">ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bash.html">bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blockchain.html">block</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheats/main.html">cheatsheets</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-cleaning">data cleaning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#links">links</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#one-hot-encoding-ohe">one hot encoding OHE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#missing-data">missing data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#regression">regression</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#linear">linear</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">links</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#files">files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generalized-flow">generalized flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ordinary-least-squares">Ordinary Least Squares</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#beta-coefficients">beta coefficients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#train-test-split">train_test_split</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error-metrics">error metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#evaluate-residuals">evaluate residuals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deploying-model">deploying model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interpreting-coefs">interpreting coefs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prediction-test">prediction test</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#polynomial">polynomial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interaction-terms">interaction terms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-polynomial-features">create polynomial features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#regularization">regularization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#feature-scaling">feature scaling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cross-validation">cross validation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-setup">data setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#l1-reg-lasso-regression">L1 reg LASSO regression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#l2-reg-ridge-regression">L2 reg Ridge regression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#l1-l2-elastic-net-regression">L1+L2 Elastic Net regression</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#symptoms-and-remedy">symptoms and remedy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bias-variance-trade-off-decision-routes">Bias-Variance Trade-off Decision Routes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="git.html">GIT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="links.html">links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python.html">python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="techtalk/main.html">techtalks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">tools</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Patrick's Docs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/data.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data">
+<h1>data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="data-cleaning">
+<h2>data cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="links">
+<h3>links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.dataquest.io/blog/machine-learning-preparing-data/">https://www.dataquest.io/blog/machine-learning-preparing-data/</a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html">https://pandas.pydata.org/pandas-docs/stable/user_guide/missing_data.html</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/what-is-one-hot-encoding-and-how-to-use-pandas-get-dummies-function-922eb9bd4970">https://towardsdatascience.com/what-is-one-hot-encoding-and-how-to-use-pandas-get-dummies-function-922eb9bd4970</a></p></li>
+</ul>
+</div>
+<div class="section" id="one-hot-encoding-ohe">
+<h3>one hot encoding OHE<a class="headerlink" href="#one-hot-encoding-ohe" title="Permalink to this headline">¶</a></h3>
+<p>transform categorical data into numbers</p>
+<img alt="_images/dataprep_ohe_employees.png" src="_images/dataprep_ohe_employees.png" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># check labels in categorical params</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Remarks&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="c1"># array([&#39;Male&#39;, &#39;Female&#39;], dtype=object)</span>
+<span class="c1"># array([&#39;Nice&#39;, &#39;Good&#39;, &#39;Great&#39;], dtype=object)</span>
+
+<span class="c1"># Checking for the label counts in the categorical parameters</span>
+
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Remarks&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Female    7</span>
+<span class="sd">Male      5</span>
+<span class="sd">Name: Gender, dtype: int64</span>
+
+<span class="sd">Nice     5</span>
+<span class="sd">Great    4</span>
+<span class="sd">Good     3</span>
+<span class="sd">Name: Remarks, dtype: int64</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># One-Hot encoding the categorical parameters using get_dummies()</span>
+<span class="n">one_hot_encoded_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Remarks&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">one_hot_encoded_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/dataprep_ohe_output1.png" src="_images/dataprep_ohe_output1.png" />
+<p>You can just use n-1 columns to define parameters if it has n unique labels. For example if we only keep Gender_Female column and drop Gender_Male column, then also we can convey the entire information as when label is 1, it means female and when label is 0 it means male. This way we can encode the categorical data and reduce the number of parameters as well.</p>
+</div>
+<div class="section" id="missing-data">
+<h3>missing data<a class="headerlink" href="#missing-data" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="regression">
+<h2>regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linear">
+<h3>linear<a class="headerlink" href="#linear" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>links<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/linear_model.html">https://scikit-learn.org/stable/modules/linear_model.html</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/user_guide.html">https://scikit-learn.org/stable/user_guide.html</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score">https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html#sklearn.metrics.r2_score</a></p></li>
+</ul>
+</div>
+<div class="section" id="files">
+<h4>files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h4>
+<p>download csv <a class="reference download internal" download="" href="_downloads/0744444f8f55393646dff11532754388/Advertising.csv"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a></p>
+</div>
+<div class="section" id="generalized-flow">
+<h4>generalized flow<a class="headerlink" href="#generalized-flow" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_family</span> <span class="kn">import</span> <span class="n">ModelAlgo</span>
+
+<span class="c1"># create instance of that model</span>
+<span class="n">mymodel</span> <span class="o">=</span> <span class="n">ModelAlgo</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">)</span>
+
+<span class="c1"># train the model</span>
+<span class="n">mymodel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># get predictions</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">mymodel</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># import some error metric function for performance evaluation</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">error_metric</span>
+<span class="n">performance</span> <span class="o">=</span> <span class="n">error_metric</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ordinary-least-squares">
+<h4>Ordinary Least Squares<a class="headerlink" href="#ordinary-least-squares" title="Permalink to this headline">¶</a></h4>
+<p>minimize residual error</p>
+<p>y = m.x + b -&gt; with multiple features you need gradient descent to scale this
+m = slope of line (m=0 -&gt; zero slope, + pos, - neg slope)
+b = cross w y-axis when x = 0
+b = y-intercept</p>
+<p>X = multiple features (x1, x2, x3..)
+y = vector label (eg Price)</p>
+<p>ŷ (prediction) = bx + .. + bn xn (n = number of features in your dataset)</p>
+<p>ŷ = b0 + b1.x</p>
+<p>(the slope) b1 = Pearson Correlation Coefficient (x) Standard Deviation (y) / std dev (x)</p>
+<p>b1 = P(x,y) . stdev(y) / stdev(x)
+b0 = y̅ - b1.x̅</p>
+</div>
+<div class="section" id="example">
+<h4>example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<p>calculate relation hours of operation (x) with estimated production volume (y)?</p>
+<p>calculate averages = x̅, y̅</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    x    y   x-x̅  y-y̅  (x-x̅)(y-y̅)  (x-x̅)²
+    34  102  -6   -32     192        36   b1 = 558/124 = 4.5
+    35  109  -5   -25     125        25   b0 = 134 - (4.5 x 40) = -46
+    39  137  -1     3      -3         1   y̅ = -46 + 4.5x
+    42  148   2    14      28         4
+    43  150   3    16      48         9
+    47  158   7    24     168        49
+    ------------------------------------
+x̅,y̅ 40  134          sum: 558       124
+</pre></div>
+</div>
+<p>so if the manager wants to produce 125 units/week
+he should run the plant for: y̅ = b0 + b1.x
+125 = -46 + 4.5x</p>
+<p>with more than 1 feature this becomes unscalable so we shift focus on minimizing a cost function with gradient descent</p>
+<p>gradient descent = minimization of cost function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="n">n</span>
+<span class="n">y̅</span> <span class="o">=</span> <span class="n">E</span>    <span class="n">Bi</span><span class="o">.</span><span class="n">Xi</span>
+     <span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>sum of squared errors for M rows (the predictions)</p>
+<p>J = cost function
+divide by m to get the mean</p>
+<p>all rows (residual error ² (minimize squared error))</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                         err between real y &amp; predicted y̅
+               m                     |
+J(B) = 1/2m . E  . (y^j - y̅^j)²  &lt;----
+             j=1
+</pre></div>
+</div>
+<p>gradient = omgekeerde driehoek</p>
+<dl class="simple">
+<dt>X:</dt><dd><p>matrix X of all the features datapoints</p>
+</dd>
+<dt>Y:</dt><dd><p>vector of all the known y labels</p>
+</dd>
+<dt>B:</dt><dd><p>vector of beta coefficients to minimize the gradient descent aka derivative aka minim of cost function)</p>
+</dd>
+</dl>
+<p>cost function calculation in python</p>
+<p>prepend x vector with a vector of 1’s (multiplying matrices you need correct dimensions)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inner</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(((</span><span class="n">X</span> <span class="o">@</span> <span class="n">theta</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>x = 171/4.5 = 38 hours per week work needed</p>
+</div>
+<div class="section" id="beta-coefficients">
+<h4>beta coefficients<a class="headerlink" href="#beta-coefficients" title="Permalink to this headline">¶</a></h4>
+<p>using polyfit to calculate beta coefficients</p>
+<div class="section" id="np-polyfit">
+<h5>np.polyfit<a class="headerlink" href="#np-polyfit" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/Advertising.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;total_spend&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;TV&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;radio&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;newspaper&#39;</span><span class="p">]</span>
+
+<span class="c1"># explore relationship with regplot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;total_spend&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;total_spend&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales&#39;</span><span class="p">]</span>
+
+<span class="c1"># calculate Ordinary Least Squares with polynomial fit (set degree to 1 for lin reg)</span>
+<span class="n">beta_coefficients</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># polyfit returns [0.04868788 4.24302822]</span>
+
+<span class="c1"># vector to minimize gradient descent/cost function</span>
+<span class="n">beta1</span><span class="p">,</span> <span class="n">beta0</span> <span class="o">=</span> <span class="n">beta_coefficients</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">beta_coefficients</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">potential_spend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># 100 points</span>
+<span class="n">predicted_sales</span> <span class="o">=</span> <span class="n">beta1</span> <span class="o">*</span> <span class="n">potential_spend</span> <span class="o">+</span> <span class="n">beta0</span>
+</pre></div>
+</div>
+<img alt="_images/ml_beta_coefs.png" src="_images/ml_beta_coefs.png" />
+<p>cost functions (sum of errors² between estimate &amp; true observation in lin regression)</p>
+<img alt="_images/ml_cost_functions.png" src="_images/ml_cost_functions.png" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">potential_spend</span><span class="p">,</span> <span class="n">predicted_sales</span><span class="p">)</span>  <span class="c1"># our lin regression line</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;total_spend&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/ml_ads_scatter1.png" src="_images/ml_ads_scatter1.png" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ad_spend</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">predicted_sale</span> <span class="o">=</span> <span class="n">beta1</span> <span class="o">*</span> <span class="n">ad_spend</span> <span class="o">+</span> <span class="n">beta0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">predicted_sale</span><span class="p">)</span>
+<span class="c1"># for an ad spend of 200usd = 13.98060407984596 units</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">betas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># y = B3x³ + B2*x² + B1x + B0</span>
+<span class="n">b3</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">y_intercept</span> <span class="o">=</span> <span class="n">betas</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">betas</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">betas</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">betas</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">pot_spend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">pred_sales</span> <span class="o">=</span> <span class="n">b3</span> <span class="o">*</span> <span class="n">pot_spend</span> <span class="o">**</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">pot_spend</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">pot_spend</span> <span class="o">+</span> <span class="n">y_intercept</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;total_spend&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pot_spend</span><span class="p">,</span> <span class="n">pred_sales</span><span class="p">)</span>  <span class="c1"># our lin regression line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/ml_ads_polynomial_scatter.png" src="_images/ml_ads_polynomial_scatter.png" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/ml_ads_pairplot.png" src="_images/ml_ads_pairplot.png" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TV&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Sales&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;TV Spend&quot;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;radio&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Sales&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Radio Spend&quot;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;newspaper&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Sales&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;newspaper Spend&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/ml_ads_subplot_lin.png" src="_images/ml_ads_subplot_lin.png" />
+</div>
+</div>
+<div class="section" id="train-test-split">
+<h4>train_test_split<a class="headerlink" href="#train-test-split" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># store features as X by just dropping the label|target &quot;sales&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">,</span><span class="s1">&#39;total_spend&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;sales&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales&#39;</span><span class="p">]</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="c1"># help(train_test_split)</span>
+<span class="c1"># train_test_split &amp; shift + tab to get help in jupyter</span>
+
+<span class="c1"># features                            test_size = data % left out that goes into test set</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+<span class="c1">#                   labels                                               set a random seed</span>
+<span class="c1"># shuffles perhaps already sorted data      use same randomness if doing multiple ml algos</span>
+<span class="c1"># it retains the index</span>
+
+<span class="c1"># create the model aka estimator</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="c1"># print(help(LinearRegression))</span>
+<span class="c1"># default params typed out</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">copy_X</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>  <span class="c1"># returns model object: LinearRegression()</span>
+<span class="c1"># print(len(X_train))  # 140</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>regression is a task when a model attempts to predict continuous values (eg sales)
+unlike categorical values, which is classification (eg predict country given a house its features)
+there are no in between values for separate countries</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>a RMSE for your label of 10€ is great for a house, not for a candy bar
+context is important
+compare your error metric to the average value of the label</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X_test</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">test_predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>  <span class="c1"># 14.0225</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;sales&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/ml_ads_histplot_lin.png" src="_images/ml_ads_histplot_lin.png" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://numpy.org/doc/stable/reference/generated/numpy.tril.html</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">())</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.1g&quot;</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;cool&quot;</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/ml_ads_heatmap_tril.png" src="_images/ml_ads_heatmap_tril.png" />
+</div>
+<div class="section" id="error-metrics">
+<h4>error metrics<a class="headerlink" href="#error-metrics" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># mean absolute error</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">test_predictions</span><span class="p">))</span>  <span class="c1"># 1.213745773614481</span>
+
+<span class="c1"># RSME (if big diff with MAE = you&#39;ve got a few data points that are way off)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">test_predictions</span><span class="p">)))</span>  <span class="c1"># 1.5161519375993884</span>
+<span class="n">coefs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;coefficient&#39;</span><span class="p">])</span>
+<span class="c1"># X.columns = Index([&#39;TV&#39;, &#39;radio&#39;, &#39;newspaper&#39;], dtype=&#39;object&#39;)</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">             coefficient</span>
+<span class="sd">TV             -0.012834</span>
+<span class="sd">radio           0.129096</span>
+<span class="sd">newspaper      -0.058561</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>  <span class="c1"># 3.1515267680706547</span>
+
+<span class="c1"># with a budget of 50 for TV 30 for Radio &amp; 10 for Newspaper, sales will be:</span>
+<span class="n">budget</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">test_sales</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span> <span class="o">+</span>  <span class="nb">sum</span><span class="p">(</span><span class="n">budget</span> <span class="o">*</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_sales</span><span class="p">)</span>  <span class="c1"># 11.01006995548518</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="evaluate-residuals">
+<h4>evaluate residuals<a class="headerlink" href="#evaluate-residuals" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate residuals (y-ŷ)</span>
+
+<span class="c1"># residual plot showing a clear pattern = lin regression not valid</span>
+<span class="n">test_residuals</span> <span class="o">=</span> <span class="n">y_test</span> <span class="o">-</span> <span class="n">test_predictions</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">test_residuals</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>  <span class="c1"># make sure there&#39;s no clear line or curve</span>
+</pre></div>
+</div>
+<img alt="_images/ml_ads_residuals_scatterplot.png" src="_images/ml_ads_residuals_scatterplot.png" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># distribution plot</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">test_residuals</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/ml_ads_distplot_testresid.png" src="_images/ml_ads_distplot_testresid.png" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># probability plot</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">test_residuals</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span> <span class="c1"># _ is convention for a throwaway variable</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/ml_ads_probabilityplot.png" src="_images/ml_ads_probabilityplot.png" />
+</div>
+<div class="section" id="deploying-model">
+<h4>deploying model<a class="headerlink" href="#deploying-model" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># loading &amp; saving the model</span>
+<span class="n">final_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">final_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c1"># full dataset</span>
+
+<span class="c1"># save model</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">dump</span><span class="p">,</span> <span class="n">load</span>
+<span class="n">dump</span><span class="p">(</span><span class="n">final_model</span><span class="p">,</span> <span class="s2">&quot;final_sales_model.joblib&quot;</span><span class="p">)</span>
+
+<span class="c1"># load model</span>
+<span class="n">loaded_model</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">&quot;final_sales_model.joblib&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="interpreting-coefs">
+<h4>interpreting coefs<a class="headerlink" href="#interpreting-coefs" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># interpreting the coefficients</span>
+<span class="c1"># beta coefs tv radio newspaper</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">final_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="p">[</span> <span class="mf">0.04576465</span>  <span class="mf">0.18853002</span> <span class="o">-</span><span class="mf">0.00103749</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>0 when your spend has no effect on sales</p></li>
+<li><p>for every 1 unit TV feature so eg 231.1 (x1000usd) we expect a sales increase of 0.0457 units</p></li>
+<li><p>for every 1000$ spend on radio ads we expect 188 more units sold</p></li>
+<li><p>looks like we should drop radio feature</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plotting true points vs predicted points</span>
+<span class="n">y_hat</span> <span class="o">=</span> <span class="n">final_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TV&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>  <span class="c1"># True</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TV&#39;</span><span class="p">],</span> <span class="n">y_hat</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>  <span class="c1"># predicted</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Sales&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;TV Spend&quot;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;radio&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;radio&#39;</span><span class="p">],</span> <span class="n">y_hat</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Sales&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Radio Spend&quot;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;newspaper&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;newspaper&#39;</span><span class="p">],</span> <span class="n">y_hat</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Sales&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Newspaper Spend&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="_images/ml_truevspredicted.png" src="_images/ml_truevspredicted.png" />
+</div>
+<div class="section" id="prediction-test">
+<h4>prediction test<a class="headerlink" href="#prediction-test" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># predict for a new ad campaign</span>
+<span class="c1"># check dimensions</span>
+<span class="n">X</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># (200, 3)</span>
+
+<span class="c1"># 149 TV, 22 Radio, 12 Newspaper ads</span>
+<span class="c1"># Sales expected?</span>
+<span class="n">campaign</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">149</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span>  <span class="c1"># 2d list match it up</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">loaded_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">campaign</span><span class="p">))</span>
+<span class="p">[</span><span class="mf">13.893032</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="polynomial">
+<h3>polynomial<a class="headerlink" href="#polynomial" title="Permalink to this headline">¶</a></h3>
+<p>addresses 2 issues:
+- find non-linear feature relationships to label
+- interaction terms beween features</p>
+<div class="section" id="interaction-terms">
+<h4>interaction terms<a class="headerlink" href="#interaction-terms" title="Permalink to this headline">¶</a></h4>
+<p>aka synergy</p>
+<p>consider <strong>interaction terms</strong>
+- what if features are only significant when in sync with one another
+- eg: a newspaper ad spend by itself is not effective but greatly increases if added to a TV ad campaign</p>
+</div>
+<div class="section" id="create-polynomial-features">
+<h4>create polynomial features<a class="headerlink" href="#create-polynomial-features" title="Permalink to this headline">¶</a></h4>
+<p>automatically creates both higher order feature polynomials &amp; the interaction terms between all feature combos</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/Advertising.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># X = all the features</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;sales&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># y = target/label</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sales&quot;</span><span class="p">]</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="c1"># include_bias = adds in array column of 1 values</span>
+<span class="n">polynomial_converter</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">interaction_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># grab &amp; analyze feature values</span>
+<span class="n">polynomial_converter</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="c1"># transform</span>
+<span class="c1"># polynomial_converter.transform(X).shape  # (200, 9)</span>
+<span class="n">poly_features</span> <span class="o">=</span> <span class="n">polynomial_converter</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="c1"># poly_features.shape # (200, 9)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">poly_features</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">TV           230.1</span>
+<span class="sd">radio         37.8</span>
+<span class="sd">newspaper     69.2</span>
+<span class="sd">Name: 0, dtype: float64</span>
+<span class="sd">[2.301000e+02 3.780000e+01 6.920000e+01 5.294601e+04 8.697780e+03</span>
+<span class="sd"> 1.592292e+04 1.428840e+03 2.615760e+03 4.788640e+03]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># in 1 step</span>
+<span class="n">poly_features</span> <span class="o">=</span> <span class="n">polynomial_converter</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="train-and-evaluate">
+<h5>train and evaluate<a class="headerlink" href="#train-and-evaluate" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">polynomial_converter</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">interaction_only</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># grab &amp; analyze feature values</span>
+<span class="n">polynomial_converter</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="c1"># transform</span>
+<span class="c1"># polynomial_converter.transform(X).shape  # (200, 9)</span>
+<span class="n">poly_features</span> <span class="o">=</span> <span class="n">polynomial_converter</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="c1"># poly_features.shape # (200, 9)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">poly_features</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">TV           230.1</span>
+<span class="sd">radio         37.8</span>
+<span class="sd">newspaper     69.2</span>
+<span class="sd">Name: 0, dtype: float64</span>
+<span class="sd">[2.301000e+02 3.780000e+01 6.920000e+01 5.294601e+04 8.697780e+03</span>
+<span class="sd"> 1.592292e+04 1.428840e+03 2.615760e+03 4.788640e+03]</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># in 1 step</span>
+<span class="c1"># poly_features = polynomial_converter.fit_transform(X)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">poly_features</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="c1"># now calls regression model on 9 features instead of 3</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># evaluate performance on test set</span>
+<span class="n">test_predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;[5.17095811e-02  1.30848864e-02  1.20000085e-02 - 1.10892474e-04</span>
+<span class="sd">    1.14212673e-03 - 5.24100082e-05  3.34919737e-05  1.46380310e-04</span>
+<span class="sd">    - 3.04715806e-05]&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span>
+<span class="n">MAE</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">test_predictions</span><span class="p">)</span>
+<span class="n">MSE</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">test_predictions</span><span class="p">)</span>
+<span class="n">RMSE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">MSE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">MAE</span><span class="p">)</span>
+<span class="mf">0.48967980448038373</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">MSE</span><span class="p">)</span>
+<span class="mf">0.4417505510403753</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">RMSE</span><span class="p">)</span>  <span class="c1"># punishes your datamodel when it&#39;s off, even on just a few data points</span>
+<span class="mf">0.6646431757269274</span>
+<span class="c1"># does this perform better than lin reg values? lower values = better!</span>
+<span class="c1"># so yes it does</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="overfit-underfit">
+<h5>overfit underfit<a class="headerlink" href="#overfit-underfit" title="Permalink to this headline">¶</a></h5>
+<p>choose best model parameters, how to choose optimal degree?
+Bias variance trade-off
+aka overfitting vs underfitting</p>
+<dl class="simple">
+<dt>example of a model that overfits to a data set</dt><dd><ul class="simple">
+<li><p>fits too much to the noise &amp; variance in the training data</p></li>
+<li><p>will perform very well on training data but have poor performance on new unseen (test) data</p></li>
+<li><p>is harder to detect</p></li>
+</ul>
+</dd>
+<dt>example of a model that underfits to a data set</dt><dd><ul class="simple">
+<li><p>model has high bias and is generalizing too much</p></li>
+<li><p>underfitting can lead to poor performance in both training &amp; testing data sets</p></li>
+</ul>
+</dd>
+</dl>
+<p>plot out Error vs Model complexity on training set
+then check performance on the test set</p>
+<p>in polynomial regression complexity = degree of the polynomial but many ML
+algo’s have their own hyperparameters that can increase complexity
+- eg random forests can have a few trees or multiple decision trees or large amounts of decision trees</p>
+<p>create a loop that creates all those models for various polynomial degrees
+train them, calculate error metrics for both training &amp; test data
+then visually see where we begin to spike on the test error
+&amp; where we continue to decline on the training error</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create the different order polynomial</span>
+<span class="n">train_rmse_errors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_rmse_errors</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">polynomial_converter</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">d</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">polynomial_features</span> <span class="o">=</span> <span class="n">polynomial_converter</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="c1"># split poly features train/test</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">polynomial_features</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+
+    <span class="c1"># fit model on training data</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="c1"># predict on train &amp; test (get an idea on over/underfitting)</span>
+    <span class="n">train_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">test_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="c1"># store/save RMSE for BOTH the train &amp; test set</span>
+    <span class="n">train_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">train_pred</span><span class="p">))</span>
+    <span class="n">test_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">test_pred</span><span class="p">))</span>
+
+    <span class="n">train_rmse_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">train_rmse</span><span class="p">)</span>
+    <span class="n">test_rmse_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_rmse</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">train_rmse_errors</span><span class="p">)</span>  <span class="c1"># value keeps going down (1 spike) as we increase complexity (it is overfitting)</span>
+<span class="sd">&quot;&quot;&quot;[1.7345941243293763, 0.5879574085292231, 0.43393443569020695, 0.3517083688399345,</span>
+<span class="sd">    0.2509342963181027, 0.20506412006370558, 5.421692177886925, 0.1446549826772545, 0.16727684104713286]&quot;&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">test_rmse_errors</span><span class="p">)</span>  <span class="c1"># overfitting becomes apparent in test set</span>
+<span class="sd">&quot;&quot;&quot;[1.516151937599388, 0.6646431757269274, 0.5803286825215619, 0.5077742637898888,</span>
+<span class="sd">    2.575814116940382, 4.331414179872115, 1379.1414986350896, 4169.996454545673, 95477.87993484356]&quot;&quot;&quot;</span>
+
+<span class="c1"># plot the results (RMSE vs poly order)</span>
+            <span class="c1"># scalex   # scaley</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">train_rmse_errors</span><span class="p">[:</span><span class="mi">5</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Train RMSE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">test_rmse_errors</span><span class="p">[:</span><span class="mi">5</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Test RMSE&quot;</span><span class="p">)</span>
+<span class="c1"># plt.plot(range(1, 10), train_rmse_errors, label=&quot;Train RMSE&quot;)</span>
+<span class="c1"># plt.plot(range(1, 10), test_rmse_errors, label=&quot;Test RMSE&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;RMSE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;degree of poly&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># conclusion: around degree 4 test RMSE explodes even as it decreases still on training set</span>
+<span class="c1"># so we take 2nd degree or 3rd degree but not 4th degree as risk/complexity increases too much</span>
+<span class="c1"># context is important here</span>
+</pre></div>
+</div>
+<img alt="_images/ml_ads_ho_train_rmse.png" src="_images/ml_ads_ho_train_rmse.png" />
+<img alt="_images/ml_ads_ho_trainvstest_rmse.png" src="_images/ml_ads_ho_trainvstest_rmse.png" />
+</div>
+<div class="section" id="finalizing-model-choice">
+<h5>finalizing model choice<a class="headerlink" href="#finalizing-model-choice" title="Permalink to this headline">¶</a></h5>
+<p>There are now 2 things we need to save, the Polynomial Feature creator AND the model itself. Let’s explore how we would proceed from here:</p>
+<ol class="arabic simple">
+<li><p>Choose final parameters based on test metrics</p></li>
+<li><p>Retrain on all data</p></li>
+<li><p>Save Polynomial Converter object</p></li>
+<li><p>Save model</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Based on our chart, could have also been degree=4, but</span>
+<span class="c1"># it is better to be on the safe side of complexity</span>
+<span class="n">final_poly_converter</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">final_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="n">final_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">final_poly_converter</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="n">y</span><span class="p">)</span>
+
+
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">dump</span><span class="p">,</span> <span class="n">load</span>
+
+<span class="n">dump</span><span class="p">(</span><span class="n">final_model</span><span class="p">,</span> <span class="s1">&#39;sales_poly_model.joblib&#39;</span><span class="p">)</span>
+<span class="c1"># [&#39;sales_poly_model.joblib&#39;]</span>
+
+<span class="n">dump</span><span class="p">(</span><span class="n">final_poly_converter</span><span class="p">,</span><span class="s1">&#39;poly_converter.joblib&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prediction-on-new-data">
+<h5>prediction on new data<a class="headerlink" href="#prediction-on-new-data" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># prediction on new data</span>
+<span class="n">loaded_poly</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;poly_converter.joblib&#39;</span><span class="p">)</span>
+<span class="n">loaded_model</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;sales_poly_model.joblib&#39;</span><span class="p">)</span>
+
+<span class="n">campaign</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">149</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span>
+<span class="n">campaign_poly</span> <span class="o">=</span> <span class="n">loaded_poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">campaign</span><span class="p">)</span>
+<span class="n">campaign_poly</span>
+<span class="sd">&quot;&quot;&quot;array([[1.490000e+02, 2.200000e+01, 1.200000e+01, 2.220100e+04,</span>
+<span class="sd">           3.278000e+03, 1.788000e+03, 4.840000e+02, 2.640000e+02,</span>
+<span class="sd">           1.440000e+02, 3.307949e+06, 4.884220e+05, 2.664120e+05,</span>
+<span class="sd">           7.211600e+04, 3.933600e+04, 2.145600e+04, 1.064800e+04,</span>
+<span class="sd">           5.808000e+03, 3.168000e+03, 1.728000e+03]])&quot;&quot;&quot;</span>
+<span class="n">final_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">campaign_poly</span><span class="p">)</span>
+<span class="c1"># array([14.64501014])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="regularization">
+<h3>regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">¶</a></h3>
+<p>regularization methods have a cost:</p>
+<ul class="simple">
+<li><p>introduce an additional hyperparameter that needs to be tuned</p></li>
+<li><p>a multiplier to the penalty to decide the <strong>strength</strong> of penalty</p></li>
+</ul>
+<div class="section" id="feature-scaling">
+<h4>feature scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>some ML models that rely on distance metrics (KNN) <strong>require</strong> scaling to perform well</p></li>
+<li><p>improves algo’s like gradient descent that don’t have the property of scale invariance</p></li>
+<li><p>features are on different scales, those on large scales take longer to update</p></li>
+<li><p>you want features to be roughly on the same scale</p></li>
+<li><p>won’t have an effect on regression/decision trees/random forest (no gradient descent)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>you will also have to scale new unseen data before feeding to the model</p>
+</div>
+<p>normalization: scales all data values to be between 0 and 1</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="n">X</span> <span class="o">-</span> <span class="n">Xmin</span>
+<span class="n">X</span> <span class="o">=</span> <span class="o">-----------</span>
+    <span class="n">Xmax</span> <span class="o">-</span> <span class="n">Xmin</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>a .fit() call calculates the necessary stats (Xmin, Xmax, mean, std dev)</p></li>
+<li><p>a .transform() call scales data &amp; returns the new scaled version of data</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<div class="line-block">
+<div class="line">only <strong>fit</strong> to training data</div>
+<div class="line">calculating stat info should only come from training data</div>
+<div class="line">don’t assume prior knowledge of the test set</div>
+</div>
+</div>
+<p>using the full data set = <strong>data leakage</strong></p>
+<dl class="simple">
+<dt>feature scaling process:</dt><dd><ul class="simple">
+<li><p>perform train test split</p></li>
+<li><p>fit to TRAINING feature data</p></li>
+<li><p>transform training feature data</p></li>
+<li><p>transform test feature data</p></li>
+</ul>
+</dd>
+</dl>
+<p>don’t scale the label</p>
+</div>
+<div class="section" id="cross-validation">
+<h4>cross validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h4>
+<p>is a more advanced set of methods for splitting data into training &amp; testing sets</p>
+<p>it’s a way to train &amp; evaluate on all the data</p>
+<ul class="simple">
+<li><p>train model and get error metric for 1/K split eg 10%</p></li>
+<li><p>repeat for another error metric 1/K split</p></li>
+<li><p>keep repeating for all possible splits</p></li>
+<li><p>you get <strong>mean error = expected performance</strong></p></li>
+<li><p>you get a better sense of true performance across multiple potential splits</p></li>
+<li><p>the cost = repeat computations K times</p></li>
+<li><p>a common choice is K = 10 (K-fold cross-validation)</p></li>
+<li><p>max K = K equal to nrows (leave on out cross-validation)</p></li>
+</ul>
+<dl class="simple">
+<dt>ensure data hasn’t been influenced by/for hyperparameter tuning</dt><dd><ul class="simple">
+<li><p>we use a <strong>hold out</strong> test set = remove a portion of data at start that model will never see or be adjusted to</p></li>
+<li><p>continue with classic train test split</p></li>
+<li><p>OR do K-Fold cross validation</p></li>
+<li><p><strong>after</strong> training &amp; tuning perform <strong>final evaluation</strong> hold out test set</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>you cannot tune after this final test evaluation!</p>
+</div>
+<p>training data | validation data (tuning hyperparams) | test data</p>
+</div>
+<div class="section" id="data-setup">
+<h4>data setup<a class="headerlink" href="#data-setup" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/Advertising.csv&quot;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Unnamed: 0&quot;</span><span class="p">,</span> <span class="s2">&quot;sales&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales&#39;</span><span class="p">]</span>
+
+<span class="c1"># Polynomial Conversion</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="n">polynomial_converter</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">poly_features</span> <span class="o">=</span> <span class="n">polynomial_converter</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">poly_features</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (200, 19)</span>
+
+<span class="c1"># Train | Test Split</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">poly_features</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (140, 19)</span>
+
+<span class="c1"># scaling the data</span>
+<span class="c1"># we only fit to the training data, and transform on both sets separately</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="c1"># help(StandardScaler)</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>  <span class="c1"># calling fit calculates Xmin &amp; Xmax</span>
+<span class="c1"># StandardScaler()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l1-reg-lasso-regression">
+<h4>L1 reg LASSO regression<a class="headerlink" href="#l1-reg-lasso-regression" title="Permalink to this headline">¶</a></h4>
+<dl class="simple">
+<dt>L1 regularization adds penalty equal to the <strong>absolute value</strong> of the magnitude of coefficients:</dt><dd><ul class="simple">
+<li><p>limits the size of the coefficients</p></li>
+<li><p>can yield sparse models where some coefficients can become zero (helps you decide)</p></li>
+<li><p>can force some of the coeff estimates to be zero when tuning lambda is large enough</p></li>
+<li><p>similar to subset selection, LASSO performs variable selection</p></li>
+<li><p>models are generally much easier to interpret</p></li>
+<li><p>LassoCV operates on checking a # of alphas within a range instead of providing alphas directly</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lasso Regression</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LassoCV</span>
+<span class="c1"># https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html</span>
+
+<span class="n">lasso_cv_model</span> <span class="o">=</span> <span class="n">LassoCV</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">n_alphas</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">lasso_cv_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># LassoCV(cv=5, eps=0.1)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lasso_cv_model</span><span class="o">.</span><span class="n">alpha_</span><span class="p">)</span>  <span class="c1"># 0.4943070909225832</span>
+
+<span class="c1"># run test predictions &amp; compare our values</span>
+<span class="n">test_predictions</span> <span class="o">=</span> <span class="n">lasso_cv_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">MAE</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">test_predictions</span><span class="p">)</span>
+<span class="n">MSE</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">test_predictions</span><span class="p">)</span>
+<span class="n">RMSE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">MSE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">MAE</span><span class="p">)</span>  <span class="c1"># 0.6541723161252867</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">RMSE</span><span class="p">)</span>  <span class="c1"># 1.1308001022762548</span>
+
+<span class="c1"># Training Set Performance</span>
+<span class="n">train_predictions</span> <span class="o">=</span> <span class="n">lasso_cv_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">MAE</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">train_predictions</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">MAE</span><span class="p">)</span>  <span class="c1"># 0.6912807140820709</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lasso_cv_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>  <span class="c1"># its only considering 2 features! ridge, all features</span>
+<span class="sd">&quot;&quot;&quot;array([1.002651  , 0.        , 0.        , 0.        , 3.79745279,</span>
+<span class="sd">          0.        , 0.        , 0.        , 0.        , 0.        ,</span>
+<span class="sd">          0.        , 0.        , 0.        , 0.        , 0.        ,</span>
+<span class="sd">          0.        , 0.        , 0.        , 0.        ])&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="l2-reg-ridge-regression">
+<h4>L2 reg Ridge regression<a class="headerlink" href="#l2-reg-ridge-regression" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>ridge regression is a regularization technique (for linear regression) that works by helping reduce the potential for overfitting to the training data</p></li>
+<li><p>by adding a penalty term to the error that is based on the squared value of the coefficients</p></li>
+<li><p>minimize error term RSS + penalty term</p></li>
+<li><p>shrinkage penalty based off <strong>coefficient²</strong></p></li>
+<li><p>shrinkage penalty has a <strong>tunable lambda parameter</strong></p></li>
+</ul>
+<img alt="_images/ml_ads_ridge_regression.png" src="_images/ml_ads_ridge_regression.png" />
+<ul class="simple">
+<li><p>introduce a little more <strong>bias</strong> to significantly <strong>reduce</strong> variance</p></li>
+<li><p>adding bias can help generalize ŷ= B₁x + B₀ (B₁ = slope of the line)</p></li>
+<li><p>won’t fit training data as well but fit unseen data better overall</p></li>
+<li><p>use cross-validation to explore multiple lambda options &amp; choose best one</p></li>
+<li><p>for cross-validation metrics, sklearn uses a <strong>scorer object</strong></p></li>
+<li><p><strong>higher</strong> return values are <strong>better</strong> than lower return values for scorer objects</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ridge Regression</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Ridge</span>
+<span class="n">ridge_model</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ridge_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># Ridge(alpha=10)</span>
+<span class="n">test_predictions</span> <span class="o">=</span> <span class="n">ridge_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span><span class="n">mean_squared_error</span>
+<span class="n">MAE</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">test_predictions</span><span class="p">)</span>
+<span class="n">MSE</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">test_predictions</span><span class="p">)</span>
+<span class="n">RMSE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">MSE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">MAE</span><span class="p">)</span>
+<span class="mf">0.5774404204714167</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">RMSE</span><span class="p">)</span>
+<span class="mf">0.894638646131965</span>
+
+<span class="c1"># Training Set Performance</span>
+<span class="n">train_predictions</span> <span class="o">=</span> <span class="n">ridge_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">MAE</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">train_predictions</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">MAE</span><span class="p">)</span>
+<span class="mf">0.5288348183025304</span>
+</pre></div>
+</div>
+<div class="section" id="choosing-an-alpha-value-with-cross-validation">
+<h5>choosing an alpha value with Cross-Validation<a class="headerlink" href="#choosing-an-alpha-value-with-cross-validation" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">RidgeCV</span>
+<span class="c1"># help(RidgeCV)</span>
+<span class="c1"># Choosing a scoring: https://scikit-learn.org/stable/modules/model_evaluation.html</span>
+<span class="c1"># Negative RMSE so all metrics follow convention &quot;Higher is better&quot;</span>
+
+<span class="c1"># to choose your scorer</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">SCORERS</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">SCORERS</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="c1"># dict_keys([&#39;explained_variance&#39;, &#39;r2&#39;, &#39;max_error&#39;, &#39;neg_median_absolute_error&#39;, &#39;neg_mean_absolute_error&#39;,</span>
+<span class="c1"># &#39;neg_mean_absolute_percentage_error&#39;, &#39;neg_mean_squared_error&#39;, &#39;neg_mean_squared_log_error&#39;,</span>
+<span class="c1"># &#39;neg_root_mean_squared_error&#39;, &#39;neg_mean_poisson_deviance&#39;, &#39;neg_mean_gamma_deviance&#39;, &#39;accuracy&#39;, ...</span>
+<span class="c1"># a higher negative MSE is better!</span>
+<span class="n">ridge_cv_model</span> <span class="o">=</span> <span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span> <span class="n">cv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_absolute_error&#39;</span><span class="p">)</span>
+
+<span class="c1"># the more alpha options you pass, the longer this will take</span>
+<span class="n">ridge_cv_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>  <span class="c1"># only using training set for hyperparameter training!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ridge_cv_model</span><span class="o">.</span><span class="n">alpha_</span><span class="p">)</span>
+<span class="mf">0.1</span>  <span class="c1"># the alpha that performed the best</span>
+
+<span class="c1"># check performance on unseen test data</span>
+<span class="n">test_predictions</span> <span class="o">=</span> <span class="n">ridge_cv_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">MAE</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">test_predictions</span><span class="p">)</span>
+<span class="n">MSE</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">test_predictions</span><span class="p">)</span>
+<span class="n">RMSE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">MSE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">MAE</span><span class="p">)</span>  <span class="c1"># 0.4273774884345441</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">RMSE</span><span class="p">)</span>  <span class="c1"># 0.6180719926946004</span>
+
+<span class="c1"># training set performance</span>
+<span class="n">train_predictions</span> <span class="o">=</span> <span class="n">ridge_cv_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">MAE</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">train_predictions</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">MAE</span><span class="p">)</span>  <span class="c1"># 0.3094132105648306</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ridge_cv_model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">array([ 5.40769392,  0.5885865 ,  0.40390395, -6.18263924,  4.59607939,</span>
+<span class="sd">          -1.18789654, -1.15200458,  0.57837796, -0.1261586 ,  2.5569777 ,</span>
+<span class="sd">          -1.38900471,  0.86059434,  0.72219553, -0.26129256,  0.17870787,</span>
+<span class="sd">           0.44353612, -0.21362436, -0.04622473, -0.06441449])</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="l1-l2-elastic-net-regression">
+<h4>L1+L2 Elastic Net regression<a class="headerlink" href="#l1-l2-elastic-net-regression" title="Permalink to this headline">¶</a></h4>
+<p>combining best of both worlds</p>
+<p>One issue with regular least squares is that it doesn’t account for the possibility of overfitting
+Ridge regression takes care of this by shrinking certain parameters
+Lasso takes this a step even further by allowing certain coefficients to be outright forced to zero,
+eliminating them from the model
+Finally, Elastic Net combines the benefits of both lasso and ridge</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(ŷ = B₁X₁+B₂X₂\)</span>   (case of only 2 features)</p></li>
+<li><p>L1 constrains the sum of absolute values <span class="math notranslate nohighlight">\(|B|\)</span></p></li>
+<li><p>L2 contrains the sum of squared values B²</p></li>
+<li><p>for some set of features the penalty will be less than sum of <strong>s</strong>
+- Lasso regression penalty: <span class="math notranslate nohighlight">\(|B₁| + |B₂| ≤ S\)</span>
+- Ridge regression penalty: <span class="math notranslate nohighlight">\(B₁² + B₂² ≤ S\)</span></p></li>
+</ul>
+<img alt="&quot;Image Citation: Zou, H., &amp; Hastie, T. (2005)&quot;" src="_images/ml_ads_elastic_net_plot.png" />
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>## Elastic Net
+Elastic Net combines the penalties of ridge regression and lasso in an attempt to get the best of both worlds!
+from sklearn.linear_model import ElasticNetCV
+elastic_model = ElasticNetCV(l1_ratio=[.1, .5, .7,.9, .95, .99, 1],tol=0.01)
+elastic_model.fit(X_train,y_train)
+# ElasticNetCV(l1_ratio=[0.1, 0.5, 0.7, 0.9, 0.95, 0.99, 1], tol=0.01)
+elastic_model.l1_ratio_
+1.0
+test_predictions = elastic_model.predict(X_test)
+MAE = mean_absolute_error(y_test,test_predictions)
+MSE = mean_squared_error(y_test,test_predictions)
+RMSE = np.sqrt(MSE)
+MAE
+0.5663262117569452
+RMSE
+0.7485546215633726
+# Training Set Performance
+# Training Set Performance
+train_predictions = elastic_model.predict(X_train)
+MAE = mean_absolute_error(y_train,train_predictions)
+MAE
+0.43075829904723684
+elastic_model.coef_
+array([ 3.78993643,  0.89232919,  0.28765395, -1.01843566,  2.15516144,
+       -0.3567547 , -0.271502  ,  0.09741081,  0.        , -1.05563151,
+        0.2362506 ,  0.07980911,  1.26170778,  0.01464706,  0.00462336,
+       -0.39986069,  0.        ,  0.        , -0.05343757])
+</pre></div>
+</div>
+</div>
+<div class="section" id="symptoms-and-remedy">
+<h4>symptoms and remedy<a class="headerlink" href="#symptoms-and-remedy" title="Permalink to this headline">¶</a></h4>
+<img alt="_images/ml_bias_variance.png" src="_images/ml_bias_variance.png" />
+<img alt="_images/ml_cause_remedy.png" src="_images/ml_cause_remedy.png" />
+</div>
+<div class="section" id="bias-variance-trade-off-decision-routes">
+<h4>Bias-Variance Trade-off Decision Routes<a class="headerlink" href="#bias-variance-trade-off-decision-routes" title="Permalink to this headline">¶</a></h4>
+<p>between the first model we build and the final model we traverse different decision routes till we strike the right balance between bias and variance</p>
+<p>Low bias|High variance -&gt; Low bias|Low variance:</p>
+<img alt="_images/ml_bias_variance_decision_route.png" src="_images/ml_bias_variance_decision_route.png" />
+<img alt="_images/ml_bias_variance_decision_route2.png" src="_images/ml_bias_variance_decision_route2.png" />
+<img alt="_images/ml_bias_variance_decision_route3.png" src="_images/ml_bias_variance_decision_route3.png" />
+<p>High bias|High variance -&gt; Low bias|Low variance:</p>
+<img alt="_images/ml_bias_variance_decision_route4.png" src="_images/ml_bias_variance_decision_route4.png" />
+<img alt="_images/ml_bias_variance_decision_route5.png" src="_images/ml_bias_variance_decision_route5.png" />
+<p>High bias|Low variance -&gt; Low bias|Low variance:</p>
+<img alt="_images/ml_bias_variance_decision_route6.png" src="_images/ml_bias_variance_decision_route6.png" />
+<img alt="_images/ml_bias_variance_decision_route7.png" src="_images/ml_bias_variance_decision_route7.png" />
+<img alt="_images/img" src="_images/img" />
+<img alt="_images/img" src="_images/img" />
+<img alt="_images/img" src="_images/img" />
+<img alt="_images/img" src="_images/img" />
+<img alt="_images/img" src="_images/img" />
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="git.html" class="btn btn-neutral float-right" title="GIT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cheats/main.html" class="btn btn-neutral float-left" title="cheatsheets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Patrick Brunswyck.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
